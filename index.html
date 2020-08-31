@@ -225,11 +225,17 @@ Error message and password prompt
 
 <li>Document DB</li>
 
+<li>Document Partitioned Indexes</li>
+
 <li>Encoding/Decoding</li>
 
 <li>Graph DB</li>
 
 <li>Hadoop</li>
+
+<li>Hash Partitioning</li>
+
+<li>Key Range Partitioning</li>
 
 <li>Kubernetes</li>
 
@@ -256,6 +262,8 @@ Error message and password prompt
 <li>Software Tools</li>
 
 <li>Spark</li>
+
+<li>Term Partitioned Indexes</li>
 
 <li>Text Encoding</li>
 
@@ -9869,7 +9877,7 @@ Error message and password prompt
 <div created="20200827145100183" modified="20200827145115263" title="$:/state/tab-2065006209">
 <pre>$:/core/ui/ControlPanel/Saving/GitHub</pre>
 </div>
-<div created="20200827210314342" modified="20200829131459253" title="$:/state/tab/moresidebar-1850697562">
+<div created="20200827210314342" modified="20200830234147622" title="$:/state/tab/moresidebar-1850697562">
 <pre>$:/core/ui/MoreSideBar/Orphans</pre>
 </div>
 <div created="20200827210222445" modified="20200828170856715" title="$:/state/tab/sidebar--595412856">
@@ -9881,7 +9889,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20200830203907987" list="[[Software Tools]] [[Software Concepts]]" modified="20200830203917034" title="$:/StoryList">
+<div created="20200830232235630" list="[[DB Partitioning]]" modified="20200830235541899" title="$:/StoryList">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json">
@@ -9925,7 +9933,7 @@ Error message and password prompt
         },
         &quot;$:/info/url/origin&quot;: {
             &quot;title&quot;: &quot;$:/info/url/origin&quot;,
-            &quot;text&quot;: &quot;file://&quot;
+            &quot;text&quot;: &quot;null&quot;
         },
         &quot;$:/info/browser/screen/width&quot;: {
             &quot;title&quot;: &quot;$:/info/browser/screen/width&quot;,
@@ -9945,7 +9953,7 @@ Error message and password prompt
 <div created="20200828140319089" modified="20200828140319089" title="$:/temp/NewTagName">
 <pre></pre>
 </div>
-<div created="20200827210236856" modified="20200829165515572" title="$:/temp/search">
+<div created="20200827210236856" modified="20200830234144398" title="$:/temp/search">
 <pre></pre>
 </div>
 <div created="20200827210410769" modified="20200827210412400" title="$:/theme">
@@ -10147,8 +10155,46 @@ Forms:
 <div created="20200829165019840" modified="20200829165906052" tags="data theory" title="Database Transactions">
 <pre></pre>
 </div>
-<div created="20200828145340232" modified="20200829160938896" tags="data theory" title="DB Partitioning">
-<pre></pre>
+<div created="20200828145340232" modified="20200831003550807" tags="data theory" title="DB Partitioning">
+<pre>Partitioning is a feature of [[DBMS]] where data within the database is shared between multiple nodes where no one node has all of the data for the system.
+
+Partitioning allows the sizes of databases to scale past the limits of a single machine.
+
+''Primary Indexing:''
+
+Primary indexing is the algorithm which decides which entries are assigned to which partitions
+
+* [[Key range partitioning|Key Range Partitioning]]
+* [[Hash Partitioning|Hash Partitioning]]
+
+''Secondary Indexing:''
+
+Although the data is usually partitioned by a primary index, indexes of other features can be made and this index data must also be distributed within the system
+
+* [[by document|Document Partitioned Indexes]]
+* [[by term|Term Partitioned Indexes]]
+
+''Rebalancing''
+
+As data and nodes are added to or removed from the system partitions may need to be re-distributed or adjusted. Rebalancing can be automated but is often done manually so it doesn't cause anything unpredictable.
+
+Implementations:
+
+* N partitions
+** The number of partitions is static
+** Simple but can be hard to know the right number
+* Dynamic partitions 
+** Partitions combine and split
+** More robust but there is extra overhead in managing sizes
+
+''Service Discovery''
+
+How a read/write request determines which node to access.
+
+* The client understands which node to request
+* Each node can redirect a request to the right node
+* A routing tier abstracts away this issue
+</pre>
 </div>
 <div created="20200828145332976" modified="20200829151511671" tags="data theory" title="DB Replication">
 <pre>Replication is a feature of [[DBMS]] where the data within the database is duplicated and spread across a number of servers called nodes.
@@ -10166,7 +10212,7 @@ Implementations:
 * [[Leaderless|Leaderless (Replication)]]
 </pre>
 </div>
-<div created="20200828140243188" modified="20200829165938588" tags="theory data" title="DBMS">
+<div created="20200828140243188" modified="20200830234259327" tags="theory data" title="DBMS">
 <pre>Database Management Systems
 
 Specialized software for managing data. Databases often care about the following traits.
@@ -10187,10 +10233,13 @@ Common Data Models:
 * [[Relational|Relational DB]]
 * [[Graph|Graph DB]]
 
-Common Features: (TODO)
+Common Features:
 
 * [[Replication|DB Replication]]
 * [[Partitioning|DB Partitioning]]
+
+Replication and partition implementations are relatively independent of each other. The DBMS can partition the data using one algorithm and is then free to replicate each partition using any replication implementation. [[Diagram|https://drive.google.com/file/d/1htm0-2utisRl9MRJVsursvyqKdEqxkcX/view?usp=sharing]]
+
 * [[Transactions|Database Transactions]]
 </pre>
 </div>
@@ -10205,6 +10254,13 @@ Features:
 * No schema - flexible but data constraints must be enforced at the application level
 * Imperative querying - queries must be explicitly defined
 * Simple - work out of the box with very little overhead</pre>
+</div>
+<div created="20200830233250459" modified="20200831000725298" tags="data theory" title="Document Partitioned Indexes">
+<pre>Method for partitioning non-primary indexes in [[DBMS]]. In document partitioned indexes all non-primary indexes are stored only for its partition. Also called a &quot;local index&quot;.
+
+Because the entire index of a feature is spread across the whole system using secondary indexes built in this way can be slower than other implementations.
+
+[[Diagram|https://drive.google.com/file/d/1Fx__H1PSTBmAQjCD1k1pg7EeM8A5lnCn/view?usp=sharing]]</pre>
 </div>
 <div created="20200828173436640" modified="20200828180552498" tags="data theory" title="Encoding/Decoding">
 <pre>Within a computer data is stored either as a structure within memory or on disk, with memory being faster to read and write to but disk storage being non-volatile.
@@ -10231,6 +10287,20 @@ Features:
 <pre>A cluster management tool to create a &quot;distributed file system&quot;. Hadoop management software can load and read files to/from a cluster.
 
 You can write and execute software to process things in parallel.</pre>
+</div>
+<div created="20200830233149983" modified="20200830235138553" tags="data theory" title="Hash Partitioning">
+<pre>A method for partitioning data in [[DBMS]] where entries are partitioned based on the order of a hashed primary index values. 
+
+By hashing the primary index the partitions tend to have an even distribution of read/writes
+
+[[Diagram|https://drive.google.com/file/d/1vgV1dCQMyv2LMhQbLLBOx1simi70p_4V/view?usp=sharing]]</pre>
+</div>
+<div created="20200830233055256" modified="20200830234729706" tags="data theory" title="Key Range Partitioning">
+<pre>A method for partitioning data in [[DBMS]] where entries are partitioned based on the order a primary index values. 
+
+This implementation is prone to &quot;hot spots&quot; where some partitions receive more write/read load than others. One benefit is that range queries are faster.
+
+[[Diagram|https://drive.google.com/file/d/1nLf6h7XzPEkmJICMnfUtP5IfmB40HlZU/view?usp=sharing]]</pre>
 </div>
 <div created="20200827234235959" modified="20200827235504892" tags="software devops" title="Kubernetes">
 <pre>Tool for managing distributed software. Uses [[Docker|Docker]] to containerize processes and uses configuration to manage them across a cluster
@@ -10419,6 +10489,13 @@ Spark libraries wrap cluster manager, such as
 A script uses the cluster manager to manipulate workers and execute workflows in parallel
 
 [[https://github.com/Edwardbafford/General/tree/master/Spark]]</pre>
+</div>
+<div created="20200830233326649" modified="20200831001242348" tags="data theory" title="Term Partitioned Indexes">
+<pre>Method for partitioning non-primary indexes in [[DBMS]]. In term partitioned indexes a global index is split between the system. 
+
+[[For example|https://drive.google.com/file/d/1c6vuikrZnN3oQW66HLiYH1n29A7M7Uvy/view?usp=sharing]], the index red in its entirety is stored within a node while the index silver in its entirety is stored in another.
+
+This implementation has fast reads but slower writes because an entry may have to update indexes in multiple nodes.</pre>
 </div>
 <div created="20200828175540861" modified="20200828180503379" tags="data theory" title="Text Encoding">
 <pre>There are various formats for text data to be encoded and decoded.
