@@ -201,11 +201,11 @@ Error message and password prompt
 
 <li>Analytical DB</li>
 
+<li>Computer Science</li>
+
 <li>Consistent Read Order</li>
 
 <li>Data Compatibility</li>
-
-<li>Data Concepts (Other)</li>
 
 <li>Data Encoding</li>
 
@@ -220,6 +220,10 @@ Error message and password prompt
 <li>DB Replication</li>
 
 <li>DBMS</li>
+
+<li>Dirty Reads</li>
+
+<li>Dirty Writes</li>
 
 <li>Docker</li>
 
@@ -243,6 +247,8 @@ Error message and password prompt
 
 <li>Log Table Storage</li>
 
+<li>Lost Updates (Transactions)</li>
+
 <li>Monotonic Reads</li>
 
 <li>Multi-Leader (Replication)</li>
@@ -255,21 +261,33 @@ Error message and password prompt
 
 <li>Relational DB</li>
 
-<li>Single Leader (Replication)</li>
+<li>Repeatable Reads</li>
 
-<li>Software Concepts</li>
+<li>Serial Execution (DBMS)</li>
+
+<li>Serializable Snapshot Isolation</li>
+
+<li>Single Leader (Replication)</li>
 
 <li>Software Tools</li>
 
 <li>Spark</li>
 
+<li>Stored Procedure</li>
+
 <li>Term Partitioned Indexes</li>
 
 <li>Text Encoding</li>
 
+<li>Transaction Isolation</li>
+
 <li>Transactional Database</li>
 
+<li>Two Phase Locking</li>
+
 <li>Version Vectors</li>
+
+<li>Write Skew</li>
 
 </ul>
 </p>
@@ -9661,9 +9679,9 @@ Error message and password prompt
     }
 }</pre>
 </div>
-<div created="20200827205313204" modified="20200829131514706" title="$:/DefaultTiddlers">
+<div created="20200827205313204" modified="20200902224155486" title="$:/DefaultTiddlers">
 <pre>[[Software Tools]]
-[[Software Concepts]]</pre>
+[[Computer Science Concepts]]</pre>
 </div>
 <div status="complete" title="$:/Import">
 <pre>The following tiddlers were imported:
@@ -9889,7 +9907,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20200830232235630" list="[[DB Partitioning]]" modified="20200830235541899" title="$:/StoryList">
+<div created="20200915225433515" list="[[Transaction Isolation]] [[Serializable Snapshot Isolation]]" modified="20200915234915435" title="$:/StoryList">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json">
@@ -9953,8 +9971,8 @@ Error message and password prompt
 <div created="20200828140319089" modified="20200828140319089" title="$:/temp/NewTagName">
 <pre></pre>
 </div>
-<div created="20200827210236856" modified="20200830234144398" title="$:/temp/search">
-<pre></pre>
+<div created="20200827210236856" modified="20200915234913109" title="$:/temp/search">
+<pre>Isol</pre>
 </div>
 <div created="20200827210410769" modified="20200827210412400" title="$:/theme">
 <pre>$:/themes/tiddlywiki/snowwhite</pre>
@@ -10091,6 +10109,14 @@ Implementation - column oriented design where columns are stored together as opp
 * Makes filtering by column data quick
 * Updating data becomes slower</pre>
 </div>
+<div created="20200828173348895" modified="20200915234215918" tags="theory" title="Computer Science">
+<pre>Data:
+
+* [[DBMS]]
+* [[Encoding/Decoding]]
+* [[Compatibility|Data Compatibility]]
+* [[Data Flow|Data Flow]]</pre>
+</div>
 <div created="20200829153633848" modified="20200829164656812" tags="data theory" title="Consistent Read Order">
 <pre>Also known as &quot;Consistent Prefix Reads&quot;
 
@@ -10108,11 +10134,6 @@ A data consistency issue that occurs in databases that are [[replicated|DB Repli
 
 * Backward Compatibility - New code is able to read old data
 * Forward Compatibility - Old code is able to read new data
-</pre>
-</div>
-<div created="20200828173717615" modified="20200828173927997" tags="data theory" title="Data Concepts (Other)">
-<pre>* [[Compatibility|Data Compatibility]]
-* [[Data Flow|Data Flow]]
 </pre>
 </div>
 <div created="20200828175551860" modified="20200828181629440" tags="data software" title="Data Encoding">
@@ -10152,8 +10173,40 @@ Forms:
 
 [[Diagram|https://drive.google.com/file/d/1ZVbQXwDcI48ClHIXsEKW6vmenouRGm2d/view?usp=sharing]]</pre>
 </div>
-<div created="20200829165019840" modified="20200829165906052" tags="data theory" title="Database Transactions">
-<pre></pre>
+<div created="20200829165019840" modified="20200902230529450" tags="data theory" title="Database Transactions">
+<pre>Transactions are a feature of many [[DBMS]] which provides reliability when interacting with the database.
+
+Some database management systems provide transactions for only single reads or writes while others allow the user to group a set of operations together and bundle them as a single transaction.
+
+&quot;&quot;&quot;
+A transaction is either successful or it fails
+''Success'' - you can feel confident that your transaction did what it was supposed to
+''Fail'' - you can freely retry the transaction without any issues (besides more load on the system)
+&quot;&quot;&quot;
+
+Transactions come with a set of guarantees. The most common of which are a set of guarantees with the acronym ACID.
+
+&quot;&quot;&quot;
+''Atomic''
+Either the entire transaction succeed or none of the transaction succeeds. If the transaction fails all of the written information is rolled back. This property is key to a transaction.
+&quot;&quot;&quot;
+
+&quot;&quot;&quot;
+''Consistency''
+Kind of a meaningless guarantee.. consistency is maintained by the transaction being atomic, isolated, and being a proper request from the application. If these are enforced the data will retain its integrity and stay &quot;consistent&quot;.
+&quot;&quot;&quot;
+
+&quot;&quot;&quot;
+[[Isolation|Transaction Isolation]]
+Transactions that occur concurrently act the same as if they were transactions that occurred serially. In other words, transactions cannot interfere with each other. There are many layers to this one and it is key to the power of your transactions so take a look at the wiki link!
+&quot;&quot;&quot;
+
+&quot;&quot;&quot;
+''Durable''
+Once the transaction has successfully completed the data will not be lost. Along with consistency this is kind of a pointless addition to ACID. Every successful write is just as durable as a write from a transaction. Durability has more to do with replication than transactions...
+&quot;&quot;&quot;
+
+Overall almost all database systems with transactions implement the atomic guarantee but the guarantee of isolation has many nuances to it and varies from system to system. The isolation level is important to most applications so it is worth understanding.</pre>
 </div>
 <div created="20200828145340232" modified="20200831003550807" tags="data theory" title="DB Partitioning">
 <pre>Partitioning is a feature of [[DBMS]] where data within the database is shared between multiple nodes where no one node has all of the data for the system.
@@ -10212,7 +10265,7 @@ Implementations:
 * [[Leaderless|Leaderless (Replication)]]
 </pre>
 </div>
-<div created="20200828140243188" modified="20200830234259327" tags="theory data" title="DBMS">
+<div created="20200828140243188" modified="20200915234510640" tags="theory data" title="DBMS">
 <pre>Database Management Systems
 
 Specialized software for managing data. Databases often care about the following traits.
@@ -10221,6 +10274,7 @@ Specialized software for managing data. Databases often care about the following
 * Speed and flexibility for reads
 * Robustness to failures (Durability)
 * Scalability
+* Reliability during concurrent activity
 
 Database Types:
 
@@ -10241,7 +10295,34 @@ Common Features:
 Replication and partition implementations are relatively independent of each other. The DBMS can partition the data using one algorithm and is then free to replicate each partition using any replication implementation. [[Diagram|https://drive.google.com/file/d/1htm0-2utisRl9MRJVsursvyqKdEqxkcX/view?usp=sharing]]
 
 * [[Transactions|Database Transactions]]
+* [[Stored Procedures|Stored Procedure]]
 </pre>
+</div>
+<div created="20200902233838388" modified="20200905010404958" tags="data theory" title="Dirty Reads">
+<pre>&quot;&quot;&quot;
+''Definition:''
+A dirty read is where a ''query can read uncommitted data''. By reading uncommitted data the user may see the database in an inconsistent state or see data that then goes away when the transaction is aborted.
+&quot;&quot;&quot;
+
+This [[diagram|https://drive.google.com/file/d/1EuWaSkkYFHABBtCjB2Qi62Lqgd4oouXe/view?usp=sharing]] shows dirty reads being prevented
+
+&quot;&quot;&quot;
+''Implementation:''
+To prevent dirty reads the database will need to ''store uncommitted writes separately'' and not overwrite old values until the transaction is committed. This also makes enforcing atomic transactions easier :)
+&quot;&quot;&quot;</pre>
+</div>
+<div created="20200902233851074" modified="20200903000252425" tags="data theory" title="Dirty Writes">
+<pre>&quot;&quot;&quot;
+''Definition:''
+A dirty write is where ''one update overwrites another uncommitted write''. Dirty writes create lots of race conditions which can leave the system in an inconsistent state.
+&quot;&quot;&quot;
+
+This [[diagram|https://drive.google.com/file/d/1ZUTsDwPIBzXUpsqwt8uZwGQQ6VOEyIm2/view?usp=sharing]] shows an example of a dirty write, where two users try to make updates and the leaving the database having a mixture of both transactions.
+
+&quot;&quot;&quot;
+''Implementation:''
+A simple solution for dirty writes is to have ''a lock for each database entry''. When a transaction needs to update an entry it will grab its lock and return it when the transaction is finished allowing other updates to modify the row.
+&quot;&quot;&quot;</pre>
 </div>
 <div created="20200827235127142" modified="20200827235447429" tags="software devops" title="Docker">
 <pre>Tools for containerizing software. Containerizing is a method of partitioning OS resources (RAM, Disk, CPU, Ports, etc.) as opposed to virtualization which runs OS on top of each other.</pre>
@@ -10355,6 +10436,24 @@ Reads:
 [[Diagram|https://drive.google.com/file/d/1g0oNOJXtp9ub5Ys9glVBV8vuP2MjQ88b/view?usp=sharing]]
 </pre>
 </div>
+<div created="20200905005713614" modified="20200905013043599" tags="data theory" title="Lost Updates (Transactions)">
+<pre>&quot;&quot;&quot;
+''Definition:''
+Although [[dirty writes|Dirty Writes]] prevent uncommitted transactions from mixing two concurrent writes will often end up with one completely overwritten which can still create inconsistent states in a database.
+&quot;&quot;&quot;
+
+&quot;&quot;&quot;
+''Implementations:''
+''Atomic Operations''
+These are builtin functions within a database that automatically ''lock a resource for both a read and write'', as opposed to the standard of just locking during a write. This ensures that the transaction reads the data before making the update and ensures consistency. The issue is that because they are built in they are limited.
+
+''Explicit Locking''
+Similar to an atomic operation except the client defines when to lock a resource then does a read and write, again ensuring the transaction is reading current data. The main issue with this implementation is that it is often outside the scope of most ORM frameworks and it can slow down the system by forcing lots of locks.
+
+''Automatic Detection''
+This implementation uses the transaction versioning system described in [[Repeatable Reads]] to detect if two transactions have overwritten each other by comparing the data versions of their reads and writes. If an lost update is detected the transaction will fail and have to be tried again. The fact that nothing extra is needed from the application level makes this a great option.
+&quot;&quot;&quot;</pre>
+</div>
 <div created="20200829153605915" modified="20200829160735102" tags="data theory" title="Monotonic Reads">
 <pre>A database consistency issue that occurs on [[replicated data|DB Replication]] where reading the same data twice can show new data then old data. If two different nodes are read from and the first read comes from a more up to date node than the second read this can occur.
 
@@ -10426,6 +10525,35 @@ Features:
 
 </pre>
 </div>
+<div created="20200905005610891" modified="20200905012407420" tags="data theory" title="Repeatable Reads">
+<pre>&quot;&quot;&quot;
+''Definition:''
+A repeatable read is a level of isolation where ''other transactions cannot impact the data being read'' from another transaction, even if that transaction has been committed.
+diagrammed [[here|https://drive.google.com/file/d/1NrYwG-gZzXN-p5_-G_yFu025jUGuQKRg/view?usp=sharing]] is an example of a non-repeatable read
+&quot;&quot;&quot;
+
+For example, if you have a long running query which makes multiple reads, a committed transaction could update the database so that a read earlier in the transaction may look different from a read later in the transaction.
+
+
+&quot;&quot;&quot;
+''Implementation:''
+The main way of ensuring repeatable reads is to'' link transaction ids to data entries'', essentially a way of versioning it. Transactions will only read data from transactions that were committed before they started, as diagrammed [[here|https://drive.google.com/file/d/1frnkYdsqOuHZU82XkUcXOFlOLqlRQ7Xz/view?usp=sharing]]. Old data versions will be cleaned up by back end processes.
+&quot;&quot;&quot;</pre>
+</div>
+<div created="20200915230519617" modified="20200915233242404" tags="theory data" title="Serial Execution (DBMS)">
+<pre>In a serially executed database there is no concurrency. All transactions are executed by a single thread on a CPU. Although there are serious limitations to this, if possible it keeps the database simple.
+
+The limitations to this are as follows:
+
+* data must fit into RAM to make up for single thread speeds
+* transactions cannot use multiple network calls (again for speed) and therefor must often rely on [[stored procedures|Stored Procedure]]
+* even with all this, the speed is still limited to a single CPU</pre>
+</div>
+<div created="20200915230556539" modified="20200915235244784" tags="data theory" title="Serializable Snapshot Isolation">
+<pre>Serializable Snapshot Isolation, or SSI, is a new algorithm which uses an optimistic approach to enforce serialization. Using a transaction versioning system similar to [[snapshot isolation|Transaction Isolation]] implementations the database will detect is serialization has been broken and abort the transaction. 
+
+The details of the implementation are unnecessary, in general it detects if reads have been effected by other writes, such as in [[this|https://drive.google.com/file/d/1e1sd9QF8aI1h9i-6izBsV8dP7XHSwEij/view?usp=sharing]] example</pre>
+</div>
 <div created="20200829151326811" modified="20200829175638337" tags="data theory" title="Single Leader (Replication)">
 <pre>Implementation of [[database|DBMS]] [[replication|DB Replication]] where one leader node accepts all writes and then forwards the updates to the follower nodes.
 
@@ -10455,13 +10583,6 @@ Due to asynchronous updates to follower nodes a number of issues arise from the 
 
 To avoid these issues there is usually some overhead at the application level</pre>
 </div>
-<div created="20200828173348895" modified="20200828173804176" tags="theory software" title="Software Concepts">
-<pre>Data:
-
-* [[DBMS]]
-* [[Encoding/Decoding]]
-* [[Other|Data Concepts (Other)]]</pre>
-</div>
 <div created="20200828170656182" modified="20200828171400857" tags="software" title="Software Tools">
 <pre>Languages:
 
@@ -10490,6 +10611,9 @@ A script uses the cluster manager to manipulate workers and execute workflows in
 
 [[https://github.com/Edwardbafford/General/tree/master/Spark]]</pre>
 </div>
+<div created="20200915233040336" modified="20200915234423005" tags="data theory" title="Stored Procedure">
+<pre>&quot;Scripts&quot; or logic that can be executed at the database level. They can increase performance by keeping a transaction within the database, as opposed to being multiple network calls between the database and an application. The downside is that they are often harder to maintain and tightly couple your application to the database.</pre>
+</div>
 <div created="20200830233326649" modified="20200831001242348" tags="data theory" title="Term Partitioned Indexes">
 <pre>Method for partitioning non-primary indexes in [[DBMS]]. In term partitioned indexes a global index is split between the system. 
 
@@ -10509,6 +10633,28 @@ This implementation has fast reads but slower writes because an entry may have t
 *** UTF-8
 *** UTF-16</pre>
 </div>
+<div created="20200902225529035" modified="20200915234137925" tags="data theory" title="Transaction Isolation">
+<pre>There are three main levels of isolation that prevent certain subsets of problems, [[diagrammed here|https://drive.google.com/file/d/1kvaV_FENejRA4P_eiX2tzQ7yaVqt6X-i/view?usp=sharing]]
+
+&quot;&quot;&quot;
+''Read Committed:''
+Prevents [[dirty reads|Dirty Reads]] and [[dirty writes|Dirty Writes]]
+&quot;&quot;&quot;
+
+&quot;&quot;&quot;
+''Snapshot Isolation:''
+Prevents [[dirty reads|Dirty Reads]], [[dirty writes|Dirty Writes]], creates [[repeatable reads|Repeatable Reads]], and usually prevents [[lost updates|Lost Updates (Transactions)]]. Although there are a number of ways to prevent lost updates the versioning implementation which ensures repeatable reads also makes it easy to prevent the lost updates.
+&quot;&quot;&quot;
+
+&quot;&quot;&quot;
+''Serialization''
+A serialization level of isolation acts as if every transaction was done serially, which prevents all isolation issues, most notably [[write skew|Write Skew]]. Write skew is not prevented in any other form of isolation. 
+
+There are three main implementations of serialization: [[Actual Serialization|Serial Execution (DBMS)]], [[Two Phase Locking|Two Phase Locking]], and [[Serializable Snapshot Isolation|Serializable Snapshot Isolation]] (SSI).
+
+SSI is a newer algorithm which is considered in general superior to two phase locking. For small datasets actual serialization can be superior but it is not straightforward.
+&quot;&quot;&quot;</pre>
+</div>
 <div created="20200828145236598" modified="20200829165856530" tags="data theory" title="Transactional Database">
 <pre>Standard DB used by businesses for day to day operations. Designed for lots of small and specific reads/writes.
 
@@ -10524,10 +10670,25 @@ Implementation - row oriented design, meaning entire entries are grouped togethe
 * [[On Disk|On Disk Storage (DB)]] - generally shorter reads
 </pre>
 </div>
+<div created="20200915230539834" modified="20200915233918008" tags="data theory" title="Two Phase Locking">
+<pre>Two phase locking is the classic solution to serializing a database. Each entry in the database has shared locks and an exclusive lock. The exclusive lock cannot be taken while a shared lock is being held and a shared lock cannot be taken while an exclusive lock is being held.
+
+Reads take shared locks and writes take exclusive locks. In this way A cannot write while B is reading and B cannot read while A is writing.
+
+Serializing a database in this way comes at the cost of performance issues and possible deadlocks.</pre>
+</div>
 <div created="20200829163733529" modified="20200829164607754" tags="data theory" title="Version Vectors">
 <pre>Some advanced database algorithms can keep track of data versions between replicas. The list of versions from all replicas is called the &quot;Version Vector&quot;. By knowing the version each write was aware of when making an update the algorithms can determine if a write happened before, after, or concurrently with respect to another write. By knowing this relationship the system can handle the situation properly without having to worry about race conditions.
 
 [[Example|https://drive.google.com/file/d/1_04Vsvc_drpOSDuuUZXdjFLW0y-99Ge5/view?usp=sharing]]</pre>
+</div>
+<div created="20200915230713079" modified="20200915232545707" tags="data theory" title="Write Skew">
+<pre>&quot;&quot;&quot;
+''Definition''
+Write skew occurs when two transactions read the same data then make updates to different data entries based on conditions in the data that was read. An example diagrammed [[here|https://drive.google.com/file/d/1aPMTZWEnrO78c5Fh1ogK1sDhOvAhKlhh/view?usp=sharing]] shows two doctors taking themselves off call at the same time even though at least one should be on call at all times.
+&quot;&quot;&quot;
+
+The only solution to write skew is a [[serializable|Transaction Isolation]] database</pre>
 </div>
 
 
