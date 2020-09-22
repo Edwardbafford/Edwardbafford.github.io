@@ -215,6 +215,8 @@ Error message and password prompt
 
 <li>Database Transactions</li>
 
+<li>Day Dreams</li>
+
 <li>DB Partitioning</li>
 
 <li>DB Replication</li>
@@ -246,6 +248,10 @@ Error message and password prompt
 <li>Hadoop</li>
 
 <li>Hash Partitioning</li>
+
+<li>Hiring by Personality</li>
+
+<li>Intelligence</li>
 
 <li>Key Range Partitioning</li>
 
@@ -9687,8 +9693,9 @@ Error message and password prompt
     }
 }</pre>
 </div>
-<div created="20200827205313204" modified="20200917233909805" title="$:/DefaultTiddlers">
-<pre>[[Software Tools]]
+<div created="20200827205313204" modified="20200922141032512" title="$:/DefaultTiddlers">
+<pre>[[Day Dreams]]
+[[Software Tools]]
 [[Computer Science]]</pre>
 </div>
 <div status="complete" title="$:/Import">
@@ -9915,7 +9922,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20200921235715789" list="[[Distributed System Algorithms]] [[Distributed Systems]] [[Distributed System Models]]" modified="20200921235722846" title="$:/StoryList">
+<div created="20200922202905494" list="Intelligence [[Day Dreams]] [[Hiring by Personality]] [[Software Tools]] [[Computer Science]]" modified="20200922202905494" title="$:/StoryList">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json">
@@ -10217,6 +10224,12 @@ Once the transaction has successfully completed the data will not be lost. Along
 
 Overall almost all database systems with transactions implement the atomic guarantee but the guarantee of isolation has many nuances to it and varies from system to system. The isolation level is important to most applications so it is worth understanding.</pre>
 </div>
+<div created="20200922141010974" modified="20200922222838118" tags="" title="Day Dreams">
+<pre>Ideas I find interesting or promising
+
+* [[Hiring by Personality|Hiring by Personality]] - a research project
+* [[Intelligence|Intelligence]] - my personal definition</pre>
+</div>
 <div created="20200828145340232" modified="20200831003550807" tags="data theory" title="DB Partitioning">
 <pre>Partitioning is a feature of [[DBMS]] where data within the database is shared between multiple nodes where no one node has all of the data for the system.
 
@@ -10448,6 +10461,80 @@ You can write and execute software to process things in parallel.</pre>
 By hashing the primary index the partitions tend to have an even distribution of read/writes
 
 [[Diagram|https://drive.google.com/file/d/1vgV1dCQMyv2LMhQbLLBOx1simi70p_4V/view?usp=sharing]]</pre>
+</div>
+<div created="20200922141315649" modified="20200922211229364" tags="" title="Hiring by Personality">
+<pre>A multi-stage research project that would provide a framework for incorporating personality traits to identify candidate quality with respect to a position in a company.
+
+Through some limited google searches I did not see anything that was as sophisticated as this idea would be if implemented.
+
+&quot;&quot;&quot;
+''The Problem''
+It appears to me that the hiring process is deeply subjective. Scout resumes, validate skill set, then make sure the candidate &quot;is a good fit&quot;. Sure... I guess it works but to me it seems that it matters less about what the business is doing and more about the people that make it up. With this said hiring would be one of the most important aspects of the business. If you fill the company with good people the business will most likely be successful. This idea is a way to make that very important process a little less subjective.
+&quot;&quot;&quot;
+
+&quot;&quot;&quot;
+''Business Models''
+The first step would be to leverage or develop a framework for modeling types of businesses. I feel like there is already some adequate frameworks for this step
+&quot;&quot;&quot;
+
+&quot;&quot;&quot;
+''Modeling Roles within Businesses''
+Using a business model framework begin defining roles with each business model. The idea is do define a framework for the types of roles within companies based off of responsibilities.
+&quot;&quot;&quot;
+
+&quot;&quot;&quot;
+''Incorporating Personality''
+At this point we can begin defining which personality traits are best for which positions. This could be done empirically or through logical deduction. Finally during the hiring process employers could either give candidates personality test or even just ask the candidate questions in person which are supposed to signal for a personality trait.
+
+Another way to flesh this out is to view each role as a team and that a team works best with a certain composition of personalities. 
+&quot;&quot;&quot;
+
+&quot;&quot;&quot;
+''Conclusion''
+When put altogether the idea is to have a comprehensive framework which would model the business and the roles of its employees. From there employees would know what personality traits are best for the role and factor this into the hiring process. 
+&quot;&quot;&quot;
+</pre>
+</div>
+<div created="20200922202750490" modified="20200922224757841" tags="" title="Intelligence">
+<pre>My ideas for a framework that defines intelligence. 
+
+I think in general the definition for intelligence should be the ability for someone to use their mind to solve problems. Sure understanding a mathematical model is one type of problem but so is shooting a basketball accurately, or identifying which bird made that noise. In all of those problems the mind is a critical component to the solution. Sure its a spectrum, bench pressing is more about the body than the mind but I think almost every problem we solve uses them same framework I'm about to describe.
+
+&quot;&quot;&quot;
+''Data collection''
+We collect data as input through our senses – sight, sound, touch etc. This input can be processed and is used as fuel to solve problems. Pretty basic stuff, but yea, it all starts with input.
+&quot;&quot;&quot;
+
+&quot;&quot;&quot;
+''Abstracting''
+Creating an abstraction means grouping things together and giving them a definition. For example, dogs, elephants, and squirrels (the group) are mammals because they have hair (the definition). The universe is continuous (or close to it) and we as thinking creatures split it up into a bunch of pieces and give those pieces names. The pieces we split it up into are never exactly right (although physics is working on this) but we use them as approximations to simplify the world and the problems we face in it.
+
+Abstraction is pretty much always done right on top of data collected from our senses and is what gives the incoming data meaning but abstractions can also be built on top of each other. For example, identifying a blob of light as a chair and defining what makes a good baseball player are both abstractions, the former is done on the lowest level of incoming data while the latter is done on a mountain of other abstractions.
+&quot;&quot;&quot;
+
+&quot;&quot;&quot;
+''Building Models''
+Once we have abstractions we can begin to connect them and build models. For example, I have the abstraction of speed, kicking, and what a ball is. I then begin to learn that when I kick the ball harder it goes faster. The models we build as humans are incredibly complicated and interconnected. Abstracting and building models are basically the same thing the first thing we do when we make an abstraction is fit it into our model of the world.
+
+A side note on building models: a fundamental and underlying assumption about building models is that the model is consistent. If its not consistent then we update the model to account for that consistency. For example we assume it snows when its cold. If its cold and doesn't snow we update the model to say it snows when certain atmospheric conditions are met. The model can have caveats but the caveats must be constant. In other words, our ability to build models is predicated upon the idea that the world is not entirely random. There are patterns that exist and its those patterns that we use to make abstractions and construct our models.
+&quot;&quot;&quot;
+
+&quot;&quot;&quot;
+''Solving Problems''
+The benefit of a model is that it simplifies the world. You have a model of how driving works which allows you to navigate the roads and coordinate successfully with others. Solving a problem consists of first loading a model that relates to the problem. For example, if you're playing a card game you need to remember the rules (or the model) of the game. You then try to solve the problem using the model you have. For example, what is benefit of making this move vs that move, what are the long term consequences if I do this, etc. This is quite broad but for anything we want to do we try to solve the problem using our model. Sometime solving the problem involves some logic and strategy, such as when you're playing a game. Other times it could be as simple as comparing the sound you heard to your model of what a A sharp sounds like.
+&quot;&quot;&quot;
+
+&quot;&quot;&quot;
+''Solving vs Abstracting''
+The best physicists in the world could not beat the best chess players in the world no matter how much they practiced. The same is true in reverse, the best chess players would not be able to come up the theoretical concepts that the top physicists have developed. This difference can be explained using this framework. Being a physicist is all about building and understanding models, while chess is all about solving problems. In chess the model is already built for you and its quite simple, the rest is just beating your opponent. Another way to put it is that physics uses creativity and chess uses computational power. Being good at one or the other uses completely different functionalities of the mind.
+
+Both of these groups of people can be considered very intelligent, but the types of problems they are best at are quite different.
+&quot;&quot;&quot;
+
+&quot;&quot;&quot;
+''Jocks vs Nerds''
+Another point of variance in intelligence is the types of models that are being built. Some people build very shallow models that are closely tied to the senses. This allows them to differentiate noises or which way of throwing a Frisbee goes the furthest. Their abstractions are about subtle differences in their senses. Other people build very deep models which are far removed from the senses and that allow them to make connections between seemingly unrelated ideas. The trade off between these types of models is skill vs creativity.
+&quot;&quot;&quot;</pre>
 </div>
 <div created="20200830233055256" modified="20200830234729706" tags="data theory" title="Key Range Partitioning">
 <pre>A method for partitioning data in [[DBMS]] where entries are partitioned based on the order a primary index values. 
