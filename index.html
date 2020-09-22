@@ -225,6 +225,12 @@ Error message and password prompt
 
 <li>Dirty Writes</li>
 
+<li>Distributed System Algorithms</li>
+
+<li>Distributed System Models</li>
+
+<li>Distributed Systems</li>
+
 <li>Docker</li>
 
 <li>Document DB</li>
@@ -232,6 +238,8 @@ Error message and password prompt
 <li>Document Partitioned Indexes</li>
 
 <li>Encoding/Decoding</li>
+
+<li>Fencing (Distributed Processing)</li>
 
 <li>Graph DB</li>
 
@@ -9679,9 +9687,9 @@ Error message and password prompt
     }
 }</pre>
 </div>
-<div created="20200827205313204" modified="20200902224155486" title="$:/DefaultTiddlers">
+<div created="20200827205313204" modified="20200917233909805" title="$:/DefaultTiddlers">
 <pre>[[Software Tools]]
-[[Computer Science Concepts]]</pre>
+[[Computer Science]]</pre>
 </div>
 <div status="complete" title="$:/Import">
 <pre>The following tiddlers were imported:
@@ -9907,7 +9915,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20200915225433515" list="[[Transaction Isolation]] [[Serializable Snapshot Isolation]]" modified="20200915234915435" title="$:/StoryList">
+<div created="20200921235715789" list="[[Distributed System Algorithms]] [[Distributed Systems]] [[Distributed System Models]]" modified="20200921235722846" title="$:/StoryList">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json">
@@ -9971,8 +9979,8 @@ Error message and password prompt
 <div created="20200828140319089" modified="20200828140319089" title="$:/temp/NewTagName">
 <pre></pre>
 </div>
-<div created="20200827210236856" modified="20200915234913109" title="$:/temp/search">
-<pre>Isol</pre>
+<div created="20200827210236856" modified="20200917233858110" title="$:/temp/search">
+<pre></pre>
 </div>
 <div created="20200827210410769" modified="20200827210412400" title="$:/theme">
 <pre>$:/themes/tiddlywiki/snowwhite</pre>
@@ -10109,13 +10117,14 @@ Implementation - column oriented design where columns are stored together as opp
 * Makes filtering by column data quick
 * Updating data becomes slower</pre>
 </div>
-<div created="20200828173348895" modified="20200915234215918" tags="theory" title="Computer Science">
+<div created="20200828173348895" modified="20200917234128008" tags="theory" title="Computer Science">
 <pre>Data:
 
 * [[DBMS]]
 * [[Encoding/Decoding]]
 * [[Compatibility|Data Compatibility]]
-* [[Data Flow|Data Flow]]</pre>
+* [[Data Flow|Data Flow]]
+* [[Distributed Systems|Distributed Systems]]</pre>
 </div>
 <div created="20200829153633848" modified="20200829164656812" tags="data theory" title="Consistent Read Order">
 <pre>Also known as &quot;Consistent Prefix Reads&quot;
@@ -10265,7 +10274,7 @@ Implementations:
 * [[Leaderless|Leaderless (Replication)]]
 </pre>
 </div>
-<div created="20200828140243188" modified="20200915234510640" tags="theory data" title="DBMS">
+<div created="20200828140243188" modified="20200917235216710" tags="theory data" title="DBMS">
 <pre>Database Management Systems
 
 Specialized software for managing data. Databases often care about the following traits.
@@ -10289,13 +10298,15 @@ Common Data Models:
 
 Common Features:
 
+* [[Transactions|Database Transactions]]
+* [[Stored Procedures|Stored Procedure]]
+
+[[Distributed|Distributed Systems]] Features:
+
 * [[Replication|DB Replication]]
 * [[Partitioning|DB Partitioning]]
 
 Replication and partition implementations are relatively independent of each other. The DBMS can partition the data using one algorithm and is then free to replicate each partition using any replication implementation. [[Diagram|https://drive.google.com/file/d/1htm0-2utisRl9MRJVsursvyqKdEqxkcX/view?usp=sharing]]
-
-* [[Transactions|Database Transactions]]
-* [[Stored Procedures|Stored Procedure]]
 </pre>
 </div>
 <div created="20200902233838388" modified="20200905010404958" tags="data theory" title="Dirty Reads">
@@ -10323,6 +10334,61 @@ This [[diagram|https://drive.google.com/file/d/1ZUTsDwPIBzXUpsqwt8uZwGQQ6VOEyIm2
 ''Implementation:''
 A simple solution for dirty writes is to have ''a lock for each database entry''. When a transaction needs to update an entry it will grab its lock and return it when the transaction is finished allowing other updates to modify the row.
 &quot;&quot;&quot;</pre>
+</div>
+<div created="20200922003154421" modified="20200922004039802" tags="software theory" title="Distributed System Algorithms">
+<pre>When designing algorithms for distributed systems we start with a solution that has properties. An algorithm is correct if it always satisfies all properties of the solution given the [[distributed model|Distributed System Models]]
+
+&quot;&quot;&quot;
+''Property Types''
+There are two different types of properties, each one has a different definition of being satisfied.
+&quot;&quot;&quot;
+
+* Safety - cannot be broken under any circumstance i.e. uniqueness of a token
+* Liveness - depends on something outside of it the systems control, but it should satisfied eventually i.e. system availability</pre>
+</div>
+<div created="20200917234532874" modified="20200922002816108" tags="theory software" title="Distributed System Models">
+<pre>By using abstracting distributed systems into model we can create algorithms that provide certain guarantees based on the type of distributed system.
+
+&quot;&quot;&quot;
+''Timing''
+Time boundaries related to node interactions
+&quot;&quot;&quot;
+
+* Synchronous - bounded network delays, process pauses, and clock errors
+* Semi-Synchronous - network delays, process pauses, and clock errors fit a distribution with a long tail
+* Asynchronous - no timing assumptions
+
+&quot;&quot;&quot;
+''Node Faults''
+How nodes react to internal failures
+&quot;&quot;&quot;
+
+* Crash-stop faults - a failed node remains dead forever
+* Crash-recovery faults - a failed node may return to service
+* Byzantine faults - node may behave in any way</pre>
+</div>
+<div created="20200917233929474" modified="20200922003241946" tags="theory software" title="Distributed Systems">
+<pre>&quot;&quot;&quot;
+''Benefits''
+Scalability, Low Latency, Fault Tolerance
+&quot;&quot;&quot;
+
+&quot;&quot;&quot;
+''Issues''
+Distributed systems are prone to a number of issues.
+&quot;&quot;&quot;
+
+* Nodes failures
+* Unbounded network delays, no way of knowing if or when the packet was received by another node until it responds
+* Clock inaccuracies, system clocks are inaccurate and must be managed through synchronization tools
+* Process pauses, in a standard OS process pauses can occur at any time
+
+''Dealing with the Issues''
+
+* Quorums - decisions are based on majority voting and followed by everyone, useful for guaranteeing coordination
+* [[Fencing|Fencing (Distributed Processing)]] - useful for creating reliable locks
+
+Distributed systems are often abstracted into [[models|Distributed System Models]], which allows us to design [[algorithms|Distributed System Algorithms]] that ensure predictable behavior in the face of the issues we just discussed. The most common distributed system models are semi-synchronous with crash-recovery nodes.</pre>
 </div>
 <div created="20200827235127142" modified="20200827235447429" tags="software devops" title="Docker">
 <pre>Tools for containerizing software. Containerizing is a method of partitioning OS resources (RAM, Disk, CPU, Ports, etc.) as opposed to virtualization which runs OS on top of each other.</pre>
@@ -10353,6 +10419,13 @@ Forms:
 
 * [[Text Encoding|Text Encoding]]
 * [[Data Encoding|Data Encoding]]</pre>
+</div>
+<div created="20200922000808144" modified="20200922001745196" tags="software theory" title="Fencing (Distributed Processing)">
+<pre>Fencing is a method of guaranteeing locks are reliable in a distributed system. The basic idea is that each lock comes with an id from an external lock source. When a node uses the lock the id must be verified with the lock source before it is considered valid.
+
+[[Lock Failure|https://drive.google.com/file/d/1p4kQiXgrWP_dY-e-4AVCCf6fuTuB_AGi/view?usp=sharing]]
+
+[[Fencing Example|https://drive.google.com/file/d/1zXxEoAL2jTi_cM8y7ErfUUadWoXuy0Tw/view?usp=sharing]]</pre>
 </div>
 <div created="20200828145322868" modified="20200828170502153" tags="data theory" title="Graph DB">
 <pre>Extremely dynamic and powerful but can become complex and lose consistency.
