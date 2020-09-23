@@ -283,7 +283,7 @@ Error message and password prompt
 
 <li>Single Leader (Replication)</li>
 
-<li>Software Tools</li>
+<li>Software Development</li>
 
 <li>Spark</li>
 
@@ -300,6 +300,10 @@ Error message and password prompt
 <li>Two Phase Locking</li>
 
 <li>Version Vectors</li>
+
+<li>Web Application Architecture</li>
+
+<li>Web Application Sessions</li>
 
 <li>Write Skew</li>
 
@@ -9693,9 +9697,9 @@ Error message and password prompt
     }
 }</pre>
 </div>
-<div created="20200827205313204" modified="20200922141032512" title="$:/DefaultTiddlers">
+<div created="20200827205313204" modified="20200923142207561" title="$:/DefaultTiddlers">
 <pre>[[Day Dreams]]
-[[Software Tools]]
+[[Software Development]]
 [[Computer Science]]</pre>
 </div>
 <div status="complete" title="$:/Import">
@@ -9922,7 +9926,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20200922202905494" list="Intelligence [[Day Dreams]] [[Hiring by Personality]] [[Software Tools]] [[Computer Science]]" modified="20200922202905494" title="$:/StoryList">
+<div created="20200923142054721" list="[[Day Dreams]] [[Software Development]] [[Computer Science]]" modified="20200923142201734" title="$:/StoryList">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json">
@@ -10224,11 +10228,11 @@ Once the transaction has successfully completed the data will not be lost. Along
 
 Overall almost all database systems with transactions implement the atomic guarantee but the guarantee of isolation has many nuances to it and varies from system to system. The isolation level is important to most applications so it is worth understanding.</pre>
 </div>
-<div created="20200922141010974" modified="20200922222838118" tags="" title="Day Dreams">
+<div created="20200922141010974" modified="20200923143207545" tags="" title="Day Dreams">
 <pre>Ideas I find interesting or promising
 
-* [[Hiring by Personality|Hiring by Personality]] - a research project
-* [[Intelligence|Intelligence]] - my personal definition</pre>
+* [[Hiring by Personality|Hiring by Personality]] - a research idea
+* [[Intelligence|Intelligence]] - my personal framework for defining what makes someone smart</pre>
 </div>
 <div created="20200828145340232" modified="20200831003550807" tags="data theory" title="DB Partitioning">
 <pre>Partitioning is a feature of [[DBMS]] where data within the database is shared between multiple nodes where no one node has all of the data for the system.
@@ -10743,10 +10747,15 @@ Due to asynchronous updates to follower nodes a number of issues arise from the 
 
 To avoid these issues there is usually some overhead at the application level</pre>
 </div>
-<div created="20200828170656182" modified="20200828171400857" tags="software" title="Software Tools">
+<div created="20200828170656182" modified="20200923143934904" tags="software" title="Software Development">
 <pre>Languages:
 
 * [[Python|Python]]
+
+Web Applications:
+
+* [[Architecture|Web Application Architecture]]
+* [[Sessions|Web Application Sessions]]
 
 Big Data:
 
@@ -10841,6 +10850,26 @@ Serializing a database in this way comes at the cost of performance issues and p
 <pre>Some advanced database algorithms can keep track of data versions between replicas. The list of versions from all replicas is called the &quot;Version Vector&quot;. By knowing the version each write was aware of when making an update the algorithms can determine if a write happened before, after, or concurrently with respect to another write. By knowing this relationship the system can handle the situation properly without having to worry about race conditions.
 
 [[Example|https://drive.google.com/file/d/1_04Vsvc_drpOSDuuUZXdjFLW0y-99Ge5/view?usp=sharing]]</pre>
+</div>
+<div created="20200923142219212" modified="20200923143055633" tags="software" title="Web Application Architecture">
+<pre>The entry point of a web application is going to be a &quot;front end&quot; application which is usually a collection of html, css, and javascript. This is understood by a browser and exposed to the internet. The front end app needs to be embedded in a web server (which runs on an actual server machine)  along with a &quot;back end&quot; application. The front and back applications should be embedded in the same web server. The front end will then be able to talk with the back end and the back end will be able to communicate with external APIs or DBs.
+
+Browsers will only allow front ends to communicate with the same web server they came from for security purposes, which is what forces the front end and back end to be tightly coupled.
+
+[[Diagram|https://drive.google.com/file/d/1KXF9lDYh_c-UkmZBhreauln4gVtXccv4/view?usp=sharing]]</pre>
+</div>
+<div created="20200923143237172" modified="20200923143902744" tags="" title="Web Application Sessions">
+<pre>For [[web applications|Web Application Architecture]], sessions are a tool for remembering temporary information about a client. If a client is continuously communicating with a server a session will allow the server to remember things they've talked about. Once the session expires this data will be forgotten. Sessions are managed by the web server and applications embedded in the web servers are able to use the sessions as they need.
+
+The general steps:
+
+# A client sends credentials to an application
+# The application verifies the credentials then creates a session for the web server to remember
+# The application then sends back a session id to the client
+# In a future request the client can include the session id
+# When receiving the request the application will use the session id to find the session data held by the web server. It can then use this session data as needed.
+
+[[Diagram|https://drive.google.com/file/d/1rZ98v3nCO9puk4WWviGzBKQ_8lni-NO-/view?usp=sharing]]</pre>
 </div>
 <div created="20200915230713079" modified="20200915232545707" tags="data theory" title="Write Skew">
 <pre>&quot;&quot;&quot;
