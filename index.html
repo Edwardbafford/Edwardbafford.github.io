@@ -203,6 +203,10 @@ Error message and password prompt
 
 <li>Analytical DB</li>
 
+<li>Athletic Traits</li>
+
+<li>Coaching</li>
+
 <li>Computer Science</li>
 
 <li>Consistent Read Order</li>
@@ -224,6 +228,12 @@ Error message and password prompt
 <li>DB Replication</li>
 
 <li>DBMS</li>
+
+<li>Defense</li>
+
+<li>Defensive Back</li>
+
+<li>Defensive Line</li>
 
 <li>Dirty Reads</li>
 
@@ -261,6 +271,8 @@ Error message and password prompt
 
 <li>Leaderless (Replication)</li>
 
+<li>Linebacker</li>
+
 <li>Log Table Storage</li>
 
 <li>Lost Updates (Transactions)</li>
@@ -269,15 +281,35 @@ Error message and password prompt
 
 <li>Multi-Leader (Replication)</li>
 
+<li>NFL Football</li>
+
+<li>Offense</li>
+
+<li>Offensive Linemen</li>
+
 <li>On Disk Storage (DB)</li>
+
+<li>Pass Blocking</li>
+
+<li>Passing</li>
 
 <li>Python</li>
 
+<li>Quarterback</li>
+
 <li>Read your Writes</li>
+
+<li>Receiving</li>
 
 <li>Relational DB</li>
 
 <li>Repeatable Reads</li>
+
+<li>Run Blocking</li>
+
+<li>Running Back</li>
+
+<li>Rushing</li>
 
 <li>Serial Execution (DBMS)</li>
 
@@ -295,6 +327,8 @@ Error message and password prompt
 
 <li>Text Encoding</li>
 
+<li>Tight End</li>
+
 <li>Transaction Isolation</li>
 
 <li>Transactional Database</li>
@@ -306,6 +340,8 @@ Error message and password prompt
 <li>Web Application Architecture</li>
 
 <li>Web Application Sessions</li>
+
+<li>Wide Receiver</li>
 
 <li>Write Skew</li>
 
@@ -9928,7 +9964,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div list="[[Abstractions: Simplicity - Efficiency Tradeoff]] [[Day Dreams]] [[Software Development]] [[Computer Science]]" title="$:/StoryList">
+<div created="20200930222633029" list="[[Athletic Traits]] [[Day Dreams]] [[NFL Football]] Offense Quarterback Passing Receiving Rushing [[Software Development]] [[Computer Science]]" modified="20201001001525539" title="$:/StoryList">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json">
@@ -10156,6 +10192,31 @@ Implementation - column oriented design where columns are stored together as opp
 * Makes filtering by column data quick
 * Updating data becomes slower</pre>
 </div>
+<div created="20200930233645763" modified="20200930235359436" tags="" title="Athletic Traits">
+<pre>''Traits''
+
+* Length - height, arm and leg length
+* Weight - how heavy the player is
+* Strength - the ability to push and pull parts of their body
+* Acceleration - ability to get to top speed and change direction quickly
+* Speed - ability to cover distance quickly
+
+''Relationships''
+
+* Weight is helped by length
+* Strength is helped with weight but hurt with length
+* Acceleration is helped by strength but hurt by length and weight
+* Speed is helped by length and strength but hurt by weight
+
+[[Diagram|https://drive.google.com/file/d/1aLUpOsETmbMySX7-z4ZBOASotfmaBJZj/view?usp=sharing]]</pre>
+</div>
+<div created="20200930224219187" modified="20200930230724446" tags="" title="Coaching">
+<pre>Two important factors
+
+''Designing schemes and plays'' - the coaching staff will come up with ways to attack defenses and defend offenses. This is based off of studying the game and being creative.
+
+''Game plans and strategy'' - the coach will come up with high level approaches for how to defend or attack an opponent as well as . These decisions are based off of the schemes you have trained your teams to use as well as the weaknesses and strengths of your opponent.</pre>
+</div>
 <div created="20200828173348895" modified="20200917234128008" tags="theory" title="Computer Science">
 <pre>Data:
 
@@ -10256,12 +10317,13 @@ Once the transaction has successfully completed the data will not be lost. Along
 
 Overall almost all database systems with transactions implement the atomic guarantee but the guarantee of isolation has many nuances to it and varies from system to system. The isolation level is important to most applications so it is worth understanding.</pre>
 </div>
-<div created="20200922141010974" modified="20200925000047042" tags="" title="Day Dreams">
+<div created="20200922141010974" modified="20200930222719296" tags="" title="Day Dreams">
 <pre>Some of my ideas I find interesting or promising
 
 * [[Hiring by Personality|Hiring by Personality]] - a research idea
 * [[Intelligence|Intelligence]] - my personal framework for defining what makes someone smart
-* [[Abstractions|Abstractions: Simplicity - Efficiency Tradeoff]]: Simplicity - Efficiency Tradeoff</pre>
+* [[Abstractions|Abstractions: Simplicity - Efficiency Tradeoff]]: Simplicity - Efficiency Tradeoff
+* [[NFL Football|NFL Football]] - a growing framework for understanding the game</pre>
 </div>
 <div created="20200828145340232" modified="20200831003550807" tags="data theory" title="DB Partitioning">
 <pre>Partitioning is a feature of [[DBMS]] where data within the database is shared between multiple nodes where no one node has all of the data for the system.
@@ -10354,6 +10416,21 @@ Common Features:
 
 Replication and partition implementations are relatively independent of each other. The DBMS can partition the data using one algorithm and is then free to replicate each partition using any replication implementation. [[Diagram|https://drive.google.com/file/d/1htm0-2utisRl9MRJVsursvyqKdEqxkcX/view?usp=sharing]]
 </pre>
+</div>
+<div created="20200930224215561" modified="20200930231320500" tags="" title="Defense">
+<pre>''Positions''
+
+* [[Defensive Line|Defensive Line]]
+* [[Linebackers|Linebacker]]
+* [[Defensive Backs|Defensive Back]]
+
+''Schemes and Strategy''</pre>
+</div>
+<div created="20200930230910579" modified="20200930230920543" tags="" title="Defensive Back">
+<pre></pre>
+</div>
+<div created="20200930230856087" modified="20200930230901424" tags="" title="Defensive Line">
+<pre></pre>
 </div>
 <div created="20200902233838388" modified="20200905010404958" tags="data theory" title="Dirty Reads">
 <pre>&quot;&quot;&quot;
@@ -10611,6 +10688,9 @@ Sloppy Quorum
 
 If necessary due of temporary network issues the number of writes can drop below w and a daemon process will propagate to extra nodes. Increases availability at the expense of introducing replication lag issues (See [[single leader replication|Single Leader (Replication)]] for descriptions of issues related to replication lag).</pre>
 </div>
+<div created="20200930230903786" modified="20200930230926415" tags="" title="Linebacker">
+<pre></pre>
+</div>
 <div created="20200828151135182" modified="20200829165946534" tags="data theory" title="Log Table Storage">
 <pre>Storage system for [[Transactional DBs|Transactional Database]]
 
@@ -10679,6 +10759,31 @@ Benefits of multiple leader nodes
 ** on read - system stores concurrent writes and lets the reader decide how to handle it
 ** [[versioning systems|Version Vectors]] can add support</pre>
 </div>
+<div created="20200930222659176" modified="20200930224951227" tags="" title="NFL Football">
+<pre>''Basic Idea''
+
+A battle for territory - an offense tries to move a direction down the field while the defense tries to prevent them from moving. Teams switch off playing offense and defense, points are given through gaining enough territory.
+
+[[Offense|Offense]] - the group that tries to gain territory
+
+[[Defense|Defense]] - the group that tries to prevent the offense from gaining territory
+
+[[Coaching|Coaching]] - a group that does not play but instead controls the strategy of the team</pre>
+</div>
+<div created="20200930224206621" modified="20200930225714424" tags="" title="Offense">
+<pre>''Positions''
+
+* [[Quarterback|Quarterback]]
+* [[Offensive Linemen|Offensive Linemen]]
+* [[Wide Receivers|Wide Receiver]]
+* [[Running Backs|Running Back]]
+* [[Tight Ends|Tight End]]
+
+''Schemes and Strategy''</pre>
+</div>
+<div created="20200930225359062" modified="20200930231719016" tags="" title="Offensive Linemen">
+<pre>Responsible for [[run|Run Blocking]] and [[pass blocking|Pass Blocking]]</pre>
+</div>
 <div created="20200828151221548" modified="20200829165953239" tags="data theory" title="On Disk Storage (DB)">
 <pre>Storage system for [[Transactional DBs|Transactional Database]]
 
@@ -10687,6 +10792,13 @@ An on disk data structure organizes indexes and a links the indexes to the entri
 Reads are quick but writes can force the DBMS to re-structure the storage structure causing it to be a little slower.
 
 A common implementation is the [[B-tree|https://drive.google.com/file/d/1YGxub6aMBYqkG9VpiQxcfiRpx-UiKc16/view?usp=sharing]].</pre>
+</div>
+<div created="20200930231455133" modified="20200930231458286" tags="" title="Pass Blocking">
+<pre></pre>
+</div>
+<div created="20200930231335952" modified="20201001001612245" tags="" title="Passing">
+<pre>* Arm Strength
+* Accuracy</pre>
 </div>
 <div created="20200827234124593" modified="20200828140236808" tags="software" title="Python">
 <pre>Programming language
@@ -10697,6 +10809,21 @@ A common implementation is the [[B-tree|https://drive.google.com/file/d/1YGxub6a
 
 [[https://github.com/Edwardbafford/General/tree/master/python]]</pre>
 </div>
+<div created="20200930225345821" modified="20201001002248713" tags="" title="Quarterback">
+<pre>Orchestrates and offense, makes adjustments based off of defenses, responsible for [[passing|Passing]] to receivers
+
+* Extending plays
+** Pocket presence
+** Strength
+** Speed
+* Throwing under pressure
+** Surrounded
+** On the run
+* Decision making
+** Offensive adjustments
+** Making the right read
+** Situational football</pre>
+</div>
 <div created="20200829153538543" modified="20200829160727793" tags="data theory" title="Read your Writes">
 <pre>A database consistency issue that occurs on [[replicated data|DB Replication]] where a user makes an update (a write) then view the data they just updated (a read). In replicated data systems they not see data that doesn't reflect their write until the followers nodes have been synchronized.
 
@@ -10705,6 +10832,16 @@ A common implementation is the [[B-tree|https://drive.google.com/file/d/1YGxub6a
 ''Solutions''
 
 Depends on your systems architecture but in general the solution is to track update times and find nodes that are up to date past those times</pre>
+</div>
+<div created="20200930231433870" modified="20201001001842585" tags="" title="Receiving">
+<pre>* Ball Skills
+** Catch Radius
+** Contested Catches
+** Jump balls
+* Separation
+** Route running
+** Deep threats
+** Timing routes</pre>
 </div>
 <div created="20200828145314287" modified="20200828170512822" tags="data theory" title="Relational DB">
 <pre>Standard most popular DB for modeling a systems data.
@@ -10732,6 +10869,18 @@ For example, if you have a long running query which makes multiple reads, a comm
 ''Implementation:''
 The main way of ensuring repeatable reads is to'' link transaction ids to data entries'', essentially a way of versioning it. Transactions will only read data from transactions that were committed before they started, as diagrammed [[here|https://drive.google.com/file/d/1frnkYdsqOuHZU82XkUcXOFlOLqlRQ7Xz/view?usp=sharing]]. Old data versions will be cleaned up by back end processes.
 &quot;&quot;&quot;</pre>
+</div>
+<div created="20200930231459916" modified="20200930231503114" tags="" title="Run Blocking">
+<pre></pre>
+</div>
+<div created="20200930225420663" modified="20200930232035197" tags="" title="Running Back">
+<pre>Mostly responsible for [[rushing|Rushing]], but is often asked to [[receive passes|Receiving]] and [[pass blocking|Pass Blocking]]</pre>
+</div>
+<div created="20200930231430321" modified="20201001001636470" tags="" title="Rushing">
+<pre>* Speed
+* Power
+* Elusiveness
+* Vision</pre>
 </div>
 <div created="20200915230519617" modified="20200915233242404" tags="theory data" title="Serial Execution (DBMS)">
 <pre>In a serially executed database there is no concurrency. All transactions are executed by a single thread on a CPU. Although there are serious limitations to this, if possible it keeps the database simple.
@@ -10831,6 +10980,9 @@ This implementation has fast reads but slower writes because an entry may have t
 *** UTF-8
 *** UTF-16</pre>
 </div>
+<div created="20200930225429351" modified="20200930231858562" tags="" title="Tight End">
+<pre>Responsible mainly for [[receiving passes|Receiving]] but also for [[run blocking|Run Blocking]], sometimes [[pass blocking|Pass Blocking]]</pre>
+</div>
 <div created="20200902225529035" modified="20200915234137925" tags="data theory" title="Transaction Isolation">
 <pre>There are three main levels of isolation that prevent certain subsets of problems, [[diagrammed here|https://drive.google.com/file/d/1kvaV_FENejRA4P_eiX2tzQ7yaVqt6X-i/view?usp=sharing]]
 
@@ -10899,6 +11051,9 @@ The general steps:
 # When receiving the request the application will use the session id to find the session data held by the web server. It can then use this session data as needed.
 
 [[Diagram|https://drive.google.com/file/d/1rZ98v3nCO9puk4WWviGzBKQ_8lni-NO-/view?usp=sharing]]</pre>
+</div>
+<div created="20200930225411657" modified="20200930231806319" tags="" title="Wide Receiver">
+<pre>Responsible solely for [[receiving passes|Receiving]]</pre>
 </div>
 <div created="20200915230713079" modified="20200915232545707" tags="data theory" title="Write Skew">
 <pre>&quot;&quot;&quot;
