@@ -185,6 +185,8 @@ Error message and password prompt
 
 <li>$:/StoryList</li>
 
+<li>$:/temp/advancedsearch</li>
+
 <li>$:/temp/info-plugin</li>
 
 <li>$:/temp/NewTagName</li>
@@ -201,11 +203,21 @@ Error message and password prompt
 
 <li>Airflow</li>
 
+<li>Anaconda</li>
+
 <li>Analytical DB</li>
+
+<li>Casual Ordering</li>
 
 <li>Computer Science</li>
 
+<li>Consensus</li>
+
+<li>Consistency</li>
+
 <li>Consistent Read Order</li>
+
+<li>Coordination Services</li>
 
 <li>Dask</li>
 
@@ -237,6 +249,8 @@ Error message and password prompt
 
 <li>Distributed Systems</li>
 
+<li>Distributed Transactions</li>
+
 <li>Docker</li>
 
 <li>Document DB</li>
@@ -261,7 +275,11 @@ Error message and password prompt
 
 <li>Kubernetes</li>
 
+<li>Lamport Timestamp</li>
+
 <li>Leaderless (Replication)</li>
+
+<li>Linearizability</li>
 
 <li>Log Table Storage</li>
 
@@ -283,6 +301,8 @@ Error message and password prompt
 
 <li>Repeatable Reads</li>
 
+<li>Semantic Versioning</li>
+
 <li>Serial Execution (DBMS)</li>
 
 <li>Serializable Snapshot Isolation</li>
@@ -299,9 +319,13 @@ Error message and password prompt
 
 <li>Text Encoding</li>
 
+<li>Total Order Broadcasting</li>
+
 <li>Transaction Isolation</li>
 
 <li>Transactional Database</li>
+
+<li>Two Phase Commit</li>
 
 <li>Two Phase Locking</li>
 
@@ -9932,8 +9956,11 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20201006200640907" list="[[Day Dreams]] [[Software Development]] Python Dask [[Computer Science]]" modified="20201006201013121" title="$:/StoryList">
+<div created="20201013130815533" list="[[Day Dreams]] [[NFL Football]] [[Software Development]] [[Computer Science]]" modified="20201013130815533" title="$:/StoryList">
 <pre></pre>
+</div>
+<div created="20201012173622690" modified="20201012173622690" title="$:/temp/advancedsearch">
+<pre>total</pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json">
 <pre>{
@@ -9996,7 +10023,7 @@ Error message and password prompt
 <div created="20200828140319089" modified="20200828140319089" title="$:/temp/NewTagName">
 <pre></pre>
 </div>
-<div created="20200827210236856" modified="20200917233858110" title="$:/temp/search">
+<div created="20200827210236856" modified="20201012173622690" title="$:/temp/search">
 <pre></pre>
 </div>
 <div created="20200827210410769" modified="20200827210412400" title="$:/theme">
@@ -10144,6 +10171,40 @@ Schedulers send tasks to works and can be manipulated from a web server UI. Ther
 
 [[https://github.com/Edwardbafford/General/tree/master/airflow]]</pre>
 </div>
+<div created="20201006231743878" modified="20201008154233221" tags="" title="Anaconda">
+<pre>A data science platform used as a python environment utility. Once it is installed you can use it from the command line or through a gui interface
+
+''Main Features''
+
+* Packages
+** install along with dependencies
+** remove
+** update
+** view all installed
+** view package info and dependencies
+* Channels
+** create custom internet wide locations to store packages
+** search for software within a channel or across all channels
+* Environments
+** view
+** create
+** delete
+** switch
+** manage packages within environments
+
+''Anaconda Projects''
+
+A resource which includes package installs, file downloads, and executable commands.
+
+Using a project
+
+* Install a project
+* Prep a project
+* Run a project
+
+Projects are configured using a yml file
+</pre>
+</div>
 <div created="20200828145245327" modified="20200828172414923" tags="data theory" title="Analytical DB">
 <pre>Typically used in [[Data Warehouses|Data Warehouse]]
 
@@ -10160,14 +10221,71 @@ Implementation - column oriented design where columns are stored together as opp
 * Makes filtering by column data quick
 * Updating data becomes slower</pre>
 </div>
-<div created="20200828173348895" modified="20200917234128008" tags="theory" title="Computer Science">
+<div created="20201009002439802" modified="20201009002543611" tags="" title="Casual Ordering">
+<pre>Some operations are dependent on each other and others are concurrent. Concurrent operations cannot be compared for order but dependent operations can be. 
+
+''Implementations''
+
+* [[Versions vectors|Version Vectors]]
+* [[Lamport Timestamps|Lamport Timestamp]].</pre>
+</div>
+<div created="20200828173348895" modified="20201011185541121" tags="theory" title="Computer Science">
 <pre>Data:
 
 * [[DBMS]]
+* [[Distributed Systems|Distributed Systems]]
 * [[Encoding/Decoding]]
+
+Notes:
+
 * [[Compatibility|Data Compatibility]]
-* [[Data Flow|Data Flow]]
-* [[Distributed Systems|Distributed Systems]]</pre>
+* [[Data Flow|Data Flow]]</pre>
+</div>
+<div created="20201008233328317" modified="20201012174714558" tags="" title="Consensus">
+<pre>Getting a set of nodes to agree on something
+
+Notoriously hard to implement - a couple of similar implementations currently exist
+
+''Properties''
+
+* Agreement - decision is the same for all nodes
+* Integrity - decisions are final
+* Validity - decision was proposed by at least one of the nodes
+* Termination - all available nodes come to a decision
+
+''Cost''
+
+Currently there are some seriously limitations linked with implementing a consensus system, and because of these its not practical to implement consensus at a large scale
+
+* synchronous communication is needed which is slow
+* limited fault tolerance - a majority of nodes need to be alive
+* static number of nodes - cannot dynamically add nodes to the system
+
+See [[CAP Theorem|https://en.wikipedia.org/wiki/CAP_theorem]]</pre>
+</div>
+<div created="20201008231217279" modified="20201012173922301" tags="" title="Consistency">
+<pre>How replicated data varies between nodes
+
+''Time guarantees''
+
+* Eventual consistency - consistency occurs at some point but no time frame is guaranteed
+* [[Linearizability|Linearizability]]
+
+''Ordering''
+
+The order of how reads and writes are persisted and in what ways they are consistent within a distributed system
+
+* [[Casual Ordering|Casual Ordering]]
+* [[Total order broadcasting|Total Order Broadcasting]]
+
+''Consensus, Total Order Broadcasting, and Linearizability''
+
+By implementing a [[consensus algorithm|Consensus]] that distributed system can then implement both total order broadcasting and linearizability!
+
+Consensus to Total Order Broadcasting - total order broadcasting is just repeated consensus, the order of each read/write is agreed upon.
+
+Total Order Broadcasting to Linearizability - because of the order of all operations are universally agreed upon all actions are the same on each node and the data is kept perfectly in sync
+</pre>
 </div>
 <div created="20200829153633848" modified="20200829164656812" tags="data theory" title="Consistent Read Order">
 <pre>Also known as &quot;Consistent Prefix Reads&quot;
@@ -10180,6 +10298,16 @@ A data consistency issue that occurs in databases that are [[replicated|DB Repli
 
 * Keep writes where the order matters on the same partition
 * Embed special [[algorithms|Version Vectors]] within the database to track relationships between updates</pre>
+</div>
+<div created="20201012174448458" modified="20201012175646461" tags="" title="Coordination Services">
+<pre>Specialized key-value distributed databases meant to store a small amount of data and are used as a helper to scalable application based distributed databases with fault tolerant linearizable storage.
+
+Examples
+
+* Zookeeper
+* Etcd
+
+The services implement consensus algorithms and therefor are linearizable. Used as a way of outsourcing [[linearizable benefits|Linearizability]] and can be used as a &quot;consultant&quot; for these kinds of tasks without the [[drawbacks|Consensus]] of a large consensus system.</pre>
 </div>
 <div created="20201001231154703" modified="20201006201113619" tags="" title="Dask">
 <pre>Dask is a python framework designed to automatically take computationally heavy code and convert it into a set of parallel processes. The idea is that interacting functions form a graph which dask can then automatically split up into parallel processes just by analyzing the graph.
@@ -10239,7 +10367,7 @@ Forms:
 
 [[Diagram|https://drive.google.com/file/d/1ZVbQXwDcI48ClHIXsEKW6vmenouRGm2d/view?usp=sharing]]</pre>
 </div>
-<div created="20200829165019840" modified="20200902230529450" tags="data theory" title="Database Transactions">
+<div created="20200829165019840" modified="20201011190623021" tags="data theory" title="Database Transactions">
 <pre>Transactions are a feature of many [[DBMS]] which provides reliability when interacting with the database.
 
 Some database management systems provide transactions for only single reads or writes while others allow the user to group a set of operations together and bundle them as a single transaction.
@@ -10323,7 +10451,7 @@ How a read/write request determines which node to access.
 * A routing tier abstracts away this issue
 </pre>
 </div>
-<div created="20200828145332976" modified="20200829151511671" tags="data theory" title="DB Replication">
+<div created="20200828145332976" modified="20201012171403740" tags="data theory" title="DB Replication">
 <pre>Replication is a feature of [[DBMS]] where the data within the database is duplicated and spread across a number of servers called nodes.
 
 Replication in general has the following benefits:
@@ -10337,9 +10465,14 @@ Implementations:
 * [[Single Leader|Single Leader (Replication)]]
 * [[Multi-leader|Multi-Leader (Replication)]]
 * [[Leaderless|Leaderless (Replication)]]
+* [[Consensus|Consensus]]
+
+Related concepts:
+
+* [[Consistency|Consistency]]
 </pre>
 </div>
-<div created="20200828140243188" modified="20201004132943102" tags="theory data" title="DBMS">
+<div created="20200828140243188" modified="20201012174524306" tags="theory data" title="DBMS">
 <pre>Database Management Systems
 
 Specialized software for managing data. Databases often care about the following traits.
@@ -10366,7 +10499,13 @@ Common Features:
 * [[Transactions|Database Transactions]]
 * [[Stored Procedures|Stored Procedure]]
 
-[[Distributed databases|Distributed Systems]] are common for dealing with large amounts of data.</pre>
+
+''Distributed Databases''
+
+Leveraging [[distributed systems|Distributed Systems]] is common for dealing with large amounts of data.
+
+* [[Distributed transactions|Distributed Transactions]]
+* [[Coordination services|Coordination Services]]</pre>
 </div>
 <div created="20200902233838388" modified="20200905010404958" tags="data theory" title="Dirty Reads">
 <pre>&quot;&quot;&quot;
@@ -10457,6 +10596,14 @@ Using multiple machines to store a systems data
 * [[Partitioning|DB Partitioning]]
 
 Replication and partition implementations are relatively independent of each other. The DBMS can partition the data using one algorithm and is then free to replicate each partition using any replication implementation. [[Diagram|https://drive.google.com/file/d/1htm0-2utisRl9MRJVsursvyqKdEqxkcX/view?usp=sharing]]</pre>
+</div>
+<div created="20201011185905414" modified="20201012183915244" tags="" title="Distributed Transactions">
+<pre>Properties of a database [[transaction|Database Transactions]] implemented on a distributed system
+
+''Implementations''
+
+* [[Two-phase commit|Two Phase Commit]]
+</pre>
 </div>
 <div created="20200827235127142" modified="20200827235447429" tags="software devops" title="Docker">
 <pre>Tools for containerizing software. Containerizing is a method of partitioning OS resources (RAM, Disk, CPU, Ports, etc.) as opposed to virtualization which runs OS on top of each other.</pre>
@@ -10603,6 +10750,9 @@ This implementation is prone to &quot;hot spots&quot; where some partitions rece
 
 [[https://github.com/Edwardbafford/General/tree/master/K8s]]</pre>
 </div>
+<div created="20201009001229586" modified="20201009001237385" tags="" title="Lamport Timestamp">
+<pre>Tool for creating sequential orders in a distributed system. Tuple of a counter and node id. If the counter for two operations is the same then the node id will be the tie breaker for the order of the operations. See [[example|https://drive.google.com/file/d/1CxlesLLmXzPGAwI6c_3-jjJVlAFAocb9/view?usp=sharing]]</pre>
+</div>
 <div created="20200829151448984" modified="20200830204019987" tags="data theory" title="Leaderless (Replication)">
 <pre>Implementation of [[database|DBMS]] [[replication|DB Replication]]
 
@@ -10632,6 +10782,33 @@ Synchronizing nodes in a quorum
 Sloppy Quorum
 
 If necessary due of temporary network issues the number of writes can drop below w and a daemon process will propagate to extra nodes. Increases availability at the expense of introducing replication lag issues (See [[single leader replication|Single Leader (Replication)]] for descriptions of issues related to replication lag).</pre>
+</div>
+<div created="20201008231459775" modified="20201012172905629" tags="" title="Linearizability">
+<pre>Data in a distributed system appears as one copy of data with atomic operations
+
+Once a write is complete all reads will see the change from then on, therefore, all nodes will agree on the current state of the system.
+
+''Use Cases''
+
+* prevent [[distributed race conditions|https://drive.google.com/file/d/14o3QbsSXcE1X-G468ksHfHbHXDOH4v3z/view?usp=sharing]]
+* locks and uniqueness - all nodes must agree
+* monotonically increasing counter (for example needed in [[fencing|Fencing (Distributed Processing)]] implementations)
+* making decisions
+** commit/abort a [[distributed transaction|Distributed Transactions]]
+** elect a new leader in a [[single leader database|Single Leader (Replication)]] 
+
+''Implementations''
+
+Based on replication algorithms
+
+* [[Consensus|Consensus]] - yes the most robust way of implementing linearizability
+* [[Single Leader|Single Leader (Replication)]]
+** only if synchronized replications is used which is rare and hard for big systems
+** single point of failure in the leader
+* [[Multi-leader|Multi-Leader (Replication)]] - not implementable due to conflicting writes on different leaders
+* [[Leaderless|Leaderless (Replication)]]  - currently not implementable
+** last write wins with clock variance
+** [[lagging writes|https://drive.google.com/file/d/19YLldM-8qrQB2CxhyaTbpE5I9Wejauxc/view?usp=sharing]] edge cases</pre>
 </div>
 <div created="20200828151135182" modified="20200829165946534" tags="data theory" title="Log Table Storage">
 <pre>Storage system for [[Transactional DBs|Transactional Database]]
@@ -10701,8 +10878,32 @@ Benefits of multiple leader nodes
 ** on read - system stores concurrent writes and lets the reader decide how to handle it
 ** [[versioning systems|Version Vectors]] can add support</pre>
 </div>
-<div created="20200930222659176" modified="20201006200918124" tags="" title="NFL Football">
-<pre></pre>
+<div created="20200930222659176" modified="20201013130910959" tags="" title="NFL Football">
+<pre>''Learned''
+
+* Good D-line, weak secondary -&gt; don't need to blitz
+
+''Passing/Rushing Situations''
+
+Create a model to understand which situations are passing vs running situations, based upon:
+
+* Score
+* Time Remaining - quarter, minute
+* Area of the field
+* Down and distance
+
+''Low Level Features''
+
+* Raw player stats (from Madden? PFF?)
+* Schemes - offensive/defensive tendencies
+
+''Correlations''
+
+* Scheme vs Scheme
+* Players to scheme fit
+* Scheme to situation
+* Players to situation
+* Scheme fingerprints</pre>
 </div>
 <div created="20200828151221548" modified="20200829165953239" tags="data theory" title="On Disk Storage (DB)">
 <pre>Storage system for [[Transactional DBs|Transactional Database]]
@@ -10713,7 +10914,7 @@ Reads are quick but writes can force the DBMS to re-structure the storage struct
 
 A common implementation is the [[B-tree|https://drive.google.com/file/d/1YGxub6aMBYqkG9VpiQxcfiRpx-UiKc16/view?usp=sharing]].</pre>
 </div>
-<div created="20200827234124593" modified="20201001234343834" tags="software" title="Python">
+<div created="20200827234124593" modified="20201006232042864" tags="software" title="Python">
 <pre>[[Github|https://github.com/Edwardbafford/General/tree/master/python]]
 
 Programming language
@@ -10724,7 +10925,8 @@ Programming language
 
 Topics
 
-* [[Dask|Dask]]</pre>
+* [[Dask|Dask]]
+* [[Anaconda|Anaconda]]</pre>
 </div>
 <div created="20200829153538543" modified="20200829160727793" tags="data theory" title="Read your Writes">
 <pre>A database consistency issue that occurs on [[replicated data|DB Replication]] where a user makes an update (a write) then view the data they just updated (a read). In replicated data systems they not see data that doesn't reflect their write until the followers nodes have been synchronized.
@@ -10761,6 +10963,19 @@ For example, if you have a long running query which makes multiple reads, a comm
 ''Implementation:''
 The main way of ensuring repeatable reads is to'' link transaction ids to data entries'', essentially a way of versioning it. Transactions will only read data from transactions that were committed before they started, as diagrammed [[here|https://drive.google.com/file/d/1frnkYdsqOuHZU82XkUcXOFlOLqlRQ7Xz/view?usp=sharing]]. Old data versions will be cleaned up by back end processes.
 &quot;&quot;&quot;</pre>
+</div>
+<div created="20201006232356650" modified="20201006232553279" tags="" title="Semantic Versioning">
+<pre>Versions for software follow the following format 
+
+MAJOR.MINOR.PATCH
+
+Where MAJOR, MINOR, and PATCH are all natural numbers
+
+Versions are incremented as follows
+
+* MAJOR version when you make incompatible API changes
+* MINOR version when you add functionality in a backwards compatible manner
+* PATCH version when you make backwards compatible bug fixes</pre>
 </div>
 <div created="20200915230519617" modified="20200915233242404" tags="theory data" title="Serial Execution (DBMS)">
 <pre>In a serially executed database there is no concurrency. All transactions are executed by a single thread on a CPU. Although there are serious limitations to this, if possible it keeps the database simple.
@@ -10805,7 +11020,7 @@ Due to asynchronous updates to follower nodes a number of issues arise from the 
 
 To avoid these issues there is usually some overhead at the application level</pre>
 </div>
-<div created="20200828170656182" modified="20200923143934904" tags="software" title="Software Development">
+<div created="20200828170656182" modified="20201011184531786" tags="software" title="Software Development">
 <pre>Languages:
 
 * [[Python|Python]]
@@ -10824,7 +11039,11 @@ Big Data:
 Devops:
 
 * [[Docker|Docker]]
-* [[Kubernetes|Kubernetes]]</pre>
+* [[Kubernetes|Kubernetes]]
+
+Other:
+
+* [[Semantic Versioning|Semantic Versioning]]</pre>
 </div>
 <div created="20200827232101330" modified="20200828000158602" tags="software data" title="Spark">
 <pre>Tool for processing data in parallel. Usually used in the transformation step of an ETL pipeline. Spark is given a script, loads in data, manipulates in, then unloads the transformed data into a new location.
@@ -10859,6 +11078,12 @@ This implementation has fast reads but slower writes because an entry may have t
 ** this needs a special layer of implementation
 *** UTF-8
 *** UTF-16</pre>
+</div>
+<div created="20201009002612380" modified="20201009002621627" tags="" title="Total Order Broadcasting">
+<pre>Every operation can be compared with order with every other operation and is consistent among all nodes
+
+* No messages are lost
+* All nodes receive messages in the same order</pre>
 </div>
 <div created="20200902225529035" modified="20200915234137925" tags="data theory" title="Transaction Isolation">
 <pre>There are three main levels of isolation that prevent certain subsets of problems, [[diagrammed here|https://drive.google.com/file/d/1kvaV_FENejRA4P_eiX2tzQ7yaVqt6X-i/view?usp=sharing]]
@@ -10896,6 +11121,25 @@ Implementation - row oriented design, meaning entire entries are grouped togethe
 * [[Log tables|Log Table Storage]] - generally shorter writes
 * [[On Disk|On Disk Storage (DB)]] - generally shorter reads
 </pre>
+</div>
+<div created="20201012183845215" modified="20201012185407593" tags="" title="Two Phase Commit">
+<pre>In a standard transaction once data has been durably persisted the commit is made
+
+In two-phase commits each node persists the data without committing then waits to be told whether to commit or abort by a coordinator. 
+
+[[Example|https://drive.google.com/file/d/1yrJ9R75kXvc2QMoU6eIFTt4zFycxaYQs/view?usp=sharing]]
+
+If, for example, persistence (or anything else) fails for any node the other nodes will be told to abort. Also once everything has been persisted even if the node fails, upon recovery it will be able to commit it's changes.
+
+''Issues''
+
+* If the coordinator fails for whatever reason transactions could be [[stuck in the prepared phase|https://drive.google.com/file/d/122h9NVIcSdvZOi6jekVVq7EqnlQj9Onm/view?usp=sharing]] still holding locks!
+* Less availability - all nodes that took part in the transaction must respond
+
+''Types''
+
+* Internal - implemented within a distributed database
+* Heterogeneous - a transaction between two independent systems which must be coordinated externally. [[X/Open XA|https://en.wikipedia.org/wiki/X/Open_XA]] is a common standard for this.</pre>
 </div>
 <div created="20200915230539834" modified="20200915233918008" tags="data theory" title="Two Phase Locking">
 <pre>Two phase locking is the classic solution to serializing a database. Each entry in the database has shared locks and an exclusive lock. The exclusive lock cannot be taken while a shared lock is being held and a shared lock cannot be taken while an exclusive lock is being held.
