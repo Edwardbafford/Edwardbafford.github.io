@@ -207,6 +207,8 @@ Error message and password prompt
 
 <li>Analytical DB</li>
 
+<li>Batch Processing</li>
+
 <li>Casual Ordering</li>
 
 <li>Computer Science</li>
@@ -227,11 +229,13 @@ Error message and password prompt
 
 <li>Data Flow</li>
 
+<li>Data Flow Engines</li>
+
+<li>Data Processing</li>
+
 <li>Data Warehouse</li>
 
 <li>Database Transactions</li>
-
-<li>Day Dreams</li>
 
 <li>DB Partitioning</li>
 
@@ -242,6 +246,8 @@ Error message and password prompt
 <li>Dirty Reads</li>
 
 <li>Dirty Writes</li>
+
+<li>Distributed File System</li>
 
 <li>Distributed System Algorithms</li>
 
@@ -259,6 +265,8 @@ Error message and password prompt
 
 <li>Encoding/Decoding</li>
 
+<li>ETL Orchestrators</li>
+
 <li>Fencing (Distributed Processing)</li>
 
 <li>Graph DB</li>
@@ -270,6 +278,10 @@ Error message and password prompt
 <li>Hiring by Personality</li>
 
 <li>Intelligence</li>
+
+<li>Introduction</li>
+
+<li>Java</li>
 
 <li>Key Range Partitioning</li>
 
@@ -285,6 +297,8 @@ Error message and password prompt
 
 <li>Lost Updates (Transactions)</li>
 
+<li>MapReduce</li>
+
 <li>Monotonic Reads</li>
 
 <li>Multi-Leader (Replication)</li>
@@ -294,6 +308,8 @@ Error message and password prompt
 <li>On Disk Storage (DB)</li>
 
 <li>Python</li>
+
+<li>Random</li>
 
 <li>Read your Writes</li>
 
@@ -9727,10 +9743,11 @@ Error message and password prompt
     }
 }</pre>
 </div>
-<div created="20200827205313204" modified="20200923142207561" title="$:/DefaultTiddlers">
-<pre>[[Day Dreams]]
+<div created="20200827205313204" modified="20201028235748918" title="$:/DefaultTiddlers">
+<pre>[[Introduction]]
+[[Computer Science]]
 [[Software Development]]
-[[Computer Science]]</pre>
+[[Random]]</pre>
 </div>
 <div status="complete" title="$:/Import">
 <pre>The following tiddlers were imported:
@@ -9956,7 +9973,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20201013130815533" list="[[Day Dreams]] [[NFL Football]] [[Software Development]] [[Computer Science]]" modified="20201013130815533" title="$:/StoryList">
+<div created="20201029180334625" list="Introduction [[Computer Science]] [[Software Development]] Random [[NFL Football]]" modified="20201029180334625" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20201012173622690" modified="20201012173622690" title="$:/temp/advancedsearch">
@@ -10007,11 +10024,11 @@ Error message and password prompt
         },
         &quot;$:/info/browser/screen/width&quot;: {
             &quot;title&quot;: &quot;$:/info/browser/screen/width&quot;,
-            &quot;text&quot;: &quot;1536&quot;
+            &quot;text&quot;: &quot;1920&quot;
         },
         &quot;$:/info/browser/screen/height&quot;: {
             &quot;title&quot;: &quot;$:/info/browser/screen/height&quot;,
-            &quot;text&quot;: &quot;864&quot;
+            &quot;text&quot;: &quot;1080&quot;
         },
         &quot;$:/info/browser/language&quot;: {
             &quot;title&quot;: &quot;$:/info/browser/language&quot;,
@@ -10023,7 +10040,7 @@ Error message and password prompt
 <div created="20200828140319089" modified="20200828140319089" title="$:/temp/NewTagName">
 <pre></pre>
 </div>
-<div created="20200827210236856" modified="20201012173622690" title="$:/temp/search">
+<div created="20200827210236856" modified="20201027000056778" title="$:/temp/search">
 <pre></pre>
 </div>
 <div created="20200827210410769" modified="20200827210412400" title="$:/theme">
@@ -10221,6 +10238,36 @@ Implementation - column oriented design where columns are stored together as opp
 * Makes filtering by column data quick
 * Updating data becomes slower</pre>
 </div>
+<div created="20201026234203389" modified="20201027000547604" tags="" title="Batch Processing">
+<pre>''Philosophies''
+
+* Immutable data - makes jobs idempotent, running a batch does not change any data, it just adds derived data
+* Compatible interfaces - jobs read a heap of data and write a heap of data, this allows for re-usability of jobs
+* Abstract scalability issues - focus on the logic
+** Failures re-tried automatically
+** Logic automatically parallelized
+
+''Uses''
+
+* Search indexes
+* Aggregation for analysis, ML
+
+''Caveats''
+
+* Interfacing with databases can be tough, if done wrong can absorb too many connections and overwhelm a database
+
+''Tools''
+
+* [[Distributed database|DBMS]] - Why not just uses a powerful DB? Well they are fast and optimized but in general less flexible. &quot;Raw data is best&quot;
+
+General Stack
+
+* [[Distributed File System|Distributed File System]]
+* Processing Layer
+** [[MapReduce|MapReduce]]
+** [[Data Flow Engines|Data Flow Engines]]
+* [[ETL Orchestrators|ETL Orchestrators]]</pre>
+</div>
 <div created="20201009002439802" modified="20201009002543611" tags="" title="Casual Ordering">
 <pre>Some operations are dependent on each other and others are concurrent. Concurrent operations cannot be compared for order but dependent operations can be. 
 
@@ -10229,11 +10276,12 @@ Implementation - column oriented design where columns are stored together as opp
 * [[Versions vectors|Version Vectors]]
 * [[Lamport Timestamps|Lamport Timestamp]].</pre>
 </div>
-<div created="20200828173348895" modified="20201011185541121" tags="theory" title="Computer Science">
+<div created="20200828173348895" modified="20201026233753657" tags="theory" title="Computer Science">
 <pre>Data:
 
 * [[DBMS]]
 * [[Distributed Systems|Distributed Systems]]
+* [[Data Processing|Data Processing]]
 * [[Encoding/Decoding]]
 
 Notes:
@@ -10362,6 +10410,37 @@ Forms:
 ** data is given to a system and sent away
 ** examples - sending data to queues or streams</pre>
 </div>
+<div created="20201027000455325" modified="20201027001942994" tags="" title="Data Flow Engines">
+<pre>Takes the basic concepts of [[MapReduce|MapReduce]] and add optimizations, implementations vary based on technologies.
+
+Examples - [[Spark|Spark]], Flint, Cloud Dataflow
+
+''Optimizations''
+
+* Stream between chained jobs
+** less robust to failures - failed jobs have to retry from the beggining
+** faster
+*** no waiting for jobs to finish
+*** no replication needed between jobs
+* No unnecessary sorting
+* High level APIs
+** less flexibility
+** simple development</pre>
+</div>
+<div created="20201026233726208" modified="20201027001305623" tags="" title="Data Processing">
+<pre>Systems of record - the origin of the data, for example, an application's database
+
+Derived data systems - processed or transformed data
+
+Data processing consists of moving data from systems of record and transferring it into derived data systems.
+
+Online system - synchronous responses, speed is importance. For example, a website
+
+Offline system - asynchronous processes, general effeciency is the most important
+
+* [[Batch processing|Batch Processing]] - periodic processing jobs, processing large amounts of data per job
+* Stream processing - process data as it becomes available</pre>
+</div>
 <div created="20200828171630393" modified="20200828173051364" tags="data theory" title="Data Warehouse">
 <pre>A data warehouse or data lake is where data from multiple areas in a business is consolidated and organized. From here downstream analysis and reporting can be done. 
 
@@ -10401,14 +10480,6 @@ Once the transaction has successfully completed the data will not be lost. Along
 &quot;&quot;&quot;
 
 Overall almost all database systems with transactions implement the atomic guarantee but the guarantee of isolation has many nuances to it and varies from system to system. The isolation level is important to most applications so it is worth understanding.</pre>
-</div>
-<div created="20200922141010974" modified="20201006200654968" tags="" title="Day Dreams">
-<pre>Some of my ideas I find interesting or promising
-
-* [[Hiring by Personality|Hiring by Personality]] - a research idea
-* [[Intelligence|Intelligence]] - my personal framework for defining what makes someone smart
-* [[Abstractions|Abstractions: Simplicity - Efficiency Tradeoff]]: Simplicity - Efficiency Tradeoff
-* [[NFL Football|NFL Football]] - just some notes</pre>
 </div>
 <div created="20200828145340232" modified="20200831003550807" tags="data theory" title="DB Partitioning">
 <pre>Partitioning is a feature of [[DBMS]] where data within the database is shared between multiple nodes where no one node has all of the data for the system.
@@ -10533,6 +10604,15 @@ This [[diagram|https://drive.google.com/file/d/1ZUTsDwPIBzXUpsqwt8uZwGQQ6VOEyIm2
 A simple solution for dirty writes is to have ''a lock for each database entry''. When a transaction needs to update an entry it will grab its lock and return it when the transaction is finished allowing other updates to modify the row.
 &quot;&quot;&quot;</pre>
 </div>
+<div created="20201027000250690" modified="20201027001310369" tags="" title="Distributed File System">
+<pre>Software to coordinate a cluster of machines to act as a single file system. 
+
+Data is replicated and partitioned. 
+
+Usually serves as the infrastructure for batch processing pipelines.
+
+Examples - [[Hadoop|Hadoop]]</pre>
+</div>
 <div created="20200922003154421" modified="20200922004039802" tags="software theory" title="Distributed System Algorithms">
 <pre>When designing algorithms for distributed systems we start with a solution that has properties. An algorithm is correct if it always satisfies all properties of the solution given the [[distributed model|Distributed System Models]]
 
@@ -10634,6 +10714,11 @@ Forms:
 
 * [[Text Encoding|Text Encoding]]
 * [[Data Encoding|Data Encoding]]</pre>
+</div>
+<div created="20201027000534040" modified="20201027001416290" tags="" title="ETL Orchestrators">
+<pre>Tools for managing networks of ETL jobs
+
+Examples - [[Airflow|Airflow]], Luigi</pre>
 </div>
 <div created="20200922000808144" modified="20200922001745196" tags="software theory" title="Fencing (Distributed Processing)">
 <pre>Fencing is a method of guaranteeing locks are reliable in a distributed system. The basic idea is that each lock comes with an id from an external lock source. When a node uses the lock the id must be verified with the lock source before it is considered valid.
@@ -10737,6 +10822,35 @@ Both of these groups of people can be considered very intelligent, but the types
 ''Jocks vs Nerds''
 Another point of variance in intelligence is the types of models that are being built. Some people build very shallow models that are closely tied to the senses. This allows them to differentiate noises or which way of throwing a Frisbee goes the furthest. Their abstractions are about subtle differences in their senses. Other people build very deep models which are far removed from the senses and that allow them to make connections between seemingly unrelated ideas. The trade off between these types of models is skill vs creativity.
 &quot;&quot;&quot;</pre>
+</div>
+<div created="20201026233315177" modified="20201028235818762" tags="" title="Introduction">
+<pre>If you're here from the internet, welcome! This is my personal wiki where I aggregate things I've learned for my own reference. It also serves as a way to showcase my experience to prospective employers.
+
+Feel free to look around, the default sections should serve as an index.</pre>
+</div>
+<div created="20201023000246330" modified="20201023210638685" tags="" title="Java">
+<pre>[[Github|https://github.com/Edwardbafford/General/tree/master/Java%20Examples]]
+
+''General''
+
+Java is object oriented, compiled, and interpreted language
+
+A java file written in the java language is compiled to byte code in class file/s which is then interpreted and executed by a JVM
+
+Java as a product is in reality a set of tools for compiling, running, and debugging Java files. We write the java code and Oracle provides us the tools for using that code.
+
+''Java Virtual Machine''
+
+(JVM) is a program that execute java byte code, there is an implementation for each OS making java portable.
+
+''Packaging''
+
+* Classes can be re-used through defining and importing packages, package names must line up with a directory structure
+* Classpath is information given to the compiler and or JVM such that it knows where to look for all the code
+
+''Jars''
+
+* Jar files are a way of bundling compiled class files and other resources into a single archive file</pre>
 </div>
 <div created="20200830233055256" modified="20200830234729706" tags="data theory" title="Key Range Partitioning">
 <pre>A method for partitioning data in [[DBMS]] where entries are partitioned based on the order a primary index values. 
@@ -10846,6 +10960,26 @@ Similar to an atomic operation except the client defines when to lock a resource
 This implementation uses the transaction versioning system described in [[Repeatable Reads]] to detect if two transactions have overwritten each other by comparing the data versions of their reads and writes. If an lost update is detected the transaction will fail and have to be tried again. The fact that nothing extra is needed from the application level makes this a great option.
 &quot;&quot;&quot;</pre>
 </div>
+<div created="20201027000430192" modified="20201027001600598" tags="" title="MapReduce">
+<pre>Parallel processing framework, usually run on top of a [[distributed file system|Distributed File System]]
+
+Implements batch processing philosophies
+
+* data cannot be changed
+* input is data output is data and jobs can be chained
+* automatically retries failures and logic focuses on a small set of data in parallel
+
+Don't need to go over the exact details of the algorithm :) 
+
+The idea is that processing logic runs in parallel and aggregated to perform
+
+* Filtering
+* Sorting
+* Joins
+* Group by
+
+Examples - Hive and Pig implement an API through a framework of MapReduce jobs</pre>
+</div>
 <div created="20200829153605915" modified="20200829160735102" tags="data theory" title="Monotonic Reads">
 <pre>A database consistency issue that occurs on [[replicated data|DB Replication]] where reading the same data twice can show new data then old data. If two different nodes are read from and the first read comes from a more up to date node than the second read this can occur.
 
@@ -10878,32 +11012,18 @@ Benefits of multiple leader nodes
 ** on read - system stores concurrent writes and lets the reader decide how to handle it
 ** [[versioning systems|Version Vectors]] can add support</pre>
 </div>
-<div created="20200930222659176" modified="20201013130910959" tags="" title="NFL Football">
-<pre>''Learned''
+<div created="20200930222659176" modified="20201029180904398" tags="" title="NFL Football">
+<pre>Fast LB's allow for a more aggressive DL scheme because they will cover up any holes that are left
 
-* Good D-line, weak secondary -&gt; don't need to blitz
+Slow LB's make a defense susceptible to runs on the edge of the OL
 
-''Passing/Rushing Situations''
+Positive match up occurs when a teams defensive strength matches up with an opponents offensive strength and a teams offensive strength matches up with an opponents defensive weakenss
 
-Create a model to understand which situations are passing vs running situations, based upon:
 
-* Score
-* Time Remaining - quarter, minute
-* Area of the field
-* Down and distance
 
-''Low Level Features''
 
-* Raw player stats (from Madden? PFF?)
-* Schemes - offensive/defensive tendencies
 
-''Correlations''
-
-* Scheme vs Scheme
-* Players to scheme fit
-* Scheme to situation
-* Players to situation
-* Scheme fingerprints</pre>
+</pre>
 </div>
 <div created="20200828151221548" modified="20200829165953239" tags="data theory" title="On Disk Storage (DB)">
 <pre>Storage system for [[Transactional DBs|Transactional Database]]
@@ -10927,6 +11047,20 @@ Topics
 
 * [[Dask|Dask]]
 * [[Anaconda|Anaconda]]</pre>
+</div>
+<div created="20200922141010974" modified="20201026233223458" tags="" title="Random">
+<pre>''Day Dreams''
+
+Some of my ideas I find interesting or promising
+
+* [[Hiring by Personality|Hiring by Personality]] - a research idea
+* [[Intelligence|Intelligence]] - my personal framework for defining what makes someone smart
+* [[Abstractions|Abstractions: Simplicity - Efficiency Tradeoff]]: Simplicity - Efficiency Tradeoff
+* [[NFL Football|NFL Football]] - just some notes
+
+''Non-technical Books''
+
+* Atomic Habits</pre>
 </div>
 <div created="20200829153538543" modified="20200829160727793" tags="data theory" title="Read your Writes">
 <pre>A database consistency issue that occurs on [[replicated data|DB Replication]] where a user makes an update (a write) then view the data they just updated (a read). In replicated data systems they not see data that doesn't reflect their write until the followers nodes have been synchronized.
@@ -11020,10 +11154,11 @@ Due to asynchronous updates to follower nodes a number of issues arise from the 
 
 To avoid these issues there is usually some overhead at the application level</pre>
 </div>
-<div created="20200828170656182" modified="20201011184531786" tags="software" title="Software Development">
+<div created="20200828170656182" modified="20201023000417792" tags="software" title="Software Development">
 <pre>Languages:
 
 * [[Python|Python]]
+* [[Java|Java]]
 
 Web Applications:
 
