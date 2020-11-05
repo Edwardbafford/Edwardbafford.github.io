@@ -207,6 +207,8 @@ Error message and password prompt
 
 <li>Analytical DB</li>
 
+<li>Ant</li>
+
 <li>Batch Processing</li>
 
 <li>Casual Ordering</li>
@@ -226,8 +228,6 @@ Error message and password prompt
 <li>Data Compatibility</li>
 
 <li>Data Encoding</li>
-
-<li>Data Flow</li>
 
 <li>Data Flow Engines</li>
 
@@ -269,6 +269,8 @@ Error message and password prompt
 
 <li>Fencing (Distributed Processing)</li>
 
+<li>Gradle</li>
+
 <li>Graph DB</li>
 
 <li>Hadoop</li>
@@ -299,11 +301,15 @@ Error message and password prompt
 
 <li>MapReduce</li>
 
+<li>Maven</li>
+
 <li>Monotonic Reads</li>
 
 <li>Multi-Leader (Replication)</li>
 
 <li>NFL Football</li>
+
+<li>Objects and Functions</li>
 
 <li>On Disk Storage (DB)</li>
 
@@ -325,9 +331,11 @@ Error message and password prompt
 
 <li>Single Leader (Replication)</li>
 
-<li>Software Development</li>
+<li>SOAP</li>
 
 <li>Spark</li>
+
+<li>Spring</li>
 
 <li>Stored Procedure</li>
 
@@ -9743,10 +9751,9 @@ Error message and password prompt
     }
 }</pre>
 </div>
-<div created="20200827205313204" modified="20201028235748918" title="$:/DefaultTiddlers">
+<div created="20200827205313204" modified="20201105170641101" title="$:/DefaultTiddlers">
 <pre>[[Introduction]]
 [[Computer Science]]
-[[Software Development]]
 [[Random]]</pre>
 </div>
 <div status="complete" title="$:/Import">
@@ -9973,7 +9980,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20201029180334625" list="Introduction [[Computer Science]] [[Software Development]] Random [[NFL Football]]" modified="20201029180334625" title="$:/StoryList">
+<div created="20201105215327944" list="Introduction [[Computer Science]] Java Maven Random" modified="20201105215338223" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20201012173622690" modified="20201012173622690" title="$:/temp/advancedsearch">
@@ -10238,6 +10245,23 @@ Implementation - column oriented design where columns are stored together as opp
 * Makes filtering by column data quick
 * Updating data becomes slower</pre>
 </div>
+<div created="20201105171803451" modified="20201105172432483" tags="" title="Ant">
+<pre>Simple and older Java project automation tool
+
+Similar to Maven and Gradle, but lower level
+
+# Install the Ant software to process your command line ant requests
+# Build an xml which scripts the Ant software
+# Execute targets through the command line
+
+''Build.xml''
+
+Define a set of targets - compile code, build war, generate SOAP service from WSDL, etc.
+
+* Properties - configurable values - directories, versions, etc.
+* Actions - java actions abstracted from you and implemented by Ant, just reference the action type
+* Dependencies - targets can depend on one another, so running one will run all of its dependencies before hand</pre>
+</div>
 <div created="20201026234203389" modified="20201027000547604" tags="" title="Batch Processing">
 <pre>''Philosophies''
 
@@ -10276,18 +10300,44 @@ General Stack
 * [[Versions vectors|Version Vectors]]
 * [[Lamport Timestamps|Lamport Timestamp]].</pre>
 </div>
-<div created="20200828173348895" modified="20201026233753657" tags="theory" title="Computer Science">
-<pre>Data:
+<div created="20200828173348895" modified="20201105170548394" title="Computer Science">
+<pre>''Theory''
 
-* [[DBMS]]
+Data:
+
+* [[Database|DBMS]]
 * [[Distributed Systems|Distributed Systems]]
-* [[Data Processing|Data Processing]]
+* [[Data Processing (ETL)|Data Processing]]
+
+Web Applications:
+
+* [[Architecture|Web Application Architecture]]
+* [[Sessions|Web Application Sessions]]
+
+Other:
+
+* [[SOAP|SOAP]]
 * [[Encoding/Decoding]]
-
-Notes:
-
+* [[Semantic Versioning|Semantic Versioning]]
 * [[Compatibility|Data Compatibility]]
-* [[Data Flow|Data Flow]]</pre>
+
+''Technologies''
+
+Languages:
+
+* [[Python|Python]]
+* [[Java|Java]]
+
+Big Data:
+
+* [[Airflow|Airflow]]
+* [[Spark|Spark]]
+* [[Hadoop|Hadoop]]
+
+Dev-ops:
+
+* [[Docker|Docker]]
+* [[Kubernetes|Kubernetes]]</pre>
 </div>
 <div created="20201008233328317" modified="20201012174714558" tags="" title="Consensus">
 <pre>Getting a set of nodes to agree on something
@@ -10397,18 +10447,6 @@ Forms:
 ** Interoperable - defined by some protocol standard
 ** Compact
 ** Not human readable</pre>
-</div>
-<div created="20200828173827211" modified="20200828174842948" tags="data theory" title="Data Flow">
-<pre>How data is moved around between systems
-
-* [[Database |DBMS]]
-** Stationary heap of data that evolves over time
-* Services 
-** data is passed from one application to another
-** protocols - REST, SOAP, RPC
-* Asynchronous
-** data is given to a system and sent away
-** examples - sending data to queues or streams</pre>
 </div>
 <div created="20201027000455325" modified="20201027001942994" tags="" title="Data Flow Engines">
 <pre>Takes the basic concepts of [[MapReduce|MapReduce]] and add optimizations, implementations vary based on technologies.
@@ -10727,6 +10765,9 @@ Examples - [[Airflow|Airflow]], Luigi</pre>
 
 [[Fencing Example|https://drive.google.com/file/d/1zXxEoAL2jTi_cM8y7ErfUUadWoXuy0Tw/view?usp=sharing]]</pre>
 </div>
+<div created="20201104133252588" modified="20201104133255869" tags="" title="Gradle">
+<pre></pre>
+</div>
 <div created="20200828145322868" modified="20200828170502153" tags="data theory" title="Graph DB">
 <pre>Extremely dynamic and powerful but can become complex and lose consistency.
 
@@ -10828,7 +10869,7 @@ Another point of variance in intelligence is the types of models that are being 
 
 Feel free to look around, the default sections should serve as an index.</pre>
 </div>
-<div created="20201023000246330" modified="20201023210638685" tags="" title="Java">
+<div created="20201023000246330" modified="20201105180421647" tags="" title="Java">
 <pre>[[Github|https://github.com/Edwardbafford/General/tree/master/Java%20Examples]]
 
 ''General''
@@ -10850,7 +10891,37 @@ Java as a product is in reality a set of tools for compiling, running, and debug
 
 ''Jars''
 
-* Jar files are a way of bundling compiled class files and other resources into a single archive file</pre>
+* Jar files are a way of bundling compiled class files and other resources into a single archive file
+* WARS and EAR files also exist, they are packaged the same way the extension is just for defining the intended use
+** JAR - command line tool or library/plugin
+** WAR - deployed into a web server
+** EAR - deployed into an application server
+* Main classes for jars is defined by a MANIFEST.MF within the jar
+
+''Debugging''
+
+* The JVM has options for debugging java programs as they run (although this slows them down)
+* By creating breakpoints in a java file, enabling debugging in the JVM, then communicating with the JVM to get debug information you could debug in a manual way
+* Most IDE's abstract all of this for you though
+
+''Web Development''
+
+* Web/Application server - an application that listens to ports on a host and server up content based on network requests. Java servers do this but also adhere to Java specifications such as Servlets and JSPs
+* Servlets - java classes that get embedded into web servers and create dynamic content using Java code
+* JSP - java specification/framework that makes serving dynamic HTML content easier
+
+Web applications use mapping files to route network requests to java servlets which create content for the web server to return
+
+[[Diagram|https://drive.google.com/file/d/1P5XdlmRp1V3-UtsnD9ZLzby0EfOZygQs/view?usp=sharing]]
+
+''Ecosystem''
+
+Java has a mature and therefore complicate ecosystem of tools for building and managing java systems
+
+* Server - Tomcat
+* Frameworks - [[Spring|Spring]]
+* IDE - IntelliJ
+* Project Management - [[Ant]], [[Maven|Maven]], [[Gradle|Gradle]]</pre>
 </div>
 <div created="20200830233055256" modified="20200830234729706" tags="data theory" title="Key Range Partitioning">
 <pre>A method for partitioning data in [[DBMS]] where entries are partitioned based on the order a primary index values. 
@@ -10980,6 +11051,58 @@ The idea is that processing logic runs in parallel and aggregated to perform
 
 Examples - Hive and Pig implement an API through a framework of MapReduce jobs</pre>
 </div>
+<div created="20201104133245413" modified="20201105235518759" tags="" title="Maven">
+<pre>''Overview''
+
+Software installed and used through the command line
+
+POM (Project Object Model) - Scripts maven actions
+
+* define properties - versions, directories, etc.
+* define metadata - artifact group id, artifact id, artifact version, artifact type
+* inherit from other POMs
+* create project templates - jar, war, etc.
+* create documentation
+* compile, build, package, test code base
+* pull from source control
+* push artifact to a repository
+
+''Dependency Life-cycle''
+
+Manage dependencies
+
+# Dependencies are defined in POM
+# Repositories are defined in POM
+# Maven imports dependencies from local maven repository
+# Otherwise it attempts to download the dependency from the configured repositories
+
+''Builds''
+
+Actions that can be taken by Maven
+
+* Goal is a single action
+* Plugins can have multiple actions associated with them
+* Goals (from plugins) get linked to phases of the Maven life-cycle or they can be explicitly executed from the command line
+* Partition builds using profiles, execute different sets of actions based on environment
+
+[[Plugins|https://maven.apache.org/plugins/]]
+
+''Maven Life-cycle''
+
+Different phases each have different types of goals associated with them - clean, compile, install etc.
+
+[[Life-cycle - goal mappings|https://maven.apache.org/guides/introduction/introduction-to-the-lifecycle.html#Built-in_Lifecycle_Bindings]]
+
+Each phase has dependencies of other phases
+
+Again different plugin goals can be linked to phases
+
+''Command Line''
+
+* Execute a phase
+* Execute a goal
+</pre>
+</div>
 <div created="20200829153605915" modified="20200829160735102" tags="data theory" title="Monotonic Reads">
 <pre>A database consistency issue that occurs on [[replicated data|DB Replication]] where reading the same data twice can show new data then old data. If two different nodes are read from and the first read comes from a more up to date node than the second read this can occur.
 
@@ -11025,6 +11148,21 @@ Positive match up occurs when a teams defensive strength matches up with an oppo
 
 </pre>
 </div>
+<div created="20201104215328736" modified="20201104220300159" tags="" title="Objects and Functions">
+<pre>''Objects''
+
+Things that contain data
+
+* Config - an immutable object, it does not need to be stored in a database but can be saved and used within a property file or in the code (an enum in Java)
+* Stateful Objects - a mutable object, it is best practice to use these with databases as their state needs to persist and can change many times
+
+''Functions''
+
+The manipulation of objects
+
+* Method - A function that operates with respect to a single object or config. In this case it should be attached to the object since it is useless without the object.
+* Function - A stand alone function should take two or more objects and output something new. It stands by itself because it is a transformation that takes in the domains of multiple things.</pre>
+</div>
 <div created="20200828151221548" modified="20200829165953239" tags="data theory" title="On Disk Storage (DB)">
 <pre>Storage system for [[Transactional DBs|Transactional Database]]
 
@@ -11048,15 +11186,21 @@ Topics
 * [[Dask|Dask]]
 * [[Anaconda|Anaconda]]</pre>
 </div>
-<div created="20200922141010974" modified="20201026233223458" tags="" title="Random">
+<div created="20200922141010974" modified="20201104220408529" tags="" title="Random">
 <pre>''Day Dreams''
 
-Some of my ideas I find interesting or promising
+My original ideas
 
-* [[Hiring by Personality|Hiring by Personality]] - a research idea
-* [[Intelligence|Intelligence]] - my personal framework for defining what makes someone smart
-* [[Abstractions|Abstractions: Simplicity - Efficiency Tradeoff]]: Simplicity - Efficiency Tradeoff
-* [[NFL Football|NFL Football]] - just some notes
+Computer Science
+
+* [[Abstractions|Abstractions: Simplicity - Efficiency Tradeoff]]
+* [[Objects and Functions|Objects and Functions]]
+
+Other
+
+* [[Hiring by Personality|Hiring by Personality]]
+* [[Intelligence|Intelligence]]
+* [[NFL Football|NFL Football]]
 
 ''Non-technical Books''
 
@@ -11154,31 +11298,18 @@ Due to asynchronous updates to follower nodes a number of issues arise from the 
 
 To avoid these issues there is usually some overhead at the application level</pre>
 </div>
-<div created="20200828170656182" modified="20201023000417792" tags="software" title="Software Development">
-<pre>Languages:
+<div created="20201105170343744" modified="20201105171609504" tags="" title="SOAP">
+<pre>HTTP, XML service specification
 
-* [[Python|Python]]
-* [[Java|Java]]
+WSDL documents act as contracts for a service. They define all forms of the service, types of input, types of responses, etc.
 
-Web Applications:
+Use the WSDL documents to automatically implement server/client endpoints, in any language with a SOAP tool that will do this. Connect custom logic to fully integrate the endpoints to your application.
 
-* [[Architecture|Web Application Architecture]]
-* [[Sessions|Web Application Sessions]]
+WSDL can be created from server code and then used to implement the exact same service framework in other languages.
 
-Big Data:
+Standard REST services are very similar except there is no defining contract like with SOAP
 
-* [[Airflow|Airflow]]
-* [[Spark|Spark]]
-* [[Hadoop|Hadoop]]
-
-Devops:
-
-* [[Docker|Docker]]
-* [[Kubernetes|Kubernetes]]
-
-Other:
-
-* [[Semantic Versioning|Semantic Versioning]]</pre>
+[[Diagram|https://drive.google.com/file/d/11ym_g3Wp7GAvBl7UaDtWNgaH0ApX6k8b/view?usp=sharing]]</pre>
 </div>
 <div created="20200827232101330" modified="20200828000158602" tags="software data" title="Spark">
 <pre>Tool for processing data in parallel. Usually used in the transformation step of an ETL pipeline. Spark is given a script, loads in data, manipulates in, then unloads the transformed data into a new location.
@@ -11191,6 +11322,9 @@ Spark libraries wrap cluster manager, such as
 A script uses the cluster manager to manipulate workers and execute workflows in parallel
 
 [[https://github.com/Edwardbafford/General/tree/master/Spark]]</pre>
+</div>
+<div created="20201104133202796" modified="20201104133231831" tags="" title="Spring">
+<pre></pre>
 </div>
 <div created="20200915233040336" modified="20200915234423005" tags="data theory" title="Stored Procedure">
 <pre>&quot;Scripts&quot; or logic that can be executed at the database level. They can increase performance by keeping a transaction within the database, as opposed to being multiple network calls between the database and an application. The downside is that they are often harder to maintain and tightly couple your application to the database.</pre>
