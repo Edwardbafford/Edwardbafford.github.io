@@ -243,6 +243,8 @@ Error message and password prompt
 
 <li>DBMS</li>
 
+<li>Direct Messaging Services (Streaming)</li>
+
 <li>Dirty Reads</li>
 
 <li>Dirty Writes</li>
@@ -295,6 +297,8 @@ Error message and password prompt
 
 <li>Linearizability</li>
 
+<li>Log Messaging Queues</li>
+
 <li>Log Table Storage</li>
 
 <li>Lost Updates (Transactions)</li>
@@ -302,6 +306,8 @@ Error message and password prompt
 <li>MapReduce</li>
 
 <li>Maven</li>
+
+<li>Message Queues</li>
 
 <li>Monotonic Reads</li>
 
@@ -338,6 +344,8 @@ Error message and password prompt
 <li>Spring</li>
 
 <li>Stored Procedure</li>
+
+<li>Stream Processing</li>
 
 <li>Term Partitioned Indexes</li>
 
@@ -9980,7 +9988,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20201105215327944" list="Introduction [[Computer Science]] Java Maven Random" modified="20201105215338223" title="$:/StoryList">
+<div created="20201107001236283" list="[[Stream Processing]] [[Direct Messaging Services (Streaming)]] [[Computer Science]] [[Data Processing]] [[Batch Processing]]" modified="20201107003635643" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20201012173622690" modified="20201012173622690" title="$:/temp/advancedsearch">
@@ -10027,7 +10035,7 @@ Error message and password prompt
         },
         &quot;$:/info/url/origin&quot;: {
             &quot;title&quot;: &quot;$:/info/url/origin&quot;,
-            &quot;text&quot;: &quot;null&quot;
+            &quot;text&quot;: &quot;file://&quot;
         },
         &quot;$:/info/browser/screen/width&quot;: {
             &quot;title&quot;: &quot;$:/info/browser/screen/width&quot;,
@@ -10465,7 +10473,7 @@ Examples - [[Spark|Spark]], Flint, Cloud Dataflow
 ** less flexibility
 ** simple development</pre>
 </div>
-<div created="20201026233726208" modified="20201027001305623" tags="" title="Data Processing">
+<div created="20201026233726208" modified="20201107001304530" tags="" title="Data Processing">
 <pre>Systems of record - the origin of the data, for example, an application's database
 
 Derived data systems - processed or transformed data
@@ -10477,7 +10485,7 @@ Online system - synchronous responses, speed is importance. For example, a websi
 Offline system - asynchronous processes, general effeciency is the most important
 
 * [[Batch processing|Batch Processing]] - periodic processing jobs, processing large amounts of data per job
-* Stream processing - process data as it becomes available</pre>
+* [[Stream processing|Stream Processing]] - process data as it becomes available</pre>
 </div>
 <div created="20200828171630393" modified="20200828173051364" tags="data theory" title="Data Warehouse">
 <pre>A data warehouse or data lake is where data from multiple areas in a business is consolidated and organized. From here downstream analysis and reporting can be done. 
@@ -10615,6 +10623,18 @@ Leveraging [[distributed systems|Distributed Systems]] is common for dealing wit
 
 * [[Distributed transactions|Distributed Transactions]]
 * [[Coordination services|Coordination Services]]</pre>
+</div>
+<div created="20201107002840087" modified="20201107003646900" tags="" title="Direct Messaging Services (Streaming)">
+<pre>Notification systems that use networks to notify clients - an example is a Webhook
+
+Pros:
+
+* Synchronous notifications
+
+Cons:
+
+* No queue, so no fault tolerance - if the client is down it will miss the notification
+* Events can only be processed once</pre>
 </div>
 <div created="20200902233838388" modified="20200905010404958" tags="data theory" title="Dirty Reads">
 <pre>&quot;&quot;&quot;
@@ -10864,7 +10884,7 @@ Both of these groups of people can be considered very intelligent, but the types
 Another point of variance in intelligence is the types of models that are being built. Some people build very shallow models that are closely tied to the senses. This allows them to differentiate noises or which way of throwing a Frisbee goes the furthest. Their abstractions are about subtle differences in their senses. Other people build very deep models which are far removed from the senses and that allow them to make connections between seemingly unrelated ideas. The trade off between these types of models is skill vs creativity.
 &quot;&quot;&quot;</pre>
 </div>
-<div created="20201026233315177" modified="20201028235818762" tags="" title="Introduction">
+<div created="20201026233315177" modified="20201107000522211" tags="" title="Introduction">
 <pre>If you're here from the internet, welcome! This is my personal wiki where I aggregate things I've learned for my own reference. It also serves as a way to showcase my experience to prospective employers.
 
 Feel free to look around, the default sections should serve as an index.</pre>
@@ -10995,6 +11015,26 @@ Based on replication algorithms
 ** last write wins with clock variance
 ** [[lagging writes|https://drive.google.com/file/d/19YLldM-8qrQB2CxhyaTbpE5I9Wejauxc/view?usp=sharing]] edge cases</pre>
 </div>
+<div created="20201107002931472" modified="20201107004642468" tags="" title="Log Messaging Queues">
+<pre>Stream events are stored in append only logs. These logs can be replicated and partitioned for durability.
+
+Fan out implementations are trivial as each consumer reads through the log keeping track of where they are.
+
+Load balancing streams are less flexible. There can only be one consumer per log partition which limits flexibility and performance.
+
+Topics can be defined as collections of logs.
+
+Pros:
+
+* Fault Tolerant
+* Stream events can be processed
+* Consistent ordering of events
+* No heavy transactions needed - the client knows when its processed an event
+
+Cons:
+
+* Load balancing is not a good option with log message queues</pre>
+</div>
 <div created="20200828151135182" modified="20200829165946534" tags="data theory" title="Log Table Storage">
 <pre>Storage system for [[Transactional DBs|Transactional Database]]
 
@@ -11102,6 +11142,20 @@ Again different plugin goals can be linked to phases
 * Execute a phase
 * Execute a goal
 </pre>
+</div>
+<div created="20201107002907624" modified="20201107003833651" tags="" title="Message Queues">
+<pre>A database for streams. The message queue holds events for consumers and forgets about them once the event is consumed.
+
+Pros:
+
+* Fault Tolerant - the event is stored until properly consumed
+
+Cons:
+
+* Asynchronous
+* Events can only be processed once
+* Heavy [[distributed transactions|Distributed Transactions]] are needed to ensure events are consumed
+* Failed messaged can get out of order - [[example|https://drive.google.com/file/d/1h4o-RaDloqwjLZKVDUSpN_zb01lZAXOD/view?usp=sharing]]</pre>
 </div>
 <div created="20200829153605915" modified="20200829160735102" tags="data theory" title="Monotonic Reads">
 <pre>A database consistency issue that occurs on [[replicated data|DB Replication]] where reading the same data twice can show new data then old data. If two different nodes are read from and the first read comes from a more up to date node than the second read this can occur.
@@ -11328,6 +11382,53 @@ A script uses the cluster manager to manipulate workers and execute workflows in
 </div>
 <div created="20200915233040336" modified="20200915234423005" tags="data theory" title="Stored Procedure">
 <pre>&quot;Scripts&quot; or logic that can be executed at the database level. They can increase performance by keeping a transaction within the database, as opposed to being multiple network calls between the database and an application. The downside is that they are often harder to maintain and tightly couple your application to the database.</pre>
+</div>
+<div created="20201107001243688" modified="20201107012019470" tags="" title="Stream Processing">
+<pre>''Overview''
+
+Processing data with streams is a solution to continuous or unbounded datasets
+
+Events move from publishers to subscribers
+
+Publishers can have multiple topics which subscribers can independently subscribe to
+
+Polling a data source for new information with the client is one way of &quot;streaming&quot; data but is computationally wasteful because many polls will come up empty or the client may be idle while events build up. Because of this, messaging systems that notify the client are the most common solutions to streaming.
+
+''Consumption Patterns''
+
+[[Load Balance|https://drive.google.com/file/d/189aXisHFgINQroRHzWmdx9BVUzAzbaJQ/view?usp=sharing]] - Each event is sent to one consumer for a set of consumer. This is useful for increasing the throughput of consumers
+
+[[Fan Out|https://drive.google.com/file/d/1YtCeNDZibLbjy3GHucqSJhuWs5XhXJ2y/view?usp=sharing]] - Each event is sent to all consumers. This is useful for processing events in different ways.
+
+''Implementations''
+
+* [[Direct Message Services|Direct Messaging Services (Streaming)]]
+* [[Message Queues (Standard)|Message Queues]]
+* [[Log Message Queues|Log Messaging Queues]]
+
+''Use Cases''
+
+* Continuous data synchronization (Change Data Capture, Event Source) - continuously update a secondary database or search index
+* Event Recognition - detect patterns and notify as necessary
+* Trend Analytics - analyze and predict based on current data
+
+''Windows''
+
+A part of the data stream to include in processing. A window can be anything from the most recent second of events to the entire history of the stream. As the size of the window expands the stream turns into a database. A database is in fact a state created from the accumulation of all events.
+
+Straggler events can be late due to networks delays, two options
+
+* Ignore stragglers past a threshold
+* Integrate stragglers as they come
+
+Window Types
+
+* Tumbling - defined intervals with now overlap (10:00 - 10:05, 10:05 - 10:10)
+* Hopping - defined intervals with some overlap (10:00 - 10:05, 10:01 - 10:06)
+* Sliding - buffer of time around every point in time (10:03 -&gt; 9:58 - 10:08)
+* Session - collection of events defined by a property such as user id, time is ignored
+
+Common operations such as joins take use windows to collect the data to process. In this way windows are like mini-batches within a stream of unbounded data. For example, the entire history of users joined with the most recent month of transactions, or, the last hour of searches joined with the last hour of visited web pages.</pre>
 </div>
 <div created="20200830233326649" modified="20200831001242348" tags="data theory" title="Term Partitioned Indexes">
 <pre>Method for partitioning non-primary indexes in [[DBMS]]. In term partitioned indexes a global index is split between the system. 
