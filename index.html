@@ -307,6 +307,8 @@ Error message and password prompt
 
 <li>Lost Updates (Transactions)</li>
 
+<li>Machine Learning</li>
+
 <li>MapReduce</li>
 
 <li>Maven</li>
@@ -316,6 +318,8 @@ Error message and password prompt
 <li>Monotonic Reads</li>
 
 <li>Multi-Leader (Replication)</li>
+
+<li>Natural Language Processing</li>
 
 <li>NFL Football</li>
 
@@ -332,6 +336,8 @@ Error message and password prompt
 <li>Random</li>
 
 <li>Read your Writes</li>
+
+<li>Regex</li>
 
 <li>Relational DB</li>
 
@@ -9767,9 +9773,11 @@ Error message and password prompt
     }
 }</pre>
 </div>
-<div created="20200827205313204" modified="20201105170641101" title="$:/DefaultTiddlers">
+<div created="20200827205313204" modified="20201119015539765" title="$:/DefaultTiddlers">
 <pre>[[Introduction]]
+[[Natural Language Processing]]
 [[Computer Science]]
+[[Machine Learning]]
 [[Random]]</pre>
 </div>
 <div plugin-type="import" status="pending" title="$:/Import" type="application/json">
@@ -10001,7 +10009,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div list="[[Designing Data-Intensive Applications]] Introduction [[Computer Science]] Random" title="$:/StoryList">
+<div created="20201119013338380" list="Regex [[Natural Language Processing]] Introduction [[Computer Science]] Random" modified="20201119015515852" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20201012173622690" modified="20201012173622690" title="$:/temp/advancedsearch">
@@ -11165,6 +11173,11 @@ Similar to an atomic operation except the client defines when to lock a resource
 This implementation uses the transaction versioning system described in [[Repeatable Reads]] to detect if two transactions have overwritten each other by comparing the data versions of their reads and writes. If an lost update is detected the transaction will fail and have to be tried again. The fact that nothing extra is needed from the application level makes this a great option.
 &quot;&quot;&quot;</pre>
 </div>
+<div created="20201119014956147" modified="20201119015202714" tags="" title="Machine Learning">
+<pre>The process of leveraging data to solve problems without explicit rule based programming
+
+</pre>
+</div>
 <div created="20201027000430192" modified="20201027001600598" tags="" title="MapReduce">
 <pre>Parallel processing framework, usually run on top of a [[distributed file system|Distributed File System]]
 
@@ -11283,6 +11296,13 @@ Benefits of multiple leader nodes
 ** on read - system stores concurrent writes and lets the reader decide how to handle it
 ** [[versioning systems|Version Vectors]] can add support</pre>
 </div>
+<div created="20201119015206049" modified="20201119020103936" tags="" title="Natural Language Processing">
+<pre>Using computers to analyze and process human language in a useful way
+
+Topic Index (from low to high level)
+
+* [[Regex|Regex]]</pre>
+</div>
 <div created="20200930222659176" modified="20201029180904398" tags="" title="NFL Football">
 <pre>Fast LB's allow for a more aggressive DL scheme because they will cover up any holes that are left
 
@@ -11394,6 +11414,20 @@ Other
 
 Depends on your systems architecture but in general the solution is to track update times and find nodes that are up to date past those times</pre>
 </div>
+<div created="20201119015555526" modified="20201119020050237" tags="" title="Regex">
+<pre>Regular Expressions
+
+Notation used for recognizing string patterns
+
+[[Basic rules|https://cheatography.com/davechild/cheat-sheets/regular-expressions/]]
+
+A low level tool for many NLP tasks
+
+* Cleaning data
+** Removing
+** Substituting
+* Scraping data</pre>
+</div>
 <div created="20200828145314287" modified="20200828170512822" tags="data theory" title="Relational DB">
 <pre>Standard most popular DB for modeling a systems data.
 
@@ -11502,16 +11536,29 @@ A script uses the cluster manager to manipulate workers and execute workflows in
 
 [[https://github.com/Edwardbafford/General/tree/master/Spark]]</pre>
 </div>
-<div created="20201104133202796" modified="20201110210533040" tags="" title="Spring">
+<div created="20201104133202796" modified="20201119014036474" tags="" title="Spring">
 <pre>Java web application framework
 
-Abstracts away boilerplate code which can be controlled through configuration and handled automatically by the spring engine.
+!!! Benefits
 
-''High Level Advantages''
+* ''Remove boiler plate code'' - create simple objects for handling repetitive tasks
+* ''Inversion of Control/Dependency Injection'' - create loosely coupled applications by letting Spring wire together components based on a java configuration object
+* ''Convention over configuration'' - limit flexibility but abstract away unnecessary configurations for out of the box applications
 
-* Dependency Injection - objects dependencies are given to the object when instantiated, this helps to loosely couple the code
-* Aspect Oriented Programming - abstract utility functionality that will be used throughout an application, for example, logging
-* Transactional Management - treat methods as transactions with control over things like propagation and isolation
+!!! Aspects
+
+''General''
+
+''Boot''
+
+''Web''
+
+''Persistence''
+
+''Security''
+
+
+OLD NOTES!!!!
 
 ''Dependency Injection''
 
