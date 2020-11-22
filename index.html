@@ -209,6 +209,10 @@ Error message and password prompt
 
 <li>Ant</li>
 
+<li>Authentication</li>
+
+<li>Authorization</li>
+
 <li>Batch Processing</li>
 
 <li>Casual Ordering</li>
@@ -289,11 +293,15 @@ Error message and password prompt
 
 <li>Java</li>
 
+<li>JNDI</li>
+
 <li>Key Range Partitioning</li>
 
 <li>Kubernetes</li>
 
 <li>Lamport Timestamp</li>
+
+<li>LDAP</li>
 
 <li>Leaderless (Replication)</li>
 
@@ -380,6 +388,8 @@ Error message and password prompt
 <li>Web Application Architecture</li>
 
 <li>Web Application Sessions</li>
+
+<li>Windows Domain</li>
 
 <li>Write Skew</li>
 
@@ -10009,7 +10019,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20201119013338380" list="Regex [[Natural Language Processing]] Introduction [[Computer Science]] Random" modified="20201119015515852" title="$:/StoryList">
+<div created="20201122162950537" list="[[Computer Science]] Java Spring [[Machine Learning]] Random" modified="20201122200902447" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20201012173622690" modified="20201012173622690" title="$:/temp/advancedsearch">
@@ -10291,6 +10301,46 @@ Define a set of targets - compile code, build war, generate SOAP service from WS
 * Actions - java actions abstracted from you and implemented by Ant, just reference the action type
 * Dependencies - targets can depend on one another, so running one will run all of its dependencies before hand</pre>
 </div>
+<div created="20201122172628749" modified="20201122195900672" tags="" title="Authentication">
+<pre>Proving the identity of a user
+
+SSL must be used with authentication to make sure critical information cannot be stolen somewhere between the client and authenticating server.
+
+''Token''
+
+A special key which is sent by the client to the server. The server verifies the token and allows access based upon it.
+
+Usually tokens need to be sent in with each request to grant continued access.
+
+It is best if the token is temporary so that if it is stolen it does not create a permanent security breach.
+
+''Username - Password''
+
+A method for logging in a user
+
+Specified within HTTP as a Base64 encoding of username:password but can be implemented in other ways.
+
+Once logged in, a temporary token is usually given which forms a session between the client and the server. 
+
+By using the credentials once and a temporary token for the rest of the session logins limit the opportunity for a permanent security breach.
+
+''OAuth''
+
+A standard for delegating authentication such that a user can get access to an application without knowing the users credentials.
+
+This architecture involves a user, an application, and an authentication server.
+
+# When the user logins they are forwarded through the app to the authentication server
+# User logs in on the authentication server
+# Authentication server creates a temporary token which can be used to represent a session
+# The token can be used between the user and the application as needed
+
+This standard is great for large, distributed systems because authentication only needs to be implemented in one spot for the entire system and often can just be delegated to a third party implementation.
+</pre>
+</div>
+<div created="20201122172614458" modified="20201122172834589" tags="" title="Authorization">
+<pre>The right to access resources based upon the users profile</pre>
+</div>
 <div created="20201026234203389" modified="20201027000547604" tags="" title="Batch Processing">
 <pre>''Philosophies''
 
@@ -10329,7 +10379,7 @@ General Stack
 * [[Versions vectors|Version Vectors]]
 * [[Lamport Timestamps|Lamport Timestamp]].</pre>
 </div>
-<div created="20200828173348895" modified="20201116030747905" title="Computer Science">
+<div created="20200828173348895" modified="20201122172912030" title="Computer Science">
 <pre>''Theory''
 
 Data:
@@ -10343,10 +10393,17 @@ Web Applications:
 
 * [[Architecture|Web Application Architecture]]
 * [[Sessions|Web Application Sessions]]
+* [[Authentication|Authentication]]
+* [[Authorization|Authorization]]
+
+Protocols:
+
+* [[SOAP|SOAP]]
+* [[LDAP|LDAP]]
 
 Other:
 
-* [[SOAP|SOAP]]
+* [[Windows Domain|Windows Domain]]
 * [[Encoding/Decoding]]
 * [[Semantic Versioning|Semantic Versioning]]
 * [[Compatibility|Data Compatibility]]
@@ -10973,7 +11030,7 @@ Another point of variance in intelligence is the types of models that are being 
 
 Feel free to look around, the default sections should serve as an index.</pre>
 </div>
-<div created="20201023000246330" modified="20201112222223734" tags="" title="Java">
+<div created="20201023000246330" modified="20201122163017974" tags="" title="Java">
 <pre>[[Github|https://github.com/Edwardbafford/General/tree/master/Java%20Examples]]
 
 ''General''
@@ -11028,11 +11085,25 @@ Java has a mature and therefore complicate ecosystem of tools for building and m
 ** [[Ant]]
 ** [[Maven|Maven]]
 ** [[Gradle|Gradle]]
-* Frameworks
+* Frameworks/APIs
 ** [[Spring|Spring]]
 ** [[ORM|Object-relational Mapping]]
 ** [[Quartz|Quartz]]
-** [[Logging|Logging (Java)]]</pre>
+** [[Logging|Logging (Java)]]
+** [[JNDI|JNDI]]</pre>
+</div>
+<div created="20201122163021101" modified="20201122163757681" tags="" title="JNDI">
+<pre>Java Naming and Directory Interface - a way of accessing resources in an environment
+
+JNDI must be implemented by an directory access library, such as [[LDAP|LDAP]] 
+
+Once it has been linked with a implementation the java code can ask for resources such as database url and credentials.
+
+''Benefits''
+
+As with most interfaces it creates loosely coupled code, if you want to change JNDI implementation you don't have to change your code.
+
+Better security - application asks for a resource which is given to it by a resource provider within the environment, as opposed to having those resources embedded in the application. </pre>
 </div>
 <div created="20200830233055256" modified="20200830234729706" tags="data theory" title="Key Range Partitioning">
 <pre>A method for partitioning data in [[DBMS]] where entries are partitioned based on the order a primary index values. 
@@ -11048,6 +11119,20 @@ This implementation is prone to &quot;hot spots&quot; where some partitions rece
 </div>
 <div created="20201009001229586" modified="20201009001237385" tags="" title="Lamport Timestamp">
 <pre>Tool for creating sequential orders in a distributed system. Tuple of a counter and node id. If the counter for two operations is the same then the node id will be the tie breaker for the order of the operations. See [[example|https://drive.google.com/file/d/1CxlesLLmXzPGAwI6c_3-jjJVlAFAocb9/view?usp=sharing]]</pre>
+</div>
+<div created="20201122163312609" modified="20201122164337494" tags="" title="LDAP">
+<pre>A network protocol
+
+* fast reads
+* no transactions
+* ...
+
+Essentially it is useful for a system with few writes and many reads.
+
+Because of this it is often used for managing user roles and credentials within a organization. 
+
+An LDAP server manages and stores user roles and credentials and is referenced by many systems within the organization.
+</pre>
 </div>
 <div created="20200829151448984" modified="20200830204019987" tags="data theory" title="Leaderless (Replication)">
 <pre>Implementation of [[database|DBMS]] [[replication|DB Replication]]
@@ -11173,8 +11258,8 @@ Similar to an atomic operation except the client defines when to lock a resource
 This implementation uses the transaction versioning system described in [[Repeatable Reads]] to detect if two transactions have overwritten each other by comparing the data versions of their reads and writes. If an lost update is detected the transaction will fail and have to be tried again. The fact that nothing extra is needed from the application level makes this a great option.
 &quot;&quot;&quot;</pre>
 </div>
-<div created="20201119014956147" modified="20201119015202714" tags="" title="Machine Learning">
-<pre>The process of leveraging data to solve problems without explicit rule based programming
+<div created="20201119014956147" modified="20201122162135160" tags="" title="Machine Learning">
+<pre>The process of leveraging data to solve problems without using explicitly defined rules
 
 </pre>
 </div>
@@ -11536,7 +11621,7 @@ A script uses the cluster manager to manipulate workers and execute workflows in
 
 [[https://github.com/Edwardbafford/General/tree/master/Spark]]</pre>
 </div>
-<div created="20201104133202796" modified="20201119014036474" tags="" title="Spring">
+<div created="20201104133202796" modified="20201122211146356" tags="" title="Spring">
 <pre>Java web application framework
 
 !!! Benefits
@@ -11549,31 +11634,64 @@ A script uses the cluster manager to manipulate workers and execute workflows in
 
 ''General''
 
+Application Context - the spring engine that is created at application start up
+
+Spring Beans - objects that are instantiated and managed by the Spring Application Context, some are made by default and others are defined within the application code as needed. Beans are automatically injected into classes as needed by the context.
+
+Almost everything Spring does is through the automated injection of beans into the objects that need them. This creates a loosely coupled application which is controlled through a centralized definition of the beans.
+
+Profiles - Beans can be linked to profiles and profiles can be decided at runtime - prod, dev, etc. Based on the chosen profile different beans can be created, allowing for flexibility between environments.
+
+Properties - Injected into classes as needed. Properties can be controlled through property files, command line arguments, or environment variables.
+
 ''Boot''
+
+Spring boot is essentially a wrapper which has a strong default configuration out of the box. This implements the &quot;convention over configuration&quot; property of spring by giving the user a working application with minimal definitions needed.
+
+A spring boot microservice can be run as a jar file to automatically spin up a tomcat instance and deploy the application. Focus on the application logic and Spring with wire together the infrastructure. 
+
+The default configurations can be overridden. 
 
 ''Web''
 
+Spring abstracts and simplifies the process of defining controllers with a Dispatcher Servlet that receives and handles all requests.
+
+Define controllers as beans
+
+Route requests to controller methods which handle from there
+
+Spring injects information into methods as needed
+
+* Session info
+* Request body
+* Request parameters
+* Path variables
+
+Easy and flexible ways to respond
+
+* Exception pages
+* JSP
+* Thymeleaf
+* REST
+
 ''Persistence''
+
+Create persistence beans which can be implemented by many ORM frameworks
+
+Automatically implemented CRUD DAOs. Simple SQL queries are implemented for the domain objects.
+
+Wrap methods in transactions using Spring annotations. Spring will work with the ORM framework to implement the transaction.
 
 ''Security''
 
+Servlet filter chains are created by Spring to enforce authorization and authentication
 
-OLD NOTES!!!!
+* Define the security implementations within methods of a special spring bean
+* Spring provides helpers for various security implementations
 
-''Dependency Injection''
+Figure out how your application will enforce security then implement it using Spring helpers within the security configuration bean
 
-Define class beans which can be injected throughout the application without any explicit programming of the user. Beans can be manually defined our found by the Spring engine.
-
-''Transaction Management''
-
-Spring uses a &quot;transaction manager&quot; class to open, abort, and commit transactions around a method.
-
-A transaction manager is often pre-implemented and needs to be injected with an entity manager
-
-An entity manager is usually pre-implemented and injected with an [[ORM|Object-relational Mapping]] framework, a database connection, and a set of java data objects. The entity manager controls the synchronization of java objects and their state in the database.
-
-The wiring of these things are controlled through bean definitions and dependency injection from Spring.
-</pre>
+Enforce authentication at the method level for more granular security</pre>
 </div>
 <div created="20200915233040336" modified="20200915234423005" tags="data theory" title="Stored Procedure">
 <pre>&quot;Scripts&quot; or logic that can be executed at the database level. They can increase performance by keeping a transaction within the database, as opposed to being multiple network calls between the database and an application. The downside is that they are often harder to maintain and tightly couple your application to the database.</pre>
@@ -11737,6 +11855,11 @@ The general steps:
 # When receiving the request the application will use the session id to find the session data held by the web server. It can then use this session data as needed.
 
 [[Diagram|https://drive.google.com/file/d/1rZ98v3nCO9puk4WWviGzBKQ_8lni-NO-/view?usp=sharing]]</pre>
+</div>
+<div created="20201122164611735" modified="20201122164733418" tags="" title="Windows Domain">
+<pre>A special Windows computer network
+
+A &quot;domain controller&quot; server manages all credentials and access for each device on the network</pre>
 </div>
 <div created="20200915230713079" modified="20200915232545707" tags="data theory" title="Write Skew">
 <pre>&quot;&quot;&quot;
