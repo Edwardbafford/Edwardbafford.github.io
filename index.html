@@ -163,6 +163,10 @@ Error message and password prompt
 
 <li>$:/state/edit/references-1413407321</li>
 
+<li>$:/state/image-picker/system--1911629014</li>
+
+<li>$:/state/image-picker/system--770946026</li>
+
 <li>$:/state/image-picker/system-1024267586</li>
 
 <li>$:/state/sidebar</li>
@@ -211,9 +215,9 @@ Error message and password prompt
 
 <li>Authentication</li>
 
-<li>Authorization</li>
-
 <li>Batch Processing</li>
+
+<li>Caching</li>
 
 <li>Casual Ordering</li>
 
@@ -226,6 +230,8 @@ Error message and password prompt
 <li>Consistent Read Order</li>
 
 <li>Coordination Services</li>
+
+<li>Corpus</li>
 
 <li>Dask</li>
 
@@ -323,6 +329,8 @@ Error message and password prompt
 
 <li>Message Queues</li>
 
+<li>Minimum Edit Distance</li>
+
 <li>Monotonic Reads</li>
 
 <li>Multi-Leader (Replication)</li>
@@ -353,6 +361,8 @@ Error message and password prompt
 
 <li>Semantic Versioning</li>
 
+<li>Sentence Segmentation</li>
+
 <li>Serial Execution (DBMS)</li>
 
 <li>Serializable Snapshot Isolation</li>
@@ -373,6 +383,10 @@ Error message and password prompt
 
 <li>Text Encoding</li>
 
+<li>Text Normalization</li>
+
+<li>Tokenization</li>
+
 <li>Total Order Broadcasting</li>
 
 <li>Transaction Isolation</li>
@@ -390,6 +404,8 @@ Error message and password prompt
 <li>Web Application Sessions</li>
 
 <li>Windows Domain</li>
+
+<li>Word Normalization</li>
 
 <li>Write Skew</li>
 
@@ -9989,6 +10005,12 @@ Error message and password prompt
 <div created="20200829153654044" modified="20200829153654044" title="$:/state/edit/references-1413407321">
 <pre>show</pre>
 </div>
+<div created="20201127013623277" modified="20201127013623718" title="$:/state/image-picker/system--1911629014">
+<pre>hide</pre>
+</div>
+<div created="20201126191025912" modified="20201126191229729" title="$:/state/image-picker/system--770946026">
+<pre>hide</pre>
+</div>
 <div created="20200828152002033" modified="20200828152251232" title="$:/state/image-picker/system-1024267586">
 <pre>hide</pre>
 </div>
@@ -10019,7 +10041,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20201122162950537" list="[[Computer Science]] Java Spring [[Machine Learning]] Random" modified="20201122200902447" title="$:/StoryList">
+<div created="20201127010354481" list="[[Word Normalization]] Tokenization [[Text Normalization]] Introduction [[Natural Language Processing]] [[Minimum Edit Distance]] [[Computer Science]] [[Machine Learning]] Random" modified="20201127011014744" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20201012173622690" modified="20201012173622690" title="$:/temp/advancedsearch">
@@ -10338,9 +10360,6 @@ This architecture involves a user, an application, and an authentication server.
 This standard is great for large, distributed systems because authentication only needs to be implemented in one spot for the entire system and often can just be delegated to a third party implementation.
 </pre>
 </div>
-<div created="20201122172614458" modified="20201122172834589" tags="" title="Authorization">
-<pre>The right to access resources based upon the users profile</pre>
-</div>
 <div created="20201026234203389" modified="20201027000547604" tags="" title="Batch Processing">
 <pre>''Philosophies''
 
@@ -10371,6 +10390,20 @@ General Stack
 ** [[Data Flow Engines|Data Flow Engines]]
 * [[ETL Orchestrators|ETL Orchestrators]]</pre>
 </div>
+<div created="20201124224330556" modified="20201124225023016" tags="" title="Caching">
+<pre>Storing data such that it can be used more efficiently in the future. Cache can only store a subset of all the data in a system and are constantly shifting the data being stored.
+
+Two main areas to for a developer to leverage caching
+
+* Front end - ~JavaScript in a browser, most browsers automatically cache resource files as well
+* Backend - Applications can use in memory caches (databases) to limit network calls to an external database
+
+Technologies
+
+* Memcached - distributed cache
+* Ehcache - distributed cache
+* Redis - in memory Key-Value database, message broke, cache system</pre>
+</div>
 <div created="20201009002439802" modified="20201009002543611" tags="" title="Casual Ordering">
 <pre>Some operations are dependent on each other and others are concurrent. Concurrent operations cannot be compared for order but dependent operations can be. 
 
@@ -10379,7 +10412,7 @@ General Stack
 * [[Versions vectors|Version Vectors]]
 * [[Lamport Timestamps|Lamport Timestamp]].</pre>
 </div>
-<div created="20200828173348895" modified="20201122172912030" title="Computer Science">
+<div created="20200828173348895" modified="20201124225028528" title="Computer Science">
 <pre>''Theory''
 
 Data:
@@ -10394,7 +10427,7 @@ Web Applications:
 * [[Architecture|Web Application Architecture]]
 * [[Sessions|Web Application Sessions]]
 * [[Authentication|Authentication]]
-* [[Authorization|Authorization]]
+* [[Caching|Caching]]
 
 Protocols:
 
@@ -10493,6 +10526,21 @@ Examples
 * Etcd
 
 The services implement consensus algorithms and therefor are linearizable. Used as a way of outsourcing [[linearizable benefits|Linearizability]] and can be used as a &quot;consultant&quot; for these kinds of tasks without the [[drawbacks|Consensus]] of a large consensus system.</pre>
+</div>
+<div created="20201127010432893" modified="20201127011040859" tags="" title="Corpus">
+<pre>Collection of text/speech data
+
+Tokens - list of partitioned terms in the corpus or section of the corpus, see [[tokenization|Tokenization]]
+
+Vocabulary - set of distinct terms in the  corpus or section of the corpus
+
+''Heap's Law''
+
+The relationship between the number of tokens (N) and the size of the vocabulary (|V|)
+
+$$ |V| = kN^B $$
+
+k and B vary based on the corpus genre, language, time of creation, etc.</pre>
 </div>
 <div created="20201001231154703" modified="20201006201113619" tags="" title="Dask">
 <pre>Dask is a python framework designed to automatically take computationally heavy code and convert it into a set of parallel processes. The idea is that interacting functions form a graph which dask can then automatically split up into parallel processes just by analyzing the graph.
@@ -11349,6 +11397,38 @@ Cons:
 * Heavy [[distributed transactions|Distributed Transactions]] are needed to ensure events are consumed
 * Failed messaged can get out of order - [[example|https://drive.google.com/file/d/1h4o-RaDloqwjLZKVDUSpN_zb01lZAXOD/view?usp=sharing]]</pre>
 </div>
+<div created="20201126190625970" modified="20201126193018028" tags="" title="Minimum Edit Distance">
+<pre>''Definition''
+
+The number of character edits (switch, insert, delete) to get from one string to another. The edit weights can be configured to whatever needed. Usually switch = 2, insert/delete = 1.
+
+''Use Cases''
+
+* Spelling suggesting
+* Creating alignments - useful in audio processing
+
+''Algorithm''
+
+The process of determining the minimum edit distance is equivalent to creating an alignment diagram with each column in the diagram represents one of three operations - switch, insert, or delete
+
+[img[images/edit-distance-alignment.png]]
+
+Sub-alignments must also be optimal ([[Notes|https://drive.google.com/file/d/12ZJHgn50cAwpiBxFGJqTsqMXQ-dfsyhg/view?usp=sharing]])
+
+Because of this we can determine that an optimal alignment is the following
+
+$$
+min(optimal \hspace{.1cm} subalignment +operation cost)
+$$
+
+For each operation option - switch, insert, or delete. Each operation can have a different cost and different sub-alignment.
+
+Using this idea we can create a dynamic programming algorithm to build up from substrings to the final full conversion and find the optimal edit distance.
+
+Once the optimal edit distance is found we can back track through the dynamic program to create the proper alignment.
+
+[[Algorithm details|https://web.stanford.edu/class/cs124/lec/med.pdf]]</pre>
+</div>
 <div created="20200829153605915" modified="20200829160735102" tags="data theory" title="Monotonic Reads">
 <pre>A database consistency issue that occurs on [[replicated data|DB Replication]] where reading the same data twice can show new data then old data. If two different nodes are read from and the first read comes from a more up to date node than the second read this can occur.
 
@@ -11381,12 +11461,15 @@ Benefits of multiple leader nodes
 ** on read - system stores concurrent writes and lets the reader decide how to handle it
 ** [[versioning systems|Version Vectors]] can add support</pre>
 </div>
-<div created="20201119015206049" modified="20201119020103936" tags="" title="Natural Language Processing">
+<div created="20201119015206049" modified="20201127011010907" tags="" title="Natural Language Processing">
 <pre>Using computers to analyze and process human language in a useful way
 
 Topic Index (from low to high level)
 
-* [[Regex|Regex]]</pre>
+* [[Regex|Regex]]
+* [[Minimum Edit Distance|Minimum Edit Distance]]
+* [[Corpus|Corpus]]
+* [[Text Normalization|Text Normalization]]</pre>
 </div>
 <div created="20200930222659176" modified="20201029180904398" tags="" title="NFL Football">
 <pre>Fast LB's allow for a more aggressive DL scheme because they will cover up any holes that are left
@@ -11552,6 +11635,15 @@ Versions are incremented as follows
 * MAJOR version when you make incompatible API changes
 * MINOR version when you add functionality in a backwards compatible manner
 * PATCH version when you make backwards compatible bug fixes</pre>
+</div>
+<div created="20201127011113665" modified="20201127011346099" tags="" title="Sentence Segmentation">
+<pre>Uses punctuation to identify the endings of sentences - . ! ?
+
+Periods do not always refer to the end of a sentence!!
+
+Use machine learning or rule based models to identify if a period refers to the end of a sentence.
+
+Can also refer to [[tokenization|Tokenization]] algorithms to determine if the period is part of a token and therefore not the ending of a sentence.</pre>
 </div>
 <div created="20200915230519617" modified="20200915233242404" tags="theory data" title="Serial Execution (DBMS)">
 <pre>In a serially executed database there is no concurrency. All transactions are executed by a single thread on a CPU. Although there are serious limitations to this, if possible it keeps the database simple.
@@ -11762,6 +11854,43 @@ This implementation has fast reads but slower writes because an entry may have t
 *** UTF-8
 *** UTF-16</pre>
 </div>
+<div created="20201127010826186" modified="20201127011111668" tags="" title="Text Normalization">
+<pre>Pre-processing step to standardize text for a model to process
+
+Main categories
+
+* [[Tokenization|Tokenization]]
+* [[Word Normalization|Word Normalization]]
+* [[Sentence Segmentation|Sentence Segmentation]]</pre>
+</div>
+<div created="20201127010943702" modified="20201127013958327" tags="" title="Tokenization">
+<pre>Converting a stream of characters into partitioned sections called tokens, we want to tokenize text data in a way that creates meaningful tokens.
+
+''Word Tokenization''
+
+Split text into words
+
+Uses sophisticated [[regex|Regex]] patterns
+
+Lots of edge cases that must be handled - emails, contractions, named entities, currency, etc.
+
+''Sub-word Tokenization''
+
+Create a vocabulary of sub-words (morphemes) and full words. Use algorithm to create a tokens based on tokenized words and the created vocabulary. 
+
+The benefit of this is if a word in a new section of text has not been seen we may be able to break it down into a collection of sub-words and therefore still derive meaning.
+
+Byte Pair Encoding - method for creating a vocabulary by iteratively combining sections of the vocabulary together based on frequency. We start will single characters and build up to sub-words and full words.
+
+[img[images/byte-pair-encoding.png]]
+
+Word Piece - similar to byte-pair encoding except that it combines based on maximizing a language model likelihood
+
+~MaxMatch - An algorithm for converting words into tokens based on the given vocabulary. It is greedy and tries to use the largest sub-words or words possible.
+
+[img[images/max-match.png]]
+</pre>
+</div>
 <div created="20201009002612380" modified="20201009002621627" tags="" title="Total Order Broadcasting">
 <pre>Every operation can be compared with order with every other operation and is consistent among all nodes
 
@@ -11860,6 +11989,22 @@ The general steps:
 <pre>A special Windows computer network
 
 A &quot;domain controller&quot; server manages all credentials and access for each device on the network</pre>
+</div>
+<div created="20201127011002391" modified="20201127011836162" tags="" title="Word Normalization">
+<pre>A second layer of normalization on top of [[tokens|Tokenization]]  to help standard the text
+
+* spelling
+* cases
+* lemmatization
+
+''Lemmatization''
+
+Converting a token to it's morphological root
+
+* stem - the base or root of a word
+* affixes - a language unit (morpheme) used to alter the meaning of a stem
+
+There is no easy way to lemmatize a word.. we must use complex morphological parsers..</pre>
 </div>
 <div created="20200915230713079" modified="20200915232545707" tags="data theory" title="Write Skew">
 <pre>&quot;&quot;&quot;
