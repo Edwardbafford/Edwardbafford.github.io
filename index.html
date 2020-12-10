@@ -47,7 +47,7 @@ CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
 OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE." />
 <link id="faviconLink" rel="shortcut icon" href="favicon.ico">
-<title>Knowledge Base — All the stuff I care about remembering</title>
+<title>Lou's Wiki — Interesting Stuff</title>
 <!--~~ This is a Tiddlywiki file. The points of interest in the file are marked with this pattern ~~-->
 
 <!--~~ Raw markup ~~-->
@@ -221,6 +221,8 @@ Error message and password prompt
 
 <li>Casual Ordering</li>
 
+<li>Categorical Distribution</li>
+
 <li>Computer Science</li>
 
 <li>Consensus</li>
@@ -232,6 +234,8 @@ Error message and password prompt
 <li>Coordination Services</li>
 
 <li>Corpus</li>
+
+<li>Cross Entropy</li>
 
 <li>Dask</li>
 
@@ -279,6 +283,12 @@ Error message and password prompt
 
 <li>Encoding/Decoding</li>
 
+<li>Entropy</li>
+
+<li>Entropy (Information Theory)</li>
+
+<li>Entropy (Physics)</li>
+
 <li>ETL Orchestrators</li>
 
 <li>Fencing (Distributed Processing)</li>
@@ -305,7 +315,11 @@ Error message and password prompt
 
 <li>Kubernetes</li>
 
+<li>Lagrange Multipliers</li>
+
 <li>Lamport Timestamp</li>
+
+<li>Language Model</li>
 
 <li>LDAP</li>
 
@@ -325,7 +339,11 @@ Error message and password prompt
 
 <li>MapReduce</li>
 
+<li>Math</li>
+
 <li>Maven</li>
+
+<li>Maximum Likelihood Estimation</li>
 
 <li>Message Queues</li>
 
@@ -334,6 +352,8 @@ Error message and password prompt
 <li>Monotonic Reads</li>
 
 <li>Multi-Leader (Replication)</li>
+
+<li>N-Grams</li>
 
 <li>Natural Language Processing</li>
 
@@ -344,6 +364,8 @@ Error message and password prompt
 <li>Objects and Functions</li>
 
 <li>On Disk Storage (DB)</li>
+
+<li>Probability</li>
 
 <li>Python</li>
 
@@ -9799,11 +9821,12 @@ Error message and password prompt
     }
 }</pre>
 </div>
-<div created="20200827205313204" modified="20201119015539765" title="$:/DefaultTiddlers">
+<div created="20200827205313204" modified="20201201030256902" title="$:/DefaultTiddlers">
 <pre>[[Introduction]]
 [[Natural Language Processing]]
 [[Computer Science]]
 [[Machine Learning]]
+[[Math]]
 [[Random]]</pre>
 </div>
 <div plugin-type="import" status="pending" title="$:/Import" type="application/json">
@@ -9990,11 +10013,11 @@ Error message and password prompt
     }
 }</pre>
 </div>
-<div created="20200827144952850" modified="20200827144957789" title="$:/SiteSubtitle">
-<pre>All the stuff I care about remembering</pre>
+<div created="20200827144952850" modified="20201201031708669" title="$:/SiteSubtitle">
+<pre>Interesting Stuff</pre>
 </div>
-<div created="20200827144941153" modified="20200827144943076" title="$:/SiteTitle">
-<pre>Knowledge Base</pre>
+<div created="20200827144941153" modified="20201201031659631" title="$:/SiteTitle">
+<pre>Lou's Wiki</pre>
 </div>
 <div created="20200829165904084" modified="20200829165904084" title="$:/state/edit/references--1796805943">
 <pre>show</pre>
@@ -10041,7 +10064,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20201127010354481" list="[[Word Normalization]] Tokenization [[Text Normalization]] Introduction [[Natural Language Processing]] [[Minimum Edit Distance]] [[Computer Science]] [[Machine Learning]] Random" modified="20201127011014744" title="$:/StoryList">
+<div created="20201210005607076" list="Introduction [[Natural Language Processing]] [[Language Model]] N-Grams [[Computer Science]] [[Machine Learning]] Entropy [[Entropy (Information Theory)]] [[Lagrange Multipliers]] [[Entropy (Physics)]] [[Cross Entropy]] Math Random" modified="20201210005625842" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20201012173622690" modified="20201012173622690" title="$:/temp/advancedsearch">
@@ -10092,11 +10115,11 @@ Error message and password prompt
         },
         &quot;$:/info/browser/screen/width&quot;: {
             &quot;title&quot;: &quot;$:/info/browser/screen/width&quot;,
-            &quot;text&quot;: &quot;1920&quot;
+            &quot;text&quot;: &quot;1536&quot;
         },
         &quot;$:/info/browser/screen/height&quot;: {
             &quot;title&quot;: &quot;$:/info/browser/screen/height&quot;,
-            &quot;text&quot;: &quot;1080&quot;
+            &quot;text&quot;: &quot;864&quot;
         },
         &quot;$:/info/browser/language&quot;: {
             &quot;title&quot;: &quot;$:/info/browser/language&quot;,
@@ -10412,6 +10435,15 @@ Technologies
 * [[Versions vectors|Version Vectors]]
 * [[Lamport Timestamps|Lamport Timestamp]].</pre>
 </div>
+<div created="20201202010406592" modified="20201202011421492" tags="" title="Categorical Distribution">
+<pre>A discrete probability distribution where there are K events, each with a distinct probability
+
+$$ p_1, p_2, ..., p_k $$
+
+$$ \forall i, p_i &gt; 0 $$
+
+$$ \sum p_i = 1 $$</pre>
+</div>
 <div created="20200828173348895" modified="20201124225028528" title="Computer Science">
 <pre>''Theory''
 
@@ -10541,6 +10573,9 @@ The relationship between the number of tokens (N) and the size of the vocabulary
 $$ |V| = kN^B $$
 
 k and B vary based on the corpus genre, language, time of creation, etc.</pre>
+</div>
+<div created="20201201031140729" modified="20201201031142134" tags="" title="Cross Entropy">
+<pre></pre>
 </div>
 <div created="20201001231154703" modified="20201006201113619" tags="" title="Dask">
 <pre>Dask is a python framework designed to automatically take computationally heavy code and convert it into a set of parallel processes. The idea is that interacting functions form a graph which dask can then automatically split up into parallel processes just by analyzing the graph.
@@ -10940,6 +10975,64 @@ Forms:
 * [[Text Encoding|Text Encoding]]
 * [[Data Encoding|Data Encoding]]</pre>
 </div>
+<div created="20201201031053973" modified="20201201031527283" tags="" title="Entropy">
+<pre>Entropy is a metric that pops up a lot of places in Machine Learning.. I'm not totally sure why, but I believe its mostly because it is a metric centered around optimization.
+
+Derivations
+
+* [[Information Theory|Entropy (Information Theory)]]
+* [[Physics|Entropy (Physics)]]
+
+Sub-topics
+
+* [[Cross Entropy|Cross Entropy]]</pre>
+</div>
+<div created="20201201031212487" modified="20201203011508839" tags="" title="Entropy (Information Theory)">
+<pre>''Context''
+
+Entropy represents the minimum average bits sent per message given a set of messages with a [[categorical|Categorical Distribution]] probability distribution
+
+By encoding short messages other messages must be longer because a message cannot be the prefix of another message. Therefore each encoding will block a section of the encoding space.
+
+[[Diagram|https://drive.google.com/file/d/1JY-AO18qkjrrH8EtBuxhPHUA1gEBtn3H/view?usp=sharing]]
+
+The cost of a message where $$L$$ is the length of the message
+
+$$1/2^{L(x)}$$
+
+In the diagram we can see that a message of $$L=2$$ restricted $$\frac{1}{4}$$ of the message space
+
+''Optimizing Average Length''
+
+$$ \textrm{Average Length} = \sum p_iL_i \textrm{ such that } \sum p_i = 1 \textrm{ and } \sum 1/2^L_i = 1 $$
+
+Using [[lagrange multipliers|Lagrange Multipliers]] we can determine the optimal relationship between $$L$$ and $$p$$
+
+$$ L_i = log_2(1/p_i) $$
+
+Substituting $$L$$ into the average length equation we get the optimized average length aka entropy
+
+''Entropy''
+
+$$
+H = \sum p_i log(1/p_i)
+$$</pre>
+</div>
+<div created="20201201031148356" modified="20201203013438040" tags="" title="Entropy (Physics)">
+<pre>In physics entropy is used to define certain laws in thermodynamics.
+
+One form of the equation is the following
+
+$$
+H(p) = -\sum_{i}^{N} p(i)log(p(i))
+$$
+
+Where $$ p(i) = 1/N $$ and $$N$$ is the number of possible micro-states for a given macro-state
+
+A macro-state consists of summary measures such as volume, heat, pressure, where as, a micro-state consists of information at the molecular level like the speed and direction of all of the molecules in the system.
+
+A macro-state has high entropy if it has a high number of possible micro-states, meaning it is in a less specific configuration.</pre>
+</div>
 <div created="20201027000534040" modified="20201027001416290" tags="" title="ETL Orchestrators">
 <pre>Tools for managing networks of ETL jobs
 
@@ -11165,8 +11258,36 @@ This implementation is prone to &quot;hot spots&quot; where some partitions rece
 
 [[https://github.com/Edwardbafford/General/tree/master/K8s]]</pre>
 </div>
+<div created="20201201030021409" modified="20201210014455038" tags="" title="Lagrange Multipliers">
+<pre>An optimization technique that applies in the following situation
+
+$$ \text{maximize: } f(x,y,...) \\ \text{subject to: } g(x,y,...) = c $$
+
+The intuition is that you follow along the area of the field where $$g$$ remains constant. To $$g$$ the value is constantly at $$c$$. From the perspective of $$f$$ however the values are constantly changing. We want to follow $$g = c$$ and find where $$f$$ is maximized.
+
+To do this we must find where $$\nabla g$$ and $$\nabla f$$ are in the same direction. $$\nabla g$$ will always be pointing perpendicular to $$g = c$$ (or 0). $$\nabla f$$ must also be perpendicular to $$g = c$$ (or 0) because if $$f$$ is at a maximum it must temporarily have a slope of 0 in the direction of $$g = c$$.
+
+[[Diagram|https://drive.google.com/file/d/1PGjflQrAjdlRzV1W34MhgolJLEjOJeFB/view?usp=sharing]]
+
+Therefore $$f$$ is maximized when $$ \nabla f = \lambda \nabla g $$ where $$ \lambda $$ can be any real value.
+
+To do this we set $$ L = f - \lambda g $$ and find $$ \nabla L = 0 $$ 
+
+$$ \frac{dL}{dx} = 0, \frac{dL}{dy} = 0, ..., \frac{dL}{d\lambda} = 0 $$ gives us n + 1 equations with n + 1 variables where n is the dimension of the functions $$f$$ and $$g$$. Which we know from linear algebra is solvable.
+
+We can extent this for more than one $$g$$ function but the intuition remains the same.</pre>
+</div>
 <div created="20201009001229586" modified="20201009001237385" tags="" title="Lamport Timestamp">
 <pre>Tool for creating sequential orders in a distributed system. Tuple of a counter and node id. If the counter for two operations is the same then the node id will be the tie breaker for the order of the operations. See [[example|https://drive.google.com/file/d/1CxlesLLmXzPGAwI6c_3-jjJVlAFAocb9/view?usp=sharing]]</pre>
+</div>
+<div created="20201130021514253" modified="20201201015953065" tags="" title="Language Model">
+<pre>A model that assigns a probability to a sequence of words 
+
+$$ P(w_1^n) = P(w_1, w_2, ..., w_n) $$
+
+''Implementations''
+
+* [[N-Grams|N-Grams]]</pre>
 </div>
 <div created="20201122163312609" modified="20201122164337494" tags="" title="LDAP">
 <pre>A network protocol
@@ -11306,9 +11427,13 @@ Similar to an atomic operation except the client defines when to lock a resource
 This implementation uses the transaction versioning system described in [[Repeatable Reads]] to detect if two transactions have overwritten each other by comparing the data versions of their reads and writes. If an lost update is detected the transaction will fail and have to be tried again. The fact that nothing extra is needed from the application level makes this a great option.
 &quot;&quot;&quot;</pre>
 </div>
-<div created="20201119014956147" modified="20201122162135160" tags="" title="Machine Learning">
+<div created="20201119014956147" modified="20201201031053144" tags="" title="Machine Learning">
 <pre>The process of leveraging data to solve problems without using explicitly defined rules
 
+It's quite incomplete for now, I need to backfill my notes :)
+
+* [[Maximum Likelihood Estimation|Maximum Likelihood Estimation]]
+* [[Entropy|Entropy]]
 </pre>
 </div>
 <div created="20201027000430192" modified="20201027001600598" tags="" title="MapReduce">
@@ -11330,6 +11455,15 @@ The idea is that processing logic runs in parallel and aggregated to perform
 * Group by
 
 Examples - Hive and Pig implement an API through a framework of MapReduce jobs</pre>
+</div>
+<div created="20201201025948379" modified="20201202004105436" tags="" title="Math">
+<pre>''Branches''
+
+* [[Probability|Probability]]
+
+''Other''
+
+* [[Lagrange Multipliers|Lagrange Multipliers]]</pre>
 </div>
 <div created="20201104133245413" modified="20201105235518759" tags="" title="Maven">
 <pre>''Overview''
@@ -11382,6 +11516,23 @@ Again different plugin goals can be linked to phases
 * Execute a phase
 * Execute a goal
 </pre>
+</div>
+<div created="20201201020829889" modified="20201201022602409" tags="" title="Maximum Likelihood Estimation">
+<pre>A method of tuning a model such that the model considers the current data as likely to occur as possible.
+
+The likelihood function $$L$$ where $$X$$ is the input, $$Y$$ is the output, $$P$$ is the probability function for the model, and $$\Theta$$ are the model hyperparameters
+
+$$ 
+L_{X,\Theta} = \prod_{i}^{n}P(Y_i|X_i;\Theta)
+$$
+
+We want to maximize $$L$$ given $$\Theta$$
+
+$$
+\max_{\Theta}(L_{X,\Theta})
+$$
+
+Tuning a model using MLE depends on the underlying structure of the model</pre>
 </div>
 <div created="20201107002907624" modified="20201107003833651" tags="" title="Message Queues">
 <pre>A database for streams. The message queue holds events for consumers and forgets about them once the event is consumed.
@@ -11461,7 +11612,22 @@ Benefits of multiple leader nodes
 ** on read - system stores concurrent writes and lets the reader decide how to handle it
 ** [[versioning systems|Version Vectors]] can add support</pre>
 </div>
-<div created="20201119015206049" modified="20201127011010907" tags="" title="Natural Language Processing">
+<div created="20201130021813907" modified="20201201021514442" tags="" title="N-Grams">
+<pre>A (relatively) simple language model
+
+It is based on an assumption that we can understand the probability of the next word based on a limited sequence of previous words.
+
+$$
+P(w_n|w_1^{n-1}) \approx P(w_n|w_{n-N+1}^{n-1})
+$$
+
+Therefore the probability model for an entire sequence is the following
+
+$$
+P(w_1^n) = \prod_{k = 1}^{n}P(w_k|w_{k-N+1}^{k-1})
+$$</pre>
+</div>
+<div created="20201119015206049" modified="20201130021512087" tags="" title="Natural Language Processing">
 <pre>Using computers to analyze and process human language in a useful way
 
 Topic Index (from low to high level)
@@ -11469,7 +11635,8 @@ Topic Index (from low to high level)
 * [[Regex|Regex]]
 * [[Minimum Edit Distance|Minimum Edit Distance]]
 * [[Corpus|Corpus]]
-* [[Text Normalization|Text Normalization]]</pre>
+* [[Text Normalization|Text Normalization]]
+* [[Language Model|Language Model]]</pre>
 </div>
 <div created="20200930222659176" modified="20201029180904398" tags="" title="NFL Football">
 <pre>Fast LB's allow for a more aggressive DL scheme because they will cover up any holes that are left
@@ -11521,6 +11688,22 @@ Reads are quick but writes can force the DBMS to re-structure the storage struct
 
 A common implementation is the [[B-tree|https://drive.google.com/file/d/1YGxub6aMBYqkG9VpiQxcfiRpx-UiKc16/view?usp=sharing]].</pre>
 </div>
+<div created="20201202004014192" modified="20201202011727508" tags="" title="Probability">
+<pre>Branch of Mathematics for describing the likelihood of an event
+
+A probability is a value between 0 and 1 where 0 represents an impossible outcome and 1 represents an absolutely certain event
+
+''Probability Distributions''
+
+A mathematical function which describes the probability of various events
+
+$$
+P(x)
+$$
+
+* [[Categorical|Categorical Distribution]]
+</pre>
+</div>
 <div created="20200827234124593" modified="20201006232042864" tags="software" title="Python">
 <pre>[[Github|https://github.com/Edwardbafford/General/tree/master/python]]
 
@@ -11553,7 +11736,7 @@ Components:
 * Trigger Builder - create trigger based off of a config
 * Scheduler - schedules and executes a job based on a given trigger and job</pre>
 </div>
-<div created="20200922141010974" modified="20201116030740169" tags="" title="Random">
+<div created="20200922141010974" modified="20201127015154562" tags="" title="Random">
 <pre>''Day Dreams''
 
 My original ideas
@@ -11990,7 +12173,7 @@ The general steps:
 
 A &quot;domain controller&quot; server manages all credentials and access for each device on the network</pre>
 </div>
-<div created="20201127011002391" modified="20201127011836162" tags="" title="Word Normalization">
+<div created="20201127011002391" modified="20201130020737569" tags="" title="Word Normalization">
 <pre>A second layer of normalization on top of [[tokens|Tokenization]]  to help standard the text
 
 * spelling
@@ -12004,7 +12187,7 @@ Converting a token to it's morphological root
 * stem - the base or root of a word
 * affixes - a language unit (morpheme) used to alter the meaning of a stem
 
-There is no easy way to lemmatize a word.. we must use complex morphological parsers..</pre>
+There is no easy way to lemmatize a word.. we must use complex ''morphological parsers''..</pre>
 </div>
 <div created="20200915230713079" modified="20200915232545707" tags="data theory" title="Write Skew">
 <pre>&quot;&quot;&quot;
