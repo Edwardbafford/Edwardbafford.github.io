@@ -215,6 +215,8 @@ Error message and password prompt
 
 <li>Authentication</li>
 
+<li>Backoff Smoothing (N-grams)</li>
+
 <li>Batch Processing</li>
 
 <li>Caching</li>
@@ -236,6 +238,8 @@ Error message and password prompt
 <li>Corpus</li>
 
 <li>Cross Entropy</li>
+
+<li>Cross Entropy (Loss Function)</li>
 
 <li>Dask</li>
 
@@ -305,6 +309,8 @@ Error message and password prompt
 
 <li>Intelligence</li>
 
+<li>Interpolation Smoothing (N-grams)</li>
+
 <li>Introduction</li>
 
 <li>Java</li>
@@ -313,6 +319,8 @@ Error message and password prompt
 
 <li>Key Range Partitioning</li>
 
+<li>Kneser-Ney Smoothing (N-grams)</li>
+
 <li>Kubernetes</li>
 
 <li>Lagrange Multipliers</li>
@@ -320,6 +328,8 @@ Error message and password prompt
 <li>Lamport Timestamp</li>
 
 <li>Language Model</li>
+
+<li>Laplace Smoothing (N-grams)</li>
 
 <li>LDAP</li>
 
@@ -365,6 +375,8 @@ Error message and password prompt
 
 <li>On Disk Storage (DB)</li>
 
+<li>Perplexity</li>
+
 <li>Probability</li>
 
 <li>Python</li>
@@ -374,6 +386,8 @@ Error message and password prompt
 <li>Random</li>
 
 <li>Read your Writes</li>
+
+<li>README</li>
 
 <li>Regex</li>
 
@@ -422,6 +436,8 @@ Error message and password prompt
 <li>Version Vectors</li>
 
 <li>Web Application Architecture</li>
+
+<li>Web Application Code Design</li>
 
 <li>Web Application Sessions</li>
 
@@ -10064,7 +10080,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20201210005607076" list="Introduction [[Natural Language Processing]] [[Language Model]] N-Grams [[Computer Science]] [[Machine Learning]] Entropy [[Entropy (Information Theory)]] [[Lagrange Multipliers]] [[Entropy (Physics)]] [[Cross Entropy]] Math Random" modified="20201210005625842" title="$:/StoryList">
+<div created="20201214204959708" list="Introduction [[Natural Language Processing]] [[Language Model]] N-Grams [[Backoff Smoothing (N-grams)]] [[Computer Science]] [[Machine Learning]] Math Random" modified="20201214221842107" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20201012173622690" modified="20201012173622690" title="$:/temp/advancedsearch">
@@ -10131,7 +10147,7 @@ Error message and password prompt
 <div created="20200828140319089" modified="20200828140319089" title="$:/temp/NewTagName">
 <pre></pre>
 </div>
-<div created="20200827210236856" modified="20201027000056778" title="$:/temp/search">
+<div created="20200827210236856" modified="20201211211555924" title="$:/temp/search">
 <pre></pre>
 </div>
 <div created="20200827210410769" modified="20200827210412400" title="$:/theme">
@@ -10383,6 +10399,19 @@ This architecture involves a user, an application, and an authentication server.
 This standard is great for large, distributed systems because authentication only needs to be implemented in one spot for the entire system and often can just be delegated to a third party implementation.
 </pre>
 </div>
+<div created="20201213230714516" modified="20201214224948560" title="Backoff Smoothing (N-grams)">
+<pre>If a certain N-gram model has a probability of zero then a lower N-gram model is used. In order to keep the probability at 1 the current N-gram probabilities need to be decreased or discounted and the backoff N-gram models need to be limited respectively.
+
+$$ P_{BO}(w_k|w_{k-N+1}^{k-1}) = \begin{cases} P^*(w_k|w_{k-N+1}^{k-1}) &amp; \textrm{if } C(w_{k-N+1}^{k-1}w_k) &gt; 0\\ \alpha (w_{k-N+1}^{k-1}) P_{BO}(w_k|w_{k-N+2}^{k-1}) &amp; \textrm{else} \end{cases} $$
+
+$$P^*$$ and $$\alpha$$ are balanced to keep the sum of all probabilities equal to one.
+
+The [[good turing backoff algorithm|https://rpubs.com/leomak/TextPrediction_KBO_Katz_Good-Turing]] is used to determine these values
+
+''Notes''
+
+* Lower N-grams are only used when necessary</pre>
+</div>
 <div created="20201026234203389" modified="20201027000547604" tags="" title="Batch Processing">
 <pre>''Philosophies''
 
@@ -10444,7 +10473,7 @@ $$ \forall i, p_i &gt; 0 $$
 
 $$ \sum p_i = 1 $$</pre>
 </div>
-<div created="20200828173348895" modified="20201124225028528" title="Computer Science">
+<div created="20200828173348895" modified="20201211205203570" title="Computer Science">
 <pre>''Theory''
 
 Data:
@@ -10459,7 +10488,9 @@ Web Applications:
 * [[Architecture|Web Application Architecture]]
 * [[Sessions|Web Application Sessions]]
 * [[Authentication|Authentication]]
+* [[Code Design|Web Application Code Design]]
 * [[Caching|Caching]]
+* [[README|README]]
 
 Protocols:
 
@@ -10576,6 +10607,28 @@ k and B vary based on the corpus genre, language, time of creation, etc.</pre>
 </div>
 <div created="20201201031140729" modified="20201201031142134" tags="" title="Cross Entropy">
 <pre></pre>
+</div>
+<div created="20201210210643811" modified="20201210224724477" tags="" title="Cross Entropy (Loss Function)">
+<pre>Using cross entropy as a loss function comes from using [[maximum likelihood estimation|Maximum Likelihood Estimation]] on [[categorical|Categorical Distribution]] output.
+
+MLE is defined as $$ max(P(Y|X; \theta)) $$ which is equivalent to $$ max(log(P(Y|X; \theta))) $$
+
+Now the probabilistic definition of a set of categorical outputs. Where $$n$$ is the number of samples in a batch and $$q_i$$ is the probability of $$x_i$$ mapping to the $$y_i$$ cateogry.
+
+$$ \displaystyle P(Y|X; \theta) = \prod^{n}_{i} p(y_i|x_i; \theta) = \prod^{n}_{i} q_i$$
+
+Therefore 
+
+$$ log(P(Y|X; \theta)) = \sum^{n}_{i} log(q_i) $$
+
+This equation is what we calculate as a loss, so why is it called cross entropy
+
+If we look at a single instance we get the following equation where $$N$$ is the number of categories, $$p_i = 0; i \neq j$$, $$p_j = 1$$, and $$j$$ is the index of the output category $$y$$
+
+$$ p(y|x; \theta) = log(q) = \sum_{i}^{N} p_i log(q_i)$$
+
+In essence, $$log(q)$$ is a special type of cross entropy where all the probability is focused into one category. And we are therefore assuming that any $$x$$ of this value has a 100% chance of mapping to this $$y$$, which may not necessarily be true.
+</pre>
 </div>
 <div created="20201001231154703" modified="20201006201113619" tags="" title="Dask">
 <pre>Dask is a python framework designed to automatically take computationally heavy code and convert it into a set of parallel processes. The idea is that interacting functions form a graph which dask can then automatically split up into parallel processes just by analyzing the graph.
@@ -11166,6 +11219,19 @@ Both of these groups of people can be considered very intelligent, but the types
 Another point of variance in intelligence is the types of models that are being built. Some people build very shallow models that are closely tied to the senses. This allows them to differentiate noises or which way of throwing a Frisbee goes the furthest. Their abstractions are about subtle differences in their senses. Other people build very deep models which are far removed from the senses and that allow them to make connections between seemingly unrelated ideas. The trade off between these types of models is skill vs creativity.
 &quot;&quot;&quot;</pre>
 </div>
+<div created="20201213222405824" modified="20201214205315935" title="Interpolation Smoothing (N-grams)">
+<pre>Combine the probabilities of all N-grams smaller than N. 
+
+$$ P(w_k|w_{k-N+1}^{k-1})  = \lambda_1P(w_k|w_{k-N+1}^{k-1}) + \lambda_2P(w_k|w_{k-N + 2}^{k-1}) + ... + \lambda_NP(w_k)$$
+
+The lambda values need to be tuned through a hold out set and an optimization method, such as the [[EM algorithm|https://en.wikipedia.org/wiki/Expectation%E2%80%93maximization_algorithm]]
+
+If you want the N lambda values can be tuned for each context $$w_{k-N+1}^{k-1}$$
+
+''Notes''
+
+* All N-grams are used to create a probability</pre>
+</div>
 <div created="20201026233315177" modified="20201107000522211" tags="" title="Introduction">
 <pre>If you're here from the internet, welcome! This is my personal wiki where I aggregate things I've learned for my own reference. It also serves as a way to showcase my experience to prospective employers.
 
@@ -11253,12 +11319,43 @@ This implementation is prone to &quot;hot spots&quot; where some partitions rece
 
 [[Diagram|https://drive.google.com/file/d/1nLf6h7XzPEkmJICMnfUtP5IfmB40HlZU/view?usp=sharing]]</pre>
 </div>
+<div created="20201214221148548" modified="20201214224354156" title="Kneser-Ney Smoothing (N-grams)">
+<pre>* A recursive form of interpolation
+* High order N-gram probabilities are discounted in a way that minimize the disruption to high count N-grams
+** We don't trust low count N-grams as is so we don't care if we disrupt their probability
+* Probabilities derived from low order N-grams are calculated based on a versatility measurement
+** Higher probabilities should be given to word/word sequences that lend themselves to novel situation, which would explain why we haven't seen the combination before
+** Seeing a new word in front of Kong (as in Hong Kong) is weirder than seeing a new word in front of people
+
+''Definitions''
+
+This &quot;versatility measure&quot; is called continuation count and is essentially the number of different prefixes that have been found with a word/word sequence
+
+$$ \textrm{continuationcount}(w) = |\{v: C(vw) &gt; 0\}| $$
+
+Next we define a special count function for the recursive interpolation function. At the highest order N-gram we want to use the regular MLE parameters based on count. For the lower order N-grams we will use the continuation count as the better metric.
+
+$$c_{KN}(w) = \begin{cases} \textrm{count}(w) &amp; \textrm{for highest order N-gram} \\ \textrm{continuationcount}(w) &amp; \textrm{for lower order N-grams} \end{cases} $$
+
+The full equation, note
+
+* d is $$ 0 &lt; d &lt; 1 $$ and only effects the top count unless that count is 0
+* d can be determined manually or automatically through a hold out set and can even very for each order of the N-gram
+* $$\lambda$$ is used as an interpolation coefficient to return whatever fraction of the lower order probability distribution was taken away by the discount d (we will define this next)
+* To end the recursion $$ \lambda(\epsilon)P_{KN}(\epsilon) = 1/V $$, weighing each word in the vocabulary equally
+
+$$ P_{KN}(w_i|w^{i-1}_{i-N+1}) = max(c_{KN}(w^i_{i-N+1} - d, 0) / c_{KN}(w^{i - 1}_{i-N+1}) + \lambda(w^{i - 1}_{i-N+1})P_{KN}(w_i|w^{i-1}_{i-N+2})$$
+
+Again the lambda function needs to give the same proper proportion of the lower order probability that was taken away by d in the first section of the function.
+
+$$ \lambda(w) = [d/c_{KN}(w)] * |\{v: C(wv) &gt; 0\}| $$</pre>
+</div>
 <div created="20200827234235959" modified="20200827235504892" tags="software devops" title="Kubernetes">
 <pre>Tool for managing distributed software. Uses [[Docker|Docker]] to containerize processes and uses configuration to manage them across a cluster
 
 [[https://github.com/Edwardbafford/General/tree/master/K8s]]</pre>
 </div>
-<div created="20201201030021409" modified="20201210014455038" tags="" title="Lagrange Multipliers">
+<div created="20201201030021409" modified="20201211211608378" tags="" title="Lagrange Multipliers">
 <pre>An optimization technique that applies in the following situation
 
 $$ \text{maximize: } f(x,y,...) \\ \text{subject to: } g(x,y,...) = c $$
@@ -11273,21 +11370,43 @@ Therefore $$f$$ is maximized when $$ \nabla f = \lambda \nabla g $$ where $$ \la
 
 To do this we set $$ L = f - \lambda g $$ and find $$ \nabla L = 0 $$ 
 
-$$ \frac{dL}{dx} = 0, \frac{dL}{dy} = 0, ..., \frac{dL}{d\lambda} = 0 $$ gives us n + 1 equations with n + 1 variables where n is the dimension of the functions $$f$$ and $$g$$. Which we know from linear algebra is solvable.
+$$ \frac{dL}{dx} = 0, \frac{dL}{dy} = 0, ..., g(x,y,...) = c $$ gives us n + 1 equations with n + 1 variables where n is the dimension of the functions $$f$$ and $$g$$. Which we know from linear algebra is solvable.
 
 We can extent this for more than one $$g$$ function but the intuition remains the same.</pre>
 </div>
 <div created="20201009001229586" modified="20201009001237385" tags="" title="Lamport Timestamp">
 <pre>Tool for creating sequential orders in a distributed system. Tuple of a counter and node id. If the counter for two operations is the same then the node id will be the tie breaker for the order of the operations. See [[example|https://drive.google.com/file/d/1CxlesLLmXzPGAwI6c_3-jjJVlAFAocb9/view?usp=sharing]]</pre>
 </div>
-<div created="20201130021514253" modified="20201201015953065" tags="" title="Language Model">
+<div created="20201130021514253" modified="20201211220338512" tags="" title="Language Model">
 <pre>A model that assigns a probability to a sequence of words 
 
 $$ P(w_1^n) = P(w_1, w_2, ..., w_n) $$
 
 ''Implementations''
 
-* [[N-Grams|N-Grams]]</pre>
+* [[N-Grams|N-Grams]]
+
+''Evaluating Performance''
+
+* External validation - measuring performance on new data
+* Internal validation - using a metric
+** [[Perplexity|Perplexity]]</pre>
+</div>
+<div created="20201213220836800" modified="20201214205106652" title="Laplace Smoothing (N-grams)">
+<pre>Simple universal update to all the N-gram parameters
+
+$$ P(w_k|w_{k-N+1}^{k-1}) = [C(w_{k-N+1}^{k-1}w_k) + k]/ [C(w_{k-N+1}^{k-1}) + kV] $$
+
+where $$k$$ is any amount (usually small - 1, .5, .1, .05 etc.)  and $$V$$ is the size of the vocabulary. 
+
+Probabilities lower than $$k/kV$$ are increased while all other are decreased. 
+
+The lowest possible probability will be $$k/ [C(w_{k-N+1}^{k-1}) + kV]$$
+
+''Notes''
+
+* Extremely simple to implement
+* N-grams with no counts are all treated equally</pre>
 </div>
 <div created="20201122163312609" modified="20201122164337494" tags="" title="LDAP">
 <pre>A network protocol
@@ -11427,14 +11546,17 @@ Similar to an atomic operation except the client defines when to lock a resource
 This implementation uses the transaction versioning system described in [[Repeatable Reads]] to detect if two transactions have overwritten each other by comparing the data versions of their reads and writes. If an lost update is detected the transaction will fail and have to be tried again. The fact that nothing extra is needed from the application level makes this a great option.
 &quot;&quot;&quot;</pre>
 </div>
-<div created="20201119014956147" modified="20201201031053144" tags="" title="Machine Learning">
+<div created="20201119014956147" modified="20201210210640928" tags="" title="Machine Learning">
 <pre>The process of leveraging data to solve problems without using explicitly defined rules
 
 It's quite incomplete for now, I need to backfill my notes :)
 
 * [[Maximum Likelihood Estimation|Maximum Likelihood Estimation]]
 * [[Entropy|Entropy]]
-</pre>
+
+''Loss Functions''
+
+* [[Cross Entropy|Cross Entropy (Loss Function)]]</pre>
 </div>
 <div created="20201027000430192" modified="20201027001600598" tags="" title="MapReduce">
 <pre>Parallel processing framework, usually run on top of a [[distributed file system|Distributed File System]]
@@ -11612,8 +11734,10 @@ Benefits of multiple leader nodes
 ** on read - system stores concurrent writes and lets the reader decide how to handle it
 ** [[versioning systems|Version Vectors]] can add support</pre>
 </div>
-<div created="20201130021813907" modified="20201201021514442" tags="" title="N-Grams">
-<pre>A (relatively) simple language model
+<div created="20201130021813907" modified="20201213231446924" tags="" title="N-Grams">
+<pre>''General''
+
+A (relatively) simple language model
 
 It is based on an assumption that we can understand the probability of the next word based on a limited sequence of previous words.
 
@@ -11621,11 +11745,48 @@ $$
 P(w_n|w_1^{n-1}) \approx P(w_n|w_{n-N+1}^{n-1})
 $$
 
-Therefore the probability model for an entire sequence is the following
+Therefore the probability model for an entire sequence is the following, where $$n$$ is the length of the sentence and $$N$$ is the size of the N-gram.
 
 $$
 P(w_1^n) = \prod_{k = 1}^{n}P(w_k|w_{k-N+1}^{k-1})
-$$</pre>
+$$
+
+* Essentially an extremely large categorical distribution - prone to overfitting
+* White box model - easy to trace and therefore tune the source of the output
+
+''Parameterizing''
+
+In order to determine the probability of a given output $$ P(w_k|w_{k-N+1}^{k-1}) $$, we can use [[maximum likelihood estimation|Maximum Likelihood Estimation]]
+
+Check out [[this|https://leimao.github.io/blog/Maximum-Likelihood-Estimation-Ngram/]] fantastic blog for details but essentially you can use a lagrange multiplier to 
+
+$$ \displaystyle \text{maximize: } log(P(w_n|w_1^{n-1})) \\ \text{subject to: } \sum_{n=1}^{V} P(w_n|w_1^{n-1}) = 1 $$
+
+It turns out to simply be the relative frequency ($$C$$ is the count function)
+
+$$ P(w_k|w_{k-N+1}^{k-1}) = C(w_{k-N+1}^{k-1}w_k) / C(w_{k-N+1}^{k-1}) $$
+
+
+''Smoothing''
+
+Smoothing adjusts the parameters of the N-gram model such that all possible word combinations have at least a small amount of probability. 
+
+If we went strictly by the MLE parameterization it is possible or even likely that some word combinations result in a probability of zero, which is obviously not true. By smoothing we increase the robustness of the model by moving away from the &quot;optimized&quot; parameters.
+
+We must be very careful to not break the probability constraint of 
+
+$$ \sum_{n=1}^{V} P(w_n|w_1^{n-1}) = 1 $$
+
+In essence, we must give the exact amount of probability to some parameters as we take away from others.
+
+* [[Laplace Smoothing|Laplace Smoothing (N-grams)]]
+* [[Backoff|Backoff Smoothing (N-grams)]]
+* [[Interpolation|Interpolation Smoothing (N-grams)]]
+* [[Kneser-Ney Smoothing|Kneser-Ney Smoothing (N-grams)]]
+
+''Unknown Terms''
+
+New tokens that haven't been seen by the N-gram model can be converted to a special&lt;unk&gt; token. Even terms with very low frequencies can be converted to this as well.</pre>
 </div>
 <div created="20201119015206049" modified="20201130021512087" tags="" title="Natural Language Processing">
 <pre>Using computers to analyze and process human language in a useful way
@@ -11687,6 +11848,19 @@ An on disk data structure organizes indexes and a links the indexes to the entri
 Reads are quick but writes can force the DBMS to re-structure the storage structure causing it to be a little slower.
 
 A common implementation is the [[B-tree|https://drive.google.com/file/d/1YGxub6aMBYqkG9VpiQxcfiRpx-UiKc16/view?usp=sharing]].</pre>
+</div>
+<div created="20201211214141631" modified="20201211215209433" tags="" title="Perplexity">
+<pre>''Definition''
+
+$$ PP(Corpus) = \sqrt[N]{1 / P(w_1,w_2,...,w_N)} $$
+
+A high $$P(w_1,w_2,...,w_N)$$ creates a lower $$PP$$. We want to minimize $$PP$$ because this means the language model understands the language and is assigning a high probability of the text occurring.
+
+The language model must cross sentence boundaries
+
+Each vocabulary and dialect has an inherent perplexity so $$PP$$ should only be compared for the same vocabularies and corpuses.
+
+''Derivation''</pre>
 </div>
 <div created="20201202004014192" modified="20201202011727508" tags="" title="Probability">
 <pre>Branch of Mathematics for describing the likelihood of an event
@@ -11764,6 +11938,16 @@ Other
 ''Solutions''
 
 Depends on your systems architecture but in general the solution is to track update times and find nodes that are up to date past those times</pre>
+</div>
+<div created="20201210171947063" modified="20201210172349226" tags="" title="README">
+<pre>Simple documentation file to help users orient themselves with the software
+
+IN MY OPINION.. READMEs should have the following
+
+* descriptions of key components of the system and how they effect the application
+* how to setup a local environment
+* how to execute key processes - start up, deploy, etc.
+</pre>
 </div>
 <div created="20201119015555526" modified="20201119020050237" tags="" title="Regex">
 <pre>Regular Expressions
@@ -12154,6 +12338,30 @@ Serializing a database in this way comes at the cost of performance issues and p
 Browsers will only allow front ends to communicate with the same web server they came from for security purposes, which is what forces the front end and back end to be tightly coupled.
 
 [[Diagram|https://drive.google.com/file/d/1KXF9lDYh_c-UkmZBhreauln4gVtXccv4/view?usp=sharing]]</pre>
+</div>
+<div created="20201211205205015" modified="20201211210755236" tags="" title="Web Application Code Design">
+<pre>''General''
+
+* Define all used variables at the top of methods
+* Don't handle exceptions unless there is a specific functional benefit
+
+''Controllers''
+
+* Map request to beans
+* Map beans to response
+* Simple high level logging
+* Handle all exceptions that float up from the application
+
+''Services''
+
+* Communicate with the controller layer through request/response beans
+* High level orchestration
+* Helper functions which pass beans into manager methods and return an updated bean
+
+''Managers''
+
+* Hold the hard core logic of the application
+* Some logging can be used to signify the completion of an important component</pre>
 </div>
 <div created="20200923143237172" modified="20200923143902744" tags="" title="Web Application Sessions">
 <pre>For [[web applications|Web Application Architecture]], sessions are a tool for remembering temporary information about a client. If a client is continuously communicating with a server a session will allow the server to remember things they've talked about. Once the session expires this data will be forgotten. Sessions are managed by the web server and applications embedded in the web servers are able to use the sessions as they need.
