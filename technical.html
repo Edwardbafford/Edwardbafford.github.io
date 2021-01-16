@@ -169,6 +169,8 @@ Error message and password prompt
 
 <li>$:/state/image-picker/system-1024267586</li>
 
+<li>$:/state/Link/--553669807/search</li>
+
 <li>$:/state/showeditpreview</li>
 
 <li>$:/state/sidebar</li>
@@ -217,6 +219,8 @@ Error message and password prompt
 
 <li>Backoff Smoothing (N-grams)</li>
 
+<li>Bag-of-words</li>
+
 <li>Batch Processing</li>
 
 <li>Bayes Theorem</li>
@@ -226,6 +230,8 @@ Error message and password prompt
 <li>Bayesian Statistics</li>
 
 <li>Bernoulli Distribution</li>
+
+<li>Bernoulli Naive Bayes</li>
 
 <li>Beta Distribution</li>
 
@@ -241,6 +247,8 @@ Error message and password prompt
 
 <li>Categorical Distribution</li>
 
+<li>Categorical Generative Model</li>
+
 <li>Classification</li>
 
 <li>Clustering</li>
@@ -255,13 +263,13 @@ Error message and password prompt
 
 <li>Coordination Services</li>
 
-<li>Corpus</li>
-
 <li>Correlation vs Caustion</li>
 
 <li>Cross Entropy</li>
 
 <li>Cross Entropy (Loss Function)</li>
+
+<li>Cross Validation</li>
 
 <li>Cumulative Distribution</li>
 
@@ -349,6 +357,8 @@ Error message and password prompt
 
 <li>Hash Partitioning</li>
 
+<li>Holdout Dataset</li>
+
 <li>Interpolation Smoothing (N-grams)</li>
 
 <li>Java</li>
@@ -407,7 +417,13 @@ Error message and password prompt
 
 <li>Multinomial Distribution</li>
 
+<li>Multinomial Naive Bayes</li>
+
 <li>N-Grams</li>
+
+<li>Naive Bayes</li>
+
+<li>Naive Bayes (Bag-of-words)</li>
 
 <li>Natural Language Processing</li>
 
@@ -473,6 +489,8 @@ Error message and password prompt
 
 <li>Statistics and Probability</li>
 
+<li>Stop Words</li>
+
 <li>Stored Procedure</li>
 
 <li>Stream Processing</li>
@@ -484,8 +502,6 @@ Error message and password prompt
 <li>Term Partitioned Indexes</li>
 
 <li>Text Encoding</li>
-
-<li>Text Normalization</li>
 
 <li>Tokenization</li>
 
@@ -10119,6 +10135,9 @@ Error message and password prompt
 <div created="20200828152002033" modified="20200828152251232" title="$:/state/image-picker/system-1024267586">
 <pre>hide</pre>
 </div>
+<div created="20210114233130585" modified="20210114233132488" title="$:/state/Link/--553669807/search">
+<pre>Spam Detection</pre>
+</div>
 <div created="20201220171625704" modified="20201220175338588" title="$:/state/showeditpreview">
 <pre>yes</pre>
 </div>
@@ -10149,7 +10168,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20210103163624707" list="[[Computer Science]] [[Machine Learning]] Math [[Statistics and Probability]]" modified="20210104014834928" title="$:/StoryList">
+<div created="20210116004858305" list="[[Machine Learning]] [[Supervised Learning]] [[Natural Language Processing]] Bag-of-words [[Naive Bayes (Bag-of-words)]] Math" modified="20210116023835742" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20201012173622690" modified="20201012173622690" title="$:/temp/advancedsearch">
@@ -10216,7 +10235,7 @@ Error message and password prompt
 <div created="20200828140319089" modified="20200828140319089" title="$:/temp/NewTagName">
 <pre></pre>
 </div>
-<div created="20200827210236856" modified="20201211211555924" title="$:/temp/search">
+<div created="20200827210236856" modified="20210114232822447" title="$:/temp/search">
 <pre></pre>
 </div>
 <div created="20200827210410769" modified="20200827210412400" title="$:/theme">
@@ -10455,6 +10474,23 @@ The [[good turing backoff algorithm|https://rpubs.com/leomak/TextPrediction_KBO_
 
 * Lower N-grams are only used when necessary</pre>
 </div>
+<div created="20210106010205065" modified="20210115005822844" title="Bag-of-words">
+<pre>A method for generating features for machine learning from text
+
+The idea is to get just the count of each word from the text for an entire shared vocabulary
+
+In this way the Bag-of-words method only cares about occurrence not order
+
+Unknown words can be ignored
+
+A bag-of-words feature model is often used with a [[naive bayes|Naive Bayes (Bag-of-words)]] learning model for classification tasks
+
+''Modifications''
+
+* [[Stop Words]] - remove most common words
+* Group some words together as one word or limit the vocabulary in some other way
+* Use dependencies to alter or create new words</pre>
+</div>
 <div created="20201026234203389" modified="20201027000547604" tags="" title="Batch Processing">
 <pre>''Philosophies''
 
@@ -10527,6 +10563,40 @@ $$ p_A, p_B &gt; 0$$
 $$ p_A + p_B = 1 $$
 
 The random variable of a bernoulli distribution represent a binary event.</pre>
+</div>
+<div created="20210107203458973" modified="20210114232813414" title="Bernoulli Naive Bayes">
+<pre>For a Bernoulli Naive Bayes model we have 
+
+$$ L(Y|X) = \prod_{f \in F} P(f|Y)P(Y)  $$
+
+where the feature probabilities are Bernoulli events with Binary outcomes
+
+This means $$f_j$$ either equals $$0$$ or $$1$$
+
+$$ \displaystyle P(f_j|Y_i) = \theta_{ji}  = \frac{m_{ji}}{N_{i}}$$
+
+Where $$N_i$$ is the number $$Y_i$$ outputs and $$m_{ji}$$ is the number of $$f_j = 1$$ for the given $$Y_i$$
+
+ Optimized parameters for $$P(Y)$$ are defined for a [[categorical generative model|Categorical Generative Model]]
+
+$$ \displaystyle P(Y_i) = \frac{m_i}{\sum_j m_j} $$
+
+''Derivation''
+
+See [[this|https://mattshomepage.com/articles/2016/Jun/07/bernoulli_nb/]] nice blog for full details
+
+Using [[MLE|Maximum Likelihood Estimation]]
+
+$$ \displaystyle \prod_{i}^{n}P(Y_i|X_i;\Theta) =  \prod_{i}^{n}\prod_j^dP(f_j|Y_i)P(Y_i)$$
+
+* consolidate probabilities of $$1$$ and $$0$$ values for $$P(f_j|Y_i)$$
+* $$C$$ represents the product of everything else which is a constant with respect to $$\theta_{ji}$$
+
+$$ \displaystyle \theta_{ji}^{m_{ji}}(1 - \theta_{ji})^{N_i-m_{ji}}C $$
+
+Use calculus to find $$\theta_{ji}$$ which maximizes the function
+
+$$ \displaystyle \theta_{ji} = \frac{m_{ji}}{N_{i}} $$</pre>
 </div>
 <div created="20210103225239693" modified="20210103231606267" title="Beta Distribution">
 <pre>$$\displaystyle P(p; \alpha, \beta) = \frac{1}{B(\alpha, \beta)}p^{\alpha-1}(1-p)^{\beta-1} : p \in [0,1]$$
@@ -10627,8 +10697,129 @@ $$ \sum p_i = 1 $$
 
 It represents a generalization of the [[bernoulli|Bernoulli Distribution]] distribution.</pre>
 </div>
-<div created="20201220194652999" modified="20201220194847109" title="Classification">
-<pre>$$y$$ is a categorical variable, one of a set.</pre>
+<div created="20210107213533358" modified="20210114005439469" title="Categorical Generative Model">
+<pre>For a categorical generative model we have
+
+$$\displaystyle P(Y|X) = \frac{P(X|Y)P(Y)}{P(X)}$$
+
+$$Y \in \{ C_1, C_2, ..., C_k\}$$
+
+We can determine a (data based) optimal parameter for $$P(Y_i)$$ independent of the underlying implementation of $$P(X|Y)P(Y)$$
+
+$$ \displaystyle P(Y_i) = \frac{m_i}{\sum_j m_j} $$
+
+''Derivation''
+
+We can use [[maximum likelihood estimation|Maximum Likelihood Estimation]] to parameterize $$P(Y)$$
+
+$$ \displaystyle log(\prod_{i}^{n}P(Y_i|X_i;\Theta)) =  \sum_{i}^{n}log(P(X_i|Y_i)) + \sum_{i}^{n}log(P(Y_i))$$
+
+* Drop terms without $$P(Y_i)$$
+* Consolidate the $$P(Y_i)$$ in terms of the counts of each category
+
+$$ \displaystyle m_1log(P(Y_1)) + m_2log(P(Y_2)) + ... + m_klog(P(Y_k)) = \sum_i^km_ilog(P(Y_i))$$
+
+With the following constraint based on the rules of a [[categorical distribution|Categorical Distribution]]
+
+$$ \displaystyle  \sum_i^kP(Y_i) = 1$$
+
+Given an equation to optimize along with a constraint we can use the [[Lagrange Multipliers]] technique to determine the optimal parameters
+
+In this case it turns out
+
+$$ \displaystyle P(Y_i) = \frac{m_i}{\sum_j m_j} $$</pre>
+</div>
+<div created="20201220194652999" modified="20210116023354709" title="Classification">
+<pre>Output is one of a set
+
+$$y \in {{C_1, C_2, ..., C_k}}$$
+
+! ''Metrics''
+
+A value to determine the performance of the classification algorithm
+
+[img[images/Classification.jpg]]
+
+!!''Accuracy''
+
+* Total correct guesses over all guesses
+* Can ignore performance of some classes in unbalanced datasets
+
+$$ \displaystyle accuracy = \frac{t_{c_1} + t_{c_2}}{t_{c_1} + f_{c_1}+ t_{c_2} + f_{c_2}} $$
+
+!! ''Precision''
+
+* correctly identified over all guesses of a class
+
+$$ \displaystyle precision = \frac{t_{c_1}}{t_{c_1} + f_{c_1}} $$
+
+!!''Recall''
+
+* correctly identified over all instances of a class
+
+$$ \displaystyle recall = \frac{t_{c_1}}{t_{c_1} + f_{c_2}} $$
+
+!!''F-score''
+
+* Precision and Recall are good for measuring different perspectives of a single class
+* F-score combines these two metrics into a single metric
+* The F-score tends towards the lower metric, so an F-score needs both a high Precision and Recall to be good
+
+!!!''Derivation''
+
+* A form of the harmonic mean
+
+$$ 
+\displaystyle \textrm{HarmonicMean}(a_1,a_2,...,a_n) = \frac{n}{\frac{1}{a_1} + \frac{1}{a_2} + ... + \frac{1}{a_n}} 
+$$
+
+* With precision and recall as inputs
+
+$$ 
+\displaystyle F = \frac{1}{\alpha\frac{1}{P} + (1-\alpha)\frac{1}{R}} 
+$$
+
+* Create a term $$\beta^2$$ to represent a ratio of importance between Precision and Recall
+
+$$ 
+\displaystyle \beta^2 = \frac{1-\alpha}{\alpha} 
+$$
+
+* Which creates the final form of the F-score
+
+$$ 
+\displaystyle F = \frac{(\beta^2+1)PR}{\beta^2P + R} 
+$$
+
+* Usually $$\beta^2 = 1$$
+
+$$
+\displaystyle F_1 = \frac{2PR}{P+R}
+$$
+
+! ''Multi-Classification''
+
+!! ''Types''
+
+* ''any-of''/''multi-label'' - each instance can have multiple classes assigned to it
+* ''one-of''/''multinomial'' - each instance has exactly one class
+
+!! ''Metrics''
+
+* Accuracy, Precision, and Recall &quot;scale&quot; to any number of classes
+
+[img[images/Multi-Classification.jpg]]
+
+!!! ''F-score''
+
+* F-score needs a single precision or recall
+* In multi-classification problems we can aggregate the precision and recall metrics into a single precision and recall value
+** Micro-average - add up by counts
+** Macro-average - average all metrics
+
+[img[images/Multi-class F-score.jpg]]
+
+* Because macro-average isn't effected by unbalanced datasets its the more common choice</pre>
 </div>
 <div created="20201220180304399" modified="20201220180334633" title="Clustering">
 <pre>Maps data points to one of K clusters
@@ -10752,21 +10943,6 @@ Examples
 
 The services implement consensus algorithms and therefor are linearizable. Used as a way of outsourcing [[linearizable benefits|Linearizability]] and can be used as a &quot;consultant&quot; for these kinds of tasks without the [[drawbacks|Consensus]] of a large consensus system.</pre>
 </div>
-<div created="20201127010432893" modified="20201127011040859" tags="" title="Corpus">
-<pre>Collection of text/speech data
-
-Tokens - list of partitioned terms in the corpus or section of the corpus, see [[tokenization|Tokenization]]
-
-Vocabulary - set of distinct terms in the  corpus or section of the corpus
-
-''Heap's Law''
-
-The relationship between the number of tokens (N) and the size of the vocabulary (|V|)
-
-$$ |V| = kN^B $$
-
-k and B vary based on the corpus genre, language, time of creation, etc.</pre>
-</div>
 <div created="20210104015100111" modified="20210104020227552" title="Correlation vs Caustion">
 <pre>''Correlation'' - two variables vary together
 
@@ -10809,6 +10985,22 @@ $$ p(y|x; \theta) = log(q) = \sum_{i}^{N} p_i log(q_i)$$
 
 In essence, $$log(q)$$ is a special type of cross entropy where all the probability is focused into one category. And we are therefore assuming that any $$x$$ of this value has a 100% chance of mapping to this $$y$$, which may not necessarily be true.
 </pre>
+</div>
+<div created="20210116023847550" modified="20210116024735069" title="Cross Validation">
+<pre>A special training method to evaluating different models
+
+# When training a model split the data into k sections
+# train the model on $$k-1$$ sections and test it on the final remaining section
+# repeat step 2 $$k$$ times so that each section is a test set once
+# average the testing results over all $$k$$ trials
+
+''Benefits''
+
+This gives a more reliable metric than testing with a single [[holdout set|Holdout Dataset]]
+
+''Drawbacks''
+
+Increases the time need to train and validate models</pre>
 </div>
 <div created="20201229235953580" modified="20201230001519137" title="Cumulative Distribution">
 <pre>The probability of an event occurring where the [[random variables|Random Variable]] are equal to or less than the proposed random variable given a [[probability distribution|Probability Distribution]] 
@@ -11422,8 +11614,8 @@ Finally we just take the derivate of the CDF to get the Gamma function we see at
 $$\displaystyle{G(x; \lambda, k) = \frac{d(G_{CDF}(x; \lambda, k))}{dx}}$$
 </pre>
 </div>
-<div created="20210103213018320" modified="20210103215757764" title="Generalized Linear Models">
-<pre>A framework for [[generative models|Generative Model]] depending on an assumed distribution of the output variable $$Y$$
+<div created="20210103213018320" modified="20210114003859060" title="Generalized Linear Models">
+<pre>A [[generative models|Generative Model]] framework that's varies based on an assumed distribution of the output variable $$Y$$
 
 ''Definition''
 
@@ -11431,7 +11623,7 @@ $$\displaystyle{G(x; \lambda, k) = \frac{d(G_{CDF}(x; \lambda, k))}{dx}}$$
 
 $$\displaystyle P(y|\eta) = h(y) e^{\eta T(y) - A(\eta)}$$
 
-2. Assume $$p(y|x)$$ follow an exponential family distribution and that $$\eta$$ can be represented as the following
+2. Assume $$p(y|\eta)$$ follow an exponential family distribution and that $$\eta$$ can be represented as the following
 
 $$\eta = \theta X$$ 
 
@@ -11442,7 +11634,7 @@ $$\eta = \theta X$$
 * [[Linear Regression|Linear Regression]]
 * [[Logistic Regression|Logistic Regression]]</pre>
 </div>
-<div created="20210103213508741" modified="20210103214647305" title="Generative Model">
+<div created="20210103213508741" modified="20210107213929658" title="Generative Model">
 <pre>Generative models leverage [[Bayes Theorem]] and model outcomes in terms of probability distributions as such
 
 $$\displaystyle P(Y|X) = \frac{P(X|Y)P(Y)}{P(X)}$$
@@ -11455,7 +11647,18 @@ In this case the outputs are no longer normalized therefore becoming likelihoods
 
 Generative models focus on developing $$P(X|Y)$$ distributions in order to determine which outcome is most likely
 
-As explained by the [[Bias Variance Tradeoff]] this framework restricts models but allows them to be extremely accurate and optimized if the correct $$P(X|Y)$$ distrubtions are used</pre>
+As explained by the [[Bias Variance Tradeoff]] this framework restricts models but allows them to be extremely accurate and optimized if the correct $$P(X|Y)$$ distributions are used
+
+''Parameters''
+
+Creating a value for $$P(Y)$$ can be done using [[Maximum Likelihood Estimation]] which applies for all generative model subsets
+
+* [[Categorical|Categorical Generative Model]]
+
+''Models''
+
+* [[Generalized Linear Models]]
+* [[Naive Bayes|Naive Bayes]]</pre>
 </div>
 <div created="20201229002242979" modified="20210103164912439" title="Geometric Distribution">
 <pre>Given a [[Bernoulli|Bernoulli Distribution]] event, a Geometric Distribution is the probability of x unsuccessful events occurring before the first successful event.
@@ -11508,6 +11711,9 @@ You can write and execute software to process things in parallel.</pre>
 By hashing the primary index the partitions tend to have an even distribution of read/writes
 
 [[Diagram|https://drive.google.com/file/d/1vgV1dCQMyv2LMhQbLLBOx1simi70p_4V/view?usp=sharing]]</pre>
+</div>
+<div created="20210116023631883" modified="20210116023828202" title="Holdout Dataset">
+<pre>When training a model on a dataset the model becomes [[overfit|Overfitting vs Underfitting]] to the training data. In order to have an unbiased measure of the models performance you can test the model on a holdout dataset</pre>
 </div>
 <div created="20201213222405824" modified="20201214205315935" title="Interpolation Smoothing (N-grams)">
 <pre>Combine the probabilities of all N-grams smaller than N. 
@@ -11934,7 +12140,7 @@ Again different plugin goals can be linked to phases
 * Execute a goal
 </pre>
 </div>
-<div created="20201201020829889" modified="20210103211227179" tags="" title="Maximum Likelihood Estimation">
+<div created="20201201020829889" modified="20210108010952745" tags="" title="Maximum Likelihood Estimation">
 <pre>A method of tuning a model such that the model considers the current data as likely to occur as possible.
 
 The likelihood function $$L$$ where $$X$$ is the input, $$Y$$ is the output, $$P$$ is the probability function for the model, and $$\Theta$$ are the model hyperparameters
@@ -12053,6 +12259,54 @@ $$n!$$ is the total number of permutations and $$x_1!x_2!...x_k!$$ is the number
 
 [img[images/Multinomial.jpg]]</pre>
 </div>
+<div created="20210107203505698" modified="20210114232807720" title="Multinomial Naive Bayes">
+<pre>For a Multinomial Naive Bayes we convert the model from a simple naive bayes model to a generative model with a [[multinomial distribution|Multinomial Distribution]] of the feature space. It still uses the [[naive assumption|Naive Bayes]] in that all the features are independent. 
+
+$$ \displaystyle L(Y_i|X_i) = \frac{M_i}{\prod_j f_{ji}} \prod_{j} \theta_{Y_ij}^{f_{ji}} P(Y_i)  $$
+
+* $$X_i$$ is the input feature vector
+* $$Y_i$$ is the output [[categorical variable|Categorical Generative Model]]
+* $$M_i$$ is the number of trials, a parameter for the multinomial distribution
+* $$f_{ji}$$ is an integer count of the number of $$f_j$$ events out of $$M_i$$ trials
+* $$\theta_{Y_ij}$$ is the probability of a trial for the $$Y_i$$ category resulting in an $$f_j$$ event
+
+$$\displaystyle \frac{M_i}{\prod_j f_{ji}}$$ is constant for all $$Y$$ so it can be dropped
+
+$$ \displaystyle L(Y_i|X_i) = \prod_{j} \theta_{Y_ij}^{f_{ji}} P(Y_i)  $$
+
+Using [[MLE|Maximum Likelihood Estimation]] we can determine calculate a solid probability for $$\theta_{kj}$$
+
+$$ \displaystyle \theta_{kj} = \frac{M_{kj}}{M_k}$$
+
+* $$k$$ is the output class
+* $$M_k$$ is the total number of trials for the $$k$$ class
+* $$M_{kj}$$ is the total number of $$f_j$$ events where the class is $$k$$
+
+''Derivation''
+
+See this nice [[blog|https://mattshomepage.com/articles/2016/Jun/26/multinomial_nb/]] for more details
+
+Using [[MLE|Maximum Likelihood Estimation]]
+
+$$ \displaystyle \prod_{i}^{n}P(Y_i|X_i;\Theta) =  \prod_{i}^{n}\prod_j^d\theta_{Y_ij}^{f_{ji}}P(Y_i)$$
+
+* $$i$$ is the sample index
+* $$j$$ is the feature index
+
+Simplify 
+
+* Take the log which keeps the maximum the same
+* Ignore $$P(Y)$$ terms because we are finding the maximum with respect to $$\theta$$
+* Consolidate with respect to $$j$$ and $$k$$
+
+$$\displaystyle \sum_k\sum_jM_{kj}log(\theta_{kj})$$
+
+* The likelihood function has some constraints
+
+$$\displaystyle \forall k,  \sum_j\theta_{kj} = 1$$
+
+* Use the [[Lagrange Multipliers]] technique to optimize the likelihood function</pre>
+</div>
 <div created="20201130021813907" modified="20201213231446924" tags="" title="N-Grams">
 <pre>''General''
 
@@ -12107,16 +12361,87 @@ In essence, we must give the exact amount of probability to some parameters as w
 
 New tokens that haven't been seen by the N-gram model can be converted to a special&lt;unk&gt; token. Even terms with very low frequencies can be converted to this as well.</pre>
 </div>
-<div created="20201119015206049" modified="20201130021512087" tags="" title="Natural Language Processing">
-<pre>Using computers to analyze and process human language in a useful way
+<div created="20210106002515411" modified="20210108010423887" title="Naive Bayes">
+<pre>A Naive Bayes model is one that makes a &quot;naive&quot; assumption about the probability distribution
 
-Topic Index (from low to high level)
+A standard generative model uses $$Y$$ to predict the likelihood of all features of $$X$$ together
+
+$$ L(Y|X) = P(X|Y)P(Y)  $$
+
+$$ P(X|Y) = P(f_1,f_2,...,f_n|Y)$$
+
+The &quot;naive&quot; assumption is that the probabilities of each feature are independent of each other
+
+$$ \displaystyle P(f_1,f_2,...,f_n|Y) = P(f_1|Y)P(f_2|Y)...P(f_n|Y) = \prod_{f \in F} P(f|Y) $$
+
+The underlying probability distributions $$P(f_i|Y)$$ can be anything, it is this independence assumption that makes a generative model a Naive Bayes model.
+
+''Benefits''
+
+Easier to find probability distributions for $$P(f_i|Y)$$ than $$P(f_1,f_2,...,f_n|Y)$$. The more features that are included the less similar samples there will be.
+
+''Drawbacks''
+
+Features are almost never independent. The existence of one feature value almost always effects the likelihood of other feature values. Because of this the probabilistic integrity of the model is usually compromised.
+
+''Parameters''
+
+Parameters for $$P(Y)$$ are defined the same for all [[generative models|Generative Model]] independent of the implementation
+
+* [[Categorical|Categorical Generative Model]]
+
+The underlying $$P(f_i|Y)$$ is flexible and based on the nature of the feature
+
+* [[Binomial|Bernoulli Naive Bayes]]
+* [[Multinomial|Multinomial Naive Bayes]]</pre>
+</div>
+<div created="20210115003735025" modified="20210116005802393" title="Naive Bayes (Bag-of-words)">
+<pre>The bag-of-words feature model is often used with a [[Naive Bayes]] learning model
+
+* [[Binary|Bernoulli Naive Bayes]] - each feature is a zero or one based on if the token was found in the document
+* [[Multinomial|Multinomial Naive Bayes]] - each feature is the number of times the token occurred in the document
+
+''Smoothing''
+
+[[Laplace smoothing|https://en.wikipedia.org/wiki/Additive_smoothing]] is usually enough, adjust the parameters by 1 over the size of the vocabulary
+
+''Language Model''
+
+Can be used as a [[Language Model]] to get a probability of sections of text based on a classification of the text
+
+$$ \displaystyle P(s|c) = \prod_{i} P(w_i|c) $$
+
+''N-gram''
+
+* A binary bag-of-words model is essentially a [[unigram model|N-Grams]] tuned by class
+* Because feature space is smaller and less sparse more simple smoothing techniques are sufficient
+* Both can act as a language models</pre>
+</div>
+<div created="20201119015206049" modified="20210114233150094" tags="" title="Natural Language Processing">
+<pre>Automation of language analysis tasks
+
+''Preprocessing''
+
+* [[Stop Words]]
+* [[Tokenization|Tokenization]]
+* [[Word Normalization|Word Normalization]]
+* [[Sentence Segmentation|Sentence Segmentation]]
+
+''Feature Engineering''
+
+* [[Bag-of-words]]
+
+''Other''
 
 * [[Regex|Regex]]
 * [[Minimum Edit Distance|Minimum Edit Distance]]
-* [[Corpus|Corpus]]
-* [[Text Normalization|Text Normalization]]
-* [[Language Model|Language Model]]</pre>
+* [[Language Model|Language Model]]
+
+''Problems''
+
+* Spam Detection
+* Sentiment Analysis
+* Language Identification</pre>
 </div>
 <div created="20210103164913756" modified="20210103170302524" title="Negative Binomial Distribution">
 <pre>Given a [[Bernoulli|Bernoulli Distribution]] event, a Negative Binomial Distribution is the probability it takes $$x$$ trials to get  $$k$$ successes
@@ -12614,6 +12939,9 @@ Set of tools that leverage probability theory in order to make inferences given 
 * [[Standard Deviation]]
 * [[Pearson Correlation Coefficient|Pearson Correlation Coefficient]]</pre>
 </div>
+<div created="20210114010247409" modified="20210114010306422" title="Stop Words">
+<pre>Words which are filtered out from a set of text</pre>
+</div>
 <div created="20200915233040336" modified="20200915234423005" tags="data theory" title="Stored Procedure">
 <pre>&quot;Scripts&quot; or logic that can be executed at the database level. They can increase performance by keeping a transaction within the database, as opposed to being multiple network calls between the database and an application. The downside is that they are often harder to maintain and tightly couple your application to the database.</pre>
 </div>
@@ -12679,7 +13007,7 @@ $$p(\sigma,x)$$ is the probability of each standard deviation based on the sampl
 
 </pre>
 </div>
-<div created="20201220185637027" modified="20210103214828245" title="Supervised Learning">
+<div created="20201220185637027" modified="20210116024740035" title="Supervised Learning">
 <pre>Create a function $$f$$ to map input $$x$$ to a proper output $$y$$
 
 $$f(x; \theta) = y$$
@@ -12693,14 +13021,8 @@ $$f(x; \theta) = y$$
 
 A framework for developing the function $$f$$. Often has parameters $$\theta$$ to control how it operates. The input data for the function usually consists of a vector of &quot;features&quot; which the model uses as indicators of the proper output.
 
-Categories
-
 * [[Discriminative|Discriminative Model]]
 * [[Generative|Generative Model]]
-
-Implementations
-
-* [[Generalized Linear Models|Generalized Linear Models]] 
 
 ''Cost Function''
 
@@ -12715,6 +13037,8 @@ In general the given a model $$f(x; \theta)$$, a set of input data $$X$$ and mat
 
 Concepts
 
+* [[Holdout Dataset]]
+* [[Cross Validation]]
 * [[Overfitting vs Underfitting]]
 * [[Bias Variance Tradeoff]]
 * [[Regularization]]
@@ -12743,15 +13067,6 @@ This implementation has fast reads but slower writes because an entry may have t
 ** this needs a special layer of implementation
 *** UTF-8
 *** UTF-16</pre>
-</div>
-<div created="20201127010826186" modified="20201127011111668" tags="" title="Text Normalization">
-<pre>Pre-processing step to standardize text for a model to process
-
-Main categories
-
-* [[Tokenization|Tokenization]]
-* [[Word Normalization|Word Normalization]]
-* [[Sentence Segmentation|Sentence Segmentation]]</pre>
 </div>
 <div created="20201127010943702" modified="20201127013958327" tags="" title="Tokenization">
 <pre>Converting a stream of characters into partitioned sections called tokens, we want to tokenize text data in a way that creates meaningful tokens.
