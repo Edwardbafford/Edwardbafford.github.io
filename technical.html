@@ -163,6 +163,8 @@ Error message and password prompt
 
 <li>$:/state/edit/references-1413407321</li>
 
+<li>$:/state/folded/Entropy (Information Theory)</li>
+
 <li>$:/state/image-picker/system--1911629014</li>
 
 <li>$:/state/image-picker/system--770946026</li>
@@ -251,6 +253,8 @@ Error message and password prompt
 
 <li>Categorical Generative Model</li>
 
+<li>Categorical MLE</li>
+
 <li>Classification</li>
 
 <li>Clustering</li>
@@ -331,8 +335,6 @@ Error message and password prompt
 
 <li>Encoding/Decoding</li>
 
-<li>Entropy</li>
-
 <li>Entropy (Information Theory)</li>
 
 <li>Entropy (Physics)</li>
@@ -368,6 +370,10 @@ Error message and password prompt
 <li>Holdout Dataset</li>
 
 <li>Hyper-parameter</li>
+
+<li>Index</li>
+
+<li>Information Theory</li>
 
 <li>Interpolation Smoothing (N-grams)</li>
 
@@ -437,6 +443,8 @@ Error message and password prompt
 
 <li>Multinomial Naive Bayes</li>
 
+<li>Mutual Information</li>
+
 <li>N-Grams</li>
 
 <li>Naive Bayes</li>
@@ -458,6 +466,8 @@ Error message and password prompt
 <li>Pearson Correlation Coefficient</li>
 
 <li>Perplexity</li>
+
+<li>Physics</li>
 
 <li>Poisson Distribution</li>
 
@@ -494,6 +504,8 @@ Error message and password prompt
 <li>Serial Execution (DBMS)</li>
 
 <li>Serializable Snapshot Isolation</li>
+
+<li>Shannon Information</li>
 
 <li>Sigmoid Function</li>
 
@@ -9943,11 +9955,8 @@ Error message and password prompt
     }
 }</pre>
 </div>
-<div created="20200827205313204" modified="20201219170603807" title="$:/DefaultTiddlers">
-<pre>[[Computer Science]]
-[[Machine Learning]]
-[[Natural Language Processing]]
-[[Math]]</pre>
+<div created="20200827205313204" modified="20210120205830505" title="$:/DefaultTiddlers">
+<pre>[[Index]]</pre>
 </div>
 <div plugin-type="import" status="pending" title="$:/Import" type="application/json">
 <pre>{
@@ -10148,6 +10157,9 @@ Error message and password prompt
 <div created="20200829153654044" modified="20200829153654044" title="$:/state/edit/references-1413407321">
 <pre>show</pre>
 </div>
+<div created="20210122001020231" modified="20210122001023934" title="$:/state/folded/Entropy (Information Theory)">
+<pre>show</pre>
+</div>
 <div created="20201127013623277" modified="20201127013623718" title="$:/state/image-picker/system--1911629014">
 <pre>hide</pre>
 </div>
@@ -10193,7 +10205,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20210117023418518" list="[[Generalized Linear Models]] Regularization [[L2 Regularization]] [[L1 Regularization]] [[Logistic Regression]]" modified="20210118002211077" title="$:/StoryList">
+<div created="20210121235727777" list="Index [[Information Theory]]" modified="20210122011502691" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20201012173622690" modified="20201012173622690" title="$:/temp/advancedsearch">
@@ -10260,8 +10272,8 @@ Error message and password prompt
 <div created="20200828140319089" modified="20200828140319089" title="$:/temp/NewTagName">
 <pre></pre>
 </div>
-<div created="20200827210236856" modified="20210118001908489" title="$:/temp/search">
-<pre></pre>
+<div created="20200827210236856" modified="20210122000950058" title="$:/temp/search">
+<pre>cross entropy</pre>
 </div>
 <div created="20200827210410769" modified="20200827210412400" title="$:/theme">
 <pre>$:/themes/tiddlywiki/snowwhite</pre>
@@ -10754,6 +10766,75 @@ In this case it turns out
 
 $$ \displaystyle P(Y_i) = \frac{m_i}{\sum_j m_j} $$</pre>
 </div>
+<div created="20210120170900897" modified="20210120172712122" title="Categorical MLE">
+<pre>A series of independent [[categorical|Categorical Distribution]] trials where $$x_i$$ is a categorical event with an output of one of $$k$$ classes. Note this also applies to the [[Bernoulli distribution|Bernoulli Distribution]] by setting $$k=2$$.
+
+$$ \displaystyle P(X) = \prod^nx_i $$
+
+The [[MLE|Maximum Likelihood Estimation]] of this series for any one class, $$y_j$$ corresponding to a probability $$p_j$$, is tuned to the following
+
+$$ \displaystyle p_j = \frac{c_j}{n} $$
+
+* $$p_j$$ is the probability of the class optimized by [[MLE|Maximum Likelihood Estimation]]
+* $$c_j$$ is the count of $$y_i$$ events
+* $$n$$ is the total number of events
+
+''Derivation''
+
+$$ 
+\displaystyle P(X) = \prod^nx_i 
+$$
+
+When looking at a single probability parameter $$p_j$$ we can simplify to the following
+
+$$ 
+\displaystyle P(X) = p_j^{c_j}(1-p_j)^{(n-c_j)}
+$$
+
+Taking the derivative with respect to $$p_j$$
+
+$$ 
+\displaystyle \frac{dP}{dp_j} = p_j^{c_j-1}(1-p_j)^{n-c_j-1}[c_j(1-p_j) - (n-c_j)p_j]
+$$
+
+Find local minimum and/or local maximum (also known as critical points) by setting the derivative to 0 and solving for the parameter $$p_j$$
+
+$$ 
+\displaystyle 0 = p_j^{c_j-1}(1-p_j)^{n-c_j-1}[c_j(1-p_j) - (n-c_j)p_j]
+$$
+
+$$ 
+\displaystyle p_j = \frac{c_j}{n}
+$$
+
+Determine if the critical point is a minimum or maximum
+
+Positive derivative
+
+$$ 
+\displaystyle 0 &lt; p_j^{c_j-1}(1-p_j)^{n-c_j-1}[c_j(1-p_j) - (n-c_j)p_j]
+$$
+
+Before the critical point
+
+$$ 
+\displaystyle p_j &lt; \frac{c_j}{n}
+$$
+
+Negative derivative
+
+$$ 
+\displaystyle 0 &gt; p_j^{c_j-1}(1-p_j)^{n-c_j-1}[c_j(1-p_j) - (n-c_j)p_j]
+$$
+
+After the critical point
+
+$$ 
+\displaystyle p_j &gt; \frac{c_j}{n}
+$$
+
+Therefore this value of $$p_j$$ is a global maximum and optimizes the probability of the data occurring</pre>
+</div>
 <div created="20201220194652999" modified="20210116023354709" title="Classification">
 <pre>Output is one of a set
 
@@ -10982,10 +11063,13 @@ Variables that have a causal relationship will usually correlate unless muddled 
 
 ''There could always be a confounding variable that we just aren't measuring meaning that we can never be sure of a causal relationship!''</pre>
 </div>
-<div created="20201201031140729" modified="20210117220819657" tags="" title="Cross Entropy">
-<pre>In essence it is a way of comparing two different probability distributions
+<div created="20201201031140729" modified="20210122010941788" tags="" title="Cross Entropy">
+<pre>In essence a way of measuring the difference between two probability distributions
 
-$$ \displaystyle H(p,q) =  -\sum_{x \in X}p(x)log(q(x))$$</pre>
+$$ \displaystyle H(p,q) =  -\sum_{x \in X}p(x)log(q(x))$$
+
+Cross Entropy is minimized when $$\forall i \; p(x_i) = q(x_i)$$. See [[entropy|Entropy (Information Theory)]]
+</pre>
 </div>
 <div created="20201210210643811" modified="20210117224910811" tags="" title="Cross Entropy (Loss Function)">
 <pre>The cross entropy loss function is a form of the [[cross entropy function|Cross Entropy]] used in the context of [[supervised learning|Supervised Learning]]
@@ -11494,46 +11578,41 @@ Forms:
 * [[Text Encoding|Text Encoding]]
 * [[Data Encoding|Data Encoding]]</pre>
 </div>
-<div created="20201201031053973" modified="20210117231349904" tags="" title="Entropy">
-<pre>Derivations
+<div created="20201201031212487" modified="20210122011532876" tags="" title="Entropy (Information Theory)">
+<pre>
+! ''Definition''
 
-* [[Information Theory|Entropy (Information Theory)]]
-* [[Physics|Entropy (Physics)]]
+$$\displaystyle H(x) = -\sum_i p(x_i) log(p(x_i)) = E_{p(x)}[-log(p(x))]$$
 
-Related
+Entropy (in information theory) represents the average number of bits of information per event
 
-* [[Cross Entropy|Cross Entropy]]</pre>
-</div>
-<div created="20201201031212487" modified="20201203011508839" tags="" title="Entropy (Information Theory)">
-<pre>''Context''
+Probability distributions that are more spread out and less certain have a higher entropy
 
-Entropy represents the minimum average bits sent per message given a set of messages with a [[categorical|Categorical Distribution]] probability distribution
+!! ''Minimum Encoding Derivation''
 
-By encoding short messages other messages must be longer because a message cannot be the prefix of another message. Therefore each encoding will block a section of the encoding space.
+Entropy also represents the minimum average bits per event given a set of events with a [[categorical|Categorical Distribution]] probability distribution
+
+For each event $$x$$ we must encode it as a series of binary digits.
+
+Note that the encoding of an event type cannot be the prefix of another event type encoding. Because of this each encoding will block a section of the encoding space.
 
 [[Diagram|https://drive.google.com/file/d/1JY-AO18qkjrrH8EtBuxhPHUA1gEBtn3H/view?usp=sharing]]
 
-The cost of a message where $$L$$ is the length of the message
-
-$$1/2^{L(x)}$$
-
 In the diagram we can see that a message of $$L=2$$ restricted $$\frac{1}{4}$$ of the message space
 
-''Optimizing Average Length''
+For an event type with encoding length $$L$$,  $$1/2^{L(x)}$$ of the encoding space with be used up
 
-$$ \textrm{Average Length} = \sum p_iL_i \textrm{ such that } \sum p_i = 1 \textrm{ and } \sum 1/2^L_i = 1 $$
+$$ \displaystyle avg(L) = \sum_i p(x_i)L(x_i)$$
 
-Using [[lagrange multipliers|Lagrange Multipliers]] we can determine the optimal relationship between $$L$$ and $$p$$
+$$\displaystyle \sum_i p(x_i) = 1$$
 
-$$ L_i = log_2(1/p_i) $$
+$$\displaystyle \sum_i \frac{1}{2^{L(x_i)}} = 1 $$
 
-Substituting $$L$$ into the average length equation we get the optimized average length aka entropy
+Using [[lagrange multipliers|Lagrange Multipliers]] we can minimize $$avg(L)$$
 
-''Entropy''
+$$ \displaystyle L(x_i) = log_2(\frac{1}{p(x_i)}) $$
 
-$$
-H = \sum p_i log(1/p_i)
-$$</pre>
+Substituting $$L$$ into the average length equation we get optimize the average encoding length with respect to $$p(x)$$</pre>
 </div>
 <div created="20201201031148356" modified="20201203013438040" tags="" title="Entropy (Physics)">
 <pre>In physics entropy is used to define certain laws in thermodynamics.
@@ -11801,6 +11880,22 @@ By hashing the primary index the partitions tend to have an even distribution of
 </div>
 <div created="20210117235446247" modified="20210118000519194" title="Hyper-parameter">
 <pre>[[https://en.wikipedia.org/wiki/Hyperparameter_(machine_learning)]]</pre>
+</div>
+<div created="20210120185705408" modified="20210122000649888" tags="" title="Index">
+<pre>* [[Computer Science]]
+* [[Machine Learning]]
+* [[Natural Language Processing]]
+* [[Math]]
+* [[Physics]]
+* [[Information Theory]]</pre>
+</div>
+<div created="20210122000011598" modified="20210122011538775" title="Information Theory">
+<pre>Theoretical descriptions of information and how it is stored/communicated
+
+* [[Information|Shannon Information]]
+* [[Entropy|Entropy (Information Theory)]]
+* [[Cross Entropy]]
+* [[Mutual Information]]</pre>
 </div>
 <div created="20201213222405824" modified="20201214205315935" title="Interpolation Smoothing (N-grams)">
 <pre>Combine the probabilities of all N-grams smaller than N. 
@@ -12407,7 +12502,7 @@ Again different plugin goals can be linked to phases
 * Execute a goal
 </pre>
 </div>
-<div created="20201201020829889" modified="20210117023639170" tags="" title="Maximum Likelihood Estimation">
+<div created="20201201020829889" modified="20210120171115103" tags="" title="Maximum Likelihood Estimation">
 <pre>A method of tuning a model such that the model considers the current data as likely to occur as possible.
 
 The likelihood function $$L$$ where $$X$$ is the input, $$Y$$ is the output, $$P$$ is the probability function for the model, and $$\Theta$$ are the model hyperparameters
@@ -12422,7 +12517,11 @@ $$
 \max_{\Theta}(L_{X,\Theta})
 $$
 
-Tuning a model using MLE depends on the underlying probability structure of the model</pre>
+Tuning a model using MLE depends on the underlying probability structure of the model
+
+''Implementations''
+
+* [[Categorical or Bernoulli|Categorical MLE]]</pre>
 </div>
 <div created="20201222011715115" modified="20201222011808418" title="Mean">
 <pre>$$\mu = \frac{\sum x_i}{N}$$
@@ -12573,6 +12672,15 @@ $$\displaystyle \sum_k\sum_jM_{kj}log(\theta_{kj})$$
 $$\displaystyle \forall k,  \sum_j\theta_{kj} = 1$$
 
 * Use the [[Lagrange Multipliers]] technique to optimize the likelihood function</pre>
+</div>
+<div created="20210122011049955" modified="20210122011457241" title="Mutual Information">
+<pre>Mutual information measures the difference between the [[entropy|Entropy (Information Theory)]] or a distribution and the entropy of a distribution given extra information
+
+$$I(x,y) = H(x) - H(x|y) = H(y) - H(y|x)$$
+
+Mutual information is a way of measuring the correlation of two variables.
+
+If the $$x$$ and $$y$$ are independent then the mutual information is $$0$$. If $$y$$ determines $$x$$ completely then the mutual information is $$H(x)$$</pre>
 </div>
 <div created="20201130021813907" modified="20201213231446924" tags="" title="N-Grams">
 <pre>''General''
@@ -12814,6 +12922,11 @@ The language model must cross sentence boundaries
 Each vocabulary and dialect has an inherent perplexity so $$PP$$ should only be compared for the same vocabularies and corpuses.
 
 ''Derivation''</pre>
+</div>
+<div created="20210121235759776" modified="20210121235809183" title="Physics">
+<pre>''Other''
+
+* [[Entropy (Physics)]]</pre>
 </div>
 <div created="20201228001911191" modified="20201230002634604" title="Poisson Distribution">
 <pre>The Poisson distribution represents the number of events to occur within a continuous medium. It is a continuous version of the [[Binomial Distribution]] which uses a rate instead of a [[Bernoulli|Bernoulli Distribution]] event
@@ -13063,6 +13176,27 @@ The limitations to this are as follows:
 <pre>Serializable Snapshot Isolation, or SSI, is a new algorithm which uses an optimistic approach to enforce serialization. Using a transaction versioning system similar to [[snapshot isolation|Transaction Isolation]] implementations the database will detect is serialization has been broken and abort the transaction. 
 
 The details of the implementation are unnecessary, in general it detects if reads have been effected by other writes, such as in [[this|https://drive.google.com/file/d/1e1sd9QF8aI1h9i-6izBsV8dP7XHSwEij/view?usp=sharing]] example</pre>
+</div>
+<div created="20210122002423725" modified="20210122004731578" title="Shannon Information">
+<pre>Formally information is just a concept like Energy in physics. A bit is a unit of information like a Joule is to Energy.
+
+!!! ''Example''
+
+Pretend we have not only a bit, which can hold two possible values, but also a &quot;trit&quot; which can have three possible values
+
+We can convert from bits to &quot;trits&quot;
+
+$$2^{\textrm{bit}} = 3^{\textrm{trit}} = \textrm{\# of values}$$
+
+$$\textrm{bit} = log_2(3)\textrm{trit}$$
+
+!! ''Definition''
+
+Information with respect to an event $$x$$ in bits is defined as follows
+
+$$\displaystyle log_2(\frac{1}{p(x)}) = -log_2(p(x))$$
+
+Intuitively rare events hold more information. More concretely less common events should be encoded using more binary digits, see the derivation in the [[entropy section|Entropy (Information Theory)]]</pre>
 </div>
 <div created="20210117173034280" modified="20210117173146533" title="Sigmoid Function">
 <pre>$$\displaystyle \sigma(z) = \frac{1}{1 + e^{-z}}$$
