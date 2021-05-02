@@ -231,6 +231,8 @@ Error message and password prompt
 
 <li>Backoff Smoothing (N-grams)</li>
 
+<li>Batch Normalization</li>
+
 <li>Batch Processing</li>
 
 <li>Bayes Theorem</li>
@@ -238,6 +240,8 @@ Error message and password prompt
 <li>Bayesian Inference</li>
 
 <li>Bayesian Statistics</li>
+
+<li>Beam Search</li>
 
 <li>Bernoulli Distribution</li>
 
@@ -267,6 +271,8 @@ Error message and password prompt
 
 <li>Computer Science</li>
 
+<li>Condition Random Fields</li>
+
 <li>Consensus</li>
 
 <li>Consistency</li>
@@ -280,6 +286,8 @@ Error message and password prompt
 <li>Convex Function</li>
 
 <li>Coordination Services</li>
+
+<li>Coreference Resolution</li>
 
 <li>Correlation vs Caustion</li>
 
@@ -316,6 +324,8 @@ Error message and password prompt
 <li>DB Replication</li>
 
 <li>DBMS</li>
+
+<li>Deep Learning</li>
 
 <li>Designing Data-Intensive Applications</li>
 
@@ -355,6 +365,8 @@ Error message and password prompt
 
 <li>Dot Product</li>
 
+<li>Dynamic Programming</li>
+
 <li>Encoding/Decoding</li>
 
 <li>Entropy (Information Theory)</li>
@@ -393,11 +405,15 @@ Error message and password prompt
 
 <li>Hash Partitioning</li>
 
+<li>Hidden Markov Model</li>
+
 <li>Holdout Dataset</li>
 
 <li>Hyper-parameter</li>
 
 <li>Index</li>
+
+<li>Information Extraction</li>
 
 <li>Information Retrieval</li>
 
@@ -418,6 +434,8 @@ Error message and password prompt
 <li>L1 Regularization</li>
 
 <li>L2 Regularization</li>
+
+<li>Label Bias</li>
 
 <li>Lagrange Multipliers</li>
 
@@ -459,6 +477,8 @@ Error message and password prompt
 
 <li>MapReduce</li>
 
+<li>Markov Model</li>
+
 <li>Math</li>
 
 <li>Mathematical Foundations</li>
@@ -466,6 +486,8 @@ Error message and password prompt
 <li>Maven</li>
 
 <li>Maximum Likelihood Estimation</li>
+
+<li>Maximum-entropy Markov model</li>
 
 <li>Mean</li>
 
@@ -493,6 +515,8 @@ Error message and password prompt
 
 <li>Negative Sampling</li>
 
+<li>Neural Network Language Models</li>
+
 <li>Noise Contrastive Estimation</li>
 
 <li>Normal Distribution</li>
@@ -505,6 +529,8 @@ Error message and password prompt
 
 <li>Overfitting vs Underfitting</li>
 
+<li>Part of Speech</li>
+
 <li>Pearson Correlation Coefficient</li>
 
 <li>Perplexity</li>
@@ -514,6 +540,12 @@ Error message and password prompt
 <li>PLSA</li>
 
 <li>Poisson Distribution</li>
+
+<li>POS Hidden Markov Model</li>
+
+<li>POS MEMM</li>
+
+<li>POS Tagging</li>
 
 <li>Posative Pointwise Mutual Information Matrix</li>
 
@@ -548,6 +580,8 @@ Error message and password prompt
 <li>Sentence Segmentation</li>
 
 <li>Sentiment Analysis</li>
+
+<li>Sequence Models</li>
 
 <li>Serial Execution (DBMS)</li>
 
@@ -612,6 +646,8 @@ Error message and password prompt
 <li>Unsupervised Learning</li>
 
 <li>Version Vectors</li>
+
+<li>Viterbi Algorithm</li>
 
 <li>Web Application Architecture</li>
 
@@ -10287,7 +10323,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20210305181021109" list="Index [[Natural Language Processing]] [[Document Representation]] [[Word Representations]] PLSA LDA" modified="20210305182907296" title="$:/StoryList">
+<div created="20210502200326615" list="Index [[Machine Learning]] [[Supervised Learning]]" modified="20210502201835202" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20201012173622690" modified="20210202125242977" title="$:/temp/advancedsearch">
@@ -10354,7 +10390,7 @@ Error message and password prompt
 <div created="20200828140319089" modified="20200828140319089" title="$:/temp/NewTagName">
 <pre></pre>
 </div>
-<div created="20200827210236856" modified="20210210221538868" title="$:/temp/search">
+<div created="20200827210236856" modified="20210429234831822" title="$:/temp/search">
 <pre></pre>
 </div>
 <div created="20200827210410769" modified="20200827210412400" title="$:/theme">
@@ -10593,6 +10629,22 @@ The [[good turing backoff algorithm|https://rpubs.com/leomak/TextPrediction_KBO_
 
 * Lower N-grams are only used when necessary</pre>
 </div>
+<div created="20210313201912340" modified="20210315112004267" title="Batch Normalization">
+<pre>Input values at each layer are normalized to a normal distribution before proceeding
+
+Normalizations occur at a mini batch level
+
+[img[images/Batch Normalization.jpg]]
+
+!! ''Benefits''
+
+* Vanishing/exploding gradients mitigated
+* Prevents overfitting
+
+!! ''Drawbacks''
+
+* Slows down training and runtime</pre>
+</div>
 <div created="20201026234203389" modified="20201027000547604" tags="" title="Batch Processing">
 <pre>''Philosophies''
 
@@ -10656,6 +10708,15 @@ If the prior and posterior models are part of the same probability distribution 
 
 * [[Bayes Theorem|Bayes Theorem]]
 * [[Bayesian Inference|Bayesian Inference]]</pre>
+</div>
+<div created="20210423183959014" modified="20210423184351556" title="Beam Search">
+<pre>https://en.wikipedia.org/wiki/Beam_search
+
+A concept where at certain steps of an algorithm a percentage of the most promising solutions are kept and the rest are discarded in order to decrease the computational complexity of the algorithm.
+
+!! ''Examples''
+
+* [[Viterbi]]</pre>
 </div>
 <div created="20201222013435570" modified="20201222013728252" title="Bernoulli Distribution">
 <pre>A discrete probability distribution where there are two events, each with a distinct probability
@@ -10990,17 +11051,22 @@ $$
 <pre>Maps data points to one of K clusters
 </pre>
 </div>
-<div created="20200828173348895" modified="20210104014743235" title="Computer Science">
-<pre>''Theory''
+<div created="20200828173348895" modified="20210429224215739" title="Computer Science">
+<pre>! ''Theory''
 
-Data:
+!! ''Algorithms''
+
+* [[Dynamic Programming]]
+* [[Beam Search]]
+
+!! ''Data''
 
 * [[Database|DBMS]]
 * [[Distributed Systems|Distributed Systems]]
 * [[Data Processing (ETL)|Data Processing]]
 * [[Designing Data-Intensive Applications|Designing Data-Intensive Applications]]
 
-Web Applications:
+!! ''Web Applications''
 
 * [[Architecture|Web Application Architecture]]
 * [[Sessions|Web Application Sessions]]
@@ -11009,12 +11075,12 @@ Web Applications:
 * [[Caching|Caching]]
 * [[README|README]]
 
-Protocols:
+!! ''Protocols''
 
 * [[SOAP|SOAP]]
 * [[LDAP|LDAP]]
 
-Other:
+!! ''Other''
 
 * [[Public Private Key Encryption|Public Private Key Encryption]]
 * [[Windows Domain|Windows Domain]]
@@ -11022,23 +11088,26 @@ Other:
 * [[Semantic Versioning|Semantic Versioning]]
 * [[Compatibility|Data Compatibility]]
 
-''Technologies''
+! ''Technologies''
 
-Languages:
+!! ''Languages''
 
 * [[Python|Python]]
 * [[Java|Java]]
 
-Big Data:
+!! ''Big Data''
 
 * [[Airflow|Airflow]]
 * [[Spark|Spark]]
 * [[Hadoop|Hadoop]]
 
-Dev-ops:
+!! ''Dev-ops''
 
 * [[Docker|Docker]]
 * [[Kubernetes|Kubernetes]]</pre>
+</div>
+<div created="20210502200420431" modified="20210502200421512" title="Condition Random Fields">
+<pre>https://en.wikipedia.org/wiki/Conditional_random_field</pre>
 </div>
 <div created="20201008233328317" modified="20201012174714558" tags="" title="Consensus">
 <pre>Getting a set of nodes to agree on something
@@ -11134,6 +11203,9 @@ Examples
 * Etcd
 
 The services implement consensus algorithms and therefor are linearizable. Used as a way of outsourcing [[linearizable benefits|Linearizability]] and can be used as a &quot;consultant&quot; for these kinds of tasks without the [[drawbacks|Consensus]] of a large consensus system.</pre>
+</div>
+<div created="20210407002940637" modified="20210407002943418" title="Coreference Resolution">
+<pre>https://en.wikipedia.org/wiki/Coreference</pre>
 </div>
 <div created="20210104015100111" modified="20210104020227552" title="Correlation vs Caustion">
 <pre>''Correlation'' - two variables vary together
@@ -11479,6 +11551,87 @@ Leveraging [[distributed systems|Distributed Systems]] is common for dealing wit
 * [[Distributed transactions|Distributed Transactions]]
 * [[Coordination services|Coordination Services]]</pre>
 </div>
+<div created="20210312011504297" modified="20210315111537448" title="Deep Learning">
+<pre>A subset of [[Machine Learning]] techniques based on neural networks.
+
+* Very powerful
+* Needs lots data
+* Needs lots of computing power
+
+The strength and flexibility of these models mean they overfit easily and are harder to train
+
+! ''Models''
+
+Neural networks are a collection of interconnected &quot;neurons&quot;
+
+!!! ''Neuron''
+
+A simple linear model with an activation function
+
+Also known as a ''perceptron''
+
+[img[images\Neuron.jpg]]
+
+$$y = \sigma(w \,\cdot \, x + b)$$
+
+
+!! ''Neural Network Types''
+
+A standard neural network is both ''feedforward'' and ''fully connected''
+
+[img[images\Feed_forward_neural_net.gif]]
+
+!! ''Classification''
+
+Output layer uses [[softmax function|Softmax Function]] with [[cross entropy loss|Cross Entropy (Loss Function)]]
+
+!! ''Activation Functions''
+
+Activation functions help moderate weight and gradients
+
+* Relu
+* ELU
+
+!! ''[[Batch Normalization]]''
+
+!! ''Reusing Models''
+
+Get fast production ready models. Retrain top layers for your custom task. Data is expensive and tough to get in large quantities.
+
+! ''Training''
+
+[[Gradient descent|Gradient Descent (Machine Learning)]] is used to tune the parameters of the model
+
+Neural networks are not [[convex|Convex Function]] meaning the optimizations are local
+
+!!! ''Back Propagation''
+
+Based on the loss gradients are calculated for every parameter which is used by the gradient descent algorithms
+
+$$\displaystyle \frac{\partial \textrm{Loss}}{\partial \textrm{parameter}_i}$$
+
+!! ''Initializations''
+
+How weights are initialized effect the initial gradients which effects the stability of the training.
+
+* He
+* Xavier
+
+!! ''Gradient Optimizers''
+
+Algorithms for updating the parameters over time
+
+* Adam optimizer
+
+!! ''Regularization''
+
+Because neural networks are so powerful they need specialized [[regularization methods|Regularization]]
+
+* Early stopping
+* Data augmentation
+* Chip gradients/weights
+* Dropout</pre>
+</div>
 <div created="20201116025852458" modified="20201116030800634" tags="" title="Designing Data-Intensive Applications">
 <pre>Some high level ideas
 
@@ -11589,14 +11742,15 @@ This [[diagram|https://drive.google.com/file/d/1ZUTsDwPIBzXUpsqwt8uZwGQQ6VOEyIm2
 A simple solution for dirty writes is to have ''a lock for each database entry''. When a transaction needs to update an entry it will grab its lock and return it when the transaction is finished allowing other updates to modify the row.
 &quot;&quot;&quot;</pre>
 </div>
-<div created="20210103214650945" modified="20210117170510562" title="Discriminative Model">
+<div created="20210103214650945" modified="20210502200643733" title="Discriminative Model">
 <pre>Discriminative models quite simply focus on creating probability (or likelihood) maps for all $$Y$$ and $$X$$
 
 They directly try to determine $$\displaystyle P(Y|X)$$
 
 ''Models''
 
-* [[Generalized Linear Models]]</pre>
+* [[Generalized Linear Models]]
+* [[Maximum-entropy Markov model]]</pre>
 </div>
 <div created="20201027000250690" modified="20201027001310369" tags="" title="Distributed File System">
 <pre>Software to coordinate a cluster of machines to act as a single file system. 
@@ -11751,6 +11905,16 @@ Matrix Factorization
 </div>
 <div created="20210123033817798" modified="20210123033818304" title="Dot Product">
 <pre>https://en.wikipedia.org/wiki/Dot_product</pre>
+</div>
+<div created="20210423182736849" modified="20210423183613323" title="Dynamic Programming">
+<pre>https://en.wikipedia.org/wiki/Dynamic_programming
+
+A loose framework which re-uses computed values in order to efficiently build up to a final result
+
+!! ''Examples''
+
+* [[Viterbi Algorithm]]
+* [[Minimum Edit Distance]]</pre>
 </div>
 <div created="20200828173436640" modified="20200828180552498" tags="data theory" title="Encoding/Decoding">
 <pre>Within a computer data is stored either as a structure within memory or on disk, with memory being faster to read and write to but disk storage being non-volatile.
@@ -11970,7 +12134,7 @@ Because of this the size of each weight acts as a way of determining the importa
 * [[Linear Regression|Linear Regression]]
 * [[Logistic Regression|Logistic Regression]]</pre>
 </div>
-<div created="20210103213508741" modified="20210117170412062" title="Generative Model">
+<div created="20210103213508741" modified="20210502200629268" title="Generative Model">
 <pre>Generative models leverage [[Bayes Theorem]] and model outcomes in terms of probability distributions as such
 
 $$\displaystyle P(Y|X) = \frac{P(X|Y)P(Y)}{P(X)}$$
@@ -11993,7 +12157,9 @@ Creating a value for $$P(Y)$$ can be done using [[Maximum Likelihood Estimation]
 
 ''Models''
 
-* [[Naive Bayes|Naive Bayes]]</pre>
+* [[Naive Bayes|Naive Bayes]]
+* [[Markov Model]]
+* [[Hidden Markov Model]]</pre>
 </div>
 <div created="20201229002242979" modified="20210103164912439" title="Geometric Distribution">
 <pre>Given a [[Bernoulli|Bernoulli Distribution]] event, a Geometric Distribution is the probability of x unsuccessful events occurring before the first successful event.
@@ -12126,6 +12292,69 @@ By hashing the primary index the partitions tend to have an even distribution of
 
 [[Diagram|https://drive.google.com/file/d/1vgV1dCQMyv2LMhQbLLBOx1simi70p_4V/view?usp=sharing]]</pre>
 </div>
+<div created="20210415234836779" modified="20210429235443928" title="Hidden Markov Model">
+<pre>Model for representing pseudo-random state transitions, extension of the [[Markov Model]]
+
+[img[images/Hidden Markov Model.jpg]]
+
+In a hidden markov model states are inferred from observations.
+
+! ''Definition''
+
+$$ Q = q_1, q_2,...,q_N$$  
+
+$$Q$$ represents a set of N underlying states
+
+$$A = a_{11},a_{12},...,a_{n1},...,a_{nn}$$
+
+$$A$$ represents a matrix of transition probabilities where $$a_{ij}$$ represents the probability of going from state $$i$$ to state $$j$$. Therefore $$\sum_ja_{ij} = 1$$
+
+$$O = o_1,o_2,...,o_T$$
+
+$$O$$ is the sequence of observations. $$o_i$$ is the $$i^{th}$$ observation.
+
+$$V = v_1,v_2,...,v_v$$
+
+$$V$$ is a set of possible observations. $$v_i$$ is a possible observation.
+
+$$B=bi(o_t)$$
+
+$$B$$ is a sequence of observations likelihoods. bi(o_t) is the probability of observation $$t$$ given state $$i$$
+
+$$\pi = \pi_1,\pi_2,...,\pi_n$$
+
+$$\pi$$ represents the initialized probabilities. $$\pi_i$$ is the probability of starting in state $$i$$. $$\sum_i \pi_i = 1$$
+
+!! ''Output Independence''
+
+Along with the Markov assumption covered by the [[markov model|Markov Model]] we also have the output independence assumption, that the observation is based solely on the current underlying state.
+
+$$P(o_i|q_1,...,q_{i-1},o_1,...,o_t) = P(o_i|q_{i-1})$$
+
+! ''Decoding''
+
+Determine hidden sequence based on observed sequence
+
+This is done through a form of [[maximum likelihood estimation|Maximum Likelihood Estimation]] in that we select the a hidden sequence which makes the observed sequence the most likely
+
+$$t_1^n = \argmax_{t_1^n}[p(t_1^n|w_1^n)]$$
+
+$$\displaystyle p(t_1^n|w_1^n) = \frac{p(w_1^n|t_1^n)p(t_1^n)}{p(w_1^n)} $$
+
+As with many probabilistic optimization problems we can ignore the denominator because the sequence of observations is independent of the hidden sequence
+
+$$\displaystyle p(w_1^n|t_1^n) = \prod_i^np(w_i|t_i)$$
+
+$$\displaystyle p(t_1^n) = \prod_i^np(t_i|t_{i-1})$$
+
+Substituting into the original equation
+
+$$t_1^n = \argmax_{t_1^n}[\prod_i^np(w_i|t_i)p(t_i|t_{i-1})]$$
+
+!! ''Implementations''
+
+* [[Viterbi Algorithm]]</pre>
+</div>
 <div created="20210116023631883" modified="20210116023828202" title="Holdout Dataset">
 <pre>When training a model on a dataset the model becomes [[overfit|Overfitting vs Underfitting]] to the training data. In order to have an unbiased measure of the models performance you can test the model on a holdout dataset</pre>
 </div>
@@ -12140,6 +12369,9 @@ By hashing the primary index the partitions tend to have an even distribution of
 * [[Math]]
 * [[Physics]]
 * [[Information Theory]]</pre>
+</div>
+<div created="20210407002835030" modified="20210407002835748" title="Information Extraction">
+<pre>https://en.wikipedia.org/wiki/Information_extraction#:~:text=Information%20extraction%20(IE)%20is%20the,and%20other%20electronically%20represented%20sources.</pre>
 </div>
 <div created="20210123032210944" modified="20210124185212883" title="Information Retrieval">
 <pre>https://en.wikipedia.org/wiki/Information_retrieval
@@ -12317,6 +12549,11 @@ This is because the derivative of a parameter $$\theta_f$$ is dependent on its s
 \displaystyle \frac{d}{d\theta_j}L(y_i,x_i;\theta)' = \frac{d}{d\theta_j}L(y_i,x_i;\theta) + 2\alpha\theta_j
 $$</pre>
 </div>
+<div created="20210502202017949" modified="20210502202337726" title="Label Bias">
+<pre>https://awni.github.io/label-bias/#:~:text=The%20label%20bias%20problem%20mostly,when%20predicting%20the%20next%20label.
+
+An issue with discriminative models where relationships between features can be ignored because they are covered up by other features.</pre>
+</div>
 <div created="20201201030021409" modified="20201211211608378" tags="" title="Lagrange Multipliers">
 <pre>An optimization technique that applies in the following situation
 
@@ -12342,16 +12579,17 @@ We can extent this for more than one $$g$$ function but the intuition remains th
 <div created="20210125194650686" modified="20210125194651515" title="Language Identification">
 <pre>https://en.wikipedia.org/wiki/Language_identification</pre>
 </div>
-<div created="20201130021514253" modified="20201211220338512" tags="" title="Language Model">
+<div created="20201130021514253" modified="20210312021610652" tags="" title="Language Model">
 <pre>A model that assigns a probability to a sequence of words 
 
 $$ P(w_1^n) = P(w_1, w_2, ..., w_n) $$
 
-''Implementations''
+!! ''Implementations''
 
 * [[N-Grams|N-Grams]]
+* [[Neural Network|Neural Network Language Models]]
 
-''Evaluating Performance''
+!! ''Evaluating Performance''
 
 * External validation - measuring performance on new data
 * Internal validation - using a metric
@@ -12514,7 +12752,7 @@ Based on replication algorithms
 ** last write wins with clock variance
 ** [[lagging writes|https://drive.google.com/file/d/19YLldM-8qrQB2CxhyaTbpE5I9Wejauxc/view?usp=sharing]] edge cases</pre>
 </div>
-<div created="20210122202044040" modified="20210303003131448" title="Linguistics">
+<div created="20210122202044040" modified="20210407002034995" title="Linguistics">
 <pre>! ''Lexical Semantics''
 
 The study of word meaning
@@ -12531,7 +12769,8 @@ The study of word meaning
 * ''Semantic Field'' - a lexical structure organized around a topic or domain
 * ''Semantic Frame'' - a lexical structure which defines a set of words with respect to each other in the context of a concept or event
 * ''Connotation'' - the cultural associations to a word
-** ''Sentiment'' - the positive or negative implication of a statement or word</pre>
+** ''Sentiment'' - the positive or negative implication of a statement or word
+* [[Part of Speech]]</pre>
 </div>
 <div created="20210103211446860" modified="20210103212025270" title="Log Loss">
 <pre>A special form of the [[cross entropy loss function|Cross Entropy (Loss Function)]] which is restricted to a [[Bernoulli Distribution]] as opposed to a [[Categorical Distribution]]
@@ -12700,7 +12939,7 @@ Word vectors can be represented by either $$U_k\Sigma_k$$ or $$U_k$$
 
 Document vectors can be represented by either  $$V_k$$ or $$(\Sigma_kV_k^T)^T$$</pre>
 </div>
-<div created="20201119014956147" modified="20210126010247892" tags="" title="Machine Learning">
+<div created="20201119014956147" modified="20210312012224815" tags="" title="Machine Learning">
 <pre>The process of leveraging data to solve problems without using explicitly defined rules
 
 ! ''Types''
@@ -12720,7 +12959,7 @@ Document vectors can be represented by either  $$V_k$$ or $$(\Sigma_kV_k^T)^T$$<
 
 ! ''Frameworks''
 
-* Neural Networks</pre>
+* [[Deep Learning]]</pre>
 </div>
 <div created="20201027000430192" modified="20201027001600598" tags="" title="MapReduce">
 <pre>Parallel processing framework, usually run on top of a [[distributed file system|Distributed File System]]
@@ -12741,6 +12980,31 @@ The idea is that processing logic runs in parallel and aggregated to perform
 * Group by
 
 Examples - Hive and Pig implement an API through a framework of MapReduce jobs</pre>
+</div>
+<div created="20210415231456710" modified="20210420001056252" title="Markov Model">
+<pre>Model for representing pseudo-random state transitions
+
+[img[images/Markov Model.jpg]]
+
+!! ''Definition''
+
+$$ Q = q_1, q_2,...,q_N$$  
+
+$$Q$$ represents a set of N states
+
+$$A = a_{11},a_{12},...,a_{n1},...,a_{nn}$$
+
+$$A$$ represents a matrix of transition probabilities where $$a_{ij}$$ represents the probability of going from state $$i$$ to state $$j$$. Therefore $$\sum_ja_{ij} = 1$$
+
+$$\pi = \pi_1,\pi_2,...,\pi_n$$
+
+$$\pi$$ represents the initialized probabilities. $$\pi_i$$ is the probability of starting in state $$i$$. $$\sum_i \pi_i = 1$$
+
+!!! ''Markov Assumption''
+
+When predicting the future the only thing that matters is the present not the past!
+
+$$P(q_i|q_1,...q_{i-1}) = P(q_i|q_{i-1})$$</pre>
 </div>
 <div created="20201201025948379" modified="20210123033855787" tags="" title="Math">
 <pre>''Dependency Roadmap''
@@ -12920,6 +13184,62 @@ Optimization depends on the underlying structure of the model
 
 * [[Categorical or Bernoulli|Categorical MLE]]</pre>
 </div>
+<div created="20210428001803670" modified="20210502202345449" title="Maximum-entropy Markov model">
+<pre>https://en.wikipedia.org/wiki/Maximum-entropy_Markov_model
+
+! ''Definition''
+
+A probability model and a variation of the [[hidden markov model|Hidden Markov Model]] which increases the flexibility of the model.
+
+Instead of probabilities mapping from hidden states to observations the model uses a [[discriminative|Discriminative Model]] black box to determine the most likely tag based on a set of features.
+
+Using an MEMM involves two steps
+
+# Training a sub-model to determine hidden state probability $$p(h|f)$$
+# Use the sub-model to decode an observation sequence
+
+!! ''Issues''
+
+MEMM models suffer from the [[label bias|Label Bias]] problem which allows it to sometimes completely ignore the relationship between two hidden states by focusing only on the relationship of an observation and hidden state. This does not happen in a [[HMM|Hidden Markov Model]] because the HMM model needs probability mappings between all hidden states.
+
+! ''Sub-Model''
+
+For the sub-model, usually a [[logistic regression model|Logistic Regression]] is used
+
+$$\displaystyle p(h|f) = \frac{e^{z_t}}{\sum_{t'}e^{z_{t'}}}$$
+
+$$z_t = \theta_t \cdot f$$
+
+! ''Decoding''
+
+Decoding a MEMM is done using the same [[MLE|Maximum Likelihood Estimation]] principle as the [[HMM|Hidden Markov Model]] but because it is a discriminant model decoding the sequence is simpler.
+
+$$h_1^n = \argmax_{h_1^n}[p(h_1^n|f_1^n)]$$
+
+$$\displaystyle p(h_1^n|f_1^n) = \prod_i^np(h_i|f_i)$$
+
+substituting into the original equation
+
+$$\displaystyle h_1^n = \argmax_{h_1^n}[\prod_i^np(h_i|f_i)]$$
+
+!! ''Greedy''
+
+For each observation in the sequence the greedy algorithm chooses the tag with the highest probability based off of the current feature
+
+$$\argmax_{h_i}[p(h_i|f_i)]$$
+
+$$f_i$$ uses information from earlier in the sequence and can use observations throughout the entire sequence if needed
+
+The greedy algorithm is fast but sub-optimal because it does not take into account the how the probability of the entire sequence is effected by the current hidden state.
+
+!! ''Viterbi''
+
+MEMM can use a variation of the [[Viterbi algorithm|Viterbi Algorithm]] which is adapted to MEMM decoding instead of vanilla HMM (left as an exercise for the reader :p)
+
+The Viterbi algorithm takes into account how the hidden state effects the probability of the entire sequence.
+
+However the further back the feature vecotr $$f_i$$ looks the more complex the Viterbi algorithm must become limiting either both performance and the richness of $$f_i$$</pre>
+</div>
 <div created="20201222011715115" modified="20201222011808418" title="Mean">
 <pre>$$\mu = \frac{\sum x_i}{N}$$
 
@@ -13098,7 +13418,7 @@ $$p(x,y)$$ represents the observed probability of concurrent events $$x$$ and $$
 
 A significant difference between $$p(x)p(y)$$ and $$p(x,y)$$ implies correlation (either positive or negative) between the two variables</pre>
 </div>
-<div created="20201130021813907" modified="20210124191024476" tags="" title="N-Grams">
+<div created="20201130021813907" modified="20210312021650032" tags="" title="N-Grams">
 <pre>! ''General''
 
 A common language model
@@ -13194,7 +13514,7 @@ The underlying $$P(f_i|Y)$$ is flexible and based on the nature of the feature
 * [[Binomial Features|Bernoulli Naive Bayes]]
 * [[Multinomial Distribution|Multinomial Naive Bayes]]</pre>
 </div>
-<div created="20201119015206049" modified="20210129135558777" tags="" title="Natural Language Processing">
+<div created="20201119015206049" modified="20210407003003140" tags="" title="Natural Language Processing">
 <pre>! ''Preprocessing''
 
 * [[Regex|Regex]]
@@ -13203,6 +13523,7 @@ The underlying $$P(f_i|Y)$$ is flexible and based on the nature of the feature
 * [[Word Normalization|Word Normalization]]
 * [[Word Sense Disambiguation]]
 * [[Sentence Segmentation|Sentence Segmentation]]
+* [[POS Tagging]]
 
 ! ''Modeling''
 
@@ -13216,6 +13537,8 @@ The underlying $$P(f_i|Y)$$ is flexible and based on the nature of the feature
 * [[Word Comparison]]
 * [[Document Comparison|Document Comparison]]
 * [[Information Retrieval|Information Retrieval]]
+* [[Information Extraction]]
+* [[Coreference Resolution]]
 
 !! ''Classification''
 
@@ -13290,6 +13613,15 @@ This results in the following bounds
 $$\displaystyle \frac{1}{2} \cdot \frac{dL_S}{d\theta} \le \frac{dL_{NS}}{d\theta} \le \frac{dL_S}{d\theta}$$
 
 Hopefully it is self evident from this that the signs are equal :)</pre>
+</div>
+<div created="20210312021314702" modified="20210312022440640" title="Neural Network Language Models">
+<pre>[[Neural networks|Deep Learning]] are very powerful but tough to train. With less data simpler language models are usually better.
+
+$$P(w_n|w_1^{n-1}) \approx P(w_n|w_{n-N+1}^{n-1})$$
+
+The first &quot;layer&quot; usually transforms [[one hot encoded|One Hot Encoding]] vocabulary terms into [[word embeddings|Word Representations]]
+
+[[Cross entropy loss|Cross Entropy (Loss Function)]] is used for $$w_n$$   </pre>
 </div>
 <div created="20210130011317706" modified="20210211002910336" title="Noise Contrastive Estimation">
 <pre>Note: This uses the following [[blog post|https://leimao.github.io/article/Noise-Contrastive-Estimation/]] for mathetmatical details
@@ -13403,6 +13735,19 @@ When a model generalizes to new data well but is just in general not performing 
 
 [img[images/Overfitting vs Underfitting.jpg]]</pre>
 </div>
+<div created="20210407002040818" modified="20210407002242819" title="Part of Speech">
+<pre>Essentially categories for words in a sentence (POS)
+
+One word may have multiple POS that it can be assigned to
+
+Determined by
+
+* Semantic relationships
+* Word morphology
+* Context within a sentence and other POS
+
+https://www.ling.upenn.edu/courses/Fall_2003/ling001/penn_treebank_pos.html</pre>
+</div>
 <div created="20210104010241031" modified="20210104012325785" title="Pearson Correlation Coefficient">
 <pre>A measure of correlation between two variables
 
@@ -13491,6 +13836,61 @@ We then take the binomial distribution and substitute $$\frac{\lambda}{n}$$ for 
 After some simplification
 
 $${\displaystyle {p(k) = \frac {\lambda ^{k}e^{-\lambda }}{k!}}}$$</pre>
+</div>
+<div created="20210420001436624" modified="20210425221716610" title="POS Hidden Markov Model">
+<pre>Uses a [[hidden markov model|Hidden Markov Model]] to decode [[POS|Part of Speech]] tags.
+
+!! ''Definition''
+
+For the hidden markov model both the $$A$$ and $$B$$ probability mappings need to be defined.
+
+$$A$$ maps probabilities from one POS tag to another. Using [[categorical MLE|Categorical MLE]] the probabilities is based on the count  $$P(t_i|t_{i-1}) = \frac{C(t_i, t_{i-1})}{C(t_{i-1})}$$
+
+$$B$$ maps probabilities from a POS tag to a word. Using [[categorical MLE|Categorical MLE]] the probabilities is based on the count  $$P(w_i|t_i) = \frac{C(t_i,w_i)}{C(t_i)}$$
+
+!! ''Decoding''
+
+The hidden markov model is given a sequence of observations in the form of a sentence and uses the [[Viterbi algorithm|Viterbi Algorithm]] to determine the most likely sequence of hidden states in the form of a sequence of POS tags.
+
+!!! ''Extensions''
+
+* Add an end of sentence tag
+* Extend the [[Markov assumption|Markov Model]] (and therefore the Viterbi algorithm) to look at the previous two tags
+* Develop ways to calculate $$p(w|t)$$ for unknown words using word features</pre>
+</div>
+<div created="20210429225407752" modified="20210429225921918" title="POS MEMM">
+<pre>Uses a [[Maximum-entropy Markov model]] to decode [[POS tags|Part of Speech]].
+
+Unlike the [[HHM|POS Hidden Markov Model]] variant the [[MEMM|Maximum-entropy Markov model]] version needs less configuration and is more flexible. We simply decide on a feature vector and train models to create the probability maps.
+
+!! ''Features''
+
+* words in the sentence
+* aspects of the words - shape, prefix, suffix, etc.
+* previous tags in the sentence (we don't know the future tags yet!)</pre>
+</div>
+<div created="20210407002305222" modified="20210428011451883" title="POS Tagging">
+<pre>Assigning [[POS categories|Part of Speech]] to each token in a document
+
+It is a disambiguation task - given a token which POS tag is it, often one of a couple
+
+POS tagging is a useful preprocessing task which can help with
+
+* Named entity extraction (subtask of [[information extraction|Information Extraction]])
+* [[Coreference Resolution]]
+
+!! ''Models''
+
+* [[Hidden Markov Model|POS Hidden Markov Model]]
+* [[Maximum-entropy Markov model|POS MEMM]]
+
+!! ''Performance''
+
+Baseline performance (choose the most likely POS) - 92%
+
+State of the art - 97%
+
+Uses human tagged datasets, human error and inconsistencies are part of the problem :)</pre>
 </div>
 <div created="20210126012130061" modified="20210126015052300" title="Posative Pointwise Mutual Information Matrix">
 <pre>Given a corpus and vocabulary create a word by word matrix
@@ -13748,6 +14148,28 @@ Can also refer to [[tokenization|Tokenization]] algorithms to determine if the p
 <div created="20210125194628484" modified="20210125194629087" title="Sentiment Analysis">
 <pre>https://en.wikipedia.org/wiki/Sentiment_analysis</pre>
 </div>
+<div created="20210502201153504" modified="20210502201729420" title="Sequence Models">
+<pre>Specialized [[supervised machine learning models|Supervised Learning]] which predict sequential data
+
+!!! ''Examples''
+
+* [[Natural Language Processing|Natural Language Processing]]
+* Time based prediction
+** Music
+** Stocks
+
+! ''Models''
+
+!! ''One Way''
+
+* [[Markov Model]]
+* [[Hidden Markov Model]]
+* [[Maximum-entropy Markov model]]
+
+One way models are typically considered worse than bi-directional because you are unable to use future event probabilities to influence a current event prediction
+
+!! ''Bi-directional''</pre>
+</div>
 <div created="20200915230519617" modified="20200915233242404" tags="theory data" title="Serial Execution (DBMS)">
 <pre>In a serially executed database there is no concurrency. All transactions are executed by a single thread on a CPU. Although there are serious limitations to this, if possible it keeps the database simple.
 
@@ -13943,28 +14365,27 @@ Where $$\mu$$ is the population [[mean|Mean]] and $$N$$ is the size of the popul
 
 In essence the standard deviation measures, on average, how far away a sample is from the population mean. A higher standard deviation signifies a more spread out distribution.</pre>
 </div>
-<div created="20201202004014192" modified="20210104020233858" tags="" title="Statistics and Probability">
-<pre>! Probability
+<div created="20201202004014192" modified="20210502200425209" tags="" title="Statistics and Probability">
+<pre>''Probability'' is a branch of math for describing the likelihood of events to occur. Established through logic and a set of [[axioms|https://plus.maths.org/content/maths-minute-axioms-probability]]
 
- A branch of math for describing the likelihood of events to occur
+''Statistics'' set of tools that leverage probability theory in order to make inferences given data
 
-Established through logic and a set of [[axioms|https://plus.maths.org/content/maths-minute-axioms-probability]]
+!!! ''Concepts''
 
 * [[Random Variable|Random Variable]]
 * [[Probability Distribution|Probability Distribution]]
 * [[Cumulative Distribution|Cumulative Distribution]]
-
-
-! Statistics
-
-Set of tools that leverage probability theory in order to make inferences given data
-
-''Approaches''
-
 * [[Correlation vs Caustion]]
+
+!!! ''Models''
+
+* [[Markov Model]]
+* [[Hidden Markov Model]]
+* [[Maximum-entropy Markov model]]
+* [[Condition Random Fields]]
 * [[Bayesian Statistics|Bayesian Statistics]]
 
-''Metrics''
+!!! ''Metrics''
 
 * [[Mean]]
 * [[Standard Deviation]]
@@ -14038,7 +14459,7 @@ $$p(\sigma,x)$$ is the probability of each standard deviation based on the sampl
 
 </pre>
 </div>
-<div created="20201220185637027" modified="20210126010230508" title="Supervised Learning">
+<div created="20201220185637027" modified="20210502202351218" title="Supervised Learning">
 <pre>Create a function $$f$$ to map input $$x$$ to a proper output $$y$$
 
 $$f(x; \theta) = y$$
@@ -14061,6 +14482,7 @@ A framework for developing the function $$f$$. Often has parameters $$\theta$$ t
 
 * [[Discriminative|Discriminative Model]]
 * [[Generative|Generative Model]]
+* [[Sequence Models|Sequence Models]]
 
 ! ''Loss Function''
 
@@ -14268,6 +14690,41 @@ A wide variety of types and methods exist
 <pre>Some advanced database algorithms can keep track of data versions between replicas. The list of versions from all replicas is called the &quot;Version Vector&quot;. By knowing the version each write was aware of when making an update the algorithms can determine if a write happened before, after, or concurrently with respect to another write. By knowing this relationship the system can handle the situation properly without having to worry about race conditions.
 
 [[Example|https://drive.google.com/file/d/1_04Vsvc_drpOSDuuUZXdjFLW0y-99Ge5/view?usp=sharing]]</pre>
+</div>
+<div created="20210425212931681" modified="20210425221008971" title="Viterbi Algorithm">
+<pre>https://en.wikipedia.org/wiki/Viterbi_algorithm
+
+!! ''Definition''
+
+Efficiently decodes a [[hidden markov model|Hidden Markov Model]] by leverage [[dynamic programming|Dynamic Programming]] methods
+
+!! ''Algorithm''
+
+The algorithm iterates through each step and storing only the most likely sequences at each step. This is enabled because of the limited dependency scope of the [[markov assumption|Markov Model]]
+
+ [img[images/Viterbi Algorithm.jpg]]
+
+An example for [[POS tagging|POS Hidden Markov Model]]
+
+[img[images/Viterbi Example.jpg]]
+
+!! ''Extension''
+
+The decoding algorithm can be extended by extending the markov assumption to look at the previous two or more states
+
+We wont go over the details here :) (you're welcome)
+
+Here's an example
+
+[img[images/Viterbi Extension.jpg]]
+
+Extending the algorithm in this way exponentially increases the complexity and will often need smoothing methods to be added
+
+!! ''Beam Search''
+
+The principles of [[beam search|Beam Search]] can be applied the Viterbi algorithm by only retaining the most promising sequences at each state
+
+[img[images/Viterbi Beam Search.jpg]]</pre>
 </div>
 <div created="20200923142219212" modified="20200923143055633" tags="software" title="Web Application Architecture">
 <pre>The entry point of a web application is going to be a &quot;front end&quot; application which is usually a collection of html, css, and javascript. This is understood by a browser and exposed to the internet. The front end app needs to be embedded in a web server (which runs on an actual server machine)  along with a &quot;back end&quot; application. The front and back applications should be embedded in the same web server. The front end will then be able to talk with the back end and the back end will be able to communicate with external APIs or DBs.
