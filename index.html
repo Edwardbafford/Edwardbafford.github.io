@@ -47,7 +47,7 @@ CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
 OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE." />
 <link id="faviconLink" rel="shortcut icon" href="favicon.ico">
-<title>Wiki — Personal</title>
+<title>Louie's — Knowledge Base</title>
 <!--~~ This is a Tiddlywiki file. The points of interest in the file are marked with this pattern ~~-->
 
 <!--~~ Raw markup ~~-->
@@ -10337,11 +10337,11 @@ Error message and password prompt
     }
 }</pre>
 </div>
-<div created="20200827144952850" modified="20210202125321611" title="$:/SiteSubtitle">
-<pre>Personal</pre>
+<div created="20200827144952850" modified="20210621171133509" title="$:/SiteSubtitle">
+<pre>Knowledge Base</pre>
 </div>
-<div created="20200827144941153" modified="20210202125306700" title="$:/SiteTitle">
-<pre>Wiki</pre>
+<div created="20200827144941153" modified="20210621171131307" title="$:/SiteTitle">
+<pre>Louie's</pre>
 </div>
 <div created="20200829165904084" modified="20200829165904084" title="$:/state/edit/references--1796805943">
 <pre>show</pre>
@@ -10412,7 +10412,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20210620202453240" list="Index [[Computer Science]] [[Object Oriented Programming]] [[Structural Patterns]] [[Behavior Patterns]] [[To Do]]" modified="20210621130935872" title="$:/StoryList">
+<div list="Index [[To Do]]" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20201012173622690" modified="20210202125242977" title="$:/temp/advancedsearch">
@@ -10479,7 +10479,7 @@ Error message and password prompt
 <div created="20200828140319089" modified="20200828140319089" title="$:/temp/NewTagName">
 <pre></pre>
 </div>
-<div created="20200827210236856" modified="20210620204827818" title="$:/temp/search">
+<div created="20200827210236856" modified="20210621173354968" title="$:/temp/search">
 <pre></pre>
 </div>
 <div created="20200827210410769" modified="20200827210412400" title="$:/theme">
@@ -13138,8 +13138,38 @@ Sloppy Quorum
 
 If necessary due of temporary network issues the number of writes can drop below w and a daemon process will propagate to extra nodes. Increases availability at the expense of introducing replication lag issues (See [[single leader replication|Single Leader (Replication)]] for descriptions of issues related to replication lag).</pre>
 </div>
-<div created="20210620205035345" modified="20210620205035345" title="Linear Chain CRF">
-<pre></pre>
+<div created="20210620205035345" modified="20210621173311342" title="Linear Chain CRF">
+<pre>A specialized [[CRF|Condition Random Fields]] model for analyzing input/output sequences
+
+! ''Definition''
+
+Input and output sequence values for length $$n$$
+
+$$X = x_1, ..., x_n$$
+
+$$ Y = y_1,...,y_n $$
+
+The model is tuned for a $$\theta$$ which essentially applies a [[logistic regression|Logistic Regression]] model to determine output sequence probability.
+
+$$\displaystyle P(Y|X)_\theta = \frac{e^{\theta F}}{\sum_ie^{\theta_i F}} $$
+
+$$F$$ is a function of $$X$$ and $$Y$$ and consists of $$k$$ global features.
+
+$$F(X,Y) \in \mathbb{Z}^k$$
+
+Each feature is an element of $$\mathbb{Z}$$ because it is composed of the aggregation of local Boolean features
+
+$$\displaystyle F_k(X,Y) = \sum^n_i f_k(y_{i-1}, y_i, X, i) $$
+
+$$f_k \in \{0,1\}$$
+
+The linear chain restrictions limits input vectors from seeing the future output vectors which limits the complexity of the model
+
+! ''Optimization''
+
+In general optimizing CRF models is an intractable problem.
+
+Because of the local feature restrictions of the Linear Chain CRF we can use a version of the [[Viterbi algorithm|Viterbi Algorithm]] to optimize $$\theta$$ with respect to the training data. Implementing the principle of [[MLE|Maximum Likelihood Estimation]]</pre>
 </div>
 <div created="20201008231459775" modified="20201012172905629" tags="" title="Linearizability">
 <pre>Data in a distributed system appears as one copy of data with atomic operations
@@ -14838,8 +14868,19 @@ In order to optimize this process we can put another model on top of the neural 
 
 See [[classification|Classification]]</pre>
 </div>
-<div created="20210620205200790" modified="20210620205200790" title="Sequence Labeling CRF">
-<pre></pre>
+<div created="20210620205200790" modified="20210621173841719" title="Sequence Labeling CRF">
+<pre>Uses a [[linear chain CRF|Linear Chain CRF]] model to decode a label for each input.
+
+Very similar to a [[MEMM|Sequence Labeling MEMM]] approach (if not identical, I'm not sure).
+
+Features for the model are manually decided
+
+!! ''Features''
+
+* combinations of the words and labels
+* word shape
+* prefix, suffix
+* appears in a list</pre>
 </div>
 <div created="20210420001436624" modified="20210620203215740" title="Sequence Labeling HMM">
 <pre>Uses a [[hidden markov model|Hidden Markov Model]] to decode a label for each input.
@@ -15355,10 +15396,9 @@ This implementation has fast reads but slower writes because an entry may have t
 *** UTF-8
 *** UTF-16</pre>
 </div>
-<div created="20210529172614786" modified="20210620205939230" tags="" title="To Do">
-<pre>* [[Condition Random Fields]]
-* [[Linear Chain CRF]]
-* [[Sequence Labeling CRF]]</pre>
+<div created="20210529172614786" modified="20210621173925119" tags="" title="To Do">
+<pre>* Read NLP
+* Read Security</pre>
 </div>
 <div created="20201127010943702" modified="20210508142648752" tags="" title="Tokenization">
 <pre>Converting a stream of characters into partitioned sections called tokens, we want to tokenize text data in a way that creates meaningful tokens.
