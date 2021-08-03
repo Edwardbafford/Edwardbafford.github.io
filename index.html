@@ -311,6 +311,8 @@ Error message and password prompt
 
 <li>Context Distributed Smoothing</li>
 
+<li>Context Free Grammars</li>
+
 <li>Continuous Bag of Words</li>
 
 <li>Convex Function</li>
@@ -10434,7 +10436,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20210801204525401" list="Index [[Computer Science]] Security [[To Do]]" modified="20210801205914971" title="$:/StoryList">
+<div created="20210802195302953" list="Index [[Machine Learning]] [[Natural Language Processing]]" modified="20210802201945285" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20201012173622690" modified="20210701235315628" title="$:/temp/advancedsearch">
@@ -10501,7 +10503,7 @@ Error message and password prompt
 <div created="20200828140319089" modified="20200828140319089" title="$:/temp/NewTagName">
 <pre></pre>
 </div>
-<div created="20200827210236856" modified="20210714234305904" title="$:/temp/search">
+<div created="20200827210236856" modified="20210802195311262" title="$:/temp/search">
 <pre></pre>
 </div>
 <div created="20200827210410769" modified="20200827210412400" title="$:/theme">
@@ -11515,6 +11517,33 @@ If $$\alpha = 1$$ then there is no smoothing
 Lower values of $$\alpha$$ increase the regularization by moving more probability from higher values of $$\theta$$ to lower ones //(mathematical support?)//
 
 $$\theta$$ adheres to the requirements of probability distribution with our without context distributed smoothing in place</pre>
+</div>
+<div created="20210802201917314" modified="20210802204414763" title="Context Free Grammars">
+<pre>Popular framework for modeling [[language grammar|Linguistics]].
+
+Lots of different grammars exist with many of them even mapping to the same language.
+
+!! ''Definition''
+
+A grammar $$G$$ is defined by
+
+$$ N $$ - a set of non-terminal symbols also known as [[constituents|Linguistics]].
+
+$$ \sum$$ - a set of terminal symbols, the vocabulary of the language.
+
+$$ R $$ - a set of rules mapping non-terminal symbols to a combination of terminal/non-terminal symbols. $$ N^* \mapsto (\sum \cup N )^*$$
+
+$$ S $$ - the start symbol of a sentence and an element of $$N$$.
+
+The language defined by the grammar $$G$$ is the set of all strings of terminal symbols (sentences) that can be mapped from the starting symbol $$S$$ using the rules $$R$$.
+
+$$ L_G = \{ s \; | \; s \in \sum^* \textrm{and}  \; S \mapsto s \} $$
+
+!! ''Parsing''
+
+Finding the hierarchical application of rules which map $$S$$ to $$s$$
+
+TO DO!</pre>
 </div>
 <div created="20210202180920997" modified="20210202181012162" title="Continuous Bag of Words">
 <pre>Given training data in the form of tokenized sentences and a context window size.
@@ -13367,25 +13396,54 @@ Based on replication algorithms
 ** last write wins with clock variance
 ** [[lagging writes|https://drive.google.com/file/d/19YLldM-8qrQB2CxhyaTbpE5I9Wejauxc/view?usp=sharing]] edge cases</pre>
 </div>
-<div created="20210122202044040" modified="20210407002034995" title="Linguistics">
-<pre>! ''Lexical Semantics''
+<div created="20210122202044040" modified="20210802202122682" title="Linguistics">
+<pre>! ''Definitions''
 
-The study of word meaning
+!!! [[Distributional Hypothesis]]
 
-* [[Distributional Hypothesis]]
+!!! ''Lemma''
 
-!!! ''Definitions''
+The root form of a word. Sung and sang both map to sing as their lemma.
 
-* ''Lemma'' - the root of a word
-* ''Word Sense'' - definition of a word, each lemma can have multiple word senses
-* ''Similarity'' - how similar two word sense are
-** ''Truth condition'' - the situations in which a statement is true, similar words should not alter the truth conditions of a statement
-* ''Relatedness'' - words associated with similar domains and topics
-* ''Semantic Field'' - a lexical structure organized around a topic or domain
-* ''Semantic Frame'' - a lexical structure which defines a set of words with respect to each other in the context of a concept or event
-* ''Connotation'' - the cultural associations to a word
-** ''Sentiment'' - the positive or negative implication of a statement or word
-* [[Part of Speech]]</pre>
+!!! [[Part of Speech]]
+
+!!! ''Word Sense'' 
+
+Definition of a word, each lemma can have multiple word senses.
+
+Synonyms have very similar word sense while antonym have extremely opposite or very different word senses.
+
+The situations in which a statement is true is known as a truth condition. Similar words should not alter the truth conditions of a statement.
+
+!!! ''Relatedness''
+
+Words associated with similar domains and topics
+
+!!! ''Semantic Field'' 
+
+A lexical structure organized around a topic or domain
+
+!!! ''Semantic Frame''
+
+A lexical structure which defines a set of words with respect to each other in the context of a concept or event
+
+!!! ''Connotation''
+
+The cultural associations to a word
+
+!!! ''Sentiment'' 
+
+The positive or negative implication of a statement or word
+
+!!! ''Constituent''
+
+Linguistic abstractions which have logical relationships with each other.
+
+!!! ''Grammar''
+
+A collection of constituents and their relationships defining a language.
+
+The grammar of a language defines what is allowed to be said as a sentence but does not enforce that the logic of the sentence makes sense.</pre>
 </div>
 <div created="20210103211446860" modified="20210103212025270" title="Log Loss">
 <pre>A special form of the [[cross entropy loss function|Cross Entropy (Loss Function)]] which is restricted to a [[Bernoulli Distribution]] as opposed to a [[Categorical Distribution]]
@@ -14164,7 +14222,7 @@ Because of this labeling conventions have been developed to identify a token tha
 
 [img[images/NER Labeling.jpg]]</pre>
 </div>
-<div created="20201119015206049" modified="20210702002818860" tags="" title="Natural Language Processing">
+<div created="20201119015206049" modified="20210802204419276" tags="" title="Natural Language Processing">
 <pre>! ''Preprocessing''
 
 Preprocessing uses prior knowledge and heuristic techniques to transform raw text into a simplified form for training models.
@@ -14172,19 +14230,16 @@ Preprocessing uses prior knowledge and heuristic techniques to transform raw tex
 * [[Tokenization|Tokenization]]
 * [[POS Tagging]]
 * Sentence segmentation
+* Word normalization
 * Word disambiguation
 * Stop words
-* Word normalization
-* Coreference resolution
-* Dependency tree
 
 ! ''Modeling''
-
-[[Self-supervised learning|Self-supervised Learning]] models take in preprocessed language and build models which can be applied to various problems.
 
 * [[Word Representations]]
 * [[Document Representations]]
 * [[Language Models|Language Model]]
+* [[Context Free Grammars]]
 
 ! ''Problems''
 
@@ -15799,8 +15854,9 @@ Error messages from the API endpoints will sometimes return database error messa
 
 The format of primary key ids returned in API endpoints can indicate the type of database.</pre>
 </div>
-<div created="20210529172614786" modified="20210801210215241" tags="" title="To Do">
-<pre>* NLP - Grammars</pre>
+<div created="20210529172614786" modified="20210802204411268" tags="" title="To Do">
+<pre>* NLP - Read Syntactic Parsing
+* ML Design Patterns - Read and Notes</pre>
 </div>
 <div created="20201127010943702" modified="20210508142648752" tags="" title="Tokenization">
 <pre>Converting a stream of characters into partitioned sections called tokens, we want to tokenize text data in a way that creates meaningful tokens.
