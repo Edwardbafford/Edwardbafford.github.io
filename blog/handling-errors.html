@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="icon" type="image/png" href="images/logo.png"/>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+		<style>
+body {
+  padding: 20px;
+  background: #f1f1f1;
+}
+
+/* Header/Blog Title */
+.header {
+  padding: 30px;
+  font-size: 40px;
+  text-align: center;
+}
+
+/* Add a card effect for articles */
+.card {
+  background-color: white;
+  padding: 20px;
+  margin-top: 20px;
+}
+
+	</style>
+</head>
+<body>
+
+<div class="header container">
+  <h2>Handling Errors in Web Applications</h2>
+</div>
+
+
+<div class="card container">
+  <p>
+    Here is the pattern I currently use to handle exceptions within my web applications. This applies mainly to languages with checked exceptions such as Java, although I think it could still be applied to, for example, a Python application.
+  </p>
+  <br>
+	<h3>Controllers</h3>
+    <p>
+      Controllers are the sections of code which act as the inferface between the client and the rest of the system. Because of this controllers should handle any exception bubbles up from the application and return an appropriate response to the user. I prefer to handle this in an aspect oriented way to avoid boilerplate code.
+    </p>
+    <br/>
+  <h3>Services</h3>
+    <p>
+      Services are the layer below controllers and handle the business logic of the different requests. They delegate tasks to more fundemental components and coordinate appropriate responses.
+    </p>
+    <p>
+      Becuase services are closely tied to the user stories the service layer should return application related exceptions by catching lower level exceptions coming from the lower level processing components. For example, if a request to an authentication service fails the service layer should catch this error and throw a new exception identifying that the authentication step failed while embedding the exception that caused it. By layering exceptions in this way information about the exception is not lost while still providing the user with an understandable message.
+    </p>
+    <p>
+      <b>Exceptions returned from the service layer should be recognizable by the end user.</b>
+    </p>
+    <br/>
+  <h3>Core Components</h3>
+    <p>
+      The "core components" are just lower level, reusable sections of the code that can be leveraged during many different services calls. These can be, for example, a persistence layer, external services, other libraries, etc.
+    </p>
+    <p>
+      Often times these core components are outside of the users control but usually represent a general issue that occurred during processing. Examples include parsing and connection exceptions. They help give a general idea of the problem. For example, instead of seeing a null pointer exception a parsing exception gives the person troubleshooting a better idea of the issue and how to approach it.
+    </p>
+    <p>
+      <b>Exceptions returned from lower level components should be recognizable by developers familiar with the application.</b>
+    </p>
+</div>
+</body>
+</html>
