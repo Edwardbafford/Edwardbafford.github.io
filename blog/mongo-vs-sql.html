@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="icon" type="image/png" href="images/logo.png"/>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+		<style>
+body {
+  padding: 20px;
+  background: #f1f1f1;
+}
+
+/* Header/Blog Title */
+.header {
+  padding: 30px;
+  font-size: 40px;
+  text-align: center;
+}
+
+/* Add a card effect for articles */
+.card {
+  background-color: white;
+  padding: 20px;
+  margin-top: 20px;
+}
+
+	</style>
+</head>
+<body>
+
+<div class="header container">
+  <h2>Using MongoDb vs SQL</h2>
+</div>
+
+
+<div class="card container">
+	<h3>MongDb</h3>
+    <p>MongoDb and other document based databases have a couple advantages over standard SQL Databases.</p>
+    <ul>
+    	<li>No schema is required, you essentially dump json objects into various buckets</li>
+    	<li>Becuase documents don't reference each other (no foreign keys) the database can easily be spread over a cluster and therefore scales extremely well</li>
+    </ul>
+    <p>Essentially MongoDb is very useful for storing messy, large, text based objects while maintaining the ability to query and update them.</p>
+    <br/>
+    <h3>SQL Databases</h3>
+    <p>Standard SQL databases are excellent for modeling data and storing/querying it quickly. The tightly knit data model allows you to easily and quickly traverse through your system and read/update as necessary. The downside is that it's nearly impossible to scale a database like this while retaining it's integrity.</p>
+    <br/>
+    <h3>Combining Them?</h3>
+    <h5>Disclaimer! I have not tried this in a project... yet</h5>
+    <p>I think using just MongoDb is almost never the best solution. In almost any application you will have data that is interconnected and therefore should be stored in a tradition SQL database. I think the best approach is to store your non-text data in a SQL database then store large messy sections of text data in a MongoDb so you don't need to worry about a schema and don't have to worry about your performance as the size of the database increases. Entries of the SQL database can reference the MongoDb documents by id as needed.</p>
+</div>
+
+</body>
+</html>
