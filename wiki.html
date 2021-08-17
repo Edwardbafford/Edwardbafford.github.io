@@ -47,7 +47,7 @@ CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
 OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE." />
 <link id="faviconLink" rel="shortcut icon" href="favicon.ico">
-<title>Louie's — Knowledge Base</title>
+<title>Louie's — Wiki</title>
 <!--~~ This is a Tiddlywiki file. The points of interest in the file are marked with this pattern ~~-->
 
 <!--~~ Raw markup ~~-->
@@ -334,6 +334,8 @@ Error message and password prompt
 <li>Cross Entropy Softmax Gradient</li>
 
 <li>Cross Validation</li>
+
+<li>Crossed Feature</li>
 
 <li>CSFR</li>
 
@@ -10369,8 +10371,8 @@ Error message and password prompt
     }
 }</pre>
 </div>
-<div created="20200827144952850" modified="20210625224906819" title="$:/SiteSubtitle">
-<pre>Knowledge Base</pre>
+<div created="20200827144952850" modified="20210813004930919" title="$:/SiteSubtitle">
+<pre>Wiki</pre>
 </div>
 <div created="20200827144941153" modified="20210625224902580" title="$:/SiteTitle">
 <pre>Louie's</pre>
@@ -10414,7 +10416,7 @@ Error message and password prompt
 <div created="20201220171625704" modified="20201220175338588" title="$:/state/showeditpreview">
 <pre>yes</pre>
 </div>
-<div created="20200827210330797" modified="20200827210555910" title="$:/state/sidebar">
+<div created="20200827210330797" modified="20210813005104924" title="$:/state/sidebar">
 <pre>yes</pre>
 </div>
 <div created="20200828170844096" modified="20210202125242977" title="$:/state/tab--1498284803">
@@ -10444,7 +10446,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20210804204630234" list="Index [[Feature Engineering]]" modified="20210805011133723" title="$:/StoryList">
+<div created="20210816233951963" list="Index [[Machine Learning]] [[To Do]]" modified="20210816233951963" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20201012173622690" modified="20210701235315628" title="$:/temp/advancedsearch">
@@ -10463,7 +10465,7 @@ Error message and password prompt
         },
         &quot;$:/info/url/full&quot;: {
             &quot;title&quot;: &quot;$:/info/url/full&quot;,
-            &quot;text&quot;: &quot;file:///C:/Users/lbafford/Repos/Personal/Edwardbafford.github.io/index.html&quot;
+            &quot;text&quot;: &quot;file:///C:/Users/lbafford/Repos/Personal/Edwardbafford.github.io/wiki.html&quot;
         },
         &quot;$:/info/url/host&quot;: {
             &quot;title&quot;: &quot;$:/info/url/host&quot;,
@@ -10483,7 +10485,7 @@ Error message and password prompt
         },
         &quot;$:/info/url/pathname&quot;: {
             &quot;title&quot;: &quot;$:/info/url/pathname&quot;,
-            &quot;text&quot;: &quot;/C:/Users/lbafford/Repos/Personal/Edwardbafford.github.io/index.html&quot;
+            &quot;text&quot;: &quot;/C:/Users/lbafford/Repos/Personal/Edwardbafford.github.io/wiki.html&quot;
         },
         &quot;$:/info/url/search&quot;: {
             &quot;title&quot;: &quot;$:/info/url/search&quot;,
@@ -10495,11 +10497,11 @@ Error message and password prompt
         },
         &quot;$:/info/browser/screen/width&quot;: {
             &quot;title&quot;: &quot;$:/info/browser/screen/width&quot;,
-            &quot;text&quot;: &quot;1920&quot;
+            &quot;text&quot;: &quot;1536&quot;
         },
         &quot;$:/info/browser/screen/height&quot;: {
             &quot;title&quot;: &quot;$:/info/browser/screen/height&quot;,
-            &quot;text&quot;: &quot;1080&quot;
+            &quot;text&quot;: &quot;864&quot;
         },
         &quot;$:/info/browser/language&quot;: {
             &quot;title&quot;: &quot;$:/info/browser/language&quot;,
@@ -11709,6 +11711,25 @@ This gives a more reliable metric than testing with a single [[holdout set|Holdo
 
 Increases the time need to train and validate models</pre>
 </div>
+<div created="20210813005705779" modified="20210813010445200" title="Crossed Feature">
+<pre>For all input combine two categories into a new category.
+
+A simple update which introduces non-linear relationships for the model.
+
+! ''Benefits''
+
+More expressive features
+
+* Simpler models can be used
+* Less data may be needed
+* Performance can be increased on the same model
+
+! ''Drawbacks''
+
+Crossing two categories exponentially increases the number of categories in the new crossed feature. Sparsity should be managed with [[regularization|Regularization]] or convert to an [[embedding|Embedding]].
+
+Crossing two highly correlated categories increases sparsity without adding information.</pre>
+</div>
 <div created="20210720001037123" modified="20210722222903149" title="CSFR">
 <pre>Cross Site Forgery Request is a type of [[security vulnerability|Security]]
 
@@ -12380,15 +12401,16 @@ For regex attacks check regex statements with linters and don't allow users to i
 <div created="20210123033817798" modified="20210123033818304" title="Dot Product">
 <pre>https://en.wikipedia.org/wiki/Dot_product</pre>
 </div>
-<div created="20210423182736849" modified="20210423183613323" title="Dynamic Programming">
+<div created="20210423182736849" modified="20210812121713855" title="Dynamic Programming">
 <pre>https://en.wikipedia.org/wiki/Dynamic_programming
 
-A loose framework which re-uses computed values in order to efficiently build up to a final result
+A bottom up approach to solving complex problems. The lowest level components of the problem are solved, stored, and reused as needed working up to the final full solution.
 
-!! ''Examples''
+!! ''Benefits''
 
-* [[Viterbi Algorithm]]
-* [[Minimum Edit Distance]]</pre>
+By working from the lowest level sub-problems and storing them they can be reused so they do not need to be recalculated. A top down approach may need to recalculate the same sub-problems many times.
+
+For problems related to searching, the bottom up approach lets us know immediately when a solution isn't working and lets us keep sub-problems that are stable. With a top down approach we will test many different solutions that won't work without knowing until we get to the last sub-problems.</pre>
 </div>
 <div created="20210805004037287" modified="20210805011226135" title="Embedding">
 <pre>Convert a large [[one-hot encoded|One Hot Encoding]] categorical input into a shorter dense vector.
@@ -12577,12 +12599,14 @@ Training is done by summing all the sub-word grams with the full tokens
 
 [img[images/fasttext.png]] </pre>
 </div>
-<div created="20201220191134632" modified="20210805011231059" title="Feature Engineering">
-<pre>Methods of manipulating input data to extract valuable features to improve an ML model.
+<div created="20201220191134632" modified="20210813010941542" title="Feature Engineering">
+<pre>Methods of manipulating input data to extract valuable features to improve a ML model.
 
 ! ''Numeric Input''
 
 Most ML models only take numeric input. In most cases it is best to [[scale|Feature Scaling]] numeric input.
+
+Numeric input can also be binned and converted into a categorical feature.
 
 ! ''Categorical''
 
@@ -12607,7 +12631,11 @@ A couple of options exist
 
 ! ''Text Input''
 
-! ''Image Input''</pre>
+Text data of arbitrary length can be converted into a [[document embedding|Document Representations]].
+
+! ''Image Input''
+
+Image input should be preprocessed through a specialized image processing model before being integrated into the rest of the model.</pre>
 </div>
 <div created="20210804010729730" modified="20210804014652688" title="Feature Scaling">
 <pre>Methods of normalizing numeric input to a ML model.
@@ -13736,12 +13764,8 @@ Word vectors can be represented by either $$U_k\Sigma_k$$ or $$U_k$$
 
 Document vectors can be represented by either  $$V_k$$ or $$(\Sigma_kV_k^T)^T$$</pre>
 </div>
-<div created="20201119014956147" modified="20210804212229246" tags="" title="Machine Learning">
+<div created="20201119014956147" modified="20210816234016533" tags="" title="Machine Learning">
 <pre>The process of leveraging data to solve problems without using explicitly defined rules.
-
-! ''Auxiliary''
-
-* [[Feature Engineering]]
 
 ! ''Model Types''
 
@@ -13752,6 +13776,7 @@ Document vectors can be represented by either  $$V_k$$ or $$(\Sigma_kV_k^T)^T$$<
 
 ! ''Model Building''
 
+* [[Feature Engineering]]
 * [[Hyper-parameter]]
 * [[Overfitting vs Underfitting]]
 * [[Regularization]]
@@ -15160,7 +15185,7 @@ $$\displaystyle \textrm{score}(y) = -\log P(y|x) = \frac{1}{T} \sum^t_{i=1} -\lo
 
 [img[images\RNN Seq to Seq Beam Search.jpg]]</pre>
 </div>
-<div created="20210625003340506" modified="20210721232752672" title="Security">
+<div created="20210625003340506" modified="20210816000851198" title="Security">
 <pre>! ''Recon''
 
 Methods hackers use to gather information about a system and discover vulnerabilities.
@@ -15180,59 +15205,7 @@ The following vulnerabilities all manipulate the application in unintended ways 
 
 * [[XSS]]
 * [[XXE]]
-* [[Injection]]
-
-! ''Application Security''
-
-!! ''HTTPS''
-
-Use an [[HTTPS protocol|HTTPS]] instead of HTTP when communicating with anything outside of your network.
-
-This prevents hackers from reading private information by intercepting messages, also known as a man in the middle attack.
-
-!! ''Passwords ''
-
-Enforce high entropy passwords to mitigate against brute force password attacks.
-
-Save a hashed form of credentials so that even the application is unable to know the actual password values. Passwords entered by users are hashed with the same algorithm and matched with the same version as a form of verification.
-
-Having more than one form of authentication can provide extra security.
-
-* Password
-* Phone call
-* Text
-* Email
-* Token generators
-
-!! ''PII''
-
-Personally identifiable information can have certain storage requirements based on the country or domain. 
-
-Often specialized storage of this kind can be delegated to third party organizations.
-
-!! ''Dont trust by default''
-
-A principle of having to explicitly enable authorization. 
-
-Whitelist over blacklist because when blacklists get outdate unauthorized entities may be able to access information they shouldn't be able to.
-
-Only give OS access as needed per application. Limits the vulnerabilities of a compromised application.
-
-Close all ports by default, enabling access to only the ones that need to be used.
-
-!! ''Secure Design''
-
-Breaking down applications into smaller modules minimize the attack vector of each module.
-
-Security checklists while reviewing commits.
-
-Use security discovery tools such as linters.
-
-Develop test suites for previously discovered vulnerabilities.
-
-Bug bounty programs and third party testing to verify the application security.
-
-Prioritize security bugs using a severity ranking system. [[CVSS|https://en.wikipedia.org/wiki/Common_Vulnerability_Scoring_System]] or custom techniques.</pre>
+* [[Injection]]</pre>
 </div>
 <div created="20210529171151947" modified="20210604004936662" title="Self-Attention">
 <pre>A modification of the [[attention|Attention]] mechanism (see wiki page for basic framework) where instead of each output being compared to the inputs each input is compared to the other inputs.
@@ -15974,9 +15947,10 @@ Error messages from the API endpoints will sometimes return database error messa
 
 The format of primary key ids returned in API endpoints can indicate the type of database.</pre>
 </div>
-<div created="20210529172614786" modified="20210804212428020" tags="" title="To Do">
+<div created="20210529172614786" modified="20210813005031760" tags="" title="To Do">
 <pre>* NLP - Read Syntactic Parsing
-* ML Design Patterns - Feature Engineering Notes</pre>
+* ML Design Patterns - Feature Engineering Notes
+</pre>
 </div>
 <div created="20201127010943702" modified="20210508142648752" tags="" title="Tokenization">
 <pre>Converting a stream of characters into partitioned sections called tokens, we want to tokenize text data in a way that creates meaningful tokens.
