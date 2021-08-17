@@ -293,6 +293,10 @@ Error message and password prompt
 
 <li>Chain of Responsibility</li>
 
+<li>Chomsky Normal Form</li>
+
+<li>CKY Algorithm</li>
+
 <li>Classification</li>
 
 <li>Clustering</li>
@@ -10192,7 +10196,7 @@ Error message and password prompt
     &quot;tiddlers&quot;: {
         &quot;Untitled&quot;: {
             &quot;title&quot;: &quot;Untitled&quot;,
-            &quot;text&quot;: &quot;&lt;ul style=\&quot;box-sizing: border-box; color: rgb(51, 51, 51); font-family: -apple-system, BlinkMacSystemFont, &amp;quot;Segoe UI&amp;quot;, Helvetica, Arial, sans-serif, &amp;quot;Apple Color Emoji&amp;quot;, &amp;quot;Segoe UI Emoji&amp;quot;, &amp;quot;Segoe UI Symbol&amp;quot;; font-size: 15px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;\&quot;&gt;&lt;li style=\&quot;box-sizing: border-box;\&quot;&gt;ASCII&lt;ul style=\&quot;box-sizing: border-box;\&quot;&gt;&lt;li style=\&quot;box-sizing: border-box;\&quot;&gt;every byte is mapped to one of 127 characters&lt;/li&gt;&lt;li style=\&quot;box-sizing: border-box;\&quot;&gt;simple but limited&lt;/li&gt;&lt;/ul&gt;&lt;/li&gt;&lt;li style=\&quot;box-sizing: border-box;\&quot;&gt;Unicode&lt;ul style=\&quot;box-sizing: border-box;\&quot;&gt;&lt;li style=\&quot;box-sizing: border-box;\&quot;&gt;maps all symbols of all major languages to a number&lt;/li&gt;&lt;li style=\&quot;box-sizing: border-box;\&quot;&gt;this needs a special layer of implementation&lt;ul style=\&quot;box-sizing: border-box;\&quot;&gt;&lt;li style=\&quot;box-sizing: border-box;\&quot;&gt;UTF-8&lt;/li&gt;&lt;/ul&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/li&gt;&lt;/ul&gt;&quot;
+            &quot;text&quot;: &quot;&lt;ul style=\&quot;box-sizing: border-box; color: rgb(51, 51, 51); font-family: -apple-system, BlinkMacSystemFont, &amp;quot;Segoe UI&amp;quot;, Helvetica, Arial, sans-serif, &amp;quot;Apple Color Emoji&amp;quot;, &amp;quot;Segoe UI Emoji&amp;quot;, &amp;quot;Segoe UI Symbol&amp;quot;; font-size: 15px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;\&quot;&gt;&lt;li style=\&quot;box-sizing: border-box;\&quot;&gt;ead Syntactic Parsing&lt;/li&gt;&lt;li style=\&quot;box-sizing: border-box;\&quot;&gt;ML Design Patterns - Feature Engineering Notes&lt;/li&gt;&lt;/ul&gt;&quot;
         }
     }
 }</pre>
@@ -10446,7 +10450,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20210816233951963" list="Index [[Machine Learning]] [[To Do]]" modified="20210816233951963" title="$:/StoryList">
+<div created="20210817173456943" list="Index [[Machine Learning]] [[To Do]]" modified="20210817203850762" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20201012173622690" modified="20210701235315628" title="$:/temp/advancedsearch">
@@ -10497,11 +10501,11 @@ Error message and password prompt
         },
         &quot;$:/info/browser/screen/width&quot;: {
             &quot;title&quot;: &quot;$:/info/browser/screen/width&quot;,
-            &quot;text&quot;: &quot;1536&quot;
+            &quot;text&quot;: &quot;1920&quot;
         },
         &quot;$:/info/browser/screen/height&quot;: {
             &quot;title&quot;: &quot;$:/info/browser/screen/height&quot;,
-            &quot;text&quot;: &quot;864&quot;
+            &quot;text&quot;: &quot;1080&quot;
         },
         &quot;$:/info/browser/language&quot;: {
             &quot;title&quot;: &quot;$:/info/browser/language&quot;,
@@ -11292,6 +11296,60 @@ Allows for the chain to be easily configured or controlled at runtime
 
 [img[images/chain-of-responsibility.png]]</pre>
 </div>
+<div created="20210817175303204" modified="20210817175631248" title="Chomsky Normal Form">
+<pre>A form of [[Context Free Grammars]] where rules abide by a certain grammatical structure.
+
+$$A \mapsto B C$$
+
+$$A \mapsto a$$
+
+Non-terminal symbols either map to two non-terminal symbols (recursion allowed) or map to a single non-terminal symbol.
+
+Converting a CFG to CNF enables parsing algorithms to apply to many grammars.</pre>
+</div>
+<div created="20210817195202043" modified="20210817205256586" title="CKY Algorithm">
+<pre>An dynamic programming algorithm for applying a [[CNF|Chomsky Normal Form]] [[CFG|Context Free Grammars]] , $$G$$, to an input sequence, $$w$$ and returning a set of trees representing the syntactic structure of the sequence.
+
+!! ''Prerequisites''
+
+A constituent's signature is a tuple of the starting and ending index of a constituent as well as the applied grammar rule.
+
+$$[\min, \max, C]$$
+
+The sequence, $$w$$, is indexed such that the indices occur between the values of the sequence.
+
+$$0 \; w_1 \; 1 \; w_2 \; 2 \; ... \; (i-1) \; w_{i-1} \; i \; ... \; (n-1) \; w_n \; n$$
+
+!! ''Algorithm''
+
+Given the sequence is of length $$n$$
+
+An $$n \times n$$ matric where only the diagonal is used.
+
+Rows start at $$0$$ 
+
+Columns starts at $$1$$.
+
+Entry $$[i,j]$$ represents the constituent signature $$[i,j,\textrm{entry}]$$.
+
+To start, the diagonal entries, $$[i,i]: i \le n$$, are marked with all possible [[POS|Part of Speech]] values which map the terms to the first non-terminal symbols.
+
+Next, in a bottom up approach find and store all possible structures, building up to any number of signatures $$[0,n,c]$$.
+
+!!! ''Psuedo Code''
+
+[img[images/cky-algorithm-psuedo.png]]
+
+[img[images/CKY-intuition.jpg]]
+
+The algorithm works from the front of the sequence to the back of the sequence (max index goes from 2 to n)
+
+As the max increases all possible structures with signatures between 0 and max-1 have been identified, stored, and can be referenced by the algorithm going forward.
+
+Within a certain max, small spans are tested before large spans (min starts as close to max as possible). This is because larger spans will need to reference smaller spans. See in the diagram that step 3 would in need to use a structure from step 2.
+
+Within each range {min, max} check all mid way points to split as well all possible rules for each midway point.</pre>
+</div>
 <div created="20201220194652999" modified="20210116023354709" title="Classification">
 <pre>Output is one of a set
 
@@ -11418,7 +11476,7 @@ All must be bound to the same interface.
 
 [img[images/Composite.png]]</pre>
 </div>
-<div created="20200828173348895" modified="20210801204949425" title="Computer Science">
+<div created="20200828173348895" modified="20210817173512921" title="Computer Science">
 <pre>!! ''Algorithms''
 
 * [[Dynamic Programming]]
@@ -11531,12 +11589,12 @@ Lower values of $$\alpha$$ increase the regularization by moving more probabilit
 
 $$\theta$$ adheres to the requirements of probability distribution with our without context distributed smoothing in place</pre>
 </div>
-<div created="20210802201917314" modified="20210802204414763" title="Context Free Grammars">
+<div created="20210802201917314" modified="20210817195011892" title="Context Free Grammars">
 <pre>Popular framework for modeling [[language grammar|Linguistics]].
 
 Lots of different grammars exist with many of them even mapping to the same language.
 
-!! ''Definition''
+! ''Definition''
 
 A grammar $$G$$ is defined by
 
@@ -11552,11 +11610,47 @@ The language defined by the grammar $$G$$ is the set of all strings of terminal 
 
 $$ L_G = \{ s \; | \; s \in \sum^* \textrm{and}  \; S \mapsto s \} $$
 
-!! ''Parsing''
+! ''Parsing''
 
 Finding the hierarchical application of rules which map $$S$$ to $$s$$
 
-TO DO!</pre>
+!! ''Basic CKY''
+
+First convert the CFG into [[CNF|Chomsky Normal Form]].
+
+Then apply the [[CKY Algorithm|CKY Algorithm]] to the sequence, keeping track of the possible structures. All returned structures are viable given the grammar and the input sentence.
+
+!! ''Neural CKY''
+
+An extension of basic CKY parsing such that scores are returned and associated with each viable structure.
+
+[img[images/Neural CKY.jpg]]
+
+Use [[BERT]] to create word embeddings and apply a simple [[neural network|Deep Learning]] model to generate constituent scores based on the embeddings at the edges of the constituent. 
+
+The NN model should be trained on reference constituents.
+
+Calculate a total score of a syntactic structure by summing the scores of all the constituents.
+
+Choose the structure returned from the CKY algorithm with the highest total score.
+
+!! ''Partial Parsing''
+
+Only the lowest level constituents are created which partition the sentence. No recursive or hierarchical structure is created.
+
+This simplifies into a [[sequence labeling|Sequence Labeling]] problem!
+
+! ''Evaluation''
+
+!! ''PARSEVAL''
+
+Compares signatures of constituents generated by the model vs constituents defined by the reference structure.
+
+$$\displaystyle \textrm{recall} = \frac{\textrm{\# of matching constituents from model}}{\textrm{\# of constituents in reference}}$$
+
+$$\displaystyle \textrm{precision} = \frac{\textrm{\# of matching constituents from model}}{\textrm{\# of constituents from model}}$$
+
+Precision and recall can be treated as a standard [[classification|Classification]] metric.</pre>
 </div>
 <div created="20210202180920997" modified="20210202181012162" title="Continuous Bag of Words">
 <pre>Given training data in the form of tokenized sentences and a context window size.
@@ -13064,11 +13158,14 @@ The CA in order to be trusted must have gone through efforts to verify that the 
 <div created="20210117235446247" modified="20210118000519194" title="Hyper-parameter">
 <pre>[[https://en.wikipedia.org/wiki/Hyperparameter_(machine_learning)]]</pre>
 </div>
-<div created="20210120185705408" modified="20210713235818389" tags="" title="Index">
-<pre>* [[Computer Science]]
-* [[Information Theory]]
-* [[Statistics and Probability|Statistics and Probability]]
-* [[Machine Learning]]</pre>
+<div created="20210120185705408" modified="20210817173523044" tags="" title="Index">
+<pre>[[Computer Science]]
+
+[[Information Theory]]
+
+[[Statistics and Probability|Statistics and Probability]]
+
+[[Machine Learning]]</pre>
 </div>
 <div created="20210122000011598" modified="20210126003344998" title="Information Theory">
 <pre>Theoretical descriptions of information and how it is stored/communicated
@@ -14363,17 +14460,14 @@ Because of this labeling conventions have been developed to identify a token tha
 
 [img[images/NER Labeling.jpg]]</pre>
 </div>
-<div created="20201119015206049" modified="20210802204419276" tags="" title="Natural Language Processing">
+<div created="20201119015206049" modified="20210817175046452" tags="" title="Natural Language Processing">
 <pre>! ''Preprocessing''
 
-Preprocessing uses prior knowledge and heuristic techniques to transform raw text into a simplified form for training models.
+Preprocessing techniques are used to transform raw text into a simplified and enriched form.
 
 * [[Tokenization|Tokenization]]
 * [[POS Tagging]]
-* Sentence segmentation
-* Word normalization
-* Word disambiguation
-* Stop words
+* [[Constituency Parsing|Context Free Grammars]]
 
 ! ''Modeling''
 
@@ -14388,7 +14482,7 @@ Preprocessing uses prior knowledge and heuristic techniques to transform raw tex
 * [[Sequence Labeling|Sequence Labeling]]
 * [[Sequence to Sequence]]
 
-! ''Other Tools''
+! ''Other''
 
 * [[Regex|Regex]]
 * [[Minimum Edit Distance]]</pre>
@@ -15947,10 +16041,9 @@ Error messages from the API endpoints will sometimes return database error messa
 
 The format of primary key ids returned in API endpoints can indicate the type of database.</pre>
 </div>
-<div created="20210529172614786" modified="20210813005031760" tags="" title="To Do">
-<pre>* NLP - Read Syntactic Parsing
-* ML Design Patterns - Feature Engineering Notes
-</pre>
+<div created="20210529172614786" modified="20210817205433168" tags="" title="To Do">
+<pre>* NLP - Read dependency parsing
+* ML Design Patterns - Read modeling patterns</pre>
 </div>
 <div created="20201127010943702" modified="20210508142648752" tags="" title="Tokenization">
 <pre>Converting a stream of characters into partitioned sections called tokens, we want to tokenize text data in a way that creates meaningful tokens.
