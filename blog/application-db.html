@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="icon" type="image/png" href="../images/logo.png"/>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+	<link rel="stylesheet" href="../style.css">
+  <title>Louie's Blog - Application Database Design</title>
+</head>
+<body>
+
+<div class="header container">
+  <h2>Application Database Design</h2>
+</div>
+
+
+<div class="card container">
+  <p>Here I discussed some best practices for setting a database with an enterprise web application.</p>
+  <p>First what kind of databases management system should you use?</p>
+  <h5>SQL DBMS</h5>
+  <p>For most use cases and as a default choice I recommend a SQL DBMS. Why?</p>
+  <ul>
+    <li>Provides structure to your system</li>
+    <li>Integrates easily into applications with ORM frameworks</li>
+    <li>Comes with fancy fleshed out features</li>
+    <ul>
+      <li>Transaction management</li>
+      <li>Prepared statements</li>
+      <li>Internally computed functions such as joins and aggregations</li>
+      <li>Stored procedures</li>
+    </ul>
+  </ul>
+  <p>Overall I think they are conducive to efficiently building robust applications and almost every web application should use one for at least part of their database.</p>
+  
+  <h5>Document DBMS</h5>
+  <p>Document DBMS can be useful as a supplimental system.</p>
+  <p>I think there are two main reasons for storing parts of your database in a Document DBMS</p>
+  <ul>
+    <li>Bulky data/lots of data</li>
+    <li>Messy or naturally disorganized data</li>
+  </ul>
+  <p>All those "fancy and fleshed out features" come at the cost of scalability in a SQL DBMS. If you need to store large chunks of text or many many entries of something it is probably better to store it in a Document DBMS. This is simply because Document DBMS can scale indefinitely as clusters where as SQL DBMS cannot.</p>
+  <p>As for messy data, Document DBMS do have defined schemas. So if the properties of an object vary and/or are unpredictible it can be worth it to just throw it into a Document DBMS collection and manage it within the application.</p>
+
+  <h3>General Tips</h3>
+  <p>As I've already implied, I am a fan of a hybrid approach. Start off with a SQL DBMS and suppliment with a Document DBMS as needed based on the strengths I've defined above.</p>
+  <p>Detach bulky sections of an object. This idea kind of goes along with the hybrid approach, if a certain database object has some lightweight fields along with a bulky field it is usually best to split them up into two independent objects (maybe in two different DBMS!). Essentially this just makes it easier to choose when you want to pull and update the bulky part of the object in your application instead of constantly having to worry about using up resources by unnecissarily working with it.</p>
+  <p>Unless it causes a lot of resource overhead make sure to define all objects you want to use in the application in the database schema. You don't want to have to manually create and manage a composite object in your application when your DBMS and an ORM framework can do the same thing much more efficiently.</p>
+</div>
+
+</body>
+</html>
