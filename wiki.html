@@ -185,6 +185,8 @@ Error message and password prompt
 
 <li>$:/state/Link/--1480314271/search</li>
 
+<li>$:/state/Link/-1947325556/search</li>
+
 <li>$:/state/showeditpreview</li>
 
 <li>$:/state/sidebar</li>
@@ -382,6 +384,8 @@ Error message and password prompt
 <li>Decorator</li>
 
 <li>Deep Learning</li>
+
+<li>Dependency Grammars</li>
 
 <li>Deployments</li>
 
@@ -10433,6 +10437,9 @@ Error message and password prompt
 <div created="20210117002818773" modified="20210117002821201" title="$:/state/Link/--1480314271/search">
 <pre></pre>
 </div>
+<div created="20211005233200905" modified="20211005233202240" title="$:/state/Link/-1947325556/search">
+<pre>Multin</pre>
+</div>
 <div created="20201220171625704" modified="20201220175338588" title="$:/state/showeditpreview">
 <pre>yes</pre>
 </div>
@@ -10466,7 +10473,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20210902130916497" list="Topics [[Machine Learning]] [[Data Engineering]] [[To Do]]" modified="20210902194857407" title="$:/StoryList">
+<div list="Topics [[To Do]]" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20201012173622690" modified="20210901193831232" title="$:/temp/advancedsearch">
@@ -10485,7 +10492,7 @@ Error message and password prompt
         },
         &quot;$:/info/url/full&quot;: {
             &quot;title&quot;: &quot;$:/info/url/full&quot;,
-            &quot;text&quot;: &quot;file:///C:/Users/lbafford/Repos/Personal/Edwardbafford.github.io/wiki.html&quot;
+            &quot;text&quot;: &quot;file:///home/louie/Repos/Edwardbafford.github.io/wiki.html&quot;
         },
         &quot;$:/info/url/host&quot;: {
             &quot;title&quot;: &quot;$:/info/url/host&quot;,
@@ -10505,7 +10512,7 @@ Error message and password prompt
         },
         &quot;$:/info/url/pathname&quot;: {
             &quot;title&quot;: &quot;$:/info/url/pathname&quot;,
-            &quot;text&quot;: &quot;/C:/Users/lbafford/Repos/Personal/Edwardbafford.github.io/wiki.html&quot;
+            &quot;text&quot;: &quot;/home/louie/Repos/Edwardbafford.github.io/wiki.html&quot;
         },
         &quot;$:/info/url/search&quot;: {
             &quot;title&quot;: &quot;$:/info/url/search&quot;,
@@ -10533,7 +10540,7 @@ Error message and password prompt
 <div created="20200828140319089" modified="20210901191713767" title="$:/temp/NewTagName">
 <pre></pre>
 </div>
-<div created="20200827210236856" modified="20210902150925251" title="$:/temp/search">
+<div created="20200827210236856" modified="20211005234854776" title="$:/temp/search">
 <pre></pre>
 </div>
 <div created="20200827210410769" modified="20200827210412400" title="$:/theme">
@@ -10916,14 +10923,12 @@ If the prior and posterior models are part of the same probability distribution 
 * [[Bayes Theorem|Bayes Theorem]]
 * [[Bayesian Inference|Bayesian Inference]]</pre>
 </div>
-<div created="20210423183959014" modified="20210529172735975" title="Beam Search">
-<pre>https://en.wikipedia.org/wiki/Beam_search
+<div created="20210423183959014" modified="20211005234043258" title="Beam Search">
+<pre>A concept where at certain steps of an algorithm a percentage of the most promising solutions are kept and the rest are discarded.
 
-A concept where at certain steps of an algorithm a percentage of the most promising solutions are kept and the rest are discarded in order to decrease the computational complexity of the algorithm.
+Using beam search is a good compromise between a greedy and exhaustive approaches.
 
-!! ''Examples''
-
-* [[Viterbi Algorithm]]</pre>
+It increases your chances of getting an optimal solution without increasing time complexity exponentially.</pre>
 </div>
 <div created="20210616012326505" modified="20210621131637714" title="Behavior Patterns">
 <pre>* How responsibility is distributed between objects
@@ -11595,7 +11600,7 @@ Lower values of $$\alpha$$ increase the regularization by moving more probabilit
 
 $$\theta$$ adheres to the requirements of probability distribution with our without context distributed smoothing in place</pre>
 </div>
-<div created="20210802201917314" modified="20210817195011892" title="Context Free Grammars">
+<div created="20210802201917314" modified="20211004235534244" title="Context Free Grammars">
 <pre>Popular framework for modeling [[language grammar|Linguistics]].
 
 Lots of different grammars exist with many of them even mapping to the same language.
@@ -11615,6 +11620,10 @@ $$ S $$ - the start symbol of a sentence and an element of $$N$$.
 The language defined by the grammar $$G$$ is the set of all strings of terminal symbols (sentences) that can be mapped from the starting symbol $$S$$ using the rules $$R$$.
 
 $$ L_G = \{ s \; | \; s \in \sum^* \textrm{and}  \; S \mapsto s \} $$
+
+!! ''Training/Testing Data''
+
+Parsed text data exists in human made tree banks.
 
 ! ''Parsing''
 
@@ -11898,7 +11907,7 @@ Forms:
 ** Compact
 ** Not human readable</pre>
 </div>
-<div created="20210902125406290" modified="20210902125415922" title="Data Engineering">
+<div created="20210902125406290" modified="20211005234859316" title="Data Engineering">
 <pre>!! ''Theory''
 
 * [[Databases|DBMS]]
@@ -12219,6 +12228,115 @@ Because neural networks are so powerful they need specialized [[regularization m
 * Data augmentation
 * Chip gradients/weights
 * Dropout</pre>
+</div>
+<div created="20211004233705633" modified="20211005234829764" title="Dependency Grammars">
+<pre>! ''Description''
+
+A set of relationships that can be applied to pairs of words.
+
+Each relationship has a direction.
+
+In general the relationships imply causal or modifier relationships.
+
+For a dependency grammar there is a set of relationships but no rules defining which relationships can be linked to which words.
+
+When applied to a sentence the parsing creates an acyclic, directed graph (a tree) starting with a root relationship. The vertices are the words and the edges are the relationships.
+
+[img[images/Dependency Parsing.jpg]]
+
+!! ''Benefits''
+
+Dependency parsing is usually considered a superior option to [[constituency parsing|Context Free Grammars]] when it comes to enriching language data.
+
+* Word order doesn't matter
+* Easier to traverse
+
+! ''Training/Testing Data''
+
+Parsed text data exists in human made tree banks.
+
+! ''Parsing''
+
+!! ''Shift-Reduce Parsing''
+
+[img[images/Shift Reduce Parsing.jpg]]
+
+A supervised model called an oracle decides which operation to apply to the current configuration.
+
+!!! ''Configuration''
+
+Buffer starts off with the tokenized sentence.
+
+A stack of words that have been shifted from the buffer and removed from the stack as necessary.
+
+A set of dependency relationships is defined by the oracle.
+
+!!! ''Operations''
+
+Note: can vary between parsers
+
+* Define a relationship between the top two tokens in the stack and remove the tail token of the relationship
+* Shift onto the stack from the buffer
+
+!!! ''Oracle''
+
+Can be any [[supervised|Supervised Learning]] multinomial [[classification|Classification]] model.
+
+The configuration is used as input with the operation as input.
+
+Given a correctly parsed sentence we can recreate the parse steps allowing us to create large sets of config-operation pairings.
+
+Use feature templates representing the current config.
+
+!!! ''Beam Search''
+
+Update the parsing algorithm to keep the k most promising parses at any given time.
+
+Scores are the sum of the probabilities of each operation. 
+
+$$\displaystyle \textrm{score}(c_0) = 0.0$$
+
+$$ \displaystyle \textrm{score}(c_i) = \textrm{score}(c_{i-1}) + \textrm{p}(o_i|c_{i-1}) $$
+
+!!! ''Properties''
+
+* Linear efficiency
+* Not all dependency tree constructions are possible
+* Uses a greedy approach which can produce sub-optimal trees
+
+!! ''Graph Based Parser''
+
+Leverages maximum spanning tree algorithms. Which search for the highest scoring tree graph.
+
+!!! ''Scoring''
+
+The following scoring metric is often used where $$t$$ is a tree graph with edges $$e$$ given sentence $$S$$. Each edge scored based on a set of weighted features.
+
+$$ \displaystyle \argmax_{t}(\sum_e^t\sum_i^Nw_if_i(e, S)) $$
+
+Features are chosen by a human and iteratively tuned to optimize performance of the maximum spanning tree algorithm.
+
+!!! Common features
+
+* Word forms - lemmas, POS
+* Embeddings
+* Context words
+
+!!! ''Properties''
+
+* Polynomial efficiency
+* All trees are possible
+* Word locality is not a factor, long term dependencies are easier
+
+! ''Evaluation''
+
+!! ''Labeled Attachment Score''
+
+Percentage of words with correct head and relationship type.
+
+!! ''Unlabeled Attachment Score''
+
+Percentage of words with correct head.</pre>
 </div>
 <div created="20210618135850606" modified="20210618135919532" title="Deployments">
 <pre>* New version in code
@@ -14452,7 +14570,7 @@ Because of this labeling conventions have been developed to identify a token tha
 
 [img[images/NER Labeling.jpg]]</pre>
 </div>
-<div created="20201119015206049" modified="20210817175046452" tags="" title="Natural Language Processing">
+<div created="20201119015206049" modified="20211005004810614" tags="" title="Natural Language Processing">
 <pre>! ''Preprocessing''
 
 Preprocessing techniques are used to transform raw text into a simplified and enriched form.
@@ -14460,6 +14578,7 @@ Preprocessing techniques are used to transform raw text into a simplified and en
 * [[Tokenization|Tokenization]]
 * [[POS Tagging]]
 * [[Constituency Parsing|Context Free Grammars]]
+* [[Dependency Parsing|Dependency Grammars]]
 
 ! ''Modeling''
 
@@ -14467,6 +14586,7 @@ Preprocessing techniques are used to transform raw text into a simplified and en
 * [[Document Representations]]
 * [[Language Models|Language Model]]
 * [[Context Free Grammars]]
+* [[Dependency Grammars]]
 
 ! ''Problems''
 
@@ -16134,9 +16254,8 @@ This implementation has fast reads but slower writes because an entry may have t
 *** UTF-8
 *** UTF-16</pre>
 </div>
-<div created="20210529172614786" modified="20210902195015108" tags="" title="To Do">
-<pre>* NLP - dependency parsing notes
-* ML - read training</pre>
+<div created="20210529172614786" modified="20211005234909615" tags="" title="To Do">
+<pre>* ML - read training</pre>
 </div>
 <div created="20201127010943702" modified="20210508142648752" tags="" title="Tokenization">
 <pre>Converting a stream of characters into partitioned sections called tokens, we want to tokenize text data in a way that creates meaningful tokens.
