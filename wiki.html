@@ -10473,7 +10473,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div list="Topics [[To Do]]" title="$:/StoryList">
+<div created="20211020235949223" list="Topics [[Deep Learning]] [[Data Engineering]] [[Machine Learning]] [[Supervised Learning]] [[To Do]]" modified="20211022001235172" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20201012173622690" modified="20210901193831232" title="$:/temp/advancedsearch">
@@ -10540,7 +10540,7 @@ Error message and password prompt
 <div created="20200828140319089" modified="20210901191713767" title="$:/temp/NewTagName">
 <pre></pre>
 </div>
-<div created="20200827210236856" modified="20211005234854776" title="$:/temp/search">
+<div created="20200827210236856" modified="20211021002300968" title="$:/temp/search">
 <pre></pre>
 </div>
 <div created="20200827210410769" modified="20200827210412400" title="$:/theme">
@@ -11496,7 +11496,7 @@ All must be bound to the same interface.
 
 [img[images/Composite.png]]</pre>
 </div>
-<div created="20200828173348895" modified="20210902125427223" title="Computer Science">
+<div created="20200828173348895" modified="20211021000343859" title="Computer Science">
 <pre>!! ''Algorithms''
 
 * [[Dynamic Programming]]
@@ -11511,7 +11511,6 @@ All must be bound to the same interface.
 
 * [[Protocols]]
 * [[Programming Languages]]
-* [[Big Data Tools]]
 * [[Dev Ops Tools]]
 
 !!! ''Other''
@@ -11907,7 +11906,7 @@ Forms:
 ** Compact
 ** Not human readable</pre>
 </div>
-<div created="20210902125406290" modified="20211005234859316" title="Data Engineering">
+<div created="20210902125406290" modified="20211021000416836" title="Data Engineering">
 <pre>!! ''Theory''
 
 * [[Databases|DBMS]]
@@ -11915,7 +11914,9 @@ Forms:
 * [[Data Processing|Data Processing]]
 * [[Design|Designing Data-Intensive Applications]]
 
-</pre>
+!! ''Technologies''
+
+* [[Big Data Tools]]</pre>
 </div>
 <div created="20201027000455325" modified="20201027001942994" tags="" title="Data Flow Engines">
 <pre>Takes the basic concepts of [[MapReduce|MapReduce]] and add optimizations, implementations vary based on technologies.
@@ -12142,14 +12143,10 @@ This allows for dynamic control of an operation without having to make a subclas
 
 [img[images/Decorator.png]]</pre>
 </div>
-<div created="20210312011504297" modified="20210615005116906" title="Deep Learning">
-<pre>A subset of [[Machine Learning]] techniques based on neural networks.
+<div created="20210312011504297" modified="20211022002317699" title="Deep Learning">
+<pre>A subset of [[Machine Learning]] techniques based on creating and training neural networks.
 
-* Very powerful
-* Needs lots data
-* Needs lots of computing power
-
-The strength and flexibility of these models mean they overfit easily and are harder to train
+Deep learning can be applied to all major types of machine learning.
 
 ! ''Models''
 
@@ -12168,7 +12165,7 @@ $$y = \sigma(w \,\cdot \, x + b)$$
 
 !! ''Neural Network Types''
 
-* Feedforward fully connected (basic)
+* Feedforward fully connected
 * [[Recurrent Neural Network|Recurrent Neural Network]]
 * [[Transformer|Transformer]]
 * [[BERT]]
@@ -12227,7 +12224,32 @@ Because neural networks are so powerful they need specialized [[regularization m
 * Early stopping
 * Data augmentation
 * Chip gradients/weights
-* Dropout</pre>
+* Dropout
+
+!! ''Transfer Learning''
+
+A process of fine-tuning a model with new data.
+
+Start by copying a model, then freeze the weights of the lower layers. These lower layers should represent more fundamental aspects of the problem that have been learned.
+
+With the upper layers allowed to be changed train the model on new data. The less data the fewer layers should be allowed to change. 
+
+Progressively freezing layers while training is another option. 
+
+!! ''Training Performance''
+
+Because of the size of neural networks training a model can have significant time and memory bottlenecks.
+
+!!! ''Time Bottlenecks''
+
+* Use specialized hardware - GPUs and TPUs
+* Specialized logic to load data and calculate gradients in parallel
+* Data Parallelism
+
+
+!!! ''Memory Bottlenecks''
+
+* Model Parallelism</pre>
 </div>
 <div created="20211004233705633" modified="20211005234829764" title="Dependency Grammars">
 <pre>! ''Description''
@@ -14056,7 +14078,7 @@ Word vectors can be represented by either $$U_k\Sigma_k$$ or $$U_k$$
 
 Document vectors can be represented by either  $$V_k$$ or $$(\Sigma_kV_k^T)^T$$</pre>
 </div>
-<div created="20201119014956147" modified="20210902184932051" tags="" title="Machine Learning">
+<div created="20201119014956147" modified="20211021000502659" tags="" title="Machine Learning">
 <pre>!! [[Data Quality]]
 
 Validate and improve the integrity of the data used to make the model.
@@ -14075,11 +14097,7 @@ Techniques vary with each approach.
 * [[Self-supervised Learning]]
 * [[Unsupervised Learning]]
 * [[Reinforcement Learning]]
-
-!! ''Other''
-
-* [[Overfitting vs Underfitting]]
-* [[Regularization]]</pre>
+</pre>
 </div>
 <div created="20201027000430192" modified="20201027001600598" tags="" title="MapReduce">
 <pre>Parallel processing framework, usually run on top of a [[distributed file system|Distributed File System]]
@@ -14839,25 +14857,29 @@ We must know the all categories then map each category to one feature - a 1 when
 
 [img[images/one-hot-encoding.png]]</pre>
 </div>
-<div created="20201220191456221" modified="20210902140916278" title="Overfitting vs Underfitting">
+<div created="20201220191456221" modified="20211021003710192" title="Overfitting vs Underfitting">
 <pre>!! ''Overfitting''
 
 A machine learning model overfits the data when it learns things too specific to the data its and therefore doesn't generalize well to new data. This can be identified when model performance is much higher on the seen data than it is for new data.
 
 General solutions are to 
 
-* Increase the amount of data
-* Use [[regularization|Regularization]] on the model
+* Use/increase [[regularization|Regularization]] on the model
 * Use a [[higher bias|Bias Variance Tradeoff]] model
+* Get more data
+* Use an [[ensemble|Ensembles]] of models
 
 !! ''Underfitting''
 
 When a model generalizes to new data well but is just in general not performing well enough.
 
-* Use a more powerful/[[higher variance|Bias Variance Tradeoff]] model
-* Use a [[generative|Generative Model]] or bayesian model that's better equipped to solve the problem
-* [[Feature engineering|Feature Engineering]] or better data quality
+* Use a more better equiped/[[higher variance|Bias Variance Tradeoff]] model
+* Decrease/remove [[regularization|Regularization]]
+* Get more data
+* Use an [[ensemble|Ensembles]] of models
+* Enrich data with [[feature engineering|Feature Engineering]]
 
+!! ''Relationship''
 
 [img[images/Overfitting vs Underfitting.jpg]]</pre>
 </div>
@@ -16050,7 +16072,7 @@ $$p(\sigma,x)$$ is the probability of each standard deviation based on the sampl
 
 </pre>
 </div>
-<div created="20201220185637027" modified="20210902153711273" title="Supervised Learning">
+<div created="20201220185637027" modified="20211021005133156" title="Supervised Learning">
 <pre>Supervised learning is all about prediction. 
 
 Given an input we want to predict the correct output.
@@ -16099,9 +16121,7 @@ Selecting the type of model to train usually depends on some combination of the 
 * Interpretability
 * Training speed
 * Inference speed
-* Hosting resources needed
-* Problem complexity
-* Amount of training data
+* Metric performance
 
 !! ''Bias, Variance, and Data''
 
@@ -16153,15 +16173,27 @@ Finally the test dataset is used to predict the performance of your model after 
 
 [[Cross Validation]] can be used as a variation of this approach.
 
-!! ''Overfitting''
+!! ''[[Overfitting vs Underfitting]]''
 
-TODO
+Use validation methods to determine if the model is overfitting or underfitting and adjust accordingly.
 
-!! [[Gradient Descent|Gradient Descent (Machine Learning)]]
+!! ''Checkpoints''
 
-A very common training technique that can be applied to many different models.
+Periodically save versions of the model while training.
 
-</pre>
+* Analyze and choose best model after training is complete
+* Resume training if a failure occurs during it
+* Enable fine tuning
+
+!! ''Early Stopping''
+
+Stop training once validation doesn't improve after a certain amount of time.
+
+* Saves time!
+
+!! ''Fine Tuning''
+
+Take a partially trained model and retrain it on new data. Leverage new data to improve model performance without needing a full new data set.</pre>
 </div>
 <div created="20210621130632724" modified="20210621130927875" title="Template Method">
 <pre>Pattern for defining an algorithmic framework
