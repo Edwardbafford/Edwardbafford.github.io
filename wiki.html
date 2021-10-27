@@ -365,6 +365,8 @@ Error message and password prompt
 
 <li>Data Flow Engines</li>
 
+<li>Data Parallelism</li>
+
 <li>Data Processing</li>
 
 <li>Data Quality</li>
@@ -584,6 +586,8 @@ Error message and password prompt
 <li>Message Queues</li>
 
 <li>Minimum Edit Distance</li>
+
+<li>Model Parallelism</li>
 
 <li>Monotonic Reads</li>
 
@@ -10473,7 +10477,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20211020235949223" list="Topics [[Deep Learning]] [[Data Engineering]] [[Machine Learning]] [[Supervised Learning]] [[To Do]]" modified="20211022001235172" title="$:/StoryList">
+<div created="20211020235949223" list="Topics [[Deep Learning]] [[To Do]]" modified="20211027003057137" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20201012173622690" modified="20210901193831232" title="$:/temp/advancedsearch">
@@ -11935,6 +11939,31 @@ Examples - [[Spark|Spark]], Flint, Cloud Dataflow
 ** less flexibility
 ** simple development</pre>
 </div>
+<div created="20211027000516394" modified="20211027003003588" title="Data Parallelism">
+<pre>A method which allows for training neural network models on multiple sets of data at the same time.
+
+The general steps:
+
+# Split up the data into subsets
+# Copy the model for each set of data
+# Gradients are calculated and update the models
+
+There are two main approaches.
+
+!! ''Synchronous''
+
+The system waits for the gradients of all copies for each batch before aggregating and updating the models.
+
+This method is slower but more consistent then the asynchronous approach and should be used when no network is involved to slow down the wait process.
+
+!! ''Asynchronous''
+
+Gradients are sent as they are ready which update a central model. The central model parameters are then synced with the models that are calculating gradients.
+
+This method is faster but allows for models to be out of sync with each other and have contradicting gradient updates.
+
+Despite this it is usually recommended that systems distributed over a network use this method for overall faster training.</pre>
+</div>
 <div created="20201026233726208" modified="20201107001304530" tags="" title="Data Processing">
 <pre>Systems of record - the origin of the data, for example, an application's database
 
@@ -12143,7 +12172,7 @@ This allows for dynamic control of an operation without having to make a subclas
 
 [img[images/Decorator.png]]</pre>
 </div>
-<div created="20210312011504297" modified="20211022002317699" title="Deep Learning">
+<div created="20210312011504297" modified="20211027003548086" title="Deep Learning">
 <pre>A subset of [[Machine Learning]] techniques based on creating and training neural networks.
 
 Deep learning can be applied to all major types of machine learning.
@@ -12244,12 +12273,12 @@ Because of the size of neural networks training a model can have significant tim
 
 * Use specialized hardware - GPUs and TPUs
 * Specialized logic to load data and calculate gradients in parallel
-* Data Parallelism
+* [[Data Parallelism]]
 
 
 !!! ''Memory Bottlenecks''
 
-* Model Parallelism</pre>
+* [[Model Parallelism]]</pre>
 </div>
 <div created="20211004233705633" modified="20211005234829764" title="Dependency Grammars">
 <pre>! ''Description''
@@ -14342,6 +14371,13 @@ Using this idea we can create a dynamic programming algorithm to build up from s
 Once the optimal edit distance is found we can back track through the dynamic program to create the proper alignment.
 
 [[Algorithm details|https://web.stanford.edu/class/cs124/lec/med.pdf]]</pre>
+</div>
+<div created="20211027003114295" modified="20211027003346203" title="Model Parallelism">
+<pre>The process of splitting a single neural network model across multiple machines during training or inference.
+
+Neural outputs are passed to downstream neurons as inputs between computers.
+
+This allows for very large models to exist but slows down training and inference.</pre>
 </div>
 <div created="20200829153605915" modified="20200829160735102" tags="data theory" title="Monotonic Reads">
 <pre>A database consistency issue that occurs on [[replicated data|DB Replication]] where reading the same data twice can show new data then old data. If two different nodes are read from and the first read comes from a more up to date node than the second read this can occur.
