@@ -497,6 +497,8 @@ Error message and password prompt
 
 <li>HTTPS</li>
 
+<li>Hyperparamter</li>
+
 <li>Information Theory</li>
 
 <li>Injection</li>
@@ -10477,7 +10479,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20211020235949223" list="Topics [[Machine Learning]] [[Feature Engineering]] [[Feature Scaling]] [[To Do]]" modified="20211027004908350" title="$:/StoryList">
+<div created="20211101231222843" list="Topics [[Machine Learning]] [[Supervised Learning]] [[Discriminative Model]] [[Generalized Linear Models]] [[Logistic Regression]] Hyperparamter [[To Do]]" modified="20211101234301607" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20201012173622690" modified="20210901193831232" title="$:/temp/advancedsearch">
@@ -10544,7 +10546,7 @@ Error message and password prompt
 <div created="20200828140319089" modified="20210901191713767" title="$:/temp/NewTagName">
 <pre></pre>
 </div>
-<div created="20200827210236856" modified="20211021002300968" title="$:/temp/search">
+<div created="20200827210236856" modified="20211101234152457" title="$:/temp/search">
 <pre></pre>
 </div>
 <div created="20200827210410769" modified="20200827210412400" title="$:/theme">
@@ -11978,7 +11980,7 @@ Offline system - asynchronous processes, general effeciency is the most importan
 * [[Batch processing|Batch Processing]] - periodic processing jobs, processing large amounts of data per job
 * [[Stream processing|Stream Processing]] - process data as it becomes available</pre>
 </div>
-<div created="20210902131106554" modified="20211027004112251" title="Data Quality">
+<div created="20210902131106554" modified="20211101231537663" title="Data Quality">
 <pre>!! ''Accuracy and Consistency''
 
 Errors in the data limits model performance and can be corrected or filtered out.
@@ -12003,13 +12005,9 @@ Can cause performance issues for minority inputs.
 
 !!! ''Solutions''
 
-Upsampling
-
-Downsampling (with bagging is an option)
-
-Value minority data more while training model
-
-Convert regression output to categorical pdf to show chances of an outlier</pre>
+* Upsampling
+* Downsampling (with bagging is an option)
+* Value minority data more while training model</pre>
 </div>
 <div created="20200828171630393" modified="20200828173051364" tags="data theory" title="Data Warehouse">
 <pre>A data warehouse or data lake is where data from multiple areas in a business is consolidated and organized. From here downstream analysis and reporting can be done. 
@@ -13397,6 +13395,39 @@ Clients usually have a list of public keys from major CAs that they trust.
 The CA in order to be trusted must have gone through efforts to verify that the host is who they say they are.
 
 ''Why can't a client see the certificate being used by the server, save it and then use it as a man in the middle attack?''</pre>
+</div>
+<div created="20211101232318110" modified="20211101235201122" title="Hyperparamter">
+<pre>Hyperparameters are the parts of the model configuration which aren't optimized during training.
+
+! ''Hyperparameter Tuning''
+
+Optimizing this part of the model is difficult task with a couple of approaches.
+
+!! ''Grid Search''
+
+Systematically test all combinations of hyperparameter settings and choose the best combination. This approach scales exponentially with respect to the number of hyperparameters.
+
+* Effectively optimizes
+* Inefficient
+
+!! ''Random Search''
+
+Randomly test combinations of hyperparameter values.
+
+* Scales indefinitely
+* Unreliable optimization
+
+!! ''Bayesian Tuning''
+
+Test a large number of hyperparameter combinations. Learn a bayesian function to represent the model performance given the hyperparameter values.
+
+$$ \displaystyle f(\theta_h) \to L(X) $$
+
+Using the bayesian function $$f$$ is then optimized with respect to the hyperparameter values.
+
+$$ \displaystyle \min_{\theta_h}(L(X)) $$
+
+This method is a good middle ground between scalability and performance optimization.</pre>
 </div>
 <div created="20210122000011598" modified="20210901191316085" title="Information Theory">
 <pre>Theoretical descriptions of information and how it is stored/communicated
@@ -16098,7 +16129,7 @@ $$p(\sigma,x)$$ is the probability of each standard deviation based on the sampl
 
 </pre>
 </div>
-<div created="20201220185637027" modified="20211021005133156" title="Supervised Learning">
+<div created="20201220185637027" modified="20211101232312164" title="Supervised Learning">
 <pre>Supervised learning is all about prediction. 
 
 Given an input we want to predict the correct output.
@@ -16219,7 +16250,11 @@ Stop training once validation doesn't improve after a certain amount of time.
 
 !! ''Fine Tuning''
 
-Take a partially trained model and retrain it on new data. Leverage new data to improve model performance without needing a full new data set.</pre>
+Take a partially trained model and retrain it on new data. Leverage new data to improve model performance without needing a full new data set.
+
+!! [[Hyperparamter Tuning|Hyperparamter]]
+
+Tune parts of the model configuration which isn't optimized during training.</pre>
 </div>
 <div created="20210621130632724" modified="20210621130927875" title="Template Method">
 <pre>Pattern for defining an algorithmic framework
