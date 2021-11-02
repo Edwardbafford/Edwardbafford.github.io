@@ -20,7 +20,7 @@
   <br>
 	<h3>Controllers</h3>
     <p>
-      Controllers are the sections of code which act as the inferface between the client and the rest of the system. Because of this controllers should handle any exception bubbles up from the application and return an appropriate response to the user. I prefer to handle this in an aspect oriented way to avoid boilerplate code.
+      Controllers are the sections of code which act as the inferface between the client and the rest of the system. Because of this controllers should handle any exception that bubbles up from the application and return an appropriate response to the user. The exception should be logged exactly as is for troubleshooting with a standardized message returned to the end user to prevent exposing API vulnerabilities. I prefer to handle this in an aspect oriented way to avoid boilerplate code.
     </p>
     <br/>
   <h3>Services</h3>
