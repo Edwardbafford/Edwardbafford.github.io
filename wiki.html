@@ -237,6 +237,8 @@ Error message and password prompt
 
 <li>Ant</li>
 
+<li>Application Security</li>
+
 <li>Attention</li>
 
 <li>Authentication</li>
@@ -354,6 +356,8 @@ Error message and password prompt
 <li>Cumulative Distribution</li>
 
 <li>Curse of Dimensionality</li>
+
+<li>Cyber Security</li>
 
 <li>Dask</li>
 
@@ -690,8 +694,6 @@ Error message and password prompt
 <li>RNN Sequence Labeling</li>
 
 <li>RNN Sequence to Sequence</li>
-
-<li>Security</li>
 
 <li>Self-Attention</li>
 
@@ -10479,7 +10481,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20211101231222843" list="Topics [[Machine Learning]] [[Supervised Learning]] [[Discriminative Model]] [[Generalized Linear Models]] [[Logistic Regression]] Hyperparamter [[To Do]]" modified="20211101234301607" title="$:/StoryList">
+<div created="20211101231222843" list="Topics [[Cyber Security]] [[Application Security]] [[To Do]]" modified="20211111012220723" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20201012173622690" modified="20210901193831232" title="$:/temp/advancedsearch">
@@ -10748,6 +10750,49 @@ Define a set of targets - compile code, build war, generate SOAP service from WS
 * Properties - configurable values - directories, versions, etc.
 * Actions - java actions abstracted from you and implemented by Ant, just reference the action type
 * Dependencies - targets can depend on one another, so running one will run all of its dependencies before hand</pre>
+</div>
+<div created="20211111005851482" modified="20211111012304082" title="Application Security">
+<pre>! ''Software development process''
+
+Break down applications into smaller services to make security management easier.
+
+Incorporate security into the code review process.
+
+Use linters to discover vulnerabilities.
+
+Continuously test previously discovered vulnerabilities (regression testing).
+
+Continuously search for bugs using an internal team, bug bounty programs, or third party teams.
+
+Prioritize security issues using a security ranking system, [[CVSS|https://en.wikipedia.org/wiki/Common_Vulnerability_Scoring_System]] is a standard system.
+
+! ''Infrastructure''
+
+Use an encrypted protocol such as [[HTTPS|HTTPS]] to communication between machines. This prevents man in the middle attacks.
+
+
+! ''Application Design''
+
+!! ''Passwords''
+
+* Enforce high entropy passwords
+* Save and compare credentials in a hashed form
+* Offer multi-factor authentication
+
+!! ''Front End''
+
+* [[XSS]]
+* [[Regex DoS|DoS]]
+
+!! ''API''
+
+* [[CSFR]]
+
+!! ''Back End''
+
+* [[XXE]]
+* [[Injection]]
+* [[Logical and Distributed Dos|DoS]]</pre>
 </div>
 <div created="20210529171113761" modified="20210603235742033" title="Attention">
 <pre>Attention is a mechanic used by [[Neural Networks|Deep Learning]]
@@ -11870,6 +11915,40 @@ $$
 
 * overfitting becomes more likely as there is greater sparsity and less correlation between the training and test data
 * optimization becomes more difficult</pre>
+</div>
+<div created="20210625003340506" modified="20211111012959961" title="Cyber Security">
+<pre>''Information Security'' is the process of protecting information
+
+''Cyber Security'' is the process of protecting digital information
+
+Protecting information involves
+
+* Confidentiality - data can only be accessed by those who are authorized
+* Integrity - data can only be alter in specific ways
+* Availability - data should be consistently accessible to those authorized
+
+''Assets'' are data that need to be protected
+
+''Threats'' are entities that may try to attack assets
+
+''Vulnerabilities'' are areas in a system where a threat may be able attack assets
+
+The ''Attack Surface'' is the collection of vulnerabilities
+
+An ''Exploit'' is a method of successfully attacking assets through a vulnerability
+
+''Risk'' is the likelihood or ease of an attack surface getting exploited
+
+''In Cyber Security the goal is to minimize risk''
+
+! ''Foundations''
+
+''Zero Trust Security'' is an approach where access to resources has to be explicitly provisioned for each entity, nothing is given by default. With this approach access is never accidentally given.
+
+! ''Domains''
+
+* [[Infrastructure Security]]
+* [[Application Security]]</pre>
 </div>
 <div created="20201001231154703" modified="20201006201113619" tags="" title="Dask">
 <pre>Dask is a python framework designed to automatically take computationally heavy code and convert it into a set of parallel processes. The idea is that interacting functions form a graph which dask can then automatically split up into parallel processes just by analyzing the graph.
@@ -14128,26 +14207,23 @@ Word vectors can be represented by either $$U_k\Sigma_k$$ or $$U_k$$
 
 Document vectors can be represented by either  $$V_k$$ or $$(\Sigma_kV_k^T)^T$$</pre>
 </div>
-<div created="20201119014956147" modified="20211021000502659" tags="" title="Machine Learning">
+<div created="20201119014956147" modified="20211111012118237" tags="" title="Machine Learning">
 <pre>!! [[Data Quality]]
 
 Validate and improve the integrity of the data used to make the model.
 
+The EDA process is useful for validating the integrity of the data.
+
 !! [[Feature Engineering]]
 
-Methods of manipulating input data to extract valuable features to improve a ML model.
-
-Enrich the data to improve data quality and emphasize patterns within the data.
+Methods of enriching the data to improve data quality and emphasize patterns within the data.
 
 !! ''Modeling''
 
-Techniques vary with each approach.
-
+* [[Unsupervised Learning]]
 * [[Supervised Learning]]
 * [[Self-supervised Learning]]
-* [[Unsupervised Learning]]
-* [[Reinforcement Learning]]
-</pre>
+* [[Reinforcement Learning]]</pre>
 </div>
 <div created="20201027000430192" modified="20201027001600598" tags="" title="MapReduce">
 <pre>Parallel processing framework, usually run on top of a [[distributed file system|Distributed File System]]
@@ -15479,58 +15555,6 @@ $$\displaystyle \textrm{score}(y) = -\log P(y|x) = \frac{1}{T} \sum^t_{i=1} -\lo
 
 [img[images\RNN Seq to Seq Beam Search.jpg]]</pre>
 </div>
-<div created="20210625003340506" modified="20210902190258312" title="Security">
-<pre>! ''Software development process''
-
-Break down applications into smaller services to make security management easier.
-
-Incorporate security into the code review process.
-
-Use linters to discover vulnerabilities.
-
-Continuously test previously discovered vulnerabilities (regression testing).
-
-Continuously search for bugs using an internal team, bug bounty programs, or third party teams.
-
-Prioritize security issues using a security ranking system, [[CVSS|https://en.wikipedia.org/wiki/Common_Vulnerability_Scoring_System]] is a standard system.
-
-! ''Infrastructure''
-
-Use an encrypted protocol such as [[HTTPS|HTTPS]] to communication between machines. This prevents man in the middle attacks.
-
-!! ''Don't trust be default''
-
-Setup systems in such a way that nothing is authorized by default and access must be explicitly provisioned.
-
-* Use whitelists over blacklists
-* Block ports by default
-* Only give systems access to the OS in ways they need
-
-Anything that is overlooked will disrupt functionality as opposed to causing a vulnerability.
-
-! ''Application Design''
-
-!! ''Passwords''
-
-* Enforce high entropy passwords
-* Save and compare credentials in a hashed form
-* Offer multi-factor authentication
-
-!! ''Front End''
-
-* [[XSS]]
-* [[Regex DoS|DoS]]
-
-!! ''API''
-
-* [[CSFR]]
-
-!! ''Back End''
-
-* [[XXE]]
-* [[Injection]]
-* [[Logical and Distributed Dos|DoS]]</pre>
-</div>
 <div created="20210529171151947" modified="20210604004936662" title="Self-Attention">
 <pre>A modification of the [[attention|Attention]] mechanism (see wiki page for basic framework) where instead of each output being compared to the inputs each input is compared to the other inputs.
 
@@ -16384,7 +16408,7 @@ An algorithm for converting words into tokens based on the given vocabulary. It 
 [img[images/max-match.png]]
 </pre>
 </div>
-<div created="20210120185705408" modified="20210902194920578" tags="" title="Topics">
+<div created="20210120185705408" modified="20211111010032651" tags="" title="Topics">
 <pre>!! [[Machine Learning]]
 
 * [[Deep Learning]]
@@ -16395,7 +16419,7 @@ An algorithm for converting words into tokens based on the given vocabulary. It 
 
 * [[Data Engineering]]
 * [[Object Oriented Programming]]
-* [[Security]]
+* [[Cyber Security]]
 
 !! ''Math''
 
