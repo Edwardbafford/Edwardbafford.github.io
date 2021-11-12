@@ -243,8 +243,6 @@ Error message and password prompt
 
 <li>Authentication</li>
 
-<li>Autoencoder</li>
-
 <li>Backoff Smoothing (N-grams)</li>
 
 <li>Backtranslation</li>
@@ -504,6 +502,8 @@ Error message and password prompt
 <li>Hyperparamter</li>
 
 <li>Information Theory</li>
+
+<li>Infrastructure Security</li>
 
 <li>Injection</li>
 
@@ -10481,7 +10481,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20211101231222843" list="Topics [[Cyber Security]] [[Application Security]] [[To Do]]" modified="20211111012220723" title="$:/StoryList">
+<div created="20211101231222843" list="[[To Do]] Topics [[Machine Learning]] [[Supervised Learning]]" modified="20211112012942835" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20201012173622690" modified="20210901193831232" title="$:/temp/advancedsearch">
@@ -10867,9 +10867,6 @@ This architecture involves a user, an application, and an authentication server.
 
 This standard is great for large, distributed systems because authentication only needs to be implemented in one spot for the entire system and often can just be delegated to a third party implementation.
 </pre>
-</div>
-<div created="20210805011037944" modified="20210805011038492" title="Autoencoder">
-<pre>https://en.wikipedia.org/wiki/Autoencoder#:~:text=An%20autoencoder%20is%20a%20type,unlabeled%20data%20(unsupervised%20learning).&amp;text=The%20autoencoder%20learns%20a%20representation,data%20(%E2%80%9Cnoise%E2%80%9D).</pre>
 </div>
 <div created="20201213230714516" modified="20201214224948560" title="Backoff Smoothing (N-grams)">
 <pre>If a certain N-gram model has a probability of zero then a lower N-gram model is used. In order to keep the probability at 1 the current N-gram probabilities need to be decreased or discounted and the backoff N-gram models need to be limited respectively.
@@ -12789,20 +12786,22 @@ By working from the lowest level sub-problems and storing them they can be reuse
 
 For problems related to searching, the bottom up approach lets us know immediately when a solution isn't working and lets us keep sub-problems that are stable. With a top down approach we will test many different solutions that won't work without knowing until we get to the last sub-problems.</pre>
 </div>
-<div created="20210805004037287" modified="20210805011226135" title="Embedding">
+<div created="20210805004037287" modified="20211112012804782" title="Embedding">
 <pre>Convert a large [[one-hot encoded|One Hot Encoding]] categorical input into a shorter dense vector.
+
+Each category is then represented by a set of abstract features.
 
 !! ''Benefits''
 
-Converts each categorical input into a set of abstract features which allows categories to be viewed as similar to or different from each other.
+Decreases sparsity which prevents [[overfitting|Overfitting vs Underfitting]]. 
+
+Similar categories now show similarity in the their embeddings which can help with [[underfitting|Overfitting vs Underfitting]]
 
 !! ''Implementations''
 
-Integrate into the main model with a dense layer mapping the categories to the embedding. This layer is learned along with the main model. This approach cannot be done with all models.
+Use auxiliary learning tasks where category input is used to predict something. 
 
-Use an [[autoencoder|Autoencoder]] to learn the embeddings. Use the middle layers of the autoencoder as the embedding layer.
-
-Use auxiliary learning tasks to learn the embeddings. See [[word embeddings|Word Representations]] as an example.
+See [[word embeddings|Word Representations]] as an example.
 
 </pre>
 </div>
@@ -12985,7 +12984,7 @@ Training is done by summing all the sub-word grams with the full tokens
 
 [img[images/fasttext.png]] </pre>
 </div>
-<div created="20201220191134632" modified="20210902143018782" title="Feature Engineering">
+<div created="20201220191134632" modified="20211112012037791" title="Feature Engineering">
 <pre>Methods of manipulating input data to extract valuable features to improve a ML model.
 
 ! ''Numeric Input''
@@ -13517,6 +13516,56 @@ This method is a good middle ground between scalability and performance optimiza
 * [[Entropy|Entropy (Information Theory)]]
 * [[Cross Entropy]]
 * [[Mutual Information]]</pre>
+</div>
+<div created="20211112010613756" modified="20211112012006988" title="Infrastructure Security">
+<pre>Cyber security tools for an internal network used by a business
+
+!! ''Firewall''
+
+Enforces what traffic passes in and out of a network based on a policy.
+
+!! ''Intrusion Prevention System''
+
+Can prevent certain traffic from entering a network based on suspicious traffic patterns.
+
+Secure but effects network speed.
+
+!! ''Intrusion Detection System''
+
+Monitors and alerts system administrators of suspicious traffic patterns.
+
+Less secure but does not slow down network traffic.
+
+''Decide between an IDP or an IPS''
+
+!! ''AAA Framework''
+
+''Authentication'' - validate user identity
+
+''Authorization'' - manage what resources each user has access to
+
+''Accounting'' - record user actions
+
+User configurations should be centrally managed
+
+!! ''Security Information Event Management''
+
+A system which integrates logs from multiple sources for reporting
+
+!! ''Security Orchestration, Automation, and Response''
+
+Tools for automating security related responses
+
+''SIEM and SOAR systems should work together :) ''
+
+!! ''Hosts''
+
+Each host on the internal network should have the following
+
+* Antimalware
+* Host-based firewall
+* Host-based intrusion detection system
+</pre>
 </div>
 <div created="20210720002606354" modified="20210801205843217" title="Injection">
 <pre>Injection is a type of [[security vulnerability|Security]]
@@ -16371,8 +16420,11 @@ This implementation has fast reads but slower writes because an entry may have t
 *** UTF-8
 *** UTF-16</pre>
 </div>
-<div created="20210529172614786" modified="20211005234909615" tags="" title="To Do">
-<pre>* ML - read training</pre>
+<div created="20210529172614786" modified="20211112012955461" tags="" title="To Do">
+<pre>* Security Notes
+* Page filter pattern
+* NLP - sentence meaning
+</pre>
 </div>
 <div created="20201127010943702" modified="20210508142648752" tags="" title="Tokenization">
 <pre>Converting a stream of characters into partitioned sections called tokens, we want to tokenize text data in a way that creates meaningful tokens.
