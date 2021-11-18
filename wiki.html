@@ -623,6 +623,8 @@ Error message and password prompt
 
 <li>Normal Distribution</li>
 
+<li>OAuth</li>
+
 <li>Object Oriented Programming</li>
 
 <li>Object-relational Mapping</li>
@@ -801,9 +803,7 @@ Error message and password prompt
 
 <li>Viterbi Algorithm</li>
 
-<li>Web Application Sessions</li>
-
-<li>Web Applications</li>
+<li>Web Application Design</li>
 
 <li>Windows Domain</li>
 
@@ -10481,7 +10481,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20211101231222843" list="[[To Do]] Topics [[Machine Learning]] [[Supervised Learning]]" modified="20211112012942835" title="$:/StoryList">
+<div created="20211101231222843" list="[[To Do]] Topics [[Application Security]] Injection [[Computer Science]]" modified="20211118020303872" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20201012173622690" modified="20210901193831232" title="$:/temp/advancedsearch">
@@ -10548,7 +10548,7 @@ Error message and password prompt
 <div created="20200828140319089" modified="20210901191713767" title="$:/temp/NewTagName">
 <pre></pre>
 </div>
-<div created="20200827210236856" modified="20211101234152457" title="$:/temp/search">
+<div created="20200827210236856" modified="20211118014730667" title="$:/temp/search">
 <pre></pre>
 </div>
 <div created="20200827210410769" modified="20200827210412400" title="$:/theme">
@@ -10751,27 +10751,26 @@ Define a set of targets - compile code, build war, generate SOAP service from WS
 * Actions - java actions abstracted from you and implemented by Ant, just reference the action type
 * Dependencies - targets can depend on one another, so running one will run all of its dependencies before hand</pre>
 </div>
-<div created="20211111005851482" modified="20211111012304082" title="Application Security">
-<pre>! ''Software development process''
+<div created="20211111005851482" modified="20211118020413007" title="Application Security">
+<pre>! ''Development''
 
-Break down applications into smaller services to make security management easier.
+# Break down applications into smaller services to make security management easier.
+# Incorporate security into the code review process.
+# Use linters to discover vulnerabilities.
+# Continuously search for bugs using an internal team, bug bounty programs, or third party teams.
+# Prioritize security issues using a security ranking system like [[CVSS|https://en.wikipedia.org/wiki/Common_Vulnerability_Scoring_System]]
+# Continuously test fixed vulnerabilities.
 
-Incorporate security into the code review process.
+! ''Design''
 
-Use linters to discover vulnerabilities.
+* Use an encrypted protocol to communication between machines to prevent man in the middle attacks
+* Proper [[authentication|Authentication]] implementation
 
-Continuously test previously discovered vulnerabilities (regression testing).
+! ''Vulnerabilities''
 
-Continuously search for bugs using an internal team, bug bounty programs, or third party teams.
+* [[Injection]]
 
-Prioritize security issues using a security ranking system, [[CVSS|https://en.wikipedia.org/wiki/Common_Vulnerability_Scoring_System]] is a standard system.
-
-! ''Infrastructure''
-
-Use an encrypted protocol such as [[HTTPS|HTTPS]] to communication between machines. This prevents man in the middle attacks.
-
-
-! ''Application Design''
+! ''In progress''
 
 !! ''Passwords''
 
@@ -10791,7 +10790,6 @@ Use an encrypted protocol such as [[HTTPS|HTTPS]] to communication between machi
 !! ''Back End''
 
 * [[XXE]]
-* [[Injection]]
 * [[Logical and Distributed Dos|DoS]]</pre>
 </div>
 <div created="20210529171113761" modified="20210603235742033" title="Attention">
@@ -10831,41 +10829,37 @@ $$\displaystyle O_{t'} = \sum^I_t\alpha(t,t')I_t$$
 
 This output can be further processed and is often viewed as a function for collecting an aspect of the input. Different output nodes look for different things.</pre>
 </div>
-<div created="20201122172628749" modified="20201122195900672" tags="" title="Authentication">
+<div created="20201122172628749" modified="20211118020148348" tags="" title="Authentication">
 <pre>Proving the identity of a user
 
-SSL must be used with authentication to make sure critical information cannot be stolen somewhere between the client and authenticating server.
+! ''Username - Password''
 
-''Token''
+User is prompted for a password which is sent to the system for validation.
 
-A special key which is sent by the client to the server. The server verifies the token and allows access based upon it.
+Once validated a temporary session is created which minimizes the opportunity for the users password to get stolen.
 
-Usually tokens need to be sent in with each request to grant continued access.
+Single sign on processes can be implemented through the [[OAuth]] protocol.
 
-It is best if the token is temporary so that if it is stolen it does not create a permanent security breach.
+!! ''Design''
 
-''Username - Password''
+* Protect against brute force attacks
+* Enforce strong passwords
+* Password recovery options
+* Encrypt password storage
+* Multi-factor authentication as an option
 
-A method for logging in a user
+! ''Session''
 
-Specified within HTTP as a Base64 encoding of username:password but can be implemented in other ways.
+Sessions are represented by a temporary token that is sent to the server for repeated validation.
 
-Once logged in, a temporary token is usually given which forms a session between the client and the server. 
+They are created after authentication in order to help protect user passwords.
 
-By using the credentials once and a temporary token for the rest of the session logins limit the opportunity for a permanent security breach.
+!! ''Token Design''
 
-''OAuth''
-
-A standard for delegating authentication such that a user can get access to an application without knowing the users credentials.
-
-This architecture involves a user, an application, and an authentication server.
-
-# When the user logins they are forwarded through the app to the authentication server
-# User logs in on the authentication server
-# Authentication server creates a temporary token which can be used to represent a session
-# The token can be used between the user and the application as needed
-
-This standard is great for large, distributed systems because authentication only needs to be implemented in one spot for the entire system and often can just be delegated to a third party implementation.
+* Long
+* Random
+* Temporary
+* Linked to user
 </pre>
 </div>
 <div created="20201213230714516" modified="20201214224948560" title="Backoff Smoothing (N-grams)">
@@ -11544,7 +11538,7 @@ All must be bound to the same interface.
 
 [img[images/Composite.png]]</pre>
 </div>
-<div created="20200828173348895" modified="20211021000343859" title="Computer Science">
+<div created="20200828173348895" modified="20211118020254607" title="Computer Science">
 <pre>!! ''Algorithms''
 
 * [[Dynamic Programming]]
@@ -11552,7 +11546,7 @@ All must be bound to the same interface.
 
 !! ''Software Development''
 
-* [[Web Applications]]
+* [[Web Application Design]]
 * [[Encoding/Decoding]]
 
 !! ''Technologies''
@@ -11560,9 +11554,6 @@ All must be bound to the same interface.
 * [[Protocols]]
 * [[Programming Languages]]
 * [[Dev Ops Tools]]
-
-!!! ''Other''
-
 * [[Windows Domain|Windows Domain]]</pre>
 </div>
 <div created="20210502200420431" modified="20210620205031069" title="Condition Random Fields">
@@ -11913,8 +11904,10 @@ $$
 * overfitting becomes more likely as there is greater sparsity and less correlation between the training and test data
 * optimization becomes more difficult</pre>
 </div>
-<div created="20210625003340506" modified="20211111012959961" title="Cyber Security">
-<pre>''Information Security'' is the process of protecting information
+<div created="20210625003340506" modified="20211117010251499" title="Cyber Security">
+<pre>! ''Definitions''
+
+''Information Security'' is the process of protecting information
 
 ''Cyber Security'' is the process of protecting digital information
 
@@ -12775,10 +12768,8 @@ For regex attacks check regex statements with linters and don't allow users to i
 <div created="20210123033817798" modified="20210123033818304" title="Dot Product">
 <pre>https://en.wikipedia.org/wiki/Dot_product</pre>
 </div>
-<div created="20210423182736849" modified="20210812121713855" title="Dynamic Programming">
-<pre>https://en.wikipedia.org/wiki/Dynamic_programming
-
-A bottom up approach to solving complex problems. The lowest level components of the problem are solved, stored, and reused as needed working up to the final full solution.
+<div created="20210423182736849" modified="20211117005832678" title="Dynamic Programming">
+<pre>A recursive solution to an optimization problem where re-usable data is stored and referenced by all recursive functions.
 
 !! ''Benefits''
 
@@ -13567,31 +13558,20 @@ Each host on the internal network should have the following
 * Host-based intrusion detection system
 </pre>
 </div>
-<div created="20210720002606354" modified="20210801205843217" title="Injection">
-<pre>Injection is a type of [[security vulnerability|Security]]
+<div created="20210720002606354" modified="20211118021045765" title="Injection">
+<pre>Payloads are sent to the system and manipulate an interpreter used by the system in unauthorized ways.
 
-! ''Attack''
+! ''Prevention''
 
-A broad category where payloads are send the system and manipulate an interpreter used by the application.
+* Use linters to detect vulnerabilities
+* Clean input sent to interpreters
+* Minimize access of interpreters
 
-!! ''SQL Injection''
+! ''Types''
 
-Special payloads trigger unintended SQL commands.
-
-Usually roles/privileges of the database are changed to allow unauthorized access to certain data.
-
-!! ''Command Injection''
-
-Special payloads trigger unintended OS commands.
-
-OS manipulation fully compromises the system.
-
-! ''Defense''
-
-For SQL injection use prepared statements which are a modern feature in SQL databases that allows arguments to be set in a way that prevents the structure of the query from changing.
-
-For OS and command line injection limit the permissions of the interpreter. 
-</pre>
+* SQL
+* LDAP
+* OS</pre>
 </div>
 <div created="20201213222405824" modified="20201214205315935" title="Interpolation Smoothing (N-grams)">
 <pre>Combine the probabilities of all N-grams smaller than N. 
@@ -14942,6 +14922,18 @@ Important in statistics because the ''distribution of a sample'' is a normal dis
 This is know as the ''Central Limit Theorem''
 
 Because of this we can take a sample from a distribution and do all kinds of tests on it knowing the distribution of the sample is a normal distribution.</pre>
+</div>
+<div created="20211118015251958" modified="20211118015323722" title="OAuth">
+<pre>A standard for delegating authentication such that a user can get access to an application without knowing the users credentials.
+
+This architecture involves a user, an application, and an authentication server.
+
+# When the user logins they are forwarded through the app to the authentication server
+# User logs in on the authentication server
+# Authentication server creates a temporary token which can be used to represent a session
+# The token can be used between the user and the application as needed
+
+This standard is great for large, distributed systems because authentication only needs to be implemented in one spot for the entire system and often can just be delegated to a third party implementation.</pre>
 </div>
 <div created="20210609001652591" modified="20210620212412832" title="Object Oriented Programming">
 <pre># Start with a problem
@@ -16420,8 +16412,9 @@ This implementation has fast reads but slower writes because an entry may have t
 *** UTF-8
 *** UTF-16</pre>
 </div>
-<div created="20210529172614786" modified="20211112012955461" tags="" title="To Do">
-<pre>* Security Notes
+<div created="20210529172614786" modified="20211118020326802" tags="" title="To Do">
+<pre>* Security notes
+* Web design notes
 * Page filter pattern
 * NLP - sentence meaning
 </pre>
@@ -16687,25 +16680,10 @@ The principles of [[beam search|Beam Search]] can be applied the Viterbi algorit
 
 [img[images/Viterbi Beam Search.jpg]]</pre>
 </div>
-<div created="20200923143237172" modified="20210901185419752" tags="" title="Web Application Sessions">
-<pre>For web applications, sessions are a tool for remembering temporary information about a client. If a client is continuously communicating with a server a session will allow the server to remember things they've talked about. Once the session expires this data will be forgotten. Sessions are managed by the web server and applications embedded in the web servers are able to use the sessions as they need.
-
-The general steps:
-
-# A client sends credentials to an application
-# The application verifies the credentials then creates a session for the web server to remember
-# The application then sends back a session id to the client
-# In a future request the client can include the session id
-# When receiving the request the application will use the session id to find the session data held by the web server. It can then use this session data as needed.
-
-[[Diagram|https://drive.google.com/file/d/1rZ98v3nCO9puk4WWviGzBKQ_8lni-NO-/view?usp=sharing]]</pre>
-</div>
-<div created="20210625000957774" modified="20210625001321635" title="Web Applications">
+<div created="20210625000957774" modified="20211117005940610" title="Web Application Design">
 <pre>!! ''Dev Ops''
 
 * [[Environment Information|Environment Information]]
-* Integration
-* Testing
 * [[Deployments]]
 * [[Semantic Versioning|Semantic Versioning]]
 * [[Compatibility|Data Compatibility]]
@@ -16713,12 +16691,8 @@ The general steps:
 !! ''Software''
 
 * [[README|README]]
-* Config
-* [[Sessions|Web Application Sessions]]
 * [[Authentication|Authentication]]
-* [[Caching|Caching]]
-* Logging
-* Testing</pre>
+* [[Caching|Caching]]</pre>
 </div>
 <div created="20201122164611735" modified="20201122164733418" tags="" title="Windows Domain">
 <pre>A special Windows computer network
