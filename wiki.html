@@ -185,6 +185,8 @@ Error message and password prompt
 
 <li>$:/state/Link/--1480314271/search</li>
 
+<li>$:/state/Link/--1875665997/search</li>
+
 <li>$:/state/Link/-1947325556/search</li>
 
 <li>$:/state/showeditpreview</li>
@@ -228,6 +230,8 @@ Error message and password prompt
 <li>Abstract Factory</li>
 
 <li>Adapter</li>
+
+<li>Admin Information</li>
 
 <li>Airflow</li>
 
@@ -397,8 +401,6 @@ Error message and password prompt
 
 <li>Designing Data-Intensive Applications</li>
 
-<li>Dev Ops Tools</li>
-
 <li>Dimensionality Reduction</li>
 
 <li>Direct Messaging Services (Streaming)</li>
@@ -448,8 +450,6 @@ Error message and password prompt
 <li>Entropy (Information Theory)</li>
 
 <li>Entropy (Physics)</li>
-
-<li>Environment Information</li>
 
 <li>ETL Orchestrators</li>
 
@@ -563,6 +563,8 @@ Error message and password prompt
 
 <li>Log Table Storage</li>
 
+<li>Logging</li>
+
 <li>Logging (Java)</li>
 
 <li>Logistic Regression</li>
@@ -660,10 +662,6 @@ Error message and password prompt
 <li>Private Key Encryption</li>
 
 <li>Probability Distribution</li>
-
-<li>Programming Languages</li>
-
-<li>Protocols</li>
 
 <li>Prototype</li>
 
@@ -10449,6 +10447,9 @@ Error message and password prompt
 <div created="20210117002818773" modified="20210117002821201" title="$:/state/Link/--1480314271/search">
 <pre></pre>
 </div>
+<div created="20211120153217493" modified="20211120153223013" title="$:/state/Link/--1875665997/search">
+<pre></pre>
+</div>
 <div created="20211005233200905" modified="20211005233202240" title="$:/state/Link/-1947325556/search">
 <pre>Multin</pre>
 </div>
@@ -10485,7 +10486,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20211101231222843" list="[[To Do]] Topics [[Cyber Security]] [[Application Security]]" modified="20211119010120435" title="$:/StoryList">
+<div created="20211101231222843" list="[[To Do]] Topics [[Computer Science]] [[Web Application Design]]" modified="20211120153230425" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20201012173622690" modified="20210901193831232" title="$:/temp/advancedsearch">
@@ -10680,6 +10681,15 @@ Each factory allows you to keep object types consistent.</pre>
 Use as necessary as opposed to trying to update interfaces
 
 [img[images\Adapter.jpg]]</pre>
+</div>
+<div created="20210602005504776" modified="20211120152904474" title="Admin Information">
+<pre>Information on the following topics should be stored for teammates to reference
+
+* Environment
+* Repository
+* Ticketing system
+* Services/Dependencies
+* Deployment information</pre>
 </div>
 <div created="20200827233048452" modified="20200827233733218" tags="software data" title="Airflow">
 <pre>Scheduling tool for executing workflows. Airflow is centered mostly around manipulating data pipelines but can be used for basically any scheduling task.
@@ -11560,7 +11570,7 @@ All must be bound to the same interface.
 
 [img[images/Composite.png]]</pre>
 </div>
-<div created="20200828173348895" modified="20211118020254607" title="Computer Science">
+<div created="20200828173348895" modified="20211120154648155" title="Computer Science">
 <pre>!! ''Algorithms''
 
 * [[Dynamic Programming]]
@@ -11568,14 +11578,29 @@ All must be bound to the same interface.
 
 !! ''Software Development''
 
-* [[Web Application Design]]
 * [[Encoding/Decoding]]
+
+*  Protocols
+** [[SOAP|SOAP]]
+** [[LDAP|LDAP]]
+** [[HTTPS]]
 
 !! ''Technologies''
 
-* [[Protocols]]
-* [[Programming Languages]]
-* [[Dev Ops Tools]]
+ Programming Languages
+
+* [[Python|Python]]
+* [[Java|Java]]
+
+Dev Ops
+
+* [[Docker|Docker]]
+* [[Kubernetes|Kubernetes]]
+
+Infrastrcture
+
+* AWS
+* Google Cloud
 * [[Windows Domain|Windows Domain]]</pre>
 </div>
 <div created="20210502200420431" modified="20210620205031069" title="Condition Random Fields">
@@ -12534,10 +12559,6 @@ Best practices for maintaining consistency within a system
 
 These practices must be implemented from end to end, including within your applications. Databases can not defend from your own stupid code :)</pre>
 </div>
-<div created="20210801204809467" modified="20210801204811480" title="Dev Ops Tools">
-<pre>* [[Docker|Docker]]
-* [[Kubernetes|Kubernetes]]</pre>
-</div>
 <div created="20201220175458297" modified="20201220180224673" title="Dimensionality Reduction">
 <pre>Maps data from $$\mathbb{R}^N$$ to $$\mathbb{R}^D$$ where $$N &gt; D$$
 
@@ -12799,14 +12820,9 @@ For regex attacks check regex statements with linters and don't allow users to i
 <div created="20210123033817798" modified="20210123033818304" title="Dot Product">
 <pre>https://en.wikipedia.org/wiki/Dot_product</pre>
 </div>
-<div created="20210423182736849" modified="20211117005832678" title="Dynamic Programming">
+<div created="20210423182736849" modified="20211120152601332" title="Dynamic Programming">
 <pre>A recursive solution to an optimization problem where re-usable data is stored and referenced by all recursive functions.
-
-!! ''Benefits''
-
-By working from the lowest level sub-problems and storing them they can be reused so they do not need to be recalculated. A top down approach may need to recalculate the same sub-problems many times.
-
-For problems related to searching, the bottom up approach lets us know immediately when a solution isn't working and lets us keep sub-problems that are stable. With a top down approach we will test many different solutions that won't work without knowing until we get to the last sub-problems.</pre>
+</pre>
 </div>
 <div created="20210805004037287" modified="20211112012804782" title="Embedding">
 <pre>Convert a large [[one-hot encoded|One Hot Encoding]] categorical input into a shorter dense vector.
@@ -12929,15 +12945,6 @@ Where $$ p(i) = 1/N $$ and $$N$$ is the number of possible micro-states for a gi
 A macro-state consists of summary measures such as volume, heat, pressure, where as, a micro-state consists of information at the molecular level like the speed and direction of all of the molecules in the system.
 
 A macro-state has high entropy if it has a high number of possible micro-states, meaning it is in a less specific configuration.</pre>
-</div>
-<div created="20210602005504776" modified="20210602005956561" title="Environment Information">
-<pre>* Access information
-* Environment infrastructure
-* Source Code
-* Issue Board
-* Services
-** Backups
-** Installing/Updating instructions</pre>
 </div>
 <div created="20201027000534040" modified="20201027001416290" tags="" title="ETL Orchestrators">
 <pre>Tools for managing networks of ETL jobs
@@ -14136,6 +14143,31 @@ Reads:
 [[Diagram|https://drive.google.com/file/d/1g0oNOJXtp9ub5Ys9glVBV8vuP2MjQ88b/view?usp=sharing]]
 </pre>
 </div>
+<div created="20211120153815933" modified="20211120154512779" title="Logging">
+<pre>Logging information as an application is running is useful for the following reasons.
+
+!!! Debugging/Error analysis
+
+!!! Security
+
+* Login attempts
+* API abuse
+
+!!! Metrics
+
+* traffic patterns
+** by time
+** by type
+* performance
+
+!! ''Integrations''
+
+Ideally the logging system should be integrated with the following tools for optimal value.
+
+* Aggregation
+* Monitoring
+* Alerting</pre>
+</div>
 <div created="20201112221805622" modified="20201112222211101" title="Logging (Java)">
 <pre>Common logging frameworks, interfaces
 
@@ -15301,16 +15333,6 @@ where $$K$$ is the set of outcomes with a value of $$x$$ and $$N$$ is the set of
 * [[Normal|Normal Distribution]]
 * [[Student's T|Student's T-Distribution]]</pre>
 </div>
-<div created="20210801204710819" modified="20210801204711801" title="Programming Languages">
-<pre>* [[Python|Python]]
-* [[Java|Java]]</pre>
-</div>
-<div created="20210801204625379" modified="20210801204626601" title="Protocols">
-<pre>* [[SOAP|SOAP]]
-* [[LDAP|LDAP]]
-* [[HTTP]]
-* [[HTTPS]]</pre>
-</div>
 <div created="20210609004415933" modified="20210609004615882" title="Prototype">
 <pre>Objects that implement an interface with a copy method are prototypes
 
@@ -15383,14 +15405,16 @@ Components:
 
 Depends on your systems architecture but in general the solution is to track update times and find nodes that are up to date past those times</pre>
 </div>
-<div created="20201210171947063" modified="20210625000511765" tags="" title="README">
-<pre>Simple documentation file to help users orient themselves with the software
+<div created="20201210171947063" modified="20211120153140417" tags="" title="README">
+<pre>Simple documentation file to help users orient themselves with the software.
 
-Sections in a README
+Should include the following.
 
+* Title
+* Description
 * Component descriptions
 * Local environment setup
-* Key processes - start, stop, deployment</pre>
+* Key processes</pre>
 </div>
 <div created="20210509164917832" modified="20210702003450146" title="Recurrent Neural Network">
 <pre>A network where the output of units within the model are dependent on the outputs of previous inputs. 
@@ -16437,13 +16461,8 @@ This implementation has fast reads but slower writes because an entry may have t
 *** UTF-8
 *** UTF-16</pre>
 </div>
-<div created="20210529172614786" modified="20211119010924972" tags="" title="To Do">
-<pre>* Web design notes
-** Logging
-** Database
-** Pagination
-* Page filter pattern
-* NLP - sentence meaning
+<div created="20210529172614786" modified="20211120154531006" tags="" title="To Do">
+<pre>* NLP - sentence meaning
 </pre>
 </div>
 <div created="20201127010943702" modified="20210508142648752" tags="" title="Tokenization">
@@ -16480,7 +16499,7 @@ An algorithm for converting words into tokens based on the given vocabulary. It 
 [img[images/max-match.png]]
 </pre>
 </div>
-<div created="20210120185705408" modified="20211111010032651" tags="" title="Topics">
+<div created="20210120185705408" modified="20211120154606719" tags="" title="Topics">
 <pre>!! [[Machine Learning]]
 
 * [[Deep Learning]]
@@ -16489,6 +16508,7 @@ An algorithm for converting words into tokens based on the given vocabulary. It 
 
 !! [[Computer Science]]
 
+* [[Web Application Design]]
 * [[Data Engineering]]
 * [[Object Oriented Programming]]
 * [[Cyber Security]]
@@ -16707,19 +16727,19 @@ The principles of [[beam search|Beam Search]] can be applied the Viterbi algorit
 
 [img[images/Viterbi Beam Search.jpg]]</pre>
 </div>
-<div created="20210625000957774" modified="20211117005940610" title="Web Application Design">
+<div created="20210625000957774" modified="20211120154518089" title="Web Application Design">
 <pre>!! ''Dev Ops''
 
-* [[Environment Information|Environment Information]]
-* [[Deployments]]
+* [[Admin Information]]
 * [[Semantic Versioning|Semantic Versioning]]
 * [[Compatibility|Data Compatibility]]
 
 !! ''Software''
 
 * [[README|README]]
-* [[Authentication|Authentication]]
-* [[Caching|Caching]]</pre>
+* [[Security|Application Security]]
+* [[Caching|Caching]]
+* [[Logging]]</pre>
 </div>
 <div created="20201122164611735" modified="20201122164733418" tags="" title="Windows Domain">
 <pre>A special Windows computer network
