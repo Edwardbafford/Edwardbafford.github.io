@@ -185,8 +185,6 @@ Error message and password prompt
 
 <li>$:/state/Link/--1480314271/search</li>
 
-<li>$:/state/Link/--1875665997/search</li>
-
 <li>$:/state/Link/-1947325556/search</li>
 
 <li>$:/state/showeditpreview</li>
@@ -242,6 +240,8 @@ Error message and password prompt
 <li>Ant</li>
 
 <li>Application Security</li>
+
+<li>Application Testing</li>
 
 <li>Attention</li>
 
@@ -316,6 +316,8 @@ Error message and password prompt
 <li>Classification</li>
 
 <li>Clustering</li>
+
+<li>Code Review</li>
 
 <li>Command</li>
 
@@ -668,8 +670,6 @@ Error message and password prompt
 <li>Proxy</li>
 
 <li>Public Private Key Encryption</li>
-
-<li>Python</li>
 
 <li>Quartz</li>
 
@@ -10447,9 +10447,6 @@ Error message and password prompt
 <div created="20210117002818773" modified="20210117002821201" title="$:/state/Link/--1480314271/search">
 <pre></pre>
 </div>
-<div created="20211120153217493" modified="20211120153223013" title="$:/state/Link/--1875665997/search">
-<pre></pre>
-</div>
 <div created="20211005233200905" modified="20211005233202240" title="$:/state/Link/-1947325556/search">
 <pre>Multin</pre>
 </div>
@@ -10486,7 +10483,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20211101231222843" list="[[To Do]] Topics [[Computer Science]] [[Web Application Design]]" modified="20211120153230425" title="$:/StoryList">
+<div created="20211203010914146" list="Topics [[Computer Science]] [[To Do]]" modified="20211203015907416" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20201012173622690" modified="20210901193831232" title="$:/temp/advancedsearch">
@@ -10765,19 +10762,12 @@ Define a set of targets - compile code, build war, generate SOAP service from WS
 * Actions - java actions abstracted from you and implemented by Ant, just reference the action type
 * Dependencies - targets can depend on one another, so running one will run all of its dependencies before hand</pre>
 </div>
-<div created="20211111005851482" modified="20211119004201648" title="Application Security">
-<pre>! ''Development''
+<div created="20211111005851482" modified="20211203015333054" title="Application Security">
+<pre>! ''Design''
 
-# Break down applications into smaller services to make security management easier.
-# Incorporate security into the code review process.
-# Use linters to discover vulnerabilities.
-# Continuously search for bugs using an internal team, bug bounty programs, or third party teams.
-# Prioritize security issues using a security ranking system like [[CVSS|https://en.wikipedia.org/wiki/Common_Vulnerability_Scoring_System]]
-# Continuously test fixed vulnerabilities.
-
-! ''Design''
-
+* Keep applications small and discrete to make security management easier
 * Use an encrypted protocol to communication between machines to prevent man in the middle attacks
+* Endpoints should not expose any revealing error messages
 * Proper [[authentication|Authentication]] implementation
 * Proper [[authorization|Authorization]] implementation
 * Encrypt or don't store sensitive data
@@ -10800,6 +10790,16 @@ Define a set of targets - compile code, build war, generate SOAP service from WS
 * [[Regex DoS|DoS]]
 * [[CSFR]]
 * [[Logical and Distributed Dos|DoS]]</pre>
+</div>
+<div created="20211203014545002" modified="20211203015504003" title="Application Testing">
+<pre>!! ''Security''
+
+* Static application security testing
+** scan code base to identify vulnerabilities
+* Dynamic application security testing
+** system preforms attacks on a web application to test vulnerabilities
+* Previous vulnerabilities
+* New vulnerabilities</pre>
 </div>
 <div created="20210529171113761" modified="20210603235742033" title="Attention">
 <pre>Attention is a mechanic used by [[Neural Networks|Deep Learning]]
@@ -11540,6 +11540,20 @@ $$
 <pre>Maps data points to one of K clusters
 </pre>
 </div>
+<div created="20211203012320313" modified="20211203013901883" title="Code Review">
+<pre>Have teams review and approve code updates.
+
+This helps ensure the quality and integrity of the code base.
+
+Ideally a checklist should be created.
+
+Aspects of the review:
+
+* [[Security|Application Security]]
+* Application design
+
+</pre>
+</div>
 <div created="20210620213914463" modified="20210620214336729" title="Command">
 <pre>Represent a set of similar actions to be executed with an interface
 
@@ -11570,7 +11584,7 @@ All must be bound to the same interface.
 
 [img[images/Composite.png]]</pre>
 </div>
-<div created="20200828173348895" modified="20211120154648155" title="Computer Science">
+<div created="20200828173348895" modified="20211203015926940" title="Computer Science">
 <pre>!! ''Algorithms''
 
 * [[Dynamic Programming]]
@@ -11589,7 +11603,6 @@ All must be bound to the same interface.
 
  Programming Languages
 
-* [[Python|Python]]
 * [[Java|Java]]
 
 Dev Ops
@@ -15361,20 +15374,6 @@ Both a public and private key are generated using algorithms
 
 Encrypt a message with the public key so that only the owner of the private key can read it.</pre>
 </div>
-<div created="20200827234124593" modified="20201006232042864" tags="software" title="Python">
-<pre>[[Github|https://github.com/Edwardbafford/General/tree/master/python]]
-
-Programming language
-
-* Easy to use
-* Slow - because it is interpreted
-* Lots of ML libraries implemented in it with fast C++ backends
-
-Topics
-
-* [[Dask|Dask]]
-* [[Anaconda|Anaconda]]</pre>
-</div>
 <div created="20201112161015548" modified="20201112162415326" tags="" title="Quartz">
 <pre>Java framework for scheduling jobs
 
@@ -16121,7 +16120,7 @@ Behavior is delegated to the referenced state objects.
 <div created="20210714000016892" modified="20210714000021299" title="Statistical Significance">
 <pre>https://en.wikipedia.org/wiki/Statistical_significance</pre>
 </div>
-<div created="20201202004014192" modified="20210901185604671" tags="" title="Statistics and Probability">
+<div created="20201202004014192" modified="20211120182943326" tags="" title="Statistics and Probability">
 <pre>!!! ''Currently very rough!''
 
 ''Probability'' is a branch of math for describing the likelihood of events to occur. Established through logic and a set of [[axioms|https://plus.maths.org/content/maths-minute-axioms-probability]]
@@ -16499,7 +16498,7 @@ An algorithm for converting words into tokens based on the given vocabulary. It 
 [img[images/max-match.png]]
 </pre>
 </div>
-<div created="20210120185705408" modified="20211120154606719" tags="" title="Topics">
+<div created="20210120185705408" modified="20211120182845045" tags="" title="Topics">
 <pre>!! [[Machine Learning]]
 
 * [[Deep Learning]]
@@ -16727,14 +16726,19 @@ The principles of [[beam search|Beam Search]] can be applied the Viterbi algorit
 
 [img[images/Viterbi Beam Search.jpg]]</pre>
 </div>
-<div created="20210625000957774" modified="20211120154518089" title="Web Application Design">
-<pre>!! ''Dev Ops''
+<div created="20210625000957774" modified="20211203015513461" title="Web Application Design">
+<pre>! ''Dev Ops''
 
 * [[Admin Information]]
 * [[Semantic Versioning|Semantic Versioning]]
 * [[Compatibility|Data Compatibility]]
 
-!! ''Software''
+!! ''Development Lifecycle''
+
+* [[Code Review]]
+* [[Testing|Application Testing]]
+
+! ''Software''
 
 * [[README|README]]
 * [[Security|Application Security]]
