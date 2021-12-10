@@ -237,6 +237,8 @@ Error message and password prompt
 
 <li>Analytical DB</li>
 
+<li>Application Development</li>
+
 <li>Application Security</li>
 
 <li>Application Testing</li>
@@ -802,8 +804,6 @@ Error message and password prompt
 <li>Visitor</li>
 
 <li>Viterbi Algorithm</li>
-
-<li>Web Application Design</li>
 
 <li>Windows Domain</li>
 
@@ -10484,7 +10484,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20211203010914146" list="Topics [[Natural Language Processing]] [[Semantic Representations]] [[To Do]]" modified="20211209001403499" title="$:/StoryList">
+<div created="20211203010914146" list="Topics [[Data Engineering]] DBMS [[To Do]]" modified="20211210004421550" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20201012173622690" modified="20210901193831232" title="$:/temp/advancedsearch">
@@ -10712,7 +10712,27 @@ Implementation - column oriented design where columns are stored together as opp
 * Makes filtering by column data quick
 * Updating data becomes slower</pre>
 </div>
-<div created="20211111005851482" modified="20211203015333054" title="Application Security">
+<div created="20210625000957774" modified="20211210003009930" title="Application Development">
+<pre>! ''Dev Ops''
+
+* [[Admin Information]]
+* [[Semantic Versioning|Semantic Versioning]]
+* [[Compatibility|Data Compatibility]]
+
+!! ''Development Lifecycle''
+
+* [[Code Review]]
+* [[Testing|Application Testing]]
+
+! ''Software''
+
+* [[README|README]]
+* [[Security|Application Security]]
+* [[Logging]]
+* [[AOP|Aspect Oriented Programming]]
+* [[Caching|Caching]]</pre>
+</div>
+<div created="20211111005851482" modified="20211210004317890" title="Application Security">
 <pre>! ''Design''
 
 * Keep applications small and discrete to make security management easier
@@ -10734,12 +10754,8 @@ Implementation - column oriented design where columns are stored together as opp
 * [[Injection]]
 * [[XSS]]
 * [[XXE]]
-
-! ''In progress''
-
-* [[Regex DoS|DoS]]
-* [[CSFR]]
-* [[Logical and Distributed Dos|DoS]]</pre>
+* [[DoS]]
+* [[CSFR]]</pre>
 </div>
 <div created="20211203014545002" modified="20211203015504003" title="Application Testing">
 <pre>!! ''Security''
@@ -11885,16 +11901,13 @@ Crossing two categories exponentially increases the number of categories in the 
 
 Crossing two highly correlated categories increases sparsity without adding information.</pre>
 </div>
-<div created="20210720001037123" modified="20210901191947268" title="CSFR">
-<pre>Cross Site Forgery Request is a type of [[security vulnerability|Security]]
-
-! ''Attack''
-
+<div created="20210720001037123" modified="20211210004310280" title="CSFR">
+<pre>
 A user is tricked into executing an unwanted action. Actions are within the intended scope of the application but done without the users intention.
 
 Usually this involves specialized links or fake portals which users click/use which automatically executes the unwanted action.
 
-! ''Defense''
+! ''Prevention''
 
 GET requests should not change the state of the application since GET requests can be easily forged and accidentally clicked.
 
@@ -12194,33 +12207,25 @@ Related concepts:
 * [[Consistency|Consistency]]
 </pre>
 </div>
-<div created="20200828140243188" modified="20210902193759744" tags="theory data" title="DBMS">
+<div created="20200828140243188" modified="20211210004548701" tags="theory data" title="DBMS">
 <pre>Database Management Systems
 
-Specialized software for managing data. Databases often care about the following traits.
+Specialized software for managing data efficiently
 
-* Speed and flexibility for writes
-* Speed and flexibility for reads
-* Robustness to failures (Durability)
-* Scalability
-* Reliability during concurrent activity
-
-Database Types:
+!! ''Types''
 
 * [[Transactional (OLTP)|Transactional Database]]
 * [[Analytical (OLAP)|Analytical DB]]
 
-Common Data Models:
+!! ''Models''
 
 * [[Document|Document DB]]
 * [[Relational|Relational DB]]
 * [[Graph|Graph DB]]
 
-Common Features:
+!! ''Features''
 
 * [[Transactions|Database Transactions]]
-* [[Stored Procedures|Stored Procedure]]
-
 
 !! ''Distributed Databases''
 
@@ -12744,36 +12749,40 @@ Language Models
 * [[BERT]]
 </pre>
 </div>
-<div created="20210720001421749" modified="20210801210154948" title="DoS">
-<pre>Denial of Service is a type of [[security vulnerability|Security]]
-
-! ''Attack''
-
-Illegitimate users degrade the performance of a system for legitimate users. 
+<div created="20210720001421749" modified="20211210004130592" title="DoS">
+<pre>Illegitimate users degrade the performance of a system for legitimate users. 
 
 Usually a ransom is requested in return for the the ~DoS to stop.
 
-!! ''Regex ~DoS''
+! ''Regex ~DoS''
 
 Takes advantage of poorly designed regex expressions by having the regex parse specially designed strings.
 
-!! ''Logical ~DoS''
+!! ''Prevention''
+
+Check regex statements with linters and don't allow users to inject regex into the backend.
+
+! ''Logical ~DoS''
 
 Design a user account/profile which creates computationally expensive API calls. 
 
 Is a legitimate use of the system that takes advantage of poorly designed architecture with exploitable bottlenecks.
 
-!! ''Distributed ~DoS''
+!! ''Prevention''
+
+Log request/process execution times. By analyzing these requests we can find and update bottlenecks in the application.
+
+Event logging, monitoring, and alert systems can detect this exploit.
+
+! ''Distributed ~DoS''
 
 Collections of automated illegitimate users spam requests to the application using brute force to degrade performance.
 
-! ''Defense'' 
+!! ''Prevention''
 
-In general awareness starts with logging request/process execution times. By analyzing these requests we can find and update bottlenecks in the application.
+Event logging, monitoring, and alert systems can detect this exploit.
 
-For distributed attacks we can try filtering out illegitimate requests but this can block legitimate users.
-
-For regex attacks check regex statements with linters and don't allow users to inject regex into the backend.</pre>
+We can try filtering out illegitimate requests but this can block legitimate users.</pre>
 </div>
 <div created="20210123033817798" modified="20210123033818304" title="Dot Product">
 <pre>https://en.wikipedia.org/wiki/Dot_product</pre>
@@ -13052,8 +13061,54 @@ Apply non-linear functions to a distribution in order to help normalize it.
 
 [[Fencing Example|https://drive.google.com/file/d/1zXxEoAL2jTi_cM8y7ErfUUadWoXuy0Tw/view?usp=sharing]]</pre>
 </div>
-<div created="20211209001406063" modified="20211209001406063" title="First Order Logic">
-<pre></pre>
+<div created="20211209001406063" modified="20211210002625529" title="First Order Logic">
+<pre>Type of [[context free grammar|Context Free Grammars]] used for [[semantic representations|Semantic Representations]]
+
+! ''Grammar''
+[img[images/FOL Grammar.jpg]]
+
+Formula - an expression or sub-expression
+
+Constant - represents a concept
+
+Variable - a generalized subset of concepts
+
+Function - used to represents properties of concepts/variables
+
+Predicate - functions which return a boolean based on inputs
+
+Connective - boolean operations to logically link sub-expressions
+
+Quantifier - used to specify quantity requirements
+
+! ''Inference''
+
+!!! ''Modus Ponens''
+
+Foundation of FOL inference, P implies Q, as defined within a knowledge base.
+
+Used by forward and backward chaining.
+
+$$ P \Rightarrow Q $$
+
+Works by leveraging generalized relationships between concepts.
+
+!! ''Forward Chaining''
+
+Create and store inferences as data is added.
+Queries are fast but processing new information is slower.
+
+!! ''Backward Chaining''
+
+Create and store inferences at query time. Start with matching outcomes and work backwards.
+
+If a $$Q$$ exists check for $$P$$'s that were implied by $$Q$$.
+
+Slower at query time but integrating new information is fast.
+
+!! ''Resolution''
+
+More sophisticated inference but computationally complex.</pre>
 </div>
 <div created="20210616004913069" modified="20210616005325525" title="Flyweight">
 <pre>Using a pool of shared immutable objects to be referenced by the rest of the application.
@@ -15551,14 +15606,14 @@ Essentially it is supervised training where training labels do not need to be co
 <div created="20211209001023155" modified="20211209001102239" title="Semantic Parsing">
 <pre>Algorithms for converting expressions into [[semantic representations|Semantic Representations]].</pre>
 </div>
-<div created="20211209000023070" modified="20211209002208993" title="Semantic Representations">
+<div created="20211209000023070" modified="20211209235116267" title="Semantic Representations">
 <pre>Representing expressions such that the meaning is preserved.
 
 Once a semantic representation is [[parsed|Semantic Parsing]] from an expression it can be added to a knowledge base which can be used to infer new information.
 
 !! ''Frameworks''
 
-Semantic representation frameworks are tools for defining how the semantic representations work and how information is linked and inferred.
+Semantic representation frameworks are tools for defining how the semantic representations work and how information is represented and inferred.
 
 * [[First Order Logic]]
 * [[Descriptive Logic]]</pre>
@@ -16311,8 +16366,8 @@ This implementation has fast reads but slower writes because an entry may have t
 *** UTF-8
 *** UTF-16</pre>
 </div>
-<div created="20210529172614786" modified="20211120154531006" tags="" title="To Do">
-<pre>* NLP - sentence meaning
+<div created="20210529172614786" modified="20211210002711681" tags="" title="To Do">
+<pre>* ML Design Patterns - next chapter
 </pre>
 </div>
 <div created="20201127010943702" modified="20210508142648752" tags="" title="Tokenization">
@@ -16349,7 +16404,7 @@ An algorithm for converting words into tokens based on the given vocabulary. It 
 [img[images/max-match.png]]
 </pre>
 </div>
-<div created="20210120185705408" modified="20211120182845045" tags="" title="Topics">
+<div created="20210120185705408" modified="20211210003019310" tags="" title="Topics">
 <pre>!! [[Machine Learning]]
 
 * [[Deep Learning]]
@@ -16358,7 +16413,7 @@ An algorithm for converting words into tokens based on the given vocabulary. It 
 
 !! [[Computer Science]]
 
-* [[Web Application Design]]
+* [[Application Development]]
 * [[Data Engineering]]
 * [[Object Oriented Programming]]
 * [[Cyber Security]]
@@ -16576,26 +16631,6 @@ Extending the algorithm in this way exponentially increases the complexity and w
 The principles of [[beam search|Beam Search]] can be applied the Viterbi algorithm by only retaining the most promising sequences at each state
 
 [img[images/Viterbi Beam Search.jpg]]</pre>
-</div>
-<div created="20210625000957774" modified="20211208233750121" title="Web Application Design">
-<pre>! ''Dev Ops''
-
-* [[Admin Information]]
-* [[Semantic Versioning|Semantic Versioning]]
-* [[Compatibility|Data Compatibility]]
-
-!! ''Development Lifecycle''
-
-* [[Code Review]]
-* [[Testing|Application Testing]]
-
-! ''Software''
-
-* [[README|README]]
-* [[Security|Application Security]]
-* [[Logging]]
-* [[AOP|Aspect Oriented Programming]]
-* [[Caching|Caching]]</pre>
 </div>
 <div created="20201122164611735" modified="20201122164733418" tags="" title="Windows Domain">
 <pre>A special Windows computer network
