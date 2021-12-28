@@ -577,6 +577,8 @@ Error message and password prompt
 
 <li>Machine Learning</li>
 
+<li>Machine Learning Engineering</li>
+
 <li>MapReduce</li>
 
 <li>Markov Model</li>
@@ -10484,7 +10486,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20211203010914146" list="Topics [[Data Engineering]] DBMS [[To Do]]" modified="20211210004421550" title="$:/StoryList">
+<div created="20211203010914146" list="Topics [[Machine Learning Engineering]] [[To Do]]" modified="20211227232311068" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20201012173622690" modified="20210901193831232" title="$:/temp/advancedsearch">
@@ -14275,6 +14277,50 @@ Methods of enriching the data to improve data quality and emphasize patterns wit
 * [[Self-supervised Learning]]
 * [[Reinforcement Learning]]</pre>
 </div>
+<div created="20211227232701434" modified="20211228001728700" title="Machine Learning Engineering">
+<pre>! ''Deployment''
+
+!! ''Saving Models''
+
+Store models in a platform independent format such as [[ONNX|https://onnx.ai/]] so that it can be deployed into any type of system.
+
+!! ''Compact Models''
+
+Make models smaller for running on smaller devices.
+
+!!! ''Quantization''
+
+approximate model parameters using less binary digits to save space
+
+!! ''Online Requests''
+
+Process one prediction inputs with one request.
+
+* Use stateless function
+* Allow autoscaling
+
+!! ''Batch Processing''
+
+Process a set of prediction inputs with one request.
+
+Process input in parallel.
+
+Track and map inputs to outputs based on a key.
+
+!! ''Model Updates''
+
+Degradation occurs the relationships between inputs and output shift. 
+
+Model retraining and deployments should at least be partially automated.
+
+!!! ''Approaches''
+
+Monitor new data and automatically retrain based metric triggers.
+
+Scheduled retraining on new data.
+
+</pre>
+</div>
 <div created="20201027000430192" modified="20201027001600598" tags="" title="MapReduce">
 <pre>Parallel processing framework, usually run on top of a [[distributed file system|Distributed File System]]
 
@@ -16404,12 +16450,13 @@ An algorithm for converting words into tokens based on the given vocabulary. It 
 [img[images/max-match.png]]
 </pre>
 </div>
-<div created="20210120185705408" modified="20211210003019310" tags="" title="Topics">
+<div created="20210120185705408" modified="20211227232307923" tags="" title="Topics">
 <pre>!! [[Machine Learning]]
 
 * [[Deep Learning]]
 * [[Natural Language Processing]]
 ** [[Linguistics]]
+* [[Machine Learning Engineering]]
 
 !! [[Computer Science]]
 
