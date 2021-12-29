@@ -10486,7 +10486,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20211203010914146" list="Topics [[Machine Learning Engineering]] [[To Do]]" modified="20211227232311068" title="$:/StoryList">
+<div created="20211203010914146" list="Topics [[Data Engineering]] [[Distributed Systems]] DBMS [[To Do]]" modified="20211229223313108" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20201012173622690" modified="20210901193831232" title="$:/temp/advancedsearch">
@@ -10698,21 +10698,19 @@ Schedulers send tasks to works and can be manipulated from a web server UI. Ther
 
 [[https://github.com/Edwardbafford/General/tree/master/airflow]]</pre>
 </div>
-<div created="20200828145245327" modified="20200828172414923" tags="data theory" title="Analytical DB">
+<div created="20200828145245327" modified="20211229220709309" tags="data theory" title="Analytical DB">
 <pre>Typically used in [[Data Warehouses|Data Warehouse]]
 
 * Big routine batch writes where speed isn't important
 * Lots of complex queries on large data
 
-Common Data Modes:
+!! ''Implementation''
 
-* [[Relational |Relational DB]] - a subset called Star or Snowflake is usually used where you have one main &quot;fact&quot; table which references other &quot;dimension&quot; tables that have more details on that column feature
-
-Implementation - column oriented design where columns are stored together as opposed to entries
+Column-oriented design where columns are stored together and normalized.
 
 * Allows for high compression of the columns
 * Makes filtering by column data quick
-* Updating data becomes slower</pre>
+* Updating specific entities becomes slower</pre>
 </div>
 <div created="20210625000957774" modified="20211210003009930" title="Application Development">
 <pre>! ''Dev Ops''
@@ -12010,11 +12008,11 @@ Forms:
 ** Compact
 ** Not human readable</pre>
 </div>
-<div created="20210902125406290" modified="20211021000416836" title="Data Engineering">
+<div created="20210902125406290" modified="20211229223339370" title="Data Engineering">
 <pre>!! ''Theory''
 
-* [[Databases|DBMS]]
 * [[Distributed Data|Distributed Systems]]
+* [[Databases|DBMS]]
 * [[Data Processing|Data Processing]]
 * [[Design|Designing Data-Intensive Applications]]
 
@@ -12112,40 +12110,25 @@ Can cause performance issues for minority inputs.
 
 [[Diagram|https://drive.google.com/file/d/1ZVbQXwDcI48ClHIXsEKW6vmenouRGm2d/view?usp=sharing]]</pre>
 </div>
-<div created="20200829165019840" modified="20201011190623021" tags="data theory" title="Database Transactions">
-<pre>Transactions are a feature of many [[DBMS]] which provides reliability when interacting with the database.
-
-Some database management systems provide transactions for only single reads or writes while others allow the user to group a set of operations together and bundle them as a single transaction.
-
+<div created="20200829165019840" modified="20211229222325558" tags="data theory" title="Database Transactions">
+<pre>
 &quot;&quot;&quot;
-A transaction is either successful or it fails
+A transaction is a set of database operations that is either entirely successful or it entirely fails
+
 ''Success'' - you can feel confident that your transaction did what it was supposed to
-''Fail'' - you can freely retry the transaction without any issues (besides more load on the system)
+
+''Fail'' - you can freely retry the transaction without any issues
 &quot;&quot;&quot;
 
-Transactions come with a set of guarantees. The most common of which are a set of guarantees with the acronym ACID.
+! ''Properties''
 
-&quot;&quot;&quot;
-''Atomic''
-Either the entire transaction succeed or none of the transaction succeeds. If the transaction fails all of the written information is rolled back. This property is key to a transaction.
-&quot;&quot;&quot;
+!! ''Atomic''
 
-&quot;&quot;&quot;
-''Consistency''
-Kind of a meaningless guarantee.. consistency is maintained by the transaction being atomic, isolated, and being a proper request from the application. If these are enforced the data will retain its integrity and stay &quot;consistent&quot;.
-&quot;&quot;&quot;
+All operations of the transaction succeed or fail.
 
-&quot;&quot;&quot;
-[[Isolation|Transaction Isolation]]
-Transactions that occur concurrently act the same as if they were transactions that occurred serially. In other words, transactions cannot interfere with each other. There are many layers to this one and it is key to the power of your transactions so take a look at the wiki link!
-&quot;&quot;&quot;
+!! [[Isolation|Transaction Isolation]]
 
-&quot;&quot;&quot;
-''Durable''
-Once the transaction has successfully completed the data will not be lost. Along with consistency this is kind of a pointless addition to ACID. Every successful write is just as durable as a write from a transaction. Durability has more to do with replication than transactions...
-&quot;&quot;&quot;
-
-Overall almost all database systems with transactions implement the atomic guarantee but the guarantee of isolation has many nuances to it and varies from system to system. The isolation level is important to most applications so it is worth understanding.</pre>
+How concurrent transactions interact with each other.</pre>
 </div>
 <div created="20200828145340232" modified="20200831003550807" tags="data theory" title="DB Partitioning">
 <pre>Partitioning is a feature of [[DBMS]] where data within the database is shared between multiple nodes where no one node has all of the data for the system.
@@ -12209,7 +12192,7 @@ Related concepts:
 * [[Consistency|Consistency]]
 </pre>
 </div>
-<div created="20200828140243188" modified="20211210004548701" tags="theory data" title="DBMS">
+<div created="20200828140243188" modified="20211229220717551" tags="theory data" title="DBMS">
 <pre>Database Management Systems
 
 Specialized software for managing data efficiently
@@ -12693,14 +12676,17 @@ https://en.wikipedia.org/wiki/Distributional_semantics</pre>
 <div created="20200827235127142" modified="20200827235447429" tags="software devops" title="Docker">
 <pre>Tools for containerizing software. Containerizing is a method of partitioning OS resources (RAM, Disk, CPU, Ports, etc.) as opposed to virtualization which runs OS on top of each other.</pre>
 </div>
-<div created="20200828145252314" modified="20200828170537800" tags="data theory" title="Document DB">
-<pre>As the name implies, these DB's are generally designed to store documents which can vary widely and are relatively independent of each other.
+<div created="20200828145252314" modified="20211229221130190" tags="data theory" title="Document DB">
+<pre>Great for handling bulky and/or messy data.
 
-Features:
+!! ''Features''
 
-* No schema - flexible but data constraints must be enforced at the application level
-* Imperative querying - queries must be explicitly defined
-* Simple - work out of the box with very little overhead</pre>
+Scalability: can be easily scaled across a cluster
+
+Flexible: No predefined schema that entities must adhere to
+
+Weak Querying: Advanced features like join and grouped by operations are usually not available
+</pre>
 </div>
 <div created="20200830233250459" modified="20200831000725298" tags="data theory" title="Document Partitioned Indexes">
 <pre>Method for partitioning non-primary indexes in [[DBMS]]. In document partitioned indexes all non-primary indexes are stored only for its partition. Also called a &quot;local index&quot;.
@@ -13361,15 +13347,18 @@ $$\displaystyle f((Y,X);\theta) = \frac{1}{m}\sum_{i=1}^mL(y_i,x_i;\theta)$$
 
 * [[Cross Entropy Softmax|Cross Entropy Softmax Gradient]]</pre>
 </div>
-<div created="20200828145322868" modified="20200828170502153" tags="data theory" title="Graph DB">
-<pre>Extremely dynamic and powerful but can become complex and lose consistency.
+<div created="20200828145322868" modified="20211229221933042" tags="data theory" title="Graph DB">
+<pre>A more flexible version of [[relational databases|Relational DB]].
 
-Model: &quot;Nodes&quot; hold data and are linked to each other with &quot;Edges&quot; which can be of a specific type and also hold data
+Because of the flexible schema, managing the structure of the database is more difficult. Useful for data that is interconnected but to messy/dynamic to be used with a relational database.
 
-Features:
+!! ''Features''
 
-* No schema - flexible 
-* Declarative Queries - extremely powerful querying system which can even recursively look through node and edges all by just defining constraints of the returned data</pre>
+Not Scalable: Does not easily scale into clusters due to the interconnected nature of the data
+
+Flexible: Create new data types/properties/relationships as needed
+
+Powerful Querying: DB structure allows for declarative querying where the system manages the work.</pre>
 </div>
 <div created="20200827235748152" modified="20200828000140096" tags="software data" title="Hadoop">
 <pre>A cluster management tool to create a &quot;distributed file system&quot;. Hadoop management software can load and read files to/from a cluster.
@@ -15472,17 +15461,16 @@ Policy - a set of rules that takes action based on the current state and history
 
 The goal of reinforcement learning is to optimize the policy such that you maximize the reward system of the agent</pre>
 </div>
-<div created="20200828145314287" modified="20200828170512822" tags="data theory" title="Relational DB">
-<pre>Standard most popular DB for modeling a systems data.
+<div created="20200828145314287" modified="20211229221607944" tags="data theory" title="Relational DB">
+<pre>Default database type to use for structured data that has relatively static features and relationships.
 
-Model - define &quot;tables&quot; with columns and link the tables to each other
+!! ''Features''
 
-Features:
+Not Scalable: Does not easily scale into clusters due to the database constraints enforced.
 
-* Schema - enforces reliable, consistent data but limits how dynamic the design of the system can be
-* Declarative Querying - database implements queries for you, just tell it what you want based on the schema definition
+Rigid Scheme: data definitions and constraints must be adhered to by all incoming data.
 
-</pre>
+Powerful Querying: DB structure allows for declarative querying where the system manages the work.</pre>
 </div>
 <div created="20210902194900596" modified="20210902194904306" title="Relations">
 <pre>! ''Equivalence Relationship''
@@ -16483,38 +16471,35 @@ An algorithm for converting words into tokens based on the given vocabulary. It 
 * No messages are lost
 * All nodes receive messages in the same order</pre>
 </div>
-<div created="20200902225529035" modified="20200915234137925" tags="data theory" title="Transaction Isolation">
-<pre>There are three main levels of isolation that prevent certain subsets of problems, [[diagrammed here|https://drive.google.com/file/d/1kvaV_FENejRA4P_eiX2tzQ7yaVqt6X-i/view?usp=sharing]]
+<div created="20200902225529035" modified="20211229223249438" tags="data theory" title="Transaction Isolation">
+<pre>There are levels to how isolated concurrent transactions are from each other.
 
-&quot;&quot;&quot;
-''Read Committed:''
-Prevents [[dirty reads|Dirty Reads]] and [[dirty writes|Dirty Writes]]
-&quot;&quot;&quot;
+!! ''Read Committed:''
 
-&quot;&quot;&quot;
-''Snapshot Isolation:''
-Prevents [[dirty reads|Dirty Reads]], [[dirty writes|Dirty Writes]], creates [[repeatable reads|Repeatable Reads]], and usually prevents [[lost updates|Lost Updates (Transactions)]]. Although there are a number of ways to prevent lost updates the versioning implementation which ensures repeatable reads also makes it easy to prevent the lost updates.
-&quot;&quot;&quot;
+Prevents [[dirty reads|Dirty Reads]].
 
-&quot;&quot;&quot;
-''Serialization''
-A serialization level of isolation acts as if every transaction was done serially, which prevents all isolation issues, most notably [[write skew|Write Skew]]. Write skew is not prevented in any other form of isolation. 
+!! ''Snapshot Isolation:''
 
-There are three main implementations of serialization: [[Actual Serialization|Serial Execution (DBMS)]], [[Two Phase Locking|Two Phase Locking]], and [[Serializable Snapshot Isolation|Serializable Snapshot Isolation]] (SSI).
+Prevents [[dirty reads|Dirty Reads]], creates [[repeatable reads|Repeatable Reads]], and usually prevents [[lost updates|Lost Updates (Transactions)]].
 
-SSI is a newer algorithm which is considered in general superior to two phase locking. For small datasets actual serialization can be superior but it is not straightforward.
-&quot;&quot;&quot;</pre>
+!! ''Serialization''
+
+A serialization level of isolation acts as if every transaction was done serially, which prevents the remaining isolation issue of [[write skew|Write Skew]].
+
+!!! ''Implementations''
+
+* [[Actual Serialization|Serial Execution (DBMS)]]
+* [[Two Phase Locking|Two Phase Locking]] 
+* [[Serializable Snapshot Isolation|Serializable Snapshot Isolation]]
+
+SSI is a newer algorithm which is considered in general superior to two phase locking. For small datasets actual serialization can be superior.</pre>
 </div>
-<div created="20200828145236598" modified="20200829165856530" tags="data theory" title="Transactional Database">
+<div created="20200828145236598" modified="20211229220534659" tags="data theory" title="Transactional Database">
 <pre>Standard DB used by businesses for day to day operations. Designed for lots of small and specific reads/writes.
 
-Common Data Models:
+!! ''Implementation'' 
 
-* [[Document|Document DB]]
-* [[Relational|Relational DB]]
-* [[Graph|Graph DB]]
-
-Implementation - row oriented design, meaning entire entries are grouped together and some parts of an entry are indexed for fast identification. More indexes with slow down writes but speed up reads for those parts that are indexed.
+Row-oriented design: data is grouped and indexed as entities (rows). 
 
 * [[Log tables|Log Table Storage]] - generally shorter writes
 * [[On Disk|On Disk Storage (DB)]] - generally shorter reads
