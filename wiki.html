@@ -505,6 +505,8 @@ Error message and password prompt
 
 <li>Hyperparamter</li>
 
+<li>Information Extraction</li>
+
 <li>Information Theory</li>
 
 <li>Infrastructure Security</li>
@@ -524,6 +526,8 @@ Error message and password prompt
 <li>Key Range Partitioning</li>
 
 <li>Kneser-Ney Smoothing (N-grams)</li>
+
+<li>Knowledge Base</li>
 
 <li>Kubernetes</li>
 
@@ -10486,7 +10490,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20211203010914146" list="Topics [[Data Engineering]] [[Distributed Systems]] DBMS [[To Do]]" modified="20211229223313108" title="$:/StoryList">
+<div created="20211230032605557" list="Topics [[Machine Learning]] [[Supervised Learning]] [[Natural Language Processing]] [[Information Extraction]] [[Knowledge Base]] [[Semantic Representations]] [[Sequence Classification]] [[To Do]]" modified="20211230033655291" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20201012173622690" modified="20210901193831232" title="$:/temp/advancedsearch">
@@ -11902,8 +11906,7 @@ Crossing two categories exponentially increases the number of categories in the 
 Crossing two highly correlated categories increases sparsity without adding information.</pre>
 </div>
 <div created="20210720001037123" modified="20211210004310280" title="CSFR">
-<pre>
-A user is tricked into executing an unwanted action. Actions are within the intended scope of the application but done without the users intention.
+<pre>A user is tricked into executing an unwanted action. Actions are within the intended scope of the application but done without the users intention.
 
 Usually this involves specialized links or fake portals which users click/use which automatically executes the unwanted action.
 
@@ -12111,8 +12114,7 @@ Can cause performance issues for minority inputs.
 [[Diagram|https://drive.google.com/file/d/1ZVbQXwDcI48ClHIXsEKW6vmenouRGm2d/view?usp=sharing]]</pre>
 </div>
 <div created="20200829165019840" modified="20211229222325558" tags="data theory" title="Database Transactions">
-<pre>
-&quot;&quot;&quot;
+<pre>&quot;&quot;&quot;
 A transaction is a set of database operations that is either entirely successful or it entirely fails
 
 ''Success'' - you can feel confident that your transaction did what it was supposed to
@@ -13518,6 +13520,35 @@ $$ \displaystyle \min_{\theta_h}(L(X)) $$
 
 This method is a good middle ground between scalability and performance optimization.</pre>
 </div>
+<div created="20211230033722082" modified="20211230040226075" title="Information Extraction">
+<pre>Extracting structured data from unstructured text.
+
+! ''Types''
+
+!! ''Entity Relationships''
+
+# Find entities
+# Classify relationships between entities
+
+Entities can be identified with [[sequence labeling|Sequence Labeling]] methods.
+
+Entity relationships can be identified using linguistic patterns or [[sequence classification|Sequence Classification]] methods.
+
+!! ''Time''
+
+# Find time definition sections
+# Normalize sections
+
+Time definition sections can be identified using linguistic patterns or [[sequence classification|Sequence Classification]] methods.
+
+Patterns can be used to normalize time values.
+
+!! ''Events''
+
+Events can be identified using linguistic patterns or [[sequence classification|Sequence Classification]] methods.
+
+Sometimes events are represented using templates.</pre>
+</div>
 <div created="20210122000011598" modified="20210901191316085" title="Information Theory">
 <pre>Theoretical descriptions of information and how it is stored/communicated
 
@@ -13712,6 +13743,11 @@ $$ P_{KN}(w_i|w^{i-1}_{i-N+1}) = max(c_{KN}(w^i_{i-N+1} - d, 0) / c_{KN}(w^{i - 
 Again the lambda function needs to give the same proper proportion of the lower order probability that was taken away by d in the first section of the function.
 
 $$ \lambda(w) = [d/c_{KN}(w)] * |\{v: C(wv) &gt; 0\}| $$</pre>
+</div>
+<div created="20211230033353895" modified="20211230033545969" title="Knowledge Base">
+<pre>Database of entities and relationships which can be used for sophisticated querying.
+
+Often built through [[information extraction|Information Extraction]] techniques.</pre>
 </div>
 <div created="20200827234235959" modified="20200827235504892" tags="software devops" title="Kubernetes">
 <pre>Tool for managing distributed software. Uses [[Docker|Docker]] to containerize processes and uses configuration to manage them across a cluster
@@ -14754,7 +14790,7 @@ Because of this labeling conventions have been developed to identify a token tha
 
 [img[images/NER Labeling.jpg]]</pre>
 </div>
-<div created="20201119015206049" modified="20211209001003706" tags="" title="Natural Language Processing">
+<div created="20201119015206049" modified="20211230034442359" tags="" title="Natural Language Processing">
 <pre>! ''Preprocessing''
 
 Preprocessing techniques are used to transform raw text into a simplified and enriched form.
@@ -14772,13 +14808,16 @@ Preprocessing techniques are used to transform raw text into a simplified and en
 * [[Language Models|Language Model]]
 * [[Context Free Grammars]]
 * [[Dependency Grammars]]
+* Linguistic Patterns
 * [[Semantic Representations]]
+* [[Knowledge Base]]
 
 ! ''Problems''
 
 * [[Sequence Classification|Sequence Classification]]
 * [[Sequence Labeling|Sequence Labeling]]
 * [[Sequence to Sequence]]
+* [[Information Extraction]]
 
 ! ''Other''
 
@@ -15640,10 +15679,10 @@ Essentially it is supervised training where training labels do not need to be co
 <div created="20211209001023155" modified="20211209001102239" title="Semantic Parsing">
 <pre>Algorithms for converting expressions into [[semantic representations|Semantic Representations]].</pre>
 </div>
-<div created="20211209000023070" modified="20211209235116267" title="Semantic Representations">
+<div created="20211209000023070" modified="20211230033601171" title="Semantic Representations">
 <pre>Representing expressions such that the meaning is preserved.
 
-Once a semantic representation is [[parsed|Semantic Parsing]] from an expression it can be added to a knowledge base which can be used to infer new information.
+Once a semantic representation is [[parsed|Semantic Parsing]] from an expression it can be added to a [[knowledge base|Knowledge Base]] which can be used to infer new information.
 
 !! ''Frameworks''
 
@@ -15668,7 +15707,7 @@ Versions are incremented as follows
 <div created="20210125194628484" modified="20210125194629087" title="Sentiment Analysis">
 <pre>https://en.wikipedia.org/wiki/Sentiment_analysis</pre>
 </div>
-<div created="20210508143037843" modified="20210702003627092" tags="" title="Sequence Classification">
+<div created="20210508143037843" modified="20211230033014441" tags="" title="Sequence Classification">
 <pre>Sequence classification is a broad problem description where for each sequence, known as a document in NLP, we assign a classification. 
 
 Some of the more simple NLP problems which can be approached with standard ML methods.
@@ -15688,10 +15727,10 @@ Some of the more simple NLP problems which can be approached with standard ML me
 ** [[Multinomial features|Multinomial Naive Bayes]]
 * Use parameterized model to make classification predicts
 
-!!! ''[[Logistic Regression|Logistic Regression]]''
+!!! ''[[Supervised Learning]]''
 
 * Generate labeled [[document vectors|Document Representations]] as desired, no restriction on this process
-* Use corpus to train [[logistic regression|Logistic Regression]] model 
+* Use corpus to train classification model 
 * Use model to make classification predictions
 
 !!! ''Sequence Neural Networks''
