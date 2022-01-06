@@ -10490,7 +10490,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20211230032605557" list="Topics [[Machine Learning]] [[Supervised Learning]] [[Natural Language Processing]] [[Information Extraction]] [[Knowledge Base]] [[Semantic Representations]] [[Sequence Classification]] [[To Do]]" modified="20211230033655291" title="$:/StoryList">
+<div created="20220104233052471" list="Topics [[Data Engineering]] [[Distributed Systems]] [[DB Replication]] [[Single Leader (Replication)]] [[To Do]]" modified="20220106012317740" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20201012173622690" modified="20210901193831232" title="$:/temp/advancedsearch">
@@ -12173,26 +12173,24 @@ How a read/write request determines which node to access.
 * A routing tier abstracts away this issue
 </pre>
 </div>
-<div created="20200828145332976" modified="20201012171403740" tags="data theory" title="DB Replication">
-<pre>Replication is a feature of [[DBMS]] where the data within the database is duplicated and spread across a number of servers called nodes.
+<div created="20200828145332976" modified="20220106012314958" tags="data theory" title="DB Replication">
+<pre>Data within the database is duplicated across multiple nodes
 
-Replication in general has the following benefits:
+!! ''Benefits''
 
-* Reduce latency - nodes close to the user can respond
-* Increase throughput - more nodes that can respond
-* Increase availability - nodes can fail without impacting the database
+* Throughput - faster transactions
+* Fault Tolerance - more durable
 
-Implementations:
+!! ''Implementations''
 
 * [[Single Leader|Single Leader (Replication)]]
 * [[Multi-leader|Multi-Leader (Replication)]]
 * [[Leaderless|Leaderless (Replication)]]
 * [[Consensus|Consensus]]
 
-Related concepts:
+!! ''Related Concepts''
 
-* [[Consistency|Consistency]]
-</pre>
+* [[Consistency|Consistency]]</pre>
 </div>
 <div created="20200828140243188" modified="20211229220717551" tags="theory data" title="DBMS">
 <pre>Database Management Systems
@@ -12631,36 +12629,30 @@ How nodes react to internal failures
 * Crash-recovery faults - a failed node may return to service
 * Byzantine faults - node may behave in any way</pre>
 </div>
-<div created="20200917233929474" modified="20210902193919792" tags="theory software" title="Distributed Systems">
-<pre>!! ''Benefits''
+<div created="20200917233929474" modified="20220106011757466" tags="theory software" title="Distributed Systems">
+<pre>Managing data across multiple machines
 
-Scalability, Low Latency, Fault Tolerance
+!! ''Benefits''
 
-
+* Scalability - more data
+* Throughput - faster transactions
+* Fault Tolerance - more durable
 
 !! ''Issues''
-Distributed systems are prone to a number of issues.
 
 * Nodes failures
-* Unbounded network delays, no way of knowing if or when the packet was received by another node until it responds
-* Clock inaccuracies, system clocks are inaccurate and must be managed through synchronization tools
-* Process pauses, in a standard OS process pauses can occur at any time
+* Unbounded network delays
+* Clock synchronization issues
+* Process pauses
 
-!! ''Dealing with the Issues''
-
-* Quorums - decisions are based on majority voting and followed by everyone, useful for guaranteeing coordination
-* [[Fencing|Fencing (Distributed Processing)]] - useful for creating reliable locks
-
-Distributed systems are often abstracted into [[models|Distributed System Models]], which allows us to design [[algorithms|Distributed System Algorithms]] that ensure predictable behavior in the face of the issues we just discussed. The most common distributed system models are semi-synchronous with crash-recovery nodes.
-
-!! ''Distributed Data Systems''
-
-Using multiple machines to store a systems data
+!! ''Features''
 
 * [[Replication|DB Replication]]
 * [[Partitioning|DB Partitioning]]
 
-Replication and partition implementations are relatively independent of each other. The DBMS can partition the data using one algorithm and is then free to replicate each partition using any replication implementation. [[Diagram|https://drive.google.com/file/d/1htm0-2utisRl9MRJVsursvyqKdEqxkcX/view?usp=sharing]]</pre>
+Implementations are relatively independent
+
+[[Diagram|https://drive.google.com/file/d/1htm0-2utisRl9MRJVsursvyqKdEqxkcX/view?usp=sharing]]</pre>
 </div>
 <div created="20201011185905414" modified="20201012183915244" tags="" title="Distributed Transactions">
 <pre>Properties of a database [[transaction|Database Transactions]] implemented on a distributed system
@@ -15931,34 +15923,26 @@ Intuitively rare events hold more information. More concretely less common event
 
 The sigmoid function is equivalent to the [[softmax function|Softmax Function]] when $$k = 2$$ </pre>
 </div>
-<div created="20200829151326811" modified="20200829175638337" tags="data theory" title="Single Leader (Replication)">
-<pre>Implementation of [[database|DBMS]] [[replication|DB Replication]] where one leader node accepts all writes and then forwards the updates to the follower nodes.
+<div created="20200829151326811" modified="20220106015353121" tags="data theory" title="Single Leader (Replication)">
+<pre>!! ''Design''
+
+Leader node accepts writes and forwards them to follower nodes
 
 [[Architecture|https://drive.google.com/file/d/1JVrEZSzbubn_O5wcExsaXAxJyU9SLy_9/view?usp=sharing]]
 
-''Benefits''
+!! ''Issues''
 
-In this implementation the benefits of latency, throughput, and availability only apply to reads because there is still only one node available for writes.
+Replication benefits only apply to read operations since there is only one write node.
 
-''Updating followers''
+!!! ''Replication Lag''
 
-Updating follower nodes, in theory, can be done synchronously or asynchronously. Practically ''asynchronous updates are almost always used'' because of the drawback of synchronous updates. By forcing synchronous updates latency, throughput, and availability are all sacrificed because the system can only respond once multiple or all nodes have been updated.
+Follower nodes are updated asynchronously which causes temporary consistency issues.
 
-''Administration''
-
-* Add follower nodes - simple and usually automatically handled by the system
-* Update failed follower nodes - similar to adding follower nodes
-* Replacing a failed leader node, called Failover - complex and prone to issues so it is often done manually
-
-''Replication Lag''
-
-Due to asynchronous updates to follower nodes a number of issues arise from the eventual consistency of a replicated database system.
+To avoid these issues there is usually some overhead at the application level.
 
 * [[Read your own writes|Read your Writes]]
 * [[Monotonic reads|Monotonic Reads]]
-* [[Consistent read ordering|Consistent Read Order]]
-
-To avoid these issues there is usually some overhead at the application level</pre>
+* [[Consistent read ordering|Consistent Read Order]]</pre>
 </div>
 <div created="20210609004151266" modified="20210609004403459" title="Singleton">
 <pre>Only one instance of an object exists and it is able to be accessed globally
@@ -16439,8 +16423,11 @@ This implementation has fast reads but slower writes because an entry may have t
 *** UTF-8
 *** UTF-16</pre>
 </div>
-<div created="20210529172614786" modified="20211210002711681" tags="" title="To Do">
-<pre>* ML Design Patterns - next chapter
+<div created="20210529172614786" modified="20220104233040639" tags="" title="To Do">
+<pre>* ML Design Patterns - reproduce-ability
+* NLP - word senses and disambiguation
+* Reviewing - [[Distributed Systems]] 
+
 </pre>
 </div>
 <div created="20201127010943702" modified="20210508142648752" tags="" title="Tokenization">
