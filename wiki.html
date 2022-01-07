@@ -417,8 +417,6 @@ Error message and password prompt
 
 <li>Distributed File System</li>
 
-<li>Distributed System Algorithms</li>
-
 <li>Distributed System Models</li>
 
 <li>Distributed Systems</li>
@@ -10490,7 +10488,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20220104233052471" list="Topics [[Data Engineering]] [[Distributed Systems]] [[DB Replication]] [[Single Leader (Replication)]] [[To Do]]" modified="20220106012317740" title="$:/StoryList">
+<div created="20220107005747729" list="HTTPS Topics [[To Do]]" modified="20220107010138743" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20201012173622690" modified="20210901193831232" title="$:/temp/advancedsearch">
@@ -10557,7 +10555,7 @@ Error message and password prompt
 <div created="20200828140319089" modified="20210901191713767" title="$:/temp/NewTagName">
 <pre></pre>
 </div>
-<div created="20200827210236856" modified="20211118235915848" title="$:/temp/search">
+<div created="20200827210236856" modified="20220107010134740" title="$:/temp/search">
 <pre></pre>
 </div>
 <div created="20200827210410769" modified="20200827210412400" title="$:/theme">
@@ -12597,17 +12595,6 @@ Usually serves as the infrastructure for batch processing pipelines.
 
 Examples - [[Hadoop|Hadoop]]</pre>
 </div>
-<div created="20200922003154421" modified="20200922004039802" tags="software theory" title="Distributed System Algorithms">
-<pre>When designing algorithms for distributed systems we start with a solution that has properties. An algorithm is correct if it always satisfies all properties of the solution given the [[distributed model|Distributed System Models]]
-
-&quot;&quot;&quot;
-''Property Types''
-There are two different types of properties, each one has a different definition of being satisfied.
-&quot;&quot;&quot;
-
-* Safety - cannot be broken under any circumstance i.e. uniqueness of a token
-* Liveness - depends on something outside of it the systems control, but it should satisfied eventually i.e. system availability</pre>
-</div>
 <div created="20200917234532874" modified="20200922002816108" tags="theory software" title="Distributed System Models">
 <pre>By using abstracting distributed systems into model we can create algorithms that provide certain guarantees based on the type of distributed system.
 
@@ -13452,32 +13439,30 @@ $$t_1^n = \argmax_{t_1^n}[\prod_i^np(w_i|t_i)p(t_i|t_{i-1})]$$
 <div created="20210721003116170" modified="20210721003117063" title="HTTP">
 <pre>https://en.wikipedia.org/wiki/Hypertext_Transfer_Protocol</pre>
 </div>
-<div created="20210721001415624" modified="20210721004552825" title="HTTPS">
-<pre>HTTPS is a secure version of [[HTTP|HTTP]]. The data being sent and received is encrypted in such a way that no one else viewing the messages can understand them. The protocol is reliant on [[public-private key encryption|Public Private Key Encryption]].
+<div created="20210721001415624" modified="20220107012632266" title="HTTPS">
+<pre>!! ''Description''
 
-!! ''Connection''
+HTTPS is a secure version of the [[HTTP|HTTP]] protocol. The protocol is reliant on [[public-private key encryption|Public Private Key Encryption]].
 
-# Server and client begin the TCP connection via a handshake
-# Server proves its identity to the client via a certificate
-# If the client trusts the certificate the client and server trade public keys
-# The server and client send messages by encrypting their messages with the given public keys
+!! ''Protocol''
 
-By encrypting with the public keys of the client/server only the private key can decode the message,
+First the connection is established.
 
-!! ''Certificates''
+Server then sends it's Public Key and Certificate.
 
-A certificate has two main pieces of information.
+The Certificate states that the public key belongs to a domain for a certain date range.
 
-# A domain name
-# A signature encrypted with a private key from a Certificate Authority
+It is assumed that the Certificate message has been encrypted by a CA's private key.
 
-The client verifies that the domain name is what the one it wants and that the public key of a trusted certificate authority decodes the signature. 
+The Client then tests a set of Public Keys from trusted CAs to decrypt the certificate.
 
-Clients usually have a list of public keys from major CAs that they trust.
+If the certificate can be decrypted and states that the Public Key given by the server does below to the domain name the Server claims to be then the Client can trust that this has been verified by a CA the Client trusts.
 
-The CA in order to be trusted must have gone through efforts to verify that the host is who they say they are.
+The Client then creates a new symmetric key and sends it to the Server, encrypting it with the public key that only the Server's private key can decrypt.
 
-''Why can't a client see the certificate being used by the server, save it and then use it as a man in the middle attack?''</pre>
+The two sides now use the symmetric key that only they have access to encrypt and decrypt the messages between them.
+
+From here standard HTTP protocol is followed.</pre>
 </div>
 <div created="20211101232318110" modified="20211101235201122" title="Hyperparamter">
 <pre>Hyperparameters are the parts of the model configuration which aren't optimized during training.
