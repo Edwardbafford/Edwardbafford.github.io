@@ -599,6 +599,10 @@ Error message and password prompt
 
 <li>Minimum Edit Distance</li>
 
+<li>ML Deployments</li>
+
+<li>ML Training</li>
+
 <li>Model Parallelism</li>
 
 <li>Monotonic Reads</li>
@@ -10488,7 +10492,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20220107005747729" list="HTTPS Topics [[To Do]]" modified="20220107010138743" title="$:/StoryList">
+<div created="20220113002851720" list="[[Supervised Learning]] Topics [[Machine Learning Engineering]] [[ML Training]] [[To Do]]" modified="20220113013450475" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20201012173622690" modified="20210901193831232" title="$:/temp/advancedsearch">
@@ -10555,7 +10559,7 @@ Error message and password prompt
 <div created="20200828140319089" modified="20210901191713767" title="$:/temp/NewTagName">
 <pre></pre>
 </div>
-<div created="20200827210236856" modified="20220107010134740" title="$:/temp/search">
+<div created="20200827210236856" modified="20220113012912815" title="$:/temp/search">
 <pre></pre>
 </div>
 <div created="20200827210410769" modified="20200827210412400" title="$:/theme">
@@ -12077,8 +12081,10 @@ Offline system - asynchronous processes, general effeciency is the most importan
 * [[Batch processing|Batch Processing]] - periodic processing jobs, processing large amounts of data per job
 * [[Stream processing|Stream Processing]] - process data as it becomes available</pre>
 </div>
-<div created="20210902131106554" modified="20211101231537663" title="Data Quality">
-<pre>!! ''Accuracy and Consistency''
+<div created="20210902131106554" modified="20220113012624098" title="Data Quality">
+<pre>Data quality should be monitored because model performance is dependent on quality data.
+
+!! ''Accuracy and Consistency''
 
 Errors in the data limits model performance and can be corrected or filtered out.
 
@@ -12949,8 +12955,18 @@ Training is done by summing all the sub-word grams with the full tokens
 
 [img[images/fasttext.png]] </pre>
 </div>
-<div created="20201220191134632" modified="20211112012037791" title="Feature Engineering">
+<div created="20201220191134632" modified="20220113012119672" title="Feature Engineering">
 <pre>Methods of manipulating input data to extract valuable features to improve a ML model.
+
+! ''Design''
+
+Input transformations should be kept consistent and reproducible.
+
+Multiple feature sets can be created and used for the same data sources.
+
+! ''Missing Data''
+
+Missing fields should be replaced with averages. For one hot encoding this involves the probability for each category.
 
 ! ''Numeric Input''
 
@@ -13927,35 +13943,39 @@ Because of this it is often used for managing user roles and credentials within 
 An LDAP server manages and stores user roles and credentials and is referenced by many systems within the organization.
 </pre>
 </div>
-<div created="20200829151448984" modified="20200830204019987" tags="data theory" title="Leaderless (Replication)">
-<pre>Implementation of [[database|DBMS]] [[replication|DB Replication]]
-
-Fundamentally different from [[single|Single Leader (Replication)]] and [[multi-leader|Multi-Leader (Replication)]] replication in that there are no leader and follower nodes. Each node can be written to and read from.
+<div created="20200829151448984" modified="20220109235224661" tags="data theory" title="Leaderless (Replication)">
+<pre>Each node can be written to and read from. Quorums are used for maintaining consistency.
 
 [[Architecture|https://drive.google.com/file/d/1sunXNGtsOsHm96IRtlz0nPfC5xCeG3UF/view?usp=sharing]]
 
-''Quorum'' 
+! ''Quorum'' 
 
-Protocol for reading and writing to leaderless replicated databases. The number nodes written to (w) and the number of nodes read from (r) must be greater than the total number of nodes (n)
+The number nodes written to (w) and the number of nodes read from (r) must be greater than the total number of nodes (n)
 
 $$ w + r &gt; n $$
 
-Because of this reads will always read at least one node with the most recent data (excluding edge case)
+Because of this reads will always read at least one node with the most recent data
 
 The number of write nodes and read nodes can be configured based on performance requirements.
 
-* quorums eliminate replication lag issues (except in edge case)
-* concurrency issues still exist and can be addressed by solutions provided in [[multi-leader replication|Multi-Leader (Replication)]]
-* extra overhead for reads/writes as compared to leader implementations
+Daemon processes synchronize nodes in the background.
 
-Synchronizing nodes in a quorum
+!! ''Benefits''
 
-* on read - done by the application
-* daemon processes sync the nodes
+Quorums eliminate replication lag.
+
+!! ''Issues''
+
+Replication conflicts can still occur if  - $$2w \le n$$
+
+Overhead of multiple reads and writes mitigates the usual benefits of throughput and fault tolerance.
+
  
-Sloppy Quorum
+!!! ''Sloppy Quorum''
 
-If necessary due of temporary network issues the number of writes can drop below w and a daemon process will propagate to extra nodes. Increases availability at the expense of introducing replication lag issues (See [[single leader replication|Single Leader (Replication)]] for descriptions of issues related to replication lag).</pre>
+The number of writes/reads can drop below whats normally required if necessary.
+
+Improves throughput and fault tolerance at the cost of replication lag and conflict issues.</pre>
 </div>
 <div created="20210620205035345" modified="20210824191626202" title="Linear Chain CRF">
 <pre>A specialized [[CRF|Condition Random Fields]] model for analyzing input/output sequences. It is also a type of [[MEMM|Maximum-entropy Markov model]]
@@ -14261,67 +14281,23 @@ Word vectors can be represented by either $$U_k\Sigma_k$$ or $$U_k$$
 
 Document vectors can be represented by either  $$V_k$$ or $$(\Sigma_kV_k^T)^T$$</pre>
 </div>
-<div created="20201119014956147" modified="20211111012118237" tags="" title="Machine Learning">
-<pre>!! [[Data Quality]]
-
-Validate and improve the integrity of the data used to make the model.
-
-The EDA process is useful for validating the integrity of the data.
-
-!! [[Feature Engineering]]
-
-Methods of enriching the data to improve data quality and emphasize patterns within the data.
-
-!! ''Modeling''
-
-* [[Unsupervised Learning]]
+<div created="20201119014956147" modified="20220113003316738" tags="" title="Machine Learning">
+<pre>* [[Unsupervised Learning]]
 * [[Supervised Learning]]
 * [[Self-supervised Learning]]
 * [[Reinforcement Learning]]</pre>
 </div>
-<div created="20211227232701434" modified="20211228001728700" title="Machine Learning Engineering">
-<pre>! ''Deployment''
+<div created="20211227232701434" modified="20220113012539464" title="Machine Learning Engineering">
+<pre>The process of developing machine learning systems.
 
-!! ''Saving Models''
+! ''Stages''
 
-Store models in a platform independent format such as [[ONNX|https://onnx.ai/]] so that it can be deployed into any type of system.
+Stages of the ML pipeline should be [[loosely coupled|Loosely Coupled Code]].
 
-!! ''Compact Models''
-
-Make models smaller for running on smaller devices.
-
-!!! ''Quantization''
-
-approximate model parameters using less binary digits to save space
-
-!! ''Online Requests''
-
-Process one prediction inputs with one request.
-
-* Use stateless function
-* Allow autoscaling
-
-!! ''Batch Processing''
-
-Process a set of prediction inputs with one request.
-
-Process input in parallel.
-
-Track and map inputs to outputs based on a key.
-
-!! ''Model Updates''
-
-Degradation occurs the relationships between inputs and output shift. 
-
-Model retraining and deployments should at least be partially automated.
-
-!!! ''Approaches''
-
-Monitor new data and automatically retrain based metric triggers.
-
-Scheduled retraining on new data.
-
-</pre>
+* [[Data Quality]]
+* [[Feature Engineering]]
+* [[Training|ML Training]]
+* [[Deployment|ML Deployments]]</pre>
 </div>
 <div created="20201027000430192" modified="20201027001600598" tags="" title="MapReduce">
 <pre>Parallel processing framework, usually run on top of a [[distributed file system|Distributed File System]]
@@ -14515,6 +14491,102 @@ Once the optimal edit distance is found we can back track through the dynamic pr
 
 [[Algorithm details|https://web.stanford.edu/class/cs124/lec/med.pdf]]</pre>
 </div>
+<div created="20220113003504513" modified="20220113012502307" tags="" title="ML Deployments">
+<pre>! ''Storing''
+
+Store models in a platform independent format such as [[ONNX|https://onnx.ai/]] so that it can be deployed into any type of system.
+
+!! ''Compact Models''
+
+Make models smaller for running on smaller devices.
+
+!!! ''Quantization''
+
+approximate model parameters using less binary digits to save space
+
+! ''Serving''
+
+!! ''Online Requests''
+
+Process one prediction inputs with one request.
+
+* Use stateless function
+* Allow autoscaling
+
+!! ''Batch Processing''
+
+Process a set of prediction inputs with one request.
+
+Process input in parallel.
+
+Track and map inputs to outputs based on a key.
+
+! ''Updates''
+
+Degradation occurs the relationships between inputs and output shift. 
+
+Model retraining and deployments should at least be partially automated.
+
+Keep multiple model versions in production for smoother transitions.
+
+!!! ''Approaches''
+
+Monitor new data and automatically retrain based metric triggers.
+
+Scheduled retraining on new data.</pre>
+</div>
+<div created="20220113004151346" modified="20220113013721352" title="ML Training">
+<pre>The process of tuning a model with respect to its parameters and the given training data such that the model can successfully infer new inputs.
+
+Different models are trained in different ways.
+
+!! ''Design Principles''
+
+Datasets should be created randomly but in a way they are never lost or overwritten.
+
+Model training should also be done in a way that is repeatable if necessary given the same datasets.
+
+Experiment with old data to see if it helps or hurts the model.
+
+!! ''Training, validating and testing''
+
+A common training pattern is to have a training, validation, and test dataset. 
+
+The training dataset is used to tune the model. 
+
+The validation dataset is used for testing performance on unseen data and hyper-parameter tuning or choosing between models. 
+
+Finally the test dataset is used to predict the performance of your model after a final model has been chosen.
+
+[[Cross Validation]] can be used as a variation of this approach.
+
+!! ''[[Overfitting vs Underfitting]]''
+
+Use validation methods to determine if the model is overfitting or underfitting and adjust accordingly.
+
+!! ''Checkpoints''
+
+Periodically save versions of the model while training.
+
+* Analyze and choose best model after training is complete
+* Resume training if a failure occurs during it
+* Enable fine tuning
+
+!! ''Early Stopping''
+
+Stop training once validation doesn't improve after a certain amount of time.
+
+* Saves time!
+
+!! ''Fine Tuning''
+
+Take a partially trained model and retrain it on new data. Leverage new data to improve model performance without needing a full new data set.
+
+!! [[Hyperparamter Tuning|Hyperparamter]]
+
+Tune parts of the model configuration which isn't optimized during training.
+</pre>
+</div>
 <div created="20211027003114295" modified="20211027003346203" title="Model Parallelism">
 <pre>The process of splitting a single neural network model across multiple machines during training or inference.
 
@@ -14531,28 +14603,40 @@ This allows for very large models to exist but slows down training and inference
 
 During a defined &quot;session&quot; force the user to read from the same node</pre>
 </div>
-<div created="20200829151419204" modified="20200829184657062" tags="data theory" title="Multi-Leader (Replication)">
-<pre>Implementation of [[database|DBMS]] [[replication|DB Replication]] where a number of leader nodes accepts writes and then forward updates to follower nodes.
+<div created="20200829151419204" modified="20220109213101065" tags="data theory" title="Multi-Leader (Replication)">
+<pre>!! ''Design''
+
+A number of leader nodes accepts writes and then forward updates to follower nodes.
 
 An extension of [[single leader replication|Single Leader (Replication)]]
 
 [[Architecture|https://drive.google.com/file/d/176oa5UKvvP9sxZAgFIMwRO4q_rECsVcw/view?usp=sharing]]
 
-Benefits of multiple leader nodes
+! ''Benefits''
 
-* Increased read latency, throughput, and availability retained from single leader implementations
-* Increased write latency, throughput, and availability added with multiple leader implementations
-* Issues related replication lag from single leader implementations carry over to multiple leader implementations
-* New issues related to concurrency arise when moving to a multiple leader implementation
+Replication benefits exist for both read and write operations.
 
-''Resolving Conflicts''
+! ''Issues''
 
-* Avoid them by having updating specific data on specific leader nodes
-* Overwrite data - most recent update wins, simple but has data loss
-* Merge logic - no data loss but involves custom handling
-** on write - custom script runs to merge concurrent writes
-** on read - system stores concurrent writes and lets the reader decide how to handle it
-** [[versioning systems|Version Vectors]] can add support</pre>
+Replication lag issues documented in [[single leader replication|Single Leader (Replication)]]
+
+
+!! ''Replication Conflicts''
+
+The same data can be updated in conflicting ways on different leaders.
+
+!!! ''Solutions''
+
+Accept overwritten data, the most recent update wins, simple but has data loss
+
+OR
+
+Merge logic, no data loss but involves custom handling
+
+* on write - custom script runs to merge concurrent writes
+* on read - system stores all concurrent writes and lets the reader decide how to handle it
+
+[[Versioning systems|Version Vectors]] can add support</pre>
 </div>
 <div created="20210103232440651" modified="20210104003131562" title="Multinomial Distribution">
 <pre>A generalization of the [[Binomial Distribution]] where instead of a [[Bernoulli event|Bernoulli Distribution]] the Multinomial distribution is the probability of the outcomes from a sample of [[Categorical events|Categorical Distribution]]
@@ -16190,7 +16274,7 @@ $$p(\sigma,x)$$ is the probability of each standard deviation based on the sampl
 
 </pre>
 </div>
-<div created="20201220185637027" modified="20211101232312164" title="Supervised Learning">
+<div created="20201220185637027" modified="20220113013022259" title="Supervised Learning">
 <pre>Supervised learning is all about prediction. 
 
 Given an input we want to predict the correct output.
@@ -16271,51 +16355,7 @@ All can be used to help boost performance at the cost of creating and managing e
 
 [[Boosting]] and [[bagging|Bagging]] use lots of models to cover each other's mistakes.
 
-[[Stacking]]  uses other models inputs as features and is a form of [[feature engineering|Feature Engineering]].
-
-! ''Training''
-
-The process of tuning a model with respect to the training data such that the model can successfully infer new inputs.
-
-Different models are trained in different ways.
-
-!! ''Training, validating and testing''
-
-A common training pattern is to have a training, validation, and test dataset. 
-
-The training dataset is used to tune the model. 
-
-The validation dataset is used for testing performance on unseen data and hyper-parameter tuning or choosing between models. 
-
-Finally the test dataset is used to predict the performance of your model after a final model has been chosen.
-
-[[Cross Validation]] can be used as a variation of this approach.
-
-!! ''[[Overfitting vs Underfitting]]''
-
-Use validation methods to determine if the model is overfitting or underfitting and adjust accordingly.
-
-!! ''Checkpoints''
-
-Periodically save versions of the model while training.
-
-* Analyze and choose best model after training is complete
-* Resume training if a failure occurs during it
-* Enable fine tuning
-
-!! ''Early Stopping''
-
-Stop training once validation doesn't improve after a certain amount of time.
-
-* Saves time!
-
-!! ''Fine Tuning''
-
-Take a partially trained model and retrain it on new data. Leverage new data to improve model performance without needing a full new data set.
-
-!! [[Hyperparamter Tuning|Hyperparamter]]
-
-Tune parts of the model configuration which isn't optimized during training.</pre>
+[[Stacking]]  uses other models inputs as features and is a form of [[feature engineering|Feature Engineering]].</pre>
 </div>
 <div created="20210621130632724" modified="20210621130927875" title="Template Method">
 <pre>Pattern for defining an algorithmic framework
