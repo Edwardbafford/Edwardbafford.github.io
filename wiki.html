@@ -817,6 +817,10 @@ Error message and password prompt
 
 <li>Word Representations</li>
 
+<li>Word Sense</li>
+
+<li>Word Sense Disambiguation</li>
+
 <li>Word2Vec</li>
 
 <li>Word2Vec Softmax Cross Entropy</li>
@@ -10492,7 +10496,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20220113002851720" list="[[Supervised Learning]] Topics [[Machine Learning Engineering]] [[ML Training]] [[To Do]]" modified="20220113013450475" title="$:/StoryList">
+<div created="20220113002851720" list="Topics [[Natural Language Processing]] [[Word Sense Disambiguation]] [[Sequence Labeling]] BERT [[POS Tagging]] [[To Do]]" modified="20220203012738015" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20201012173622690" modified="20210901193831232" title="$:/temp/advancedsearch">
@@ -10559,7 +10563,7 @@ Error message and password prompt
 <div created="20200828140319089" modified="20210901191713767" title="$:/temp/NewTagName">
 <pre></pre>
 </div>
-<div created="20200827210236856" modified="20220113012912815" title="$:/temp/search">
+<div created="20200827210236856" modified="20220203012719283" title="$:/temp/search">
 <pre></pre>
 </div>
 <div created="20200827210410769" modified="20200827210412400" title="$:/theme">
@@ -11046,7 +11050,7 @@ Use calculus to find $$\theta_{ji}$$ which maximizes the function
 
 $$ \displaystyle \theta_{ji} = \frac{m_{ji}}{N_{i}} $$</pre>
 </div>
-<div created="20210615005122015" modified="20210702002118609" title="BERT">
+<div created="20210615005122015" modified="20220203012813658" title="BERT">
 <pre>http://jalammar.github.io/illustrated-bert/
 
 Acronym for &quot;Bidirectional Encoder Representations from Transformers&quot; and is a new SOTA NLP model inspired by the [[Transformer]] model.
@@ -11066,6 +11070,7 @@ BERT is a [[language model|Language Model]] that can be used for most NLP tasks.
 * [[Sequence Classification]]
 * [[Sequence Labeling]]
 * [[Sequence to Sequence]]
+* [[Word Representations]]
 
 BERT is usually trained in a [[self-supervised|Self-supervised Learning]] way as a language model on an extremely large corpus.
 
@@ -13737,10 +13742,14 @@ Again the lambda function needs to give the same proper proportion of the lower 
 
 $$ \lambda(w) = [d/c_{KN}(w)] * |\{v: C(wv) &gt; 0\}| $$</pre>
 </div>
-<div created="20211230033353895" modified="20211230033545969" title="Knowledge Base">
+<div created="20211230033353895" modified="20220203011131641" title="Knowledge Base">
 <pre>Database of entities and relationships which can be used for sophisticated querying.
 
-Often built through [[information extraction|Information Extraction]] techniques.</pre>
+Often built through [[information extraction|Information Extraction]] techniques.
+
+!!! ''Examples''
+
+* ~WordNet - knowledge base of [[word senses|Word Sense]], lemmas, and relationships</pre>
 </div>
 <div created="20200827234235959" modified="20200827235504892" tags="software devops" title="Kubernetes">
 <pre>Tool for managing distributed software. Uses [[Docker|Docker]] to containerize processes and uses configuration to manage them across a cluster
@@ -14040,7 +14049,7 @@ Based on replication algorithms
 ** last write wins with clock variance
 ** [[lagging writes|https://drive.google.com/file/d/19YLldM-8qrQB2CxhyaTbpE5I9Wejauxc/view?usp=sharing]] edge cases</pre>
 </div>
-<div created="20210122202044040" modified="20210802202122682" title="Linguistics">
+<div created="20210122202044040" modified="20220203010857595" title="Linguistics">
 <pre>! ''Definitions''
 
 !!! [[Distributional Hypothesis]]
@@ -14051,13 +14060,7 @@ The root form of a word. Sung and sang both map to sing as their lemma.
 
 !!! [[Part of Speech]]
 
-!!! ''Word Sense'' 
-
-Definition of a word, each lemma can have multiple word senses.
-
-Synonyms have very similar word sense while antonym have extremely opposite or very different word senses.
-
-The situations in which a statement is true is known as a truth condition. Similar words should not alter the truth conditions of a statement.
+!!! [[Word Sense]] 
 
 !!! ''Relatedness''
 
@@ -14851,13 +14854,14 @@ Because of this labeling conventions have been developed to identify a token tha
 
 [img[images/NER Labeling.jpg]]</pre>
 </div>
-<div created="20201119015206049" modified="20211230034442359" tags="" title="Natural Language Processing">
+<div created="20201119015206049" modified="20220203011843325" tags="" title="Natural Language Processing">
 <pre>! ''Preprocessing''
 
 Preprocessing techniques are used to transform raw text into a simplified and enriched form.
 
 * [[Tokenization|Tokenization]]
 * [[POS Tagging]]
+* [[Word Sense Disambiguation]]
 * [[Constituency Parsing|Context Free Grammars]]
 * [[Dependency Parsing|Dependency Grammars]]
 * [[Semantic Parsing]]
@@ -15803,12 +15807,13 @@ Some of the more simple NLP problems which can be approached with standard ML me
 
 Apply regular [[classification|Classification]] methods.</pre>
 </div>
-<div created="20210508143414081" modified="20210702003609132" title="Sequence Labeling">
+<div created="20210508143414081" modified="20220203011823462" title="Sequence Labeling">
 <pre>Sequence labeling is a broad problem description where for each input of a sequence we must classify it as an output. 
 
 ! ''Problems''
 
 * [[POS Tagging]]
+* [[Word Sense Disambiguation]]
 * [[Named-entity recognition]]
 
 ! ''Approaches''
@@ -15880,7 +15885,7 @@ Unlike the [[HMM|Sequence Labeling HMM]] variant the [[MEMM|Maximum-entropy Mark
 * aspects of the words - shape, prefix, suffix, etc.
 * previous tags in the sentence (we don't know the future tags yet!)</pre>
 </div>
-<div created="20210701233730237" modified="20210714004532820" title="Sequence to Sequence">
+<div created="20210701233730237" modified="20220203011810673" title="Sequence to Sequence">
 <pre>An input sequence is transformed into an output sequence. The lengths of the sequences do not need to match and can vary with each input.
 
 Sequence to sequence problems are some of the most complicated in NLP and are best approached with neural network methods.
@@ -16448,9 +16453,9 @@ This implementation has fast reads but slower writes because an entry may have t
 *** UTF-8
 *** UTF-16</pre>
 </div>
-<div created="20210529172614786" modified="20220104233040639" tags="" title="To Do">
-<pre>* ML Design Patterns - reproduce-ability
-* NLP - word senses and disambiguation
+<div created="20210529172614786" modified="20220113014152973" tags="" title="To Do">
+<pre>* NLP - Word senses and disambiguation
+* MLE - Responsible AI
 * Reviewing - [[Distributed Systems]] 
 
 </pre>
@@ -16720,7 +16725,7 @@ The principles of [[beam search|Beam Search]] can be applied the Viterbi algorit
 
 A &quot;domain controller&quot; server manages all credentials and access for each device on the network</pre>
 </div>
-<div created="20210123034626633" modified="20210305182901056" title="Word Representations">
+<div created="20210123034626633" modified="20220203012911557" title="Word Representations">
 <pre>How to store and communicate [[word meaning|Linguistics]]
 
 !!! ''Derivations''
@@ -16764,7 +16769,74 @@ Matrix Factorization
 [[Generative Models|Generative Model]]
 
 * [[PLSA]]
-* [[LDA]]</pre>
+* [[LDA]]
+
+[[Neural Networks|Deep Learning]]
+
+* [[Encoder]]
+* [[BERT]]</pre>
+</div>
+<div created="20220203010750459" modified="20220203010837865" title="Word Sense">
+<pre>Definition of a word, any given lemma can have multiple word senses.
+
+Word senses have relationships between each other
+
+* Synonym
+* Antonym
+* Hyponym
+* Hypernym</pre>
+</div>
+<div created="20220203011354311" modified="20220203014508669" title="Word Sense Disambiguation">
+<pre>Select the correct [[word sense|Word Sense]] for each word in a document.
+
+Technically a [[sequence labeling|Sequence Labeling]] problem, but it suffers from sparsity and lack of training data so novel approaches have been developed.
+
+!! ''Modeling''
+
+!!! ''Standard Sequence Labelling''
+
+Use statistical or sequence neural networks to classify each input lemma.
+
+!!! ''Lesk Algorithms''
+
+Choose word sense based on similarity measures between the definition of the word sense and the context of the word.
+
+Does not need labelled data! Only word sense definitions.
+
+!!! ''Contextual Embeddings''
+
+# Create [[word embeddings|Word Representations]] which incorporate the context of the word
+# Average the embeddings created for each word sense
+# Word senses with no examples can be used imputed by averaging synonym or hyponym senses
+# During inference embedd the new data and choose the closest averaged word sense embedding
+
+Pre-trained embedding models uses their accumulated knowledge to prevent [[overfitting|Overfitting vs Underfitting]] on few samples.
+
+!! ''Training Data''
+
+!!! Labeled Sets 
+
+Some exist but they are expensive and slow to create
+
+!!! Wikipedia
+
+* map pages to word senses
+** manually
+** automated similarity measures
+* use sentences with links as labelled training data
+
+!!! Thesaurus
+
+Provide definitions for Lesk Algorithms
+
+!!! Unsupervised Labelling
+
+Create your own word senses
+
+# Create context embeddings for each instance of each word
+# Cluster embeddings by word to create the averaged embeddings representing custom word senses
+
+Can create large &quot;labelled&quot; datasets but the word senses may not have a unified meaning that is understandable.</pre>
 </div>
 <div created="20210130010648857" modified="20210208132624477" title="Word2Vec">
 <pre>!! ''Models''
