@@ -281,8 +281,6 @@ Error message and password prompt
 
 <li>Bias Variance Tradeoff</li>
 
-<li>Big Data Tools</li>
-
 <li>Binomial Coefficient</li>
 
 <li>Binomial Distribution</li>
@@ -401,8 +399,6 @@ Error message and password prompt
 
 <li>Descriptive Logic</li>
 
-<li>Designing Data-Intensive Applications</li>
-
 <li>Dimensionality Reduction</li>
 
 <li>Direct Messaging Services (Streaming)</li>
@@ -416,8 +412,6 @@ Error message and password prompt
 <li>Discriminative Model</li>
 
 <li>Distributed File System</li>
-
-<li>Distributed System Models</li>
 
 <li>Distributed Systems</li>
 
@@ -585,6 +579,8 @@ Error message and password prompt
 
 <li>Markov Model</li>
 
+<li>Math</li>
+
 <li>Maximum Likelihood Estimation</li>
 
 <li>Maximum-entropy Markov model</li>
@@ -600,6 +596,10 @@ Error message and password prompt
 <li>Minimum Edit Distance</li>
 
 <li>ML Deployments</li>
+
+<li>ML Fairness</li>
+
+<li>ML Monitoring</li>
 
 <li>ML Training</li>
 
@@ -10496,7 +10496,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20220113002851720" list="Topics [[Natural Language Processing]] [[Word Sense Disambiguation]] [[Sequence Labeling]] BERT [[POS Tagging]] [[To Do]]" modified="20220203012738015" title="$:/StoryList">
+<div created="20220211010741600" list="Topics [[Machine Learning Engineering]] [[Data Quality]] [[ML Deployments]] [[ML Monitoring]] [[ML Fairness]] [[To Do]]" modified="20220211020719311" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20201012173622690" modified="20210901193831232" title="$:/temp/advancedsearch">
@@ -11113,11 +11113,6 @@ $$e_V$$ is the error stemming from the fact that the model is not perfectly opti
 $$e_N$$ is the error stemming from noise and cannot be decreased without better data.
 
 The bias variance tradeoff is the relationship such that models which are more powerful have a lower $$e_B$$ but are harder to optimize and are therefore more likely to have larger $$e_V$$ errors. On the other hand simpler models are easier to optimize but still larger $$e_B$$ errors.</pre>
-</div>
-<div created="20210801204739010" modified="20210801204739880" title="Big Data Tools">
-<pre>* [[Airflow|Airflow]]
-* [[Spark|Spark]]
-* [[Hadoop|Hadoop]]</pre>
 </div>
 <div created="20201223012553159" modified="20201223014616876" title="Binomial Coefficient">
 <pre>Commonly described as N choose k, because given N option
@@ -12018,17 +12013,10 @@ Forms:
 ** Compact
 ** Not human readable</pre>
 </div>
-<div created="20210902125406290" modified="20211229223339370" title="Data Engineering">
-<pre>!! ''Theory''
-
-* [[Distributed Data|Distributed Systems]]
+<div created="20210902125406290" modified="20220208004536508" title="Data Engineering">
+<pre>* [[Distributed Data|Distributed Systems]]
 * [[Databases|DBMS]]
-* [[Data Processing|Data Processing]]
-* [[Design|Designing Data-Intensive Applications]]
-
-!! ''Technologies''
-
-* [[Big Data Tools]]</pre>
+* [[Data Processing|Data Processing]]</pre>
 </div>
 <div created="20201027000455325" modified="20201027001942994" tags="" title="Data Flow Engines">
 <pre>Takes the basic concepts of [[MapReduce|MapReduce]] and add optimizations, implementations vary based on technologies.
@@ -12086,8 +12074,8 @@ Offline system - asynchronous processes, general effeciency is the most importan
 * [[Batch processing|Batch Processing]] - periodic processing jobs, processing large amounts of data per job
 * [[Stream processing|Stream Processing]] - process data as it becomes available</pre>
 </div>
-<div created="20210902131106554" modified="20220113012624098" title="Data Quality">
-<pre>Data quality should be monitored because model performance is dependent on quality data.
+<div created="20210902131106554" modified="20220211020752721" title="Data Quality">
+<pre>Data quality should be monitored because model performance is dependent on quality data. Important for [[fairness|ML Fairness]] as well.
 
 !! ''Accuracy and Consistency''
 
@@ -12476,46 +12464,6 @@ A subset of [[FOL|First Order Logic]], in that any Descriptive logic model can b
 
 Simplicity can help with parsing and inference.</pre>
 </div>
-<div created="20201116025852458" modified="20201116030800634" tags="" title="Designing Data-Intensive Applications">
-<pre>Some high level ideas
-
-''Read/Write Balance''
-
-Upon a write the more work that is done the less effort is needed during a read of that data. 
-
-For example - a write enters the data then creates an index, now a read for that entry will be easier than if the index wasn't created
-
-''Unbundled Database''
-
-Treating your entire system as a database. Each data storage tool serves a purpose and has a different form of the data.
-
-Data flows from source -&gt; derived
-
-Data flow options
-
-* Logs are asynchronously processed
-** Robust to faults
-** Eventual consistency
-* Process through transactions
-** Faults can cause performance issues
-** Data system is kept consistent and synchronous
-
-In general the asynchronous method is considered the better solution as it is more scalable
-
-Creates a loosely coupled system. For example - Elasticsearch can serve as your system's search index but this can be replace by another indexing tool if necessary without creating issues.
-
-Applications act as stateless functions which transform data from one system to another.
-
-''Correctness''
-
-Best practices for maintaining consistency within a system
-
-* Idempotence to re-run failures
-* Immutable data to minimize data loss from bugs
-* Develop logic for auditing your own data
-
-These practices must be implemented from end to end, including within your applications. Databases can not defend from your own stupid code :)</pre>
-</div>
 <div created="20201220175458297" modified="20201220180224673" title="Dimensionality Reduction">
 <pre>Maps data from $$\mathbb{R}^N$$ to $$\mathbb{R}^D$$ where $$N &gt; D$$
 
@@ -12605,27 +12553,6 @@ Data is replicated and partitioned.
 Usually serves as the infrastructure for batch processing pipelines.
 
 Examples - [[Hadoop|Hadoop]]</pre>
-</div>
-<div created="20200917234532874" modified="20200922002816108" tags="theory software" title="Distributed System Models">
-<pre>By using abstracting distributed systems into model we can create algorithms that provide certain guarantees based on the type of distributed system.
-
-&quot;&quot;&quot;
-''Timing''
-Time boundaries related to node interactions
-&quot;&quot;&quot;
-
-* Synchronous - bounded network delays, process pauses, and clock errors
-* Semi-Synchronous - network delays, process pauses, and clock errors fit a distribution with a long tail
-* Asynchronous - no timing assumptions
-
-&quot;&quot;&quot;
-''Node Faults''
-How nodes react to internal failures
-&quot;&quot;&quot;
-
-* Crash-stop faults - a failed node remains dead forever
-* Crash-recovery faults - a failed node may return to service
-* Byzantine faults - node may behave in any way</pre>
 </div>
 <div created="20200917233929474" modified="20220106011757466" tags="theory software" title="Distributed Systems">
 <pre>Managing data across multiple machines
@@ -14290,7 +14217,7 @@ Document vectors can be represented by either  $$V_k$$ or $$(\Sigma_kV_k^T)^T$$<
 * [[Self-supervised Learning]]
 * [[Reinforcement Learning]]</pre>
 </div>
-<div created="20211227232701434" modified="20220113012539464" title="Machine Learning Engineering">
+<div created="20211227232701434" modified="20220211020649863" title="Machine Learning Engineering">
 <pre>The process of developing machine learning systems.
 
 ! ''Stages''
@@ -14300,7 +14227,10 @@ Stages of the ML pipeline should be [[loosely coupled|Loosely Coupled Code]].
 * [[Data Quality]]
 * [[Feature Engineering]]
 * [[Training|ML Training]]
-* [[Deployment|ML Deployments]]</pre>
+* [[Deployment|ML Deployments]]
+* [[Monitoring|ML Monitoring]]
+
+</pre>
 </div>
 <div created="20201027000430192" modified="20201027001600598" tags="" title="MapReduce">
 <pre>Parallel processing framework, usually run on top of a [[distributed file system|Distributed File System]]
@@ -14346,6 +14276,11 @@ $$\pi$$ represents the initialized probabilities. $$\pi_i$$ is the probability o
 When predicting the future the only thing that matters is the present not the past!
 
 $$P(q_i|q_1,...q_{i-1}) = P(q_i|q_{i-1})$$</pre>
+</div>
+<div created="20220208004503239" modified="20220208004503630" title="Math">
+<pre>* [[Sets]]
+* [[Functions]]
+* [[Relations]]</pre>
 </div>
 <div created="20201201020829889" modified="20210902151058341" tags="" title="Maximum Likelihood Estimation">
 <pre>A method of tuning a model such that the model considers the training data as likely to occur as possible.
@@ -14494,7 +14429,7 @@ Once the optimal edit distance is found we can back track through the dynamic pr
 
 [[Algorithm details|https://web.stanford.edu/class/cs124/lec/med.pdf]]</pre>
 </div>
-<div created="20220113003504513" modified="20220113012502307" tags="" title="ML Deployments">
+<div created="20220113003504513" modified="20220211011047754" tags="" title="ML Deployments">
 <pre>! ''Storing''
 
 Store models in a platform independent format such as [[ONNX|https://onnx.ai/]] so that it can be deployed into any type of system.
@@ -14522,9 +14457,25 @@ Process a set of prediction inputs with one request.
 
 Process input in parallel.
 
-Track and map inputs to outputs based on a key.
+Track and map inputs to outputs based on a key.</pre>
+</div>
+<div created="20220211012616635" modified="20220211021808228" title="ML Fairness">
+<pre>Unfairness occurs when the model treats certain end users in unintended ways.
 
-! ''Updates''
+! ''Sources of unfairness''
+
+!! ''Pre-model''
+
+[[Data quality|Data Quality]] issues can create biases towards certain end users. Exploratory data analysis can be used to help discover issues like these.
+
+!! ''Post-model''
+
+Model optimization causes it to give less optimized results to certain end users. If applicable model optimization should be tuned to prevent this.
+
+Features that shouldn't effect the output are effecting it. These features can be represented by other features if there is high correlation. [[Explain-ability|ML Monitoring]] techniques are good for discovering this.</pre>
+</div>
+<div created="20220211011051024" modified="20220211011833415" title="ML Monitoring">
+<pre>! ''Updates''
 
 Degradation occurs the relationships between inputs and output shift. 
 
@@ -14536,7 +14487,29 @@ Keep multiple model versions in production for smoother transitions.
 
 Monitor new data and automatically retrain based metric triggers.
 
-Scheduled retraining on new data.</pre>
+Scheduled retraining on new data.
+
+! ''Explain-ability''
+
+Understanding of how the algorithm is making decisions is good for ensuring that the model is
+
+* Robust - making decisions in a sustainable and repeatable way
+* [[Fair|ML Fairness]]
+
+!!! ''White-box Models''
+
+Models that have simple out of the box methods for interpretation. For example [[logistic regression|Logistic Regression]]
+
+!!! ''Black-box Models''
+
+Models that are not easy interpret or understand. A common example is [[neural networks|Deep Learning]].
+
+Special algorithms that analyze how variations of the input effect variations of the output can be used.
+
+* Sampled Shapley
+* Integrated Gradients
+* LIME
+* Counter Factual Analysis</pre>
 </div>
 <div created="20220113004151346" modified="20220113013721352" title="ML Training">
 <pre>The process of tuning a model with respect to its parameters and the given training data such that the model can successfully infer new inputs.
@@ -15045,12 +15018,8 @@ This architecture involves a user, an application, and an authentication server.
 
 This standard is great for large, distributed systems because authentication only needs to be implemented in one spot for the entire system and often can just be delegated to a third party implementation.</pre>
 </div>
-<div created="20210609001652591" modified="20210620212412832" title="Object Oriented Programming">
-<pre># Start with a problem
-# Generate a collection of objects to represent the problem domain
-# Develop routines to manipulate these objects to interact in a way that automates solutions
-
-!! ''Abstraction''
+<div created="20210609001652591" modified="20220211011431510" title="Object Oriented Programming">
+<pre>!! ''Abstraction''
 
 The core idea of OOP
 
@@ -15061,37 +15030,6 @@ Benefits:
 * Reusability - do not have to reimplement the logic of the concept
 * Changes to the implementation of the abstraction can be done in one place and effect behaviors throughout the entire code base
 * Creates [[loosely coupled code|Loosely Coupled Code]] - changes made to the implementation of an abstraction do not force changes in the rest of the code. The behavior remains the same although the outcome of the behavior may be different
-
-! ''Basic Definitions''
-
-!!! ''Object'' 
-
-* state (data) 
-* behaviors (methods/functions)
-
-An implementation of an interface and an instance of a class
-
-!!! ''Encapsulation ''
-
-A principle stating where the idea is that only behavior signatures should be visible to other objects which allows objects to be defined explicitly via interface definitions
-
-!!! ''Interface'' 
-
-A set of behavior signatures an object must adhere to. By linking classes to an interfaces we create strong abstractions.
-
-!!! ''Class''
-
-The implementation details of an interface used as a template for creating object. It can serve as a less robust abstraction for objects as well since objects of the same class can differ based on their states.
-
-!!! ''Inheritance'' 
-
-Another dimension in which to abstract classes and objects. A sub-class inherits from a parent class allowing for the reuse of behavior while overriding where necessary.
-
-!! ''''
-
-Inheritance abstraction are more [[tightly coupled|Loosely Coupled Code]] than interface abstractions because more data and behavior is shared between them.
-
-Because of this the less shared functionality two sub-classes have the more practical it becomes to just create an interface that both implement.
 
 ! ''Design Patterns''
 
@@ -16453,12 +16391,9 @@ This implementation has fast reads but slower writes because an entry may have t
 *** UTF-8
 *** UTF-16</pre>
 </div>
-<div created="20210529172614786" modified="20220113014152973" tags="" title="To Do">
-<pre>* NLP - Word senses and disambiguation
-* MLE - Responsible AI
-* Reviewing - [[Distributed Systems]] 
-
-</pre>
+<div created="20210529172614786" modified="20220208005801547" tags="" title="To Do">
+<pre>* MLE: Responsible AI
+* Reviewing:  Object Oriented Programming</pre>
 </div>
 <div created="20201127010943702" modified="20210508142648752" tags="" title="Tokenization">
 <pre>Converting a stream of characters into partitioned sections called tokens, we want to tokenize text data in a way that creates meaningful tokens.
@@ -16494,7 +16429,7 @@ An algorithm for converting words into tokens based on the given vocabulary. It 
 [img[images/max-match.png]]
 </pre>
 </div>
-<div created="20210120185705408" modified="20211227232307923" tags="" title="Topics">
+<div created="20210120185705408" modified="20220208004507725" tags="" title="Topics">
 <pre>!! [[Machine Learning]]
 
 * [[Deep Learning]]
@@ -16509,11 +16444,8 @@ An algorithm for converting words into tokens based on the given vocabulary. It 
 * [[Object Oriented Programming]]
 * [[Cyber Security]]
 
-!! ''Math''
+!! [[Math]]
 
-* [[Sets]]
-* [[Functions]]
-* [[Relations]]
 * [[Information Theory]]
 * [[Statistics and Probability]]
 
