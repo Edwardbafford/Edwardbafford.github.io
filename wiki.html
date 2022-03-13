@@ -431,6 +431,8 @@ Error message and password prompt
 
 <li>Dot Product</li>
 
+<li>Draft of 'Semantic Role Labeling'</li>
+
 <li>Dynamic Programming</li>
 
 <li>Embedding</li>
@@ -710,6 +712,10 @@ Error message and password prompt
 <li>Semantic Parsing</li>
 
 <li>Semantic Representations</li>
+
+<li>Semantic Role Labeling</li>
+
+<li>Semantic Roles</li>
 
 <li>Semantic Versioning</li>
 
@@ -10496,7 +10502,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20220211010741600" list="Topics [[Machine Learning Engineering]] [[Data Quality]] [[ML Deployments]] [[ML Monitoring]] [[ML Fairness]] [[To Do]]" modified="20220211020719311" title="$:/StoryList">
+<div created="20220312212832391" list="Topics [[Machine Learning]] [[Supervised Learning]] [[Natural Language Processing]] [[Sequence Labeling]] [[Sequence Labeling MEMM]] [[To Do]]" modified="20220313015031569" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20201012173622690" modified="20210901193831232" title="$:/temp/advancedsearch">
@@ -12694,6 +12700,9 @@ We can try filtering out illegitimate requests but this can block legitimate use
 <div created="20210123033817798" modified="20210123033818304" title="Dot Product">
 <pre>https://en.wikipedia.org/wiki/Dot_product</pre>
 </div>
+<div modified="20220313013147740" title="Draft of 'Semantic Role Labeling'">
+<pre></pre>
+</div>
 <div created="20210423182736849" modified="20211120152601332" title="Dynamic Programming">
 <pre>A recursive solution to an optimization problem where re-usable data is stored and referenced by all recursive functions.
 </pre>
@@ -14827,7 +14836,7 @@ Because of this labeling conventions have been developed to identify a token tha
 
 [img[images/NER Labeling.jpg]]</pre>
 </div>
-<div created="20201119015206049" modified="20220203011843325" tags="" title="Natural Language Processing">
+<div created="20201119015206049" modified="20220313012921901" tags="" title="Natural Language Processing">
 <pre>! ''Preprocessing''
 
 Preprocessing techniques are used to transform raw text into a simplified and enriched form.
@@ -14837,16 +14846,19 @@ Preprocessing techniques are used to transform raw text into a simplified and en
 * [[Word Sense Disambiguation]]
 * [[Constituency Parsing|Context Free Grammars]]
 * [[Dependency Parsing|Dependency Grammars]]
+* [[Semantic Role Labeling]]
 * [[Semantic Parsing]]
 
 ! ''Modeling''
+
+Useful for creating features for other algorithms to work on.
 
 * [[Word Representations]]
 * [[Document Representations]]
 * [[Language Models|Language Model]]
 * [[Context Free Grammars]]
 * [[Dependency Grammars]]
-* Linguistic Patterns
+* [[Semantic Roles]]
 * [[Semantic Representations]]
 * [[Knowledge Base]]
 
@@ -15694,6 +15706,32 @@ Semantic representation frameworks are tools for defining how the semantic repre
 * [[First Order Logic]]
 * [[Descriptive Logic]]</pre>
 </div>
+<div created="20220313003051392" modified="20220313013147510" title="Semantic Role Labeling">
+<pre>Just a complex [[sequence labeling|Sequence Labeling]] problem.
+
+!! ''Training Data''
+
+* Frame Net
+* Prop Bank</pre>
+</div>
+<div created="20220312213113900" modified="20220313012741216" title="Semantic Roles">
+<pre>Catalog of linguistic frameworks for representing specific types of events.
+
+Each event type consists of a predicate which determines the event type along with a set of arguments which are specific to each instance.
+
+Use [[semantic role labeling|Semantic Role Labeling]] algorithms to extract semantic roles.
+
+!! ''Selectional Restrictions''
+
+An extension of semantic roles where certain words are preferred for different predicate arguments.
+
+Can be integrated with [[semantic role labeling|Semantic Role Labeling]] to improve results.
+
+!!! ''Implementations''
+
+* Selectional association
+* Conditional probability</pre>
+</div>
 <div created="20201006232356650" modified="20201006232553279" tags="" title="Semantic Versioning">
 <pre>Versions for software follow the following format 
 
@@ -15745,7 +15783,7 @@ Some of the more simple NLP problems which can be approached with standard ML me
 
 Apply regular [[classification|Classification]] methods.</pre>
 </div>
-<div created="20210508143414081" modified="20220203011823462" title="Sequence Labeling">
+<div created="20210508143414081" modified="20220313020342821" title="Sequence Labeling">
 <pre>Sequence labeling is a broad problem description where for each input of a sequence we must classify it as an output. 
 
 ! ''Problems''
@@ -15753,14 +15791,20 @@ Apply regular [[classification|Classification]] methods.</pre>
 * [[POS Tagging]]
 * [[Word Sense Disambiguation]]
 * [[Named-entity recognition]]
+* [[Semantic Role Labeling]]
 
 ! ''Approaches''
 
+!! ''Basic''
+
+# Use feature templates to create features for each input
+# Use standard [[classification models|Machine Learning]] to create labels for each input
+
 !! ''Statistical Models''
 
-* [[Sequence Labeling HMM]]
-* [[Sequence Labeling MEMM]]
-* [[Sequence Labeling CRF]]
+* [[HMM|Sequence Labeling HMM]]
+* [[MEMM|Sequence Labeling MEMM]]
+* [[CRF|Sequence Labeling CRF]]
 
 In the case of NLP the MEMM and CRF models are essentially the same both involve designing feature templates which look at the previous labels and the input sequence and are optimized in a non-greedy way.
 
@@ -15770,26 +15814,23 @@ With respect to the [[bias-variance tradeoff|Bias Variance Tradeoff]] CRF and ME
 
 !! ''Sequence Neural Networks''
 
+With [[neural networks|Deep Learning]] the features are created internally and mapped to classifications.
+
 * [[RNNs|RNN Sequence Labeling]]
 * [[BERT]]
+
+!! ''Extensions''
+
+The [[viterbi algorithm|Viterbi Algorithm]] can often be placed on top of a models output to help with consistency.
 
 ! ''Evaluation''
 
 Apply regular [[classification|Classification]] metrics.</pre>
 </div>
-<div created="20210620205200790" modified="20210621173841719" title="Sequence Labeling CRF">
+<div created="20210620205200790" modified="20220313014247410" title="Sequence Labeling CRF">
 <pre>Uses a [[linear chain CRF|Linear Chain CRF]] model to decode a label for each input.
 
-Very similar to a [[MEMM|Sequence Labeling MEMM]] approach (if not identical, I'm not sure).
-
-Features for the model are manually decided
-
-!! ''Features''
-
-* combinations of the words and labels
-* word shape
-* prefix, suffix
-* appears in a list</pre>
+Very similar to a [[MEMM|Sequence Labeling MEMM]] approach (if not identical, I'm not sure).</pre>
 </div>
 <div created="20210420001436624" modified="20210620203215740" title="Sequence Labeling HMM">
 <pre>Uses a [[hidden markov model|Hidden Markov Model]] to decode a label for each input.
@@ -15812,16 +15853,10 @@ The hidden markov model is given a sequence of observations in the form of a sen
 * Extend the [[Markov assumption|Markov Model]] (and therefore the Viterbi algorithm) to look at the previous two tags
 * Develop ways to calculate $$p(w|t)$$ for unknown words using word features</pre>
 </div>
-<div created="20210429225407752" modified="20210620203305883" title="Sequence Labeling MEMM">
+<div created="20210429225407752" modified="20220313014157378" title="Sequence Labeling MEMM">
 <pre>Uses a [[Maximum-entropy Markov model]] to decode a label for each input.
 
-Unlike the [[HMM|Sequence Labeling HMM]] variant the [[MEMM|Maximum-entropy Markov model]] version needs less configuration and is more flexible. We simply decide on a feature vector and train models to create the probability maps.
-
-!! ''Features''
-
-* words in the sentence
-* aspects of the words - shape, prefix, suffix, etc.
-* previous tags in the sentence (we don't know the future tags yet!)</pre>
+Unlike the [[HMM|Sequence Labeling HMM]] variant the [[MEMM|Maximum-entropy Markov model]] version needs less configuration and is more flexible. We simply decide on a feature vector and train models to create the probability maps.</pre>
 </div>
 <div created="20210701233730237" modified="20220203011810673" title="Sequence to Sequence">
 <pre>An input sequence is transformed into an output sequence. The lengths of the sequences do not need to match and can vary with each input.
