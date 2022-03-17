@@ -185,6 +185,8 @@ Error message and password prompt
 
 <li>$:/state/Link/--1480314271/search</li>
 
+<li>$:/state/Link/-1278782345/search</li>
+
 <li>$:/state/Link/-1947325556/search</li>
 
 <li>$:/state/Link/-726523471/search</li>
@@ -246,6 +248,8 @@ Error message and password prompt
 <li>Aspect Oriented Programming</li>
 
 <li>Attention</li>
+
+<li>Audit Logging</li>
 
 <li>Authentication</li>
 
@@ -441,6 +445,8 @@ Error message and password prompt
 
 <li>Encoding/Decoding</li>
 
+<li>Encryption</li>
+
 <li>Ensembles</li>
 
 <li>Entropy (Information Theory)</li>
@@ -463,6 +469,8 @@ Error message and password prompt
 
 <li>Fencing (Distributed Processing)</li>
 
+<li>Filter</li>
+
 <li>First Order Logic</li>
 
 <li>Flyweight</li>
@@ -470,6 +478,8 @@ Error message and password prompt
 <li>Functions</li>
 
 <li>Gamma Distribution</li>
+
+<li>Gateway</li>
 
 <li>Generalized Linear Models</li>
 
@@ -506,6 +516,8 @@ Error message and password prompt
 <li>Infrastructure Security</li>
 
 <li>Injection</li>
+
+<li>Input Security</li>
 
 <li>Interpolation Smoothing (N-grams)</li>
 
@@ -647,6 +659,8 @@ Error message and password prompt
 
 <li>One Hot Encoding</li>
 
+<li>Output Security</li>
+
 <li>Overfitting vs Underfitting</li>
 
 <li>Parallel Corpus</li>
@@ -680,6 +694,8 @@ Error message and password prompt
 <li>Quartz</li>
 
 <li>Random Variable</li>
+
+<li>Rate Limiting</li>
 
 <li>Read your Writes</li>
 
@@ -10463,6 +10479,9 @@ Error message and password prompt
 <div created="20210117002818773" modified="20210117002821201" title="$:/state/Link/--1480314271/search">
 <pre></pre>
 </div>
+<div created="20220317002616406" modified="20220317002618301" title="$:/state/Link/-1278782345/search">
+<pre>Rate Limiting</pre>
+</div>
 <div created="20211005233200905" modified="20211005233202240" title="$:/state/Link/-1947325556/search">
 <pre>Multin</pre>
 </div>
@@ -10502,7 +10521,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20220312212832391" list="Topics [[Machine Learning]] [[Supervised Learning]] [[Natural Language Processing]] [[Sequence Labeling]] [[Sequence Labeling MEMM]] [[To Do]]" modified="20220313015031569" title="$:/StoryList">
+<div created="20220317001848145" list="Topics [[Application Development]] [[To Do]]" modified="20220317005316715" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20201012173622690" modified="20210901193831232" title="$:/temp/advancedsearch">
@@ -10569,7 +10588,7 @@ Error message and password prompt
 <div created="20200828140319089" modified="20210901191713767" title="$:/temp/NewTagName">
 <pre></pre>
 </div>
-<div created="20200827210236856" modified="20220203012719283" title="$:/temp/search">
+<div created="20200827210236856" modified="20220317003312923" title="$:/temp/search">
 <pre></pre>
 </div>
 <div created="20200827210410769" modified="20200827210412400" title="$:/theme">
@@ -10728,7 +10747,7 @@ Column-oriented design where columns are stored together and normalized.
 * Makes filtering by column data quick
 * Updating specific entities becomes slower</pre>
 </div>
-<div created="20210625000957774" modified="20211210003009930" title="Application Development">
+<div created="20210625000957774" modified="20220317005440206" title="Application Development">
 <pre>! ''Dev Ops''
 
 * [[Admin Information]]
@@ -10746,18 +10765,14 @@ Column-oriented design where columns are stored together and normalized.
 * [[Security|Application Security]]
 * [[Logging]]
 * [[AOP|Aspect Oriented Programming]]
-* [[Caching|Caching]]</pre>
+* [[Caching|Caching]]
+* [[Gateway]]
+* [[Filter]]</pre>
 </div>
-<div created="20211111005851482" modified="20211210004317890" title="Application Security">
-<pre>! ''Design''
+<div created="20211111005851482" modified="20220317003051142" title="Application Security">
+<pre>!! ''Design''
 
 * Keep applications small and discrete to make security management easier
-* Use an encrypted protocol to communication between machines to prevent man in the middle attacks
-* Endpoints should not expose any revealing error messages
-* Proper [[authentication|Authentication]] implementation
-* Proper [[authorization|Authorization]] implementation
-* Encrypt or don't store sensitive data
-* Log security events, monitor for suspicious behavior, and alert admins as necessary
 * Use secret management systems
 ** Store and update secrets
 ** Inject secrets into applications securely
@@ -10765,7 +10780,17 @@ Column-oriented design where columns are stored together and normalized.
 ** understand and compensate for known vulnverabilities
 ** configure securely
 
-! ''Vulnerabilities''
+!! ''Features''
+
+* [[Encryption]]
+* [[Rate Limiting]]
+* [[Input Security]]
+* [[Audit Logging]]
+* [[Authentication]]
+* [[Authorization]]
+* [[Output Security]]
+
+!! ''Vulnerabilities''
 
 * [[Injection]]
 * [[XSS]]
@@ -10783,13 +10808,13 @@ Column-oriented design where columns are stored together and normalized.
 * Previous vulnerabilities
 * New vulnerabilities</pre>
 </div>
-<div created="20211208233612074" modified="20211208233737442" title="Aspect Oriented Programming">
-<pre>Abstract cross cutting concerns.
+<div created="20211208233612074" modified="20220317004605487" title="Aspect Oriented Programming">
+<pre>Abstract cross cutting concerns so that they can be easily applied in many locations.
 
 Classic examples include:
 
-* Logging
-* Security
+* [[Logging]]
+* [[Filters|Filter]]
 * Exception Handling</pre>
 </div>
 <div created="20210529171113761" modified="20210603235742033" title="Attention">
@@ -10829,8 +10854,32 @@ $$\displaystyle O_{t'} = \sum^I_t\alpha(t,t')I_t$$
 
 This output can be further processed and is often viewed as a function for collecting an aspect of the input. Different output nodes look for different things.</pre>
 </div>
-<div created="20201122172628749" modified="20211118020148348" tags="" title="Authentication">
+<div created="20220317002543053" modified="20220317003955688" title="Audit Logging">
+<pre>Record API request information. 
+
+Useful for:
+
+* Investigation
+* Monitoring
+
+!! ''Design''
+
+* User
+* Kind of request
+* When request was made
+* What resource was accessed
+* Success status</pre>
+</div>
+<div created="20201122172628749" modified="20220317002757278" tags="" title="Authentication">
 <pre>Proving the identity of a user
+
+* Passwords
+* Token Based
+** Cookies
+** Macaroons
+** JWTs
+* Certificates
+* End-to-end
 
 ! ''Username - Password''
 
@@ -10862,8 +10911,15 @@ They are created after authentication in order to help protect user passwords.
 * Linked to user
 </pre>
 </div>
-<div created="20211119004409492" modified="20211119005746429" title="Authorization">
+<div created="20211119004409492" modified="20220317003641531" title="Authorization">
 <pre>Only expose data relevant to the authenticated user
+
+* Identity Based - access is tied to user's identity
+** ACLs
+** Roles
+** ABAC
+* Capabilities - special tokens submitted with requests grant access
+* OAuth2
 
 !! ''Design''
 
@@ -12770,6 +12826,9 @@ Forms:
 * [[Text Encoding|Text Encoding]]
 * [[Data Encoding|Data Encoding]]</pre>
 </div>
+<div created="20220317002224173" modified="20220317003507718" title="Encryption">
+<pre>Protect data that is traveling across networks.</pre>
+</div>
 <div created="20210826203517128" modified="20210902141408997" title="Ensembles">
 <pre>Using multiple models in the prediction process
 
@@ -12987,6 +13046,16 @@ Apply non-linear functions to a distribution in order to help normalize it.
 
 [[Fencing Example|https://drive.google.com/file/d/1zXxEoAL2jTi_cM8y7ErfUUadWoXuy0Tw/view?usp=sharing]]</pre>
 </div>
+<div created="20220317004424843" modified="20220317004643799" title="Filter">
+<pre>Filters are special programming objects used to execute code before or after requests are made to API endpoints.
+
+!! ''Uses''
+
+* [[Input sanitation|Input Security]]
+* [[Output sanitation|Output Security]]
+
+</pre>
+</div>
 <div created="20211209001406063" modified="20211210002625529" title="First Order Logic">
 <pre>Type of [[context free grammar|Context Free Grammars]] used for [[semantic representations|Semantic Representations]]
 
@@ -13127,6 +13196,16 @@ Finally we just take the derivate of the CDF to get the Gamma function we see at
 
 $$\displaystyle{G(x; \lambda, k) = \frac{d(G_{CDF}(x; \lambda, k))}{dx}}$$
 </pre>
+</div>
+<div created="20220317003159958" modified="20220317004150834" title="Gateway">
+<pre>Software used as a [[proxy|Proxy]] for your web applications.
+
+Easily implement the following features before requests are forwarded to your APIs.
+
+* Load balancing
+* [[Rate limiting|Rate Limiting]]
+* [[TLS Protocol|HTTPS]]
+* API Routing</pre>
 </div>
 <div created="20210103213018320" modified="20210118002159299" title="Generalized Linear Models">
 <pre>A probabilistic [[supervised learning|Supervised Learning]] framework that's varies based on an assumed distribution of the output variable $$Y$$
@@ -13557,6 +13636,16 @@ Each host on the internal network should have the following
 * SQL
 * LDAP
 * OS</pre>
+</div>
+<div created="20220317002554306" modified="20220317004815823" title="Input Security">
+<pre>!! ''Checks''
+
+* Define acceptable inputs and enforce them
+* Check content-type as well as any other important headers
+
+!! ''Implementation''
+
+Apply checks in before [[filters|Filter]]</pre>
 </div>
 <div created="20201213222405824" modified="20201214205315935" title="Interpolation Smoothing (N-grams)">
 <pre>Combine the probabilities of all N-grams smaller than N. 
@@ -14075,7 +14164,7 @@ Reads:
 [[Diagram|https://drive.google.com/file/d/1g0oNOJXtp9ub5Ys9glVBV8vuP2MjQ88b/view?usp=sharing]]
 </pre>
 </div>
-<div created="20211120153815933" modified="20211120154512779" title="Logging">
+<div created="20211120153815933" modified="20220317004044883" title="Logging">
 <pre>Logging information as an application is running is useful for the following reasons.
 
 !!! Debugging/Error analysis
@@ -14084,6 +14173,8 @@ Reads:
 
 * Login attempts
 * API abuse
+
+See [[audit logging|Audit Logging]]
 
 !!! Metrics
 
@@ -15091,6 +15182,31 @@ We must know the all categories then map each category to one feature - a 1 when
 
 [img[images/one-hot-encoding.png]]</pre>
 </div>
+<div created="20220317002309887" modified="20220317005431962" title="Output Security">
+<pre>Endpoints should not expose any revealing error messages
+
+!! ''Checks''
+
+* Don't expose anything that reveals the infrastructure of your application
+** Error messages
+** Headers
+* Manage response headers
+** X-XSS-Protection: 0
+** X-Content-Type-Options: nosniff
+** X-Frame-Options: DENY
+** Cache-Control - appropriate length
+** Expires - appropriate length
+** Content-Security-Policy
+*** default-sec 'none'
+*** frame-ancestors 'none'
+*** sandbox
+* Content-Type: ...; charset=utf-8
+
+!! ''Implementation''
+
+Apply checks using after [[filters|Filter]].
+</pre>
+</div>
 <div created="20201220191456221" modified="20211021003710192" title="Overfitting vs Underfitting">
 <pre>!! ''Overfitting''
 
@@ -15378,6 +15494,13 @@ Components:
 </div>
 <div created="20201222013329707" modified="20201229235420177" title="Random Variable">
 <pre>A variable whose value depends on a random process.</pre>
+</div>
+<div created="20220317002640486" modified="20220317004316789" title="Rate Limiting">
+<pre>Limit the number of requests made over a period of time and reject or slow down new requests made past this threshold.
+
+Useful for preventing [[DoS]] attacks.
+
+Limiting is usually based off of IP and Users.</pre>
 </div>
 <div created="20200829153538543" modified="20200829160727793" tags="data theory" title="Read your Writes">
 <pre>A database consistency issue that occurs on [[replicated data|DB Replication]] where a user makes an update (a write) then view the data they just updated (a read). In replicated data systems they not see data that doesn't reflect their write until the followers nodes have been synchronized.
