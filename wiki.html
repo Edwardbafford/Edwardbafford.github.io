@@ -273,8 +273,6 @@ Error message and password prompt
 
 <li>Beam Search</li>
 
-<li>Behavior Patterns</li>
-
 <li>Bernoulli Distribution</li>
 
 <li>Bernoulli Naive Bayes</li>
@@ -348,8 +346,6 @@ Error message and password prompt
 <li>Coordination Services</li>
 
 <li>Cosine Similarity</li>
-
-<li>Creational Patterns</li>
 
 <li>Cross Entropy</li>
 
@@ -434,8 +430,6 @@ Error message and password prompt
 <li>DoS</li>
 
 <li>Dot Product</li>
-
-<li>Draft of 'Semantic Role Labeling'</li>
 
 <li>Dynamic Programming</li>
 
@@ -560,6 +554,8 @@ Error message and password prompt
 <li>LDAP</li>
 
 <li>Leaderless (Replication)</li>
+
+<li>Lexicon</li>
 
 <li>Linear Chain CRF</li>
 
@@ -790,8 +786,6 @@ Error message and password prompt
 <li>Strategy</li>
 
 <li>Stream Processing</li>
-
-<li>Structural Patterns</li>
 
 <li>Student's T-Distribution</li>
 
@@ -10521,7 +10515,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20220317001848145" list="Topics [[Application Development]] [[To Do]]" modified="20220317005316715" title="$:/StoryList">
+<div list="Topics [[To Do]]" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20201012173622690" modified="20210901193831232" title="$:/temp/advancedsearch">
@@ -10588,7 +10582,7 @@ Error message and password prompt
 <div created="20200828140319089" modified="20210901191713767" title="$:/temp/NewTagName">
 <pre></pre>
 </div>
-<div created="20200827210236856" modified="20220317003312923" title="$:/temp/search">
+<div created="20200827210236856" modified="20220401001545458" title="$:/temp/search">
 <pre></pre>
 </div>
 <div created="20200827210410769" modified="20200827210412400" title="$:/theme">
@@ -11050,30 +11044,6 @@ If the prior and posterior models are part of the same probability distribution 
 Using beam search is a good compromise between a greedy and exhaustive approaches.
 
 It increases your chances of getting an optimal solution without increasing time complexity exponentially.</pre>
-</div>
-<div created="20210616012326505" modified="20210621131637714" title="Behavior Patterns">
-<pre>* How responsibility is distributed between objects
-* How communication flows between objects
-
-!! ''Patterns''
-
-Solving a problem
-
-* [[Memento]]
-* [[Interpreter]]
-* [[Observer]]
-* [[State]]
-* [[Template Method]]
-* [[Visitor]]
-
-Robust abstractions
-
-* [[Chain of Responsibility]]
-* [[Command]]
-* [[Iterator]]
-* [[Mediator]]
-* [[Strategy]]
-</pre>
 </div>
 <div created="20201222013435570" modified="20201222013728252" title="Bernoulli Distribution">
 <pre>A discrete probability distribution where there are two events, each with a distinct probability
@@ -11828,29 +11798,14 @@ Examples
 
 The services implement consensus algorithms and therefor are linearizable. Used as a way of outsourcing [[linearizable benefits|Linearizability]] and can be used as a &quot;consultant&quot; for these kinds of tasks without the [[drawbacks|Consensus]] of a large consensus system.</pre>
 </div>
-<div created="20210123033530388" modified="20210123033825896" title="Cosine Similarity">
+<div created="20210123033530388" modified="20220401000308562" title="Cosine Similarity">
 <pre>Similarity measure for two vectors, derived from the [[dot product|Dot Product]]
+
+Returns a value between 0-1 representing how small the angle between the two vectors being compared is.
 
 $$
 {\displaystyle {\text{similarity}}=\cos(\theta )={\mathbf {w} \cdot \mathbf {v}  \over \|\mathbf {w} \|\|\mathbf {v} \|}={\frac {\sum \limits _{i=1}^{n}{w_{i}v_{i}}}{{\sqrt {\sum \limits _{i=1}^{n}{w_{i}^{2}}}}{\sqrt {\sum \limits _{i=1}^{n}{v_{i}^{2}}}}}},}
 $$</pre>
-</div>
-<div created="20210609002828514" modified="20210609004505579" title="Creational Patterns">
-<pre>Solutions for instantiating objects
-
-Control the number of objects instantiated
-
-* [[Singleton|Singleton]]
-
-Abstract the instantiation process
-
-* [[Prototype|Prototype]]
-* [[Factory|Factory]]
-* [[Builder]]
-
-Control how sets of objects are instantiated
-
-* [[Abstract Factory]]</pre>
 </div>
 <div created="20201201031140729" modified="20210122010941788" tags="" title="Cross Entropy">
 <pre>In essence a way of measuring the difference between two probability distributions
@@ -12755,9 +12710,6 @@ We can try filtering out illegitimate requests but this can block legitimate use
 </div>
 <div created="20210123033817798" modified="20210123033818304" title="Dot Product">
 <pre>https://en.wikipedia.org/wiki/Dot_product</pre>
-</div>
-<div modified="20220313013147740" title="Draft of 'Semantic Role Labeling'">
-<pre></pre>
 </div>
 <div created="20210423182736849" modified="20211120152601332" title="Dynamic Programming">
 <pre>A recursive solution to an optimization problem where re-usable data is stored and referenced by all recursive functions.
@@ -13767,14 +13719,15 @@ Again the lambda function needs to give the same proper proportion of the lower 
 
 $$ \lambda(w) = [d/c_{KN}(w)] * |\{v: C(wv) &gt; 0\}| $$</pre>
 </div>
-<div created="20211230033353895" modified="20220203011131641" title="Knowledge Base">
+<div created="20211230033353895" modified="20220331225926577" title="Knowledge Base">
 <pre>Database of entities and relationships which can be used for sophisticated querying.
 
 Often built through [[information extraction|Information Extraction]] techniques.
 
 !!! ''Examples''
 
-* ~WordNet - knowledge base of [[word senses|Word Sense]], lemmas, and relationships</pre>
+* ~WordNet - knowledge base of [[word senses|Word Sense]], lemmas, and relationships
+* [[Lexicons|Lexicon]] are a simplified version of a knowledge base</pre>
 </div>
 <div created="20200827234235959" modified="20200827235504892" tags="software devops" title="Kubernetes">
 <pre>Tool for managing distributed software. Uses [[Docker|Docker]] to containerize processes and uses configuration to manage them across a cluster
@@ -14010,6 +13963,61 @@ Overhead of multiple reads and writes mitigates the usual benefits of throughput
 The number of writes/reads can drop below whats normally required if necessary.
 
 Improves throughput and fault tolerance at the cost of replication lag and conflict issues.</pre>
+</div>
+<div created="20220331225934358" modified="20220401001536436" title="Lexicon">
+<pre>A vocabulary each word in the vocabulary are labeled with properties.
+
+! ''Development''
+
+How to create lexicons
+
+!! ''Manual''
+
+Use surveys to measure word connotations.
+
+!! ''Supervised''
+
+Use pre-categorized excerpts to find words that are common for each category.
+
+Where $$w$$ is a word and $$c$$ is a category.
+
+$$ \displaystyle p(w|c) = \frac{\textrm{count}(w,c)}{\sum_{w}\textrm{count}(w,c)} $$
+
+We can also apply more advanced statistical calculations to incorporate priors and variance.
+
+!! ''Semi-supervised''
+
+Start with very small lexicons (called seeds) and use algorithms to grow the lexicon automatically.
+
+Called lexicon induction
+
+!!! ''Semantic Axis''
+
+Given two categories (poles), create seed lexicons representing each pole.
+
+Create embedding for all seeds.
+
+For each pole take the centroid of all its seeds. Essentially the mean of the vectors.
+
+$$ \displaystyle V^+ = \frac{1}{n}\sum^n_iE(w^+_i) $$
+
+$$ \displaystyle V^- = \frac{1}{n}\sum^n_iE(w^-_i) $$
+
+Subtract the poles to get the axis vector
+
+$$ \displaystyle V_{axis} = V^+ - V^- $$
+
+For induction, create embeddings for new words and take the [[cosine similarity|Cosine Similarity]] of the new embedding with the axis vector. Higher similarity implies a positive connotation.
+
+!!! ''Label Propagation''
+
+Generally goes something like this
+
+# Create a word graph (usually using embeddings and cosine similarity to create edges)
+# Choose seeds within the graph
+# Perform random walks on the graph to see how similar words are to each pole. The longer the walk the less similar.
+
+Perform walks multiple times to get an averaged value. </pre>
 </div>
 <div created="20210620205035345" modified="20210824191626202" title="Linear Chain CRF">
 <pre>A specialized [[CRF|Condition Random Fields]] model for analyzing input/output sequences. It is also a type of [[MEMM|Maximum-entropy Markov model]]
@@ -14311,11 +14319,11 @@ Word vectors can be represented by either $$U_k\Sigma_k$$ or $$U_k$$
 
 Document vectors can be represented by either  $$V_k$$ or $$(\Sigma_kV_k^T)^T$$</pre>
 </div>
-<div created="20201119014956147" modified="20220113003316738" tags="" title="Machine Learning">
+<div created="20201119014956147" modified="20220331225448900" tags="" title="Machine Learning">
 <pre>* [[Unsupervised Learning]]
-* [[Supervised Learning]]
 * [[Self-supervised Learning]]
-* [[Reinforcement Learning]]</pre>
+* [[Reinforcement Learning]]
+</pre>
 </div>
 <div created="20211227232701434" modified="20220211020649863" title="Machine Learning Engineering">
 <pre>The process of developing machine learning systems.
@@ -14611,7 +14619,7 @@ Special algorithms that analyze how variations of the input effect variations of
 * LIME
 * Counter Factual Analysis</pre>
 </div>
-<div created="20220113004151346" modified="20220113013721352" title="ML Training">
+<div created="20220113004151346" modified="20220331235740436" title="ML Training">
 <pre>The process of tuning a model with respect to its parameters and the given training data such that the model can successfully infer new inputs.
 
 Different models are trained in different ways.
@@ -14632,9 +14640,9 @@ The training dataset is used to tune the model.
 
 The validation dataset is used for testing performance on unseen data and hyper-parameter tuning or choosing between models. 
 
-Finally the test dataset is used to predict the performance of your model after a final model has been chosen.
+[[Cross Validation]] can be used for a more advanced validation measurement.
 
-[[Cross Validation]] can be used as a variation of this approach.
+Finally the test dataset is used to predict the performance of your model after a final model has been chosen.
 
 !! ''[[Overfitting vs Underfitting]]''
 
@@ -14927,7 +14935,7 @@ Because of this labeling conventions have been developed to identify a token tha
 
 [img[images/NER Labeling.jpg]]</pre>
 </div>
-<div created="20201119015206049" modified="20220313012921901" tags="" title="Natural Language Processing">
+<div created="20201119015206049" modified="20220331230426954" tags="" title="Natural Language Processing">
 <pre>! ''Preprocessing''
 
 Preprocessing techniques are used to transform raw text into a simplified and enriched form.
@@ -14951,6 +14959,7 @@ Useful for creating features for other algorithms to work on.
 * [[Dependency Grammars]]
 * [[Semantic Roles]]
 * [[Semantic Representations]]
+* [[Lexicons|Lexicon]]
 * [[Knowledge Base]]
 
 ! ''Problems''
@@ -15121,7 +15130,7 @@ This architecture involves a user, an application, and an authentication server.
 
 This standard is great for large, distributed systems because authentication only needs to be implemented in one spot for the entire system and often can just be delegated to a third party implementation.</pre>
 </div>
-<div created="20210609001652591" modified="20220211011431510" title="Object Oriented Programming">
+<div created="20210609001652591" modified="20220329231518205" title="Object Oriented Programming">
 <pre>!! ''Abstraction''
 
 The core idea of OOP
@@ -15138,9 +15147,34 @@ Benefits:
 
 Common object oriented solutions which lead to loosely coupled code.
 
-* [[Creational Patterns|Creational Patterns]]
-* [[Structural Patterns|Structural Patterns]]
-* [[Behavior Patterns]]
+!! ''Creational Patterns''
+
+* [[Singleton|Singleton]]
+* [[Prototype|Prototype]]
+* [[Factory|Factory]]
+* [[Builder]]
+* [[Abstract Factory]]
+
+!! ''Other''
+
+* [[Facade]]
+* [[Flyweight]]
+* [[Adapter]]
+* [[Proxy]]
+* [[Bridge]]
+* [[Decorator]]
+* [[Composite]]
+* [[Memento]]
+* [[Interpreter]]
+* [[Observer]]
+* [[State]]
+* [[Template Method]]
+* [[Visitor]]
+* [[Chain of Responsibility]]
+* [[Command]]
+* [[Iterator]]
+* [[Mediator]]
+* [[Strategy]]
 </pre>
 </div>
 <div created="20201109201218823" modified="20201109202959635" tags="" title="Object-relational Mapping">
@@ -15871,7 +15905,7 @@ Versions are incremented as follows
 <div created="20210125194628484" modified="20210125194629087" title="Sentiment Analysis">
 <pre>https://en.wikipedia.org/wiki/Sentiment_analysis</pre>
 </div>
-<div created="20210508143037843" modified="20211230033014441" tags="" title="Sequence Classification">
+<div created="20210508143037843" modified="20220331230616469" tags="" title="Sequence Classification">
 <pre>Sequence classification is a broad problem description where for each sequence, known as a document in NLP, we assign a classification. 
 
 Some of the more simple NLP problems which can be approached with standard ML methods.
@@ -15882,6 +15916,12 @@ Some of the more simple NLP problems which can be approached with standard ML me
 * [[Sentiment Analysis]]
 
 !! ''Approaches''
+
+!!! [[Lexicons|Lexicon]]
+
+Relevant lexicons can be combined with simple heuristics for classifying a sequence.
+
+If a relevant lexicon is available no training data is needed!
 
 !!! ''[[Naïve Bayes|Naive Bayes]]''
 
@@ -16341,25 +16381,6 @@ Window Types
 
 Common operations such as joins take use windows to collect the data to process. In this way windows are like mini-batches within a stream of unbounded data. For example, the entire history of users joined with the most recent month of transactions, or, the last hour of searches joined with the last hour of visited web pages.</pre>
 </div>
-<div created="20210609002901930" modified="20210616010142654" title="Structural Patterns">
-<pre>Solutions for composing objects into large structures 
-
-System level implementations
-
-* [[Facade]]
-* [[Flyweight]]
-
-Wrapper functionality
-
-* [[Adapter]]
-* [[Proxy]]
-
-To increase class flexibility
-
-* [[Bridge]]
-* [[Decorator]]
-* [[Composite]]</pre>
-</div>
 <div created="20201224011840217" modified="20201224014036626" title="Student's T-Distribution">
 <pre>As discussed in the [[Normal Distribution|Normal Distribution]] the mean of a sample creates a normal distribution with a standard deviation proportional to the standard deviation of the original distribution.
 
@@ -16549,9 +16570,10 @@ This implementation has fast reads but slower writes because an entry may have t
 *** UTF-8
 *** UTF-16</pre>
 </div>
-<div created="20210529172614786" modified="20220208005801547" tags="" title="To Do">
-<pre>* MLE: Responsible AI
-* Reviewing:  Object Oriented Programming</pre>
+<div created="20210529172614786" modified="20220331225537206" tags="" title="To Do">
+<pre>* Reading NLP
+* Reading Secure APIs
+* Reviewing:  MLE</pre>
 </div>
 <div created="20201127010943702" modified="20210508142648752" tags="" title="Tokenization">
 <pre>Converting a stream of characters into partitioned sections called tokens, we want to tokenize text data in a way that creates meaningful tokens.
@@ -16587,9 +16609,10 @@ An algorithm for converting words into tokens based on the given vocabulary. It 
 [img[images/max-match.png]]
 </pre>
 </div>
-<div created="20210120185705408" modified="20220208004507725" tags="" title="Topics">
+<div created="20210120185705408" modified="20220401001551644" tags="" title="Topics">
 <pre>!! [[Machine Learning]]
 
+* [[Supervised Learning]]
 * [[Deep Learning]]
 * [[Natural Language Processing]]
 ** [[Linguistics]]
