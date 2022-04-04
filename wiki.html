@@ -255,6 +255,12 @@ Error message and password prompt
 
 <li>Authorization</li>
 
+<li>AWS</li>
+
+<li>AWS Fargate</li>
+
+<li>AWS Lambda</li>
+
 <li>Backoff Smoothing (N-grams)</li>
 
 <li>Backtranslation</li>
@@ -432,6 +438,18 @@ Error message and password prompt
 <li>Dot Product</li>
 
 <li>Dynamic Programming</li>
+
+<li>EC2</li>
+
+<li>EC2 Autoscaling</li>
+
+<li>ECR</li>
+
+<li>ECS</li>
+
+<li>EKS</li>
+
+<li>ELB</li>
 
 <li>Embedding</li>
 
@@ -761,6 +779,8 @@ Error message and password prompt
 
 <li>Skip Gram</li>
 
+<li>SNS</li>
+
 <li>SOAP</li>
 
 <li>Softmax Function</li>
@@ -770,6 +790,8 @@ Error message and password prompt
 <li>Spark</li>
 
 <li>Spring</li>
+
+<li>SQS</li>
 
 <li>Stacking</li>
 
@@ -790,6 +812,8 @@ Error message and password prompt
 <li>Student's T-Distribution</li>
 
 <li>Supervised Learning</li>
+
+<li>Technology Catalog</li>
 
 <li>Template Method</li>
 
@@ -10935,6 +10959,30 @@ Access rights are defined at different levels per resource. Users are linked wit
 
 More complex but flexible.</pre>
 </div>
+<div created="20220403001044378" modified="20220403001633566" title="AWS">
+<pre>!! ''Compute Services''
+
+* [[EC2]]
+* [[EC2 Autoscaling]]
+* [[ELB]]
+* [[SQS]]
+* [[SNS]]
+* [[AWS Lambda]]
+* [[ECR]]
+* [[ECS]]
+* [[EKS]]
+* [[AWS Fargate]]</pre>
+</div>
+<div created="20220403001957984" modified="20220403002055458" title="AWS Fargate">
+<pre>Use [[ECS]] or [[EKS]] services without explicitly provisioning [[EC2]] instances.
+
+AWS dynamically provides compute resources and charges the client based on usage.</pre>
+</div>
+<div created="20220403001717983" modified="20220403001753426" title="AWS Lambda">
+<pre>Run code without provisioning [[EC2|EC2]] instances.
+
+Deploy code and set triggers to run the code. Pay only for the compute that you need to use.</pre>
+</div>
 <div created="20201213230714516" modified="20201214224948560" title="Backoff Smoothing (N-grams)">
 <pre>If a certain N-gram model has a probability of zero then a lower N-gram model is used. In order to keep the probability at 1 the current N-gram probabilities need to be decreased or discounted and the backoff N-gram models need to be limited respectively.
 
@@ -11597,7 +11645,7 @@ All must be bound to the same interface.
 
 [img[images/Composite.png]]</pre>
 </div>
-<div created="20200828173348895" modified="20211203015926940" title="Computer Science">
+<div created="20200828173348895" modified="20220403000856395" title="Computer Science">
 <pre>!! ''Algorithms''
 
 * [[Dynamic Programming]]
@@ -11612,21 +11660,8 @@ All must be bound to the same interface.
 ** [[LDAP|LDAP]]
 ** [[HTTPS]]
 
-!! ''Technologies''
+!! ''Other''
 
- Programming Languages
-
-* [[Java|Java]]
-
-Dev Ops
-
-* [[Docker|Docker]]
-* [[Kubernetes|Kubernetes]]
-
-Infrastrcture
-
-* AWS
-* Google Cloud
 * [[Windows Domain|Windows Domain]]</pre>
 </div>
 <div created="20210502200420431" modified="20210620205031069" title="Condition Random Fields">
@@ -12714,6 +12749,80 @@ We can try filtering out illegitimate requests but this can block legitimate use
 <div created="20210423182736849" modified="20211120152601332" title="Dynamic Programming">
 <pre>A recursive solution to an optimization problem where re-usable data is stored and referenced by all recursive functions.
 </pre>
+</div>
+<div created="20220403173549257" modified="20220403180248782" title="EC2">
+<pre>! ''Elastic Cloud Compute''
+
+Compute as a Service (~CaaS)
+
+Virtual machines partitioned from host servers
+
+Multiple users share same underlying resources independently
+
+Highly configurable
+
+* OS
+* Software
+* Resources
+* Network
+
+!! ''Instance Types''
+
+* General purpose
+* Compute optimized - better/more CPUs
+* Memory optimized - lots of high performance RAM
+* Accelerated computing - specialized processing cores
+* Storage optimized - fast input/output operations
+
+!! ''Pricing''
+
+* On-demand - pay for what you use
+* Savings plans - discounted price for a committed amount of time
+* Reserved instances - discounted price for full 1 or 3 year commitment
+* Spot instances - discounted on-demand pricing with possible interruptions based on AWS availability
+* Dedicated hosts - fully committed host with no virtualization for extra security</pre>
+</div>
+<div created="20220403002334354" modified="20220403002433739" title="EC2 Autoscaling">
+<pre>Enable scalability for [[EC2]] service.
+
+Configure an autoscaling group
+
+* minimum no. of instances
+* desired no. of instances
+* maximum no. of instances</pre>
+</div>
+<div created="20220403001804099" modified="20220403173202458" title="ECR">
+<pre>!! ''Elastic Container Registry''
+
+Cloud based docker registry</pre>
+</div>
+<div created="20220403001825151" modified="20220403173227025" title="ECS">
+<pre>!! ''Elastic Container Service''
+
+High performance, scalable, docker container management system for deploying docker based applications.
+
+Runs on top of [[EC2]] instances.</pre>
+</div>
+<div created="20220403001911772" modified="20220403173247922" title="EKS">
+<pre>!! ''Elastic Kubernetes Service''
+
+Service for easily deploying [[K8s|Kubernetes]] clusters in the cloud. 
+
+Needs to be provisioned [[EC2|EC2]] instances.</pre>
+</div>
+<div created="20220403002448979" modified="20220403002646912" title="ELB">
+<pre>!! ''Elastic Load Balancing''
+
+Regional construct AWS service.
+
+Distributes network traffic across compute resources.
+
+Automatically scales out of the box
+
+* automatically distributes to newly added compute resources
+* Handles increased traffic automatically
+
+Pairs well with [[EC2 Autoscaling]] service</pre>
 </div>
 <div created="20210805004037287" modified="20211112012804782" title="Embedding">
 <pre>Convert a large [[one-hot encoded|One Hot Encoding]] categorical input into a shorter dense vector.
@@ -16168,6 +16277,17 @@ Initialize word vectors for each word in the vocabulary, $$V$$.
 
 For each word token in a sentence, map it to its embedding, $$w$$, then create a set of matching context vectors, where each context vector is just a word vector of other words in the context window.</pre>
 </div>
+<div created="20220403002216557" modified="20220403173131690" title="SNS">
+<pre>!! ''Simple Notification Service''
+
+Fan out style notification system
+
+* Events are processed by all consumers
+* Consumers are notified of events
+* Different topics consumers can subscribe to
+
+Useful for notifying downstream systems or clients</pre>
+</div>
 <div created="20201105170343744" modified="20201105171609504" tags="" title="SOAP">
 <pre>HTTP, XML service specification
 
@@ -16268,6 +16388,16 @@ Servlet filter chains are created by Spring to enforce authorization and authent
 Figure out how your application will enforce security then implement it using Spring helpers within the security configuration bean
 
 Enforce authentication at the method level for more granular security</pre>
+</div>
+<div created="20220403002115596" modified="20220403173117141" title="SQS">
+<pre>!! ''Simple Queue Service''
+
+Load balance style queue
+
+* Events are processed by one consumer
+* Consumers pull from the queue as they are ready
+
+Used to create a buffer between application components. </pre>
 </div>
 <div created="20210902141343975" modified="20210902141344843" title="Stacking">
 <pre>Model outputs are fed into other models as input features.</pre>
@@ -16479,6 +16609,34 @@ All can be used to help boost performance at the cost of creating and managing e
 
 [[Stacking]]  uses other models inputs as features and is a form of [[feature engineering|Feature Engineering]].</pre>
 </div>
+<div created="20220403000939783" modified="20220403001637945" title="Technology Catalog">
+<pre>!! ''Cloud Computing''
+
+Cloud computing is the on demand delivery of IT resources over the internet with pay as you go pricing
+
+!!! ''Benefits''
+
+* Saving money
+** Only pay for what you use
+** Cheaper costs due to bulk investment of cloud owners
+* Easier development
+** Global deployments
+** No infrastructure maintenance
+** Pre-built services
+
+!!! ''Platforms''
+
+* [[AWS]]
+
+!! ''Programming Languages''
+
+* [[Java|Java]]
+
+!! ''Containers''
+
+* [[Docker|Docker]]
+* [[Kubernetes|Kubernetes]]</pre>
+</div>
 <div created="20210621130632724" modified="20210621130927875" title="Template Method">
 <pre>Pattern for defining an algorithmic framework
 
@@ -16570,8 +16728,9 @@ This implementation has fast reads but slower writes because an entry may have t
 *** UTF-8
 *** UTF-16</pre>
 </div>
-<div created="20210529172614786" modified="20220331225537206" tags="" title="To Do">
-<pre>* Reading NLP
+<div created="20210529172614786" modified="20220403182122297" tags="" title="To Do">
+<pre>* AWS Certification
+* Reading NLP
 * Reading Secure APIs
 * Reviewing:  MLE</pre>
 </div>
@@ -16609,7 +16768,7 @@ An algorithm for converting words into tokens based on the given vocabulary. It 
 [img[images/max-match.png]]
 </pre>
 </div>
-<div created="20210120185705408" modified="20220401001551644" tags="" title="Topics">
+<div created="20210120185705408" modified="20220403182127112" tags="" title="Topics">
 <pre>!! [[Machine Learning]]
 
 * [[Supervised Learning]]
@@ -16620,10 +16779,12 @@ An algorithm for converting words into tokens based on the given vocabulary. It 
 
 !! [[Computer Science]]
 
+* [[Technology Catalog]]
 * [[Application Development]]
 * [[Data Engineering]]
 * [[Object Oriented Programming]]
 * [[Cyber Security]]
+
 
 !! [[Math]]
 
