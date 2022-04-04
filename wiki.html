@@ -255,6 +255,8 @@ Error message and password prompt
 
 <li>Authorization</li>
 
+<li>Availability Zone</li>
+
 <li>AWS</li>
 
 <li>AWS Fargate</li>
@@ -322,6 +324,10 @@ Error message and password prompt
 <li>CKY Algorithm</li>
 
 <li>Classification</li>
+
+<li>Cloud Formation</li>
+
+<li>Cloudfront</li>
 
 <li>Clustering</li>
 
@@ -448,6 +454,8 @@ Error message and password prompt
 <li>ECS</li>
 
 <li>EKS</li>
+
+<li>Elastic Beanstalk</li>
 
 <li>ELB</li>
 
@@ -673,6 +681,8 @@ Error message and password prompt
 
 <li>One Hot Encoding</li>
 
+<li>Outposts</li>
+
 <li>Output Security</li>
 
 <li>Overfitting vs Underfitting</li>
@@ -718,6 +728,8 @@ Error message and password prompt
 <li>Recurrent Neural Network</li>
 
 <li>Regex</li>
+
+<li>Region</li>
 
 <li>Regularization</li>
 
@@ -10539,7 +10551,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div list="Topics [[To Do]]" title="$:/StoryList">
+<div created="20220404003215018" list="Topics [[Technology Catalog]] AWS [[Cloud Formation]] [[To Do]]" modified="20220404010042759" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20201012173622690" modified="20210901193831232" title="$:/temp/advancedsearch">
@@ -10959,8 +10971,35 @@ Access rights are defined at different levels per resource. Users are linked wit
 
 More complex but flexible.</pre>
 </div>
-<div created="20220403001044378" modified="20220403001633566" title="AWS">
-<pre>!! ''Compute Services''
+<div created="20220404004846129" modified="20220404005046999" title="Availability Zone">
+<pre>Independent collection of data centers within a region.
+
+Multiple availability zones within each region.
+
+Applications should be redundantly deployed into multiple availability zones.
+
+Regionally scoped services automatically run across multiple availability zones.</pre>
+</div>
+<div created="20220403001044378" modified="20220404005618847" title="AWS">
+<pre>AWS system can be interacted with using the following methods:
+
+* Console
+* Command line tool
+* SDK's for programming languages
+
+!! ''Availability''
+
+* [[Region]]
+* [[Availability Zone]]
+* [[Outposts]]
+* [[Cloudfront]]
+
+!! ''Infrastructure Services''
+
+* [[Elastic Beanstalk]]
+* [[Cloud Formation]]
+
+!! ''Compute Services''
 
 * [[EC2]]
 * [[EC2 Autoscaling]]
@@ -11596,6 +11635,18 @@ $$
 [img[images/Multi-class F-score.jpg]]
 
 * Because macro-average isn't effected by unbalanced datasets its the more common choice</pre>
+</div>
+<div created="20220404010204959" modified="20220404010257493" title="Cloud Formation">
+<pre>Infrastructure as code system.
+
+Define infrastructure specification as a template which is processed and created.</pre>
+</div>
+<div created="20220404005327220" modified="20220404005628984" title="Cloudfront">
+<pre>CDN Service
+
+Cache web files closer to some customers in &quot;edge locations&quot;.
+
+</pre>
 </div>
 <div created="20201220180304399" modified="20201220180334633" title="Clustering">
 <pre>Maps data points to one of K clusters
@@ -12809,6 +12860,15 @@ Runs on top of [[EC2]] instances.</pre>
 Service for easily deploying [[K8s|Kubernetes]] clusters in the cloud. 
 
 Needs to be provisioned [[EC2|EC2]] instances.</pre>
+</div>
+<div created="20220404005904050" modified="20220404010037022" title="Elastic Beanstalk">
+<pre>Configuration which enables easy deployment of production ready applications.
+
+* Load balancing
+* Auto scaling
+* Monitoring
+
+Abstracts infrastructure code.</pre>
 </div>
 <div created="20220403002448979" modified="20220403002646912" title="ELB">
 <pre>!! ''Elastic Load Balancing''
@@ -15325,6 +15385,9 @@ We must know the all categories then map each category to one feature - a 1 when
 
 [img[images/one-hot-encoding.png]]</pre>
 </div>
+<div created="20220404005200256" modified="20220404005301550" title="Outposts">
+<pre>AWS managed data centers installed into a custom location.</pre>
+</div>
 <div created="20220317002309887" modified="20220317005431962" title="Output Security">
 <pre>Endpoints should not expose any revealing error messages
 
@@ -15742,6 +15805,18 @@ A low level tool for many NLP tasks
 ** Removing
 ** Substituting
 * Scraping data</pre>
+</div>
+<div created="20220404003942543" modified="20220404004809731" title="Region">
+<pre>A group of data centers with self-contained AWS services.
+
+Data does not leave a region without explicit permission of the owner.
+
+Reasons to choose a region
+
+* Regulation - choose location to comply with regulations
+* Customer proximity - mitigate customer latency
+* Available services - varies between regions
+* Price - varies between regions</pre>
 </div>
 <div created="20201220191433751" modified="20210126162105999" title="Regularization">
 <pre>Methods for preventing a model from [[overfitting|Overfitting vs Underfitting]] the data
