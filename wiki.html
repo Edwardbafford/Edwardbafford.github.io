@@ -259,6 +259,8 @@ Error message and password prompt
 
 <li>AWS</li>
 
+<li>AWS Direct Connect</li>
+
 <li>AWS Fargate</li>
 
 <li>AWS Lambda</li>
@@ -539,6 +541,8 @@ Error message and password prompt
 
 <li>Input Security</li>
 
+<li>Internet Gateway</li>
+
 <li>Interpolation Smoothing (N-grams)</li>
 
 <li>Interpreter</li>
@@ -747,6 +751,10 @@ Error message and password prompt
 
 <li>RNN Sequence to Sequence</li>
 
+<li>Route 53</li>
+
+<li>Security Groups</li>
+
 <li>Self-Attention</li>
 
 <li>Self-supervised Learning</li>
@@ -861,9 +869,13 @@ Error message and password prompt
 
 <li>Version Vectors</li>
 
+<li>Virtual Private Gateway</li>
+
 <li>Visitor</li>
 
 <li>Viterbi Algorithm</li>
+
+<li>VPC</li>
 
 <li>Windows Domain</li>
 
@@ -10551,7 +10563,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20220404003215018" list="Topics [[Technology Catalog]] AWS [[Cloud Formation]] [[To Do]]" modified="20220404010042759" title="$:/StoryList">
+<div created="20220404003215018" list="Topics [[Technology Catalog]] AWS [[To Do]]" modified="20220404233800896" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20201012173622690" modified="20210901193831232" title="$:/temp/advancedsearch">
@@ -10980,19 +10992,26 @@ Applications should be redundantly deployed into multiple availability zones.
 
 Regionally scoped services automatically run across multiple availability zones.</pre>
 </div>
-<div created="20220403001044378" modified="20220404005618847" title="AWS">
+<div created="20220403001044378" modified="20220404234248057" title="AWS">
 <pre>AWS system can be interacted with using the following methods:
 
 * Console
 * Command line tool
 * SDK's for programming languages
 
-!! ''Availability''
+!! ''Networking''
 
 * [[Region]]
 * [[Availability Zone]]
+* [[VPC]]
+* [[Security Groups]]
 * [[Outposts]]
 * [[Cloudfront]]
+* [[Internet Gateway]]
+* [[Virtual Private Gateway]]
+* [[AWS Direct Connect]]
+* [[Route 53]]
+
 
 !! ''Infrastructure Services''
 
@@ -11011,6 +11030,11 @@ Regionally scoped services automatically run across multiple availability zones.
 * [[ECS]]
 * [[EKS]]
 * [[AWS Fargate]]</pre>
+</div>
+<div created="20220404233609330" modified="20220404233642224" title="AWS Direct Connect">
+<pre>Create a dedicated networked connection between clients and [[VPC]].
+
+Secure with no other traffic.</pre>
 </div>
 <div created="20220403001957984" modified="20220403002055458" title="AWS Fargate">
 <pre>Use [[ECS]] or [[EKS]] services without explicitly provisioning [[EC2]] instances.
@@ -13768,6 +13792,9 @@ Each host on the internal network should have the following
 
 Apply checks in before [[filters|Filter]]</pre>
 </div>
+<div created="20220404233415403" modified="20220404233427018" title="Internet Gateway">
+<pre>Allow internet access to a [[VPC]]</pre>
+</div>
 <div created="20201213222405824" modified="20201214205315935" title="Interpolation Smoothing (N-grams)">
 <pre>Combine the probabilities of all N-grams smaller than N. 
 
@@ -15968,6 +15995,20 @@ $$\displaystyle \textrm{score}(y) = -\log P(y|x) = \frac{1}{T} \sum^t_{i=1} -\lo
 
 [img[images\RNN Seq to Seq Beam Search.jpg]]</pre>
 </div>
+<div created="20220404233304373" modified="20220404233325388" title="Route 53">
+<pre>AWS DNS
+
+Map domain names to AWS IPs
+
+Buy domain names to!</pre>
+</div>
+<div created="20220404233707751" modified="20220404233755097" title="Security Groups">
+<pre>Firewall for each [[EC2]] instance
+
+Inbound and outbound rules by default allows none.
+
+Stateful</pre>
+</div>
 <div created="20210529171151947" modified="20210604004936662" title="Self-Attention">
 <pre>A modification of the [[attention|Attention]] mechanism (see wiki page for basic framework) where instead of each output being compared to the inputs each input is compared to the other inputs.
 
@@ -17021,6 +17062,11 @@ A wide variety of types and methods exist
 
 [[Example|https://drive.google.com/file/d/1_04Vsvc_drpOSDuuUZXdjFLW0y-99Ge5/view?usp=sharing]]</pre>
 </div>
+<div created="20220404233451360" modified="20220404233536336" title="Virtual Private Gateway">
+<pre>Allow VPN connections between specific networks and a [[VPC]]
+
+Connections are secure and restricted but still travel across the internet.</pre>
+</div>
 <div created="20210621131005771" modified="20210621131633858" title="Visitor">
 <pre>Dynamically add auxiliary functionalities to a set of objects without having to bloat the classes with too many functions.
 
@@ -17068,6 +17114,31 @@ Extending the algorithm in this way exponentially increases the complexity and w
 The principles of [[beam search|Beam Search]] can be applied the Viterbi algorithm by only retaining the most promising sequences at each state
 
 [img[images/Viterbi Beam Search.jpg]]</pre>
+</div>
+<div created="20220404233851919" modified="20220404234238536" title="VPC">
+<pre>!! ''Virtual Private Cloud''
+
+Provision a custom network for your resources.
+
+Allow internal communications while limiting external communications.
+
+!! ''Subnets''
+
+Assign specific network rules to a section of the VPC addresses.
+
+Public subnets can access the internet through [[internet gateways|Internet Gateway]]
+
+Private subnets can only be accessed from within the same VPC
+
+!! ''Network ACLs''
+
+Network access control lists
+
+firewall for subnets
+
+inbound and outbound, default allows all
+
+Stateless</pre>
 </div>
 <div created="20201122164611735" modified="20201122164733418" tags="" title="Windows Domain">
 <pre>A special Windows computer network
