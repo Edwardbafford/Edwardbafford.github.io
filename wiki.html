@@ -237,6 +237,22 @@ Error message and password prompt
 
 <li>Airflow</li>
 
+<li>Amazon Aurora</li>
+
+<li>Amazon DocumentDB</li>
+
+<li>Amazon Dynamo DB</li>
+
+<li>Amazon Dynamo DB Accelerator</li>
+
+<li>Amazon ElastiCache</li>
+
+<li>Amazon Managed Blockchain</li>
+
+<li>Amazon Neptune</li>
+
+<li>Amazon Redshift</li>
+
 <li>Analytical DB</li>
 
 <li>Application Development</li>
@@ -433,6 +449,8 @@ Error message and password prompt
 
 <li>Distributional Hypothesis</li>
 
+<li>DMS</li>
+
 <li>Docker</li>
 
 <li>Document DB</li>
@@ -447,6 +465,8 @@ Error message and password prompt
 
 <li>Dynamic Programming</li>
 
+<li>EBS</li>
+
 <li>EC2</li>
 
 <li>EC2 Autoscaling</li>
@@ -454,6 +474,8 @@ Error message and password prompt
 <li>ECR</li>
 
 <li>ECS</li>
+
+<li>EFS</li>
 
 <li>EKS</li>
 
@@ -540,6 +562,8 @@ Error message and password prompt
 <li>Injection</li>
 
 <li>Input Security</li>
+
+<li>Instance Stores</li>
 
 <li>Internet Gateway</li>
 
@@ -719,11 +743,15 @@ Error message and password prompt
 
 <li>Public Private Key Encryption</li>
 
+<li>QLDB</li>
+
 <li>Quartz</li>
 
 <li>Random Variable</li>
 
 <li>Rate Limiting</li>
+
+<li>RDS</li>
 
 <li>Read your Writes</li>
 
@@ -752,6 +780,8 @@ Error message and password prompt
 <li>RNN Sequence to Sequence</li>
 
 <li>Route 53</li>
+
+<li>S3</li>
 
 <li>Security Groups</li>
 
@@ -10563,7 +10593,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20220404003215018" list="Topics [[Technology Catalog]] AWS [[To Do]]" modified="20220404233800896" title="$:/StoryList">
+<div created="20220503224750619" list="Topics [[Technology Catalog]] AWS S3 [[To Do]]" modified="20220503234743495" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20201012173622690" modified="20210901193831232" title="$:/temp/advancedsearch">
@@ -10774,6 +10804,45 @@ Use as necessary as opposed to trying to update interfaces
 Schedulers send tasks to works and can be manipulated from a web server UI. There exists a number of backend implementations.
 
 [[https://github.com/Edwardbafford/General/tree/master/airflow]]</pre>
+</div>
+<div created="20220503232254667" modified="20220503232419000" title="Amazon Aurora">
+<pre>Proprietary DBMS
+
+Compatible with ~MySQL and Postgres SQL but faster.
+
+Managed instance comes with extra features.</pre>
+</div>
+<div created="20220503233359585" modified="20220503233406057" title="Amazon DocumentDB">
+<pre>Managed document database</pre>
+</div>
+<div created="20220503232601335" modified="20220503233151258" title="Amazon Dynamo DB">
+<pre>Key-value DBMS
+
+Fully managed service
+
+!!! ''Features''
+
+* Automatically scaled
+* Fast response times
+* No sophisticated queries
+* No schema</pre>
+</div>
+<div created="20220503233812539" modified="20220503233829073" title="Amazon Dynamo DB Accelerator">
+<pre>[[Amazon Dynamo DB]] cache service</pre>
+</div>
+<div created="20220503233801087" modified="20220503233805299" title="Amazon ElastiCache">
+<pre>Managed cache services</pre>
+</div>
+<div created="20220503233613865" modified="20220503233626872" title="Amazon Managed Blockchain">
+<pre>Managed decentralized ledger database</pre>
+</div>
+<div created="20220503233413193" modified="20220503233418078" title="Amazon Neptune">
+<pre>Managed graph database</pre>
+</div>
+<div created="20220503233208773" modified="20220503233340129" title="Amazon Redshift">
+<pre>Managed data warehouse service.
+
+Useful for analytics and large complex queries.</pre>
 </div>
 <div created="20200828145245327" modified="20211229220709309" tags="data theory" title="Analytical DB">
 <pre>Typically used in [[Data Warehouses|Data Warehouse]]
@@ -10992,7 +11061,7 @@ Applications should be redundantly deployed into multiple availability zones.
 
 Regionally scoped services automatically run across multiple availability zones.</pre>
 </div>
-<div created="20220403001044378" modified="20220404234248057" title="AWS">
+<div created="20220403001044378" modified="20220503225911859" title="AWS">
 <pre>AWS system can be interacted with using the following methods:
 
 * Console
@@ -11029,7 +11098,36 @@ Regionally scoped services automatically run across multiple availability zones.
 * [[ECR]]
 * [[ECS]]
 * [[EKS]]
-* [[AWS Fargate]]</pre>
+* [[AWS Fargate]]
+
+!! ''Storage Services''
+
+!!! ''File System''
+
+* [[Instance Stores]]
+* [[EBS]]
+* [[EFS]]
+
+!!! ''Object''
+
+* [[S3]]
+
+!!! ''Databases''
+
+* [[RDS]]
+* [[Amazon Aurora]]
+* [[Amazon Dynamo DB]]
+* [[Amazon Redshift]]
+* [[Amazon DocumentDB]]
+* [[Amazon Neptune]]
+* [[QLDB]]
+* [[Amazon Managed Blockchain]]
+* [[DMS]]
+
+!!! ''Caches''
+
+* [[Amazon ElastiCache]]
+* [[Amazon Dynamo DB Accelerator]]</pre>
 </div>
 <div created="20220404233609330" modified="20220404233642224" title="AWS Direct Connect">
 <pre>Create a dedicated networked connection between clients and [[VPC]].
@@ -12719,6 +12817,25 @@ Implementations are relatively independent
 
 https://en.wikipedia.org/wiki/Distributional_semantics</pre>
 </div>
+<div created="20220503234004820" modified="20220503234737326" title="DMS">
+<pre>!! ''Database Migration Service''
+
+Used for moving data between databases
+
+Does not have to be matching DBMS
+
+Database remains available while be migrated
+
+# Creates new schema if necessary
+# Copy data over
+
+!!! ''Use Cases''
+
+* Move from on premise to cloud database
+* DB backups
+* Copy production data to test environment
+* Consolidate data into one database</pre>
+</div>
 <div created="20200827235127142" modified="20200827235447429" tags="software devops" title="Docker">
 <pre>Tools for containerizing software. Containerizing is a method of partitioning OS resources (RAM, Disk, CPU, Ports, etc.) as opposed to virtualization which runs OS on top of each other.</pre>
 </div>
@@ -12825,6 +12942,17 @@ We can try filtering out illegitimate requests but this can block legitimate use
 <pre>A recursive solution to an optimization problem where re-usable data is stored and referenced by all recursive functions.
 </pre>
 </div>
+<div created="20220503230655514" modified="20220503231843741" title="EBS">
+<pre>!! ''Elastic Block Store''
+
+Configurable persistent disk storage
+
+!!! ''Features''
+
+* Backed up with snapshots
+* Linked to single EC2 instance
+* Only available within an availability zone</pre>
+</div>
 <div created="20220403173549257" modified="20220403180248782" title="EC2">
 <pre>! ''Elastic Cloud Compute''
 
@@ -12877,6 +13005,17 @@ Cloud based docker registry</pre>
 High performance, scalable, docker container management system for deploying docker based applications.
 
 Runs on top of [[EC2]] instances.</pre>
+</div>
+<div created="20220503230939510" modified="20220503231857425" title="EFS">
+<pre>!! ''Elastic File System''
+
+Block storage (similar to hard drive) setup as a linux file system.
+
+!!! ''Features''
+
+* Accessible by multiple clients
+* Scales indefinitely
+* Regionally available</pre>
 </div>
 <div created="20220403001911772" modified="20220403173247922" title="EKS">
 <pre>!! ''Elastic Kubernetes Service''
@@ -13791,6 +13930,11 @@ Each host on the internal network should have the following
 !! ''Implementation''
 
 Apply checks in before [[filters|Filter]]</pre>
+</div>
+<div created="20220503230416928" modified="20220503230606353" title="Instance Stores">
+<pre>Disk storage attached to the host of an EC2 instance.
+
+Data is lost if EC2 instance is restarted because the storage is local to the host machine and not tied to the EC2 instance which can be moved to any host.</pre>
 </div>
 <div created="20220404233415403" modified="20220404233427018" title="Internet Gateway">
 <pre>Allow internet access to a [[VPC]]</pre>
@@ -15707,6 +15851,11 @@ Both a public and private key are generated using algorithms
 
 Encrypt a message with the public key so that only the owner of the private key can read it.</pre>
 </div>
+<div created="20220503233436162" modified="20220503233553461" title="QLDB">
+<pre>!! ''Amazon Quantum Ledger DB''
+
+Managed ledger database</pre>
+</div>
 <div created="20201112161015548" modified="20201112162415326" tags="" title="Quartz">
 <pre>Java framework for scheduling jobs
 
@@ -15734,6 +15883,19 @@ Components:
 Useful for preventing [[DoS]] attacks.
 
 Limiting is usually based off of IP and Users.</pre>
+</div>
+<div created="20220503232001804" modified="20220503232229842" title="RDS">
+<pre>!! ''Relational Database Service''
+
+Managed database service
+
+Provides built in services
+
+!!! Database engines
+
+* ~MySQL
+* Oracle
+* Microsoft</pre>
 </div>
 <div created="20200829153538543" modified="20200829160727793" tags="data theory" title="Read your Writes">
 <pre>A database consistency issue that occurs on [[replicated data|DB Replication]] where a user makes an update (a write) then view the data they just updated (a read). In replicated data systems they not see data that doesn't reflect their write until the followers nodes have been synchronized.
@@ -16001,6 +16163,49 @@ $$\displaystyle \textrm{score}(y) = -\log P(y|x) = \frac{1}{T} \sum^t_{i=1} -\lo
 Map domain names to AWS IPs
 
 Buy domain names to!</pre>
+</div>
+<div created="20220503234847949" modified="20220503235431201" title="S3">
+<pre>!! ''Simple Storage Service''
+
+Object storage service - file, key, and metadata
+
+Only entire objects can be uploaded, no deltas
+
+!!! ''Permissions''
+
+* Visibility
+* Access
+
+!!! ''Storage Classes''
+
+Standard
+
+* stored across 3 availability zones
+* high availability
+
+Infrequent Access
+
+* lower storage cost
+* higher retrieval cost
+
+One-zone Infrequent Access
+
+* infrequent access features
+* only one availability zone
+
+Intelligent Tiering
+
+* Adjusts S3 storage class based on usage patterns
+
+Glacier
+
+* Cheap
+* Takes minutes to hours to retrieve data
+
+Glacier Deep Archive
+
+* Cheapest
+* Up to 12 hours to retrieve data</pre>
 </div>
 <div created="20220404233707751" modified="20220404233755097" title="Security Groups">
 <pre>Firewall for each [[EC2]] instance
