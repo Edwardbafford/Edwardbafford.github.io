@@ -289,6 +289,10 @@ Error message and password prompt
 
 <li>AWS Lambda</li>
 
+<li>AWS Monitoring</li>
+
+<li>AWS Security</li>
+
 <li>AWS Shield</li>
 
 <li>Backoff Smoothing (N-grams)</li>
@@ -354,6 +358,10 @@ Error message and password prompt
 <li>Classification</li>
 
 <li>Cloud Formation</li>
+
+<li>Cloud Trail</li>
+
+<li>Cloud Watch</li>
 
 <li>Cloudfront</li>
 
@@ -474,10 +482,6 @@ Error message and password prompt
 <li>DoS</li>
 
 <li>Dot Product</li>
-
-<li>Draft of 'AWS Security'</li>
-
-<li>Draft of 'AWS'</li>
 
 <li>Dynamic Programming</li>
 
@@ -910,6 +914,8 @@ Error message and password prompt
 <li>Transactional Database</li>
 
 <li>Transformer</li>
+
+<li>Trusted Advisor</li>
 
 <li>Two Phase Commit</li>
 
@@ -10349,7 +10355,7 @@ Error message and password prompt
     &quot;tiddlers&quot;: {
         &quot;Untitled&quot;: {
             &quot;title&quot;: &quot;Untitled&quot;,
-            &quot;text&quot;: &quot;&lt;br class=\&quot;Apple-interchange-newline\&quot;&gt;&quot;
+            &quot;text&quot;: &quot;&lt;p style=\&quot;box-sizing: border-box; color: rgb(51, 51, 51); font-family: -apple-system, BlinkMacSystemFont, &amp;quot;Segoe UI&amp;quot;, Helvetica, Arial, sans-serif, &amp;quot;Apple Color Emoji&amp;quot;, &amp;quot;Segoe UI Emoji&amp;quot;, &amp;quot;Segoe UI Symbol&amp;quot;; font-size: 15px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;\&quot;&gt;Service for on-demand access to security and compliance documents.&lt;/p&gt;&lt;br class=\&quot;Apple-interchange-newline\&quot;&gt;&quot;
         }
     }
 }</pre>
@@ -10618,7 +10624,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20220503224750619" list="Topics [[Technology Catalog]] [[Draft of 'AWS']] [[Draft of 'AWS Security']] [[Identity Access Management]]" modified="20220508235508616" title="$:/StoryList">
+<div created="20220503224750619" list="Topics [[Technology Catalog]] AWS [[AWS Monitoring]] [[Cloud Trail]]" modified="20220511000113853" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20201012173622690" modified="20210901193831232" title="$:/temp/advancedsearch">
@@ -11086,12 +11092,17 @@ Applications should be redundantly deployed into multiple availability zones.
 
 Regionally scoped services automatically run across multiple availability zones.</pre>
 </div>
-<div created="20220403001044378" modified="20220503225911859" title="AWS">
+<div created="20220403001044378" modified="20220511000235718" title="AWS">
 <pre>AWS system can be interacted with using the following methods:
 
 * Console
 * Command line tool
 * SDK's for programming languages
+
+! ''Topics''
+
+* [[Secuirty|AWS Security]]
+* [[Monitoring|AWS Monitoring]]
 
 !! ''Networking''
 
@@ -11185,6 +11196,39 @@ AWS dynamically provides compute resources and charges the client based on usage
 <pre>Run code without provisioning [[EC2|EC2]] instances.
 
 Deploy code and set triggers to run the code. Pay only for the compute that you need to use.</pre>
+</div>
+<div created="20220510235544390" modified="20220511000232325" title="AWS Monitoring">
+<pre>!! Services
+
+* [[Cloud Watch]]
+* [[Cloud Trail]]
+* [[Trusted Advisor]]</pre>
+</div>
+<div created="20220508232033520" modified="20220510222802291" title="AWS Security">
+<pre>AWS employs a shared responsibility model where AWS is responsible for the infrastructure security while the client is responsible for the security of the software and data management.
+
+!! Account
+
+A root user is created for each account which can access all resources.
+
+!!! Security Services
+
+* [[IAM|Identity Access Management]]
+* [[AWS Artifact]]
+* [[Customer Compliance Center]]
+* [[AWS Shield]]
+* [[KMS|Key Management Service]]
+* [[WAF|Web Application Firewall]]
+* [[AWS Inspector]]
+* [[AWS Guard Duty]]
+
+!! Organizations
+
+A special account for managing multiple accounts.
+
+''Service Control Policies'' (SCPs) set restrictions on entire accounts.
+
+''Organizational Units'' (OUs) are used to group together accounts for applying SCPs.</pre>
 </div>
 <div created="20220508234941283" modified="20220508235140891" title="AWS Shield">
 <pre>Service to protect against [[DoS]] attacks.
@@ -11817,6 +11861,18 @@ $$
 <pre>Infrastructure as code system.
 
 Define infrastructure specification as a template which is processed and created.</pre>
+</div>
+<div created="20220511000033569" modified="20220511000110424" title="Cloud Trail">
+<pre>Service for logging API calls
+
+''Insights'' - feature for automatically detecting unusual API activity</pre>
+</div>
+<div created="20220510235932053" modified="20220511000023835" title="Cloud Watch">
+<pre>Monitors AWS resources by integrating with other services.
+
+''Alarms'' - perform actions based on resource metrics
+
+''Dashboard'' - view resource metrics</pre>
 </div>
 <div created="20220404005327220" modified="20220404005628984" title="Cloudfront">
 <pre>CDN Service
@@ -12995,102 +13051,6 @@ We can try filtering out illegitimate requests but this can block legitimate use
 </div>
 <div created="20210123033817798" modified="20210123033818304" title="Dot Product">
 <pre>https://en.wikipedia.org/wiki/Dot_product</pre>
-</div>
-<div created="20220508232033520" draft.of="AWS Security" draft.title="AWS Security" modified="20220508233329886" title="Draft of 'AWS Security'">
-<pre>AWS employs a shared responsibility model where AWS is responsible for the infrastructure security while the client is responsible for the security of the software and data management.
-
-!! Account Services
-
-A root user is created for each account which can access all resources.
-
-* [[IAM|Identity Access Management]]
-* [[AWS Artifact]]
-* [[Customer Compliance Center]]
-* [[AWS Shield]]
-* [[KMS|Key Management Service]]
-* [[WAF|Web Application Firewall]]
-* [[AWS Inspector]]
-* [[AWS Guard Duty]]
-
-!! Organizations
-
-A special account for managing multiple accounts.
-
-''Service Control Policies'' (SCPs) set restrictions on entire accounts.
-
-''Organizational Units'' (OUs) are used to group together accounts for applying SCPs.</pre>
-</div>
-<div created="20220403001044378" draft.of="AWS" draft.title="AWS" modified="20220508232021450" title="Draft of 'AWS'">
-<pre>AWS system can be interacted with using the following methods:
-
-* Console
-* Command line tool
-* SDK's for programming languages
-
-! ''Topics''
-
-* [[Secuirty|AWS Security]]
-
-!! ''Networking''
-
-* [[Region]]
-* [[Availability Zone]]
-* [[VPC]]
-* [[Security Groups]]
-* [[Outposts]]
-* [[Cloudfront]]
-* [[Internet Gateway]]
-* [[Virtual Private Gateway]]
-* [[AWS Direct Connect]]
-* [[Route 53]]
-
-
-!! ''Infrastructure Services''
-
-* [[Elastic Beanstalk]]
-* [[Cloud Formation]]
-
-!! ''Compute Services''
-
-* [[EC2]]
-* [[EC2 Autoscaling]]
-* [[ELB]]
-* [[SQS]]
-* [[SNS]]
-* [[AWS Lambda]]
-* [[ECR]]
-* [[ECS]]
-* [[EKS]]
-* [[AWS Fargate]]
-
-!! ''Storage Services''
-
-!!! ''File System''
-
-* [[Instance Stores]]
-* [[EBS]]
-* [[EFS]]
-
-!!! ''Object''
-
-* [[S3]]
-
-!!! ''Databases''
-
-* [[RDS]]
-* [[Amazon Aurora]]
-* [[Amazon Dynamo DB]]
-* [[Amazon Redshift]]
-* [[Amazon DocumentDB]]
-* [[Amazon Neptune]]
-* [[QLDB]]
-* [[Amazon Managed Blockchain]]
-* [[DMS]]
-
-!!! ''Caches''
-
-* [[Amazon ElastiCache]]
-* [[Amazon Dynamo DB Accelerator]]</pre>
 </div>
 <div created="20210423182736849" modified="20211120152601332" title="Dynamic Programming">
 <pre>A recursive solution to an optimization problem where re-usable data is stored and referenced by all recursive functions.
@@ -17417,6 +17377,15 @@ For each sequence to sequence training pair, inputs are iteratively put in and t
 ! ''Testing''
 
 Very similar to training except the output as used as the new input.</pre>
+</div>
+<div created="20220511000118772" modified="20220511000223719" title="Trusted Advisor">
+<pre>Service that automatically inspects and recommends actions to optimize AWS environment with respect to
+
+* cost
+* performance
+* security
+* fault tolerance
+* service limits</pre>
 </div>
 <div created="20201012183845215" modified="20201012185407593" tags="" title="Two Phase Commit">
 <pre>In a standard transaction once data has been durably persisted the commit is made
