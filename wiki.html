@@ -279,6 +279,8 @@ Error message and password prompt
 
 <li>AWS Artifact</li>
 
+<li>AWS Cost Explorer</li>
+
 <li>AWS Direct Connect</li>
 
 <li>AWS Fargate</li>
@@ -289,7 +291,11 @@ Error message and password prompt
 
 <li>AWS Lambda</li>
 
+<li>AWS Marketplace</li>
+
 <li>AWS Monitoring</li>
+
+<li>AWS Pricing</li>
 
 <li>AWS Security</li>
 
@@ -322,6 +328,8 @@ Error message and password prompt
 <li>Beta Distribution</li>
 
 <li>Bias Variance Tradeoff</li>
+
+<li>Billing Dashboard</li>
 
 <li>Binomial Coefficient</li>
 
@@ -747,6 +755,8 @@ Error message and password prompt
 
 <li>Perplexity</li>
 
+<li>Personal Health Dashboard</li>
+
 <li>PLSA</li>
 
 <li>Poisson Distribution</li>
@@ -754,6 +764,8 @@ Error message and password prompt
 <li>POS Tagging</li>
 
 <li>Posative Pointwise Mutual Information Matrix</li>
+
+<li>Pricing Calculator</li>
 
 <li>Principle Component Analysis</li>
 
@@ -10624,7 +10636,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20220503224750619" list="Topics [[Technology Catalog]] AWS [[AWS Monitoring]] [[Cloud Trail]]" modified="20220511000113853" title="$:/StoryList">
+<div created="20220503224750619" list="Topics [[Technology Catalog]] AWS" modified="20220518223604969" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20201012173622690" modified="20210901193831232" title="$:/temp/advancedsearch">
@@ -11092,7 +11104,7 @@ Applications should be redundantly deployed into multiple availability zones.
 
 Regionally scoped services automatically run across multiple availability zones.</pre>
 </div>
-<div created="20220403001044378" modified="20220511000235718" title="AWS">
+<div created="20220403001044378" modified="20220518223651504" title="AWS">
 <pre>AWS system can be interacted with using the following methods:
 
 * Console
@@ -11103,6 +11115,7 @@ Regionally scoped services automatically run across multiple availability zones.
 
 * [[Secuirty|AWS Security]]
 * [[Monitoring|AWS Monitoring]]
+* [[Pricing|AWS Pricing]]
 
 !! ''Networking''
 
@@ -11176,6 +11189,15 @@ Manage compliance agreements between AWS and an account
 
 Compliance reports completed by auditors. Used to validate that certain standards are met by the AWS system.</pre>
 </div>
+<div created="20220518223609786" modified="20220518223639606" title="AWS Cost Explorer">
+<pre>Service for visualizing, understanding, and managing costs
+
+!! Features
+
+* default report
+* custom filters
+* group data</pre>
+</div>
 <div created="20220404233609330" modified="20220404233642224" title="AWS Direct Connect">
 <pre>Create a dedicated networked connection between clients and [[VPC]].
 
@@ -11197,12 +11219,86 @@ AWS dynamically provides compute resources and charges the client based on usage
 
 Deploy code and set triggers to run the code. Pay only for the compute that you need to use.</pre>
 </div>
+<div created="20220518223059454" modified="20220518223157199" title="AWS Marketplace">
+<pre>Catalog for testing, purchasing, and deploying third party software that runs in AWS.
+
+Catalog is grouped by category
+
+Options for
+
+* pricing
+* support
+* reviews</pre>
+</div>
 <div created="20220510235544390" modified="20220511000232325" title="AWS Monitoring">
 <pre>!! Services
 
 * [[Cloud Watch]]
 * [[Cloud Trail]]
 * [[Trusted Advisor]]</pre>
+</div>
+<div created="20220518220908270" modified="20220518223644790" title="AWS Pricing">
+<pre>The main principle for AWS costs is &quot;pay for what you use&quot;
+
+!!! Discounts
+
+* Bulk usage
+* Usage restrictions
+
+!!! Consolidated Billing
+
+A feature of [[AWS organizations|AWS Security]] to simplify billing
+
+* single bill for all accounts
+* charges itemized by account
+* apply bulk savings across all accounts
+
+!! Free Tier
+
+Allows users to use services for free
+
+!!! Types
+
+* Always free
+* 12 months from sign up
+* Free trials
+
+!! Support Plans
+
+!!! Basic
+
+Free
+
+Includes access to
+
+* whitepapers
+* documentation
+* support communities
+* limited [[Trusted Advisor]] access
+* [[Personal Health Dashboard]]
+
+!!! Developer
+
+* client diagnostic tools
+* increased guidance
+
+!!! Business
+
+* full [[Trusted Advisor]]
+* third party software support
+* increased guidance
+
+!!! Enterprise
+
+* technical account manager
+* increased guidance
+
+!! Services
+
+* [[Pricing Calculator]]
+* [[Billing Dashboard]]
+* [[AWS Cost Explorer]]
+* [[AWS Marketplace]]</pre>
 </div>
 <div created="20220508232033520" modified="20220510222802291" title="AWS Security">
 <pre>AWS employs a shared responsibility model where AWS is responsible for the infrastructure security while the client is responsible for the security of the software and data management.
@@ -11453,6 +11549,19 @@ $$e_V$$ is the error stemming from the fact that the model is not perfectly opti
 $$e_N$$ is the error stemming from noise and cannot be decreased without better data.
 
 The bias variance tradeoff is the relationship such that models which are more powerful have a lower $$e_B$$ but are harder to optimize and are therefore more likely to have larger $$e_V$$ errors. On the other hand simpler models are easier to optimize but still larger $$e_B$$ errors.</pre>
+</div>
+<div created="20220518223314759" modified="20220518223531601" title="Billing Dashboard">
+<pre>Service for paying and viewing costs
+
+* current, previous, and future costs
+* free tier usage
+* budgets
+* savings plans
+* reports
+
+!! Budgets
+
+Set cost budgets and trigger alerts based on a percentage of the usage</pre>
 </div>
 <div created="20201223012553159" modified="20201223014616876" title="Binomial Coefficient">
 <pre>Commonly described as N choose k, because given N option
@@ -15836,6 +15945,9 @@ Each vocabulary and dialect has an inherent perplexity so $$PP$$ should only be 
 
 ''Derivation''</pre>
 </div>
+<div created="20220518222445114" modified="20220518222510794" title="Personal Health Dashboard">
+<pre>Remediation guide for AWS issues</pre>
+</div>
 <div created="20210305181321052" modified="20210305182924338" title="PLSA">
 <pre>''Probabilistic Latent Semantic Analysis''
 
@@ -15925,6 +16037,9 @@ $$\text{count}(w_i)$$ is the number of times the term $$w_i$$ appeared in the co
 $$\text{count}(w_i,w_j)$$ is the number of times $$w_i$$ and $$w_j$$ appear in the same context together, which is also depends on the chosen context window size
 
 Either [[Laplace|Laplace Smoothing]] or [[context distributed|Context Distributed Smoothing]] smoothing can be applied to these probability parameters to help with [[overfitting|Overfitting vs Underfitting]]</pre>
+</div>
+<div created="20220518223240175" modified="20220518223246431" title="Pricing Calculator">
+<pre>Create estimates for pricing</pre>
 </div>
 <div created="20201220180216497" modified="20201220180218468" title="Principle Component Analysis">
 <pre>TODO</pre>
