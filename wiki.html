@@ -293,6 +293,8 @@ Error message and password prompt
 
 <li>AWS Marketplace</li>
 
+<li>AWS Migration</li>
+
 <li>AWS Monitoring</li>
 
 <li>AWS Pricing</li>
@@ -10367,7 +10369,7 @@ Error message and password prompt
     &quot;tiddlers&quot;: {
         &quot;Untitled&quot;: {
             &quot;title&quot;: &quot;Untitled&quot;,
-            &quot;text&quot;: &quot;&lt;p style=\&quot;box-sizing: border-box; color: rgb(51, 51, 51); font-family: -apple-system, BlinkMacSystemFont, &amp;quot;Segoe UI&amp;quot;, Helvetica, Arial, sans-serif, &amp;quot;Apple Color Emoji&amp;quot;, &amp;quot;Segoe UI Emoji&amp;quot;, &amp;quot;Segoe UI Symbol&amp;quot;; font-size: 15px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;\&quot;&gt;Service for on-demand access to security and compliance documents.&lt;/p&gt;&lt;br class=\&quot;Apple-interchange-newline\&quot;&gt;&quot;
+            &quot;text&quot;: &quot;&lt;span style=\&quot;color: rgb(51, 51, 51); font-family: -apple-system, BlinkMacSystemFont, &amp;quot;Segoe UI&amp;quot;, Helvetica, Arial, sans-serif, &amp;quot;Apple Color Emoji&amp;quot;, &amp;quot;Segoe UI Emoji&amp;quot;, &amp;quot;Segoe UI Symbol&amp;quot;; font-size: 15px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: left; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; display: inline !important; float: none;\&quot;&gt;00 PB&lt;/span&gt;&quot;
         }
     }
 }</pre>
@@ -10636,7 +10638,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20220503224750619" list="Topics [[Technology Catalog]] AWS" modified="20220518223604969" title="$:/StoryList">
+<div created="20220503224750619" list="Topics AWS" modified="20220523224530292" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20201012173622690" modified="20210901193831232" title="$:/temp/advancedsearch">
@@ -11104,18 +11106,27 @@ Applications should be redundantly deployed into multiple availability zones.
 
 Regionally scoped services automatically run across multiple availability zones.</pre>
 </div>
-<div created="20220403001044378" modified="20220518223651504" title="AWS">
+<div created="20220403001044378" modified="20220523230338448" title="AWS">
 <pre>AWS system can be interacted with using the following methods:
 
 * Console
 * Command line tool
 * SDK's for programming languages
 
+!! Best Practice Principles
+
+* Operations
+* Security
+* Reliability
+* Performance
+* Cost
+
 ! ''Topics''
 
 * [[Secuirty|AWS Security]]
 * [[Monitoring|AWS Monitoring]]
 * [[Pricing|AWS Pricing]]
+* [[Migration|AWS Migration]]
 
 !! ''Networking''
 
@@ -11229,6 +11240,43 @@ Options for
 * pricing
 * support
 * reviews</pre>
+</div>
+<div created="20220523224537093" modified="20220523230036100" title="AWS Migration">
+<pre>!! Cloud Adoption Framework
+
+Ares of focus while migrating
+
+* Business - ensure IT aligns with business needs
+* People - staffing and organization
+* Governance - staff skills and processes
+* Platform - solution designs
+* Security
+* Operations - running and managing IT systems
+
+!! Migration Strategies
+
+* Rehost - move into cloud hosts
+* Replatform - make small optimizations but no code changes
+* Repurchase - replace parts with newer better tools
+* Rearchitect - reimplement with newer design
+* Retain - don't move to the cloud with the intention of retiring
+* Retire - stop using components altogether
+
+!! AWS Snow
+
+Physical devices to help transport large amounts of data
+
+* Snowcone
+** 8 TB
+* Snowball
+** Storage
+*** 80 TB
+*** 40 CPU
+** Compute
+*** 42 TB
+*** 52 CPU
+* Snowmobile
+** 100 PB</pre>
 </div>
 <div created="20220510235544390" modified="20220511000232325" title="AWS Monitoring">
 <pre>!! Services
