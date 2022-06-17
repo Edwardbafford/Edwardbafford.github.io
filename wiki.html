@@ -279,6 +279,8 @@ Error message and password prompt
 
 <li>AWS Artifact</li>
 
+<li>AWS Compute</li>
+
 <li>AWS Cost Explorer</li>
 
 <li>AWS Direct Connect</li>
@@ -286,6 +288,8 @@ Error message and password prompt
 <li>AWS Fargate</li>
 
 <li>AWS Guard Duty</li>
+
+<li>AWS Infrastructure</li>
 
 <li>AWS Inspector</li>
 
@@ -302,6 +306,8 @@ Error message and password prompt
 <li>AWS Security</li>
 
 <li>AWS Shield</li>
+
+<li>AWS Storage</li>
 
 <li>Backoff Smoothing (N-grams)</li>
 
@@ -10638,7 +10644,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20220503224750619" list="Topics AWS" modified="20220523224530292" title="$:/StoryList">
+<div created="20220616211217637" list="AWS" modified="20220616212324614" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20201012173622690" modified="20210901193831232" title="$:/temp/advancedsearch">
@@ -10657,19 +10663,19 @@ Error message and password prompt
         },
         &quot;$:/info/url/full&quot;: {
             &quot;title&quot;: &quot;$:/info/url/full&quot;,
-            &quot;text&quot;: &quot;file:///home/louie/Repos/Edwardbafford.github.io/wiki.html&quot;
+            &quot;text&quot;: &quot;https://edwardbafford.github.io/wiki.html&quot;
         },
         &quot;$:/info/url/host&quot;: {
             &quot;title&quot;: &quot;$:/info/url/host&quot;,
-            &quot;text&quot;: &quot;&quot;
+            &quot;text&quot;: &quot;edwardbafford.github.io&quot;
         },
         &quot;$:/info/url/hostname&quot;: {
             &quot;title&quot;: &quot;$:/info/url/hostname&quot;,
-            &quot;text&quot;: &quot;&quot;
+            &quot;text&quot;: &quot;edwardbafford.github.io&quot;
         },
         &quot;$:/info/url/protocol&quot;: {
             &quot;title&quot;: &quot;$:/info/url/protocol&quot;,
-            &quot;text&quot;: &quot;file:&quot;
+            &quot;text&quot;: &quot;https:&quot;
         },
         &quot;$:/info/url/port&quot;: {
             &quot;title&quot;: &quot;$:/info/url/port&quot;,
@@ -10677,7 +10683,7 @@ Error message and password prompt
         },
         &quot;$:/info/url/pathname&quot;: {
             &quot;title&quot;: &quot;$:/info/url/pathname&quot;,
-            &quot;text&quot;: &quot;/home/louie/Repos/Edwardbafford.github.io/wiki.html&quot;
+            &quot;text&quot;: &quot;/wiki.html&quot;
         },
         &quot;$:/info/url/search&quot;: {
             &quot;title&quot;: &quot;$:/info/url/search&quot;,
@@ -10685,7 +10691,7 @@ Error message and password prompt
         },
         &quot;$:/info/url/origin&quot;: {
             &quot;title&quot;: &quot;$:/info/url/origin&quot;,
-            &quot;text&quot;: &quot;file://&quot;
+            &quot;text&quot;: &quot;https://edwardbafford.github.io&quot;
         },
         &quot;$:/info/browser/screen/width&quot;: {
             &quot;title&quot;: &quot;$:/info/browser/screen/width&quot;,
@@ -11106,8 +11112,9 @@ Applications should be redundantly deployed into multiple availability zones.
 
 Regionally scoped services automatically run across multiple availability zones.</pre>
 </div>
-<div created="20220403001044378" modified="20220523230338448" title="AWS">
+<div created="20220403001044378" modified="20220616212517829" title="AWS">
 <pre>AWS system can be interacted with using the following methods:
+
 
 * Console
 * Command line tool
@@ -11123,71 +11130,21 @@ Regionally scoped services automatically run across multiple availability zones.
 
 ! ''Topics''
 
+!! ''Basic''
+
+* [[Compute|AWS Compute]]
+* [[Storage|AWS Storage]]
+
+!! ''Devops''
+
 * [[Secuirty|AWS Security]]
 * [[Monitoring|AWS Monitoring]]
+* [[Infrastructure|AWS Infrastructure]]
+
+!! ''Business''
+
 * [[Pricing|AWS Pricing]]
-* [[Migration|AWS Migration]]
-
-!! ''Networking''
-
-* [[Region]]
-* [[Availability Zone]]
-* [[VPC]]
-* [[Security Groups]]
-* [[Outposts]]
-* [[Cloudfront]]
-* [[Internet Gateway]]
-* [[Virtual Private Gateway]]
-* [[AWS Direct Connect]]
-* [[Route 53]]
-
-
-!! ''Infrastructure Services''
-
-* [[Elastic Beanstalk]]
-* [[Cloud Formation]]
-
-!! ''Compute Services''
-
-* [[EC2]]
-* [[EC2 Autoscaling]]
-* [[ELB]]
-* [[SQS]]
-* [[SNS]]
-* [[AWS Lambda]]
-* [[ECR]]
-* [[ECS]]
-* [[EKS]]
-* [[AWS Fargate]]
-
-!! ''Storage Services''
-
-!!! ''File System''
-
-* [[Instance Stores]]
-* [[EBS]]
-* [[EFS]]
-
-!!! ''Object''
-
-* [[S3]]
-
-!!! ''Databases''
-
-* [[RDS]]
-* [[Amazon Aurora]]
-* [[Amazon Dynamo DB]]
-* [[Amazon Redshift]]
-* [[Amazon DocumentDB]]
-* [[Amazon Neptune]]
-* [[QLDB]]
-* [[Amazon Managed Blockchain]]
-* [[DMS]]
-
-!!! ''Caches''
-
-* [[Amazon ElastiCache]]
-* [[Amazon Dynamo DB Accelerator]]</pre>
+* [[Migration|AWS Migration]]</pre>
 </div>
 <div created="20220508235245053" modified="20220508235444868" title="AWS Artifact">
 <pre>Service for on-demand access to security and compliance documents.
@@ -11199,6 +11156,24 @@ Manage compliance agreements between AWS and an account
 !! Artifact Reports
 
 Compliance reports completed by auditors. Used to validate that certain standards are met by the AWS system.</pre>
+</div>
+<div created="20220616212151525" modified="20220616212413082" title="AWS Compute">
+<pre>* [[EC2]]
+* [[EC2 Autoscaling]]
+* [[ELB]]
+* [[AWS Lambda]]
+
+!! Events
+
+* [[SQS]]
+* [[SNS]]
+
+!! Containers
+
+* [[ECR]]
+* [[ECS]]
+* [[EKS]]
+* [[AWS Fargate]]</pre>
 </div>
 <div created="20220518223609786" modified="20220518223639606" title="AWS Cost Explorer">
 <pre>Service for visualizing, understanding, and managing costs
@@ -11221,6 +11196,27 @@ AWS dynamically provides compute resources and charges the client based on usage
 </div>
 <div created="20220508233408289" modified="20220508233417740" title="AWS Guard Duty">
 <pre>Intelligent, automated threat detection service</pre>
+</div>
+<div created="20220616211641998" modified="20220616212014063" tags="" title="AWS Infrastructure">
+<pre>!! ''Hardware''
+
+* [[Region]]
+* [[Availability Zone]]
+
+!! ''Networking''
+
+* [[VPC]]
+
+!! ''Services''
+
+* [[Outposts]]
+* [[Cloudfront]]
+* [[Route 53]]
+
+!! ''Automation''
+
+* [[Elastic Beanstalk]]
+* [[Cloud Formation]]</pre>
 </div>
 <div created="20220508233433535" modified="20220508233519838" title="AWS Inspector">
 <pre>Automated security inspection which generates a report which recommends security updates.</pre>
@@ -11386,6 +11382,34 @@ Implemented at the network level.
 ''Advanced'' - a paid for more sophisticated protection which integrates with many AWS services
 
 </pre>
+</div>
+<div created="20220616212224587" modified="20220616212257203" title="AWS Storage">
+<pre>!!! ''File System''
+
+* [[Instance Stores]]
+* [[EBS]]
+* [[EFS]]
+
+!!! ''Object''
+
+* [[S3]]
+
+!!! ''Databases''
+
+* [[RDS]]
+* [[Amazon Aurora]]
+* [[Amazon Dynamo DB]]
+* [[Amazon Redshift]]
+* [[Amazon DocumentDB]]
+* [[Amazon Neptune]]
+* [[QLDB]]
+* [[Amazon Managed Blockchain]]
+* [[DMS]]
+
+!!! ''Caches''
+
+* [[Amazon ElastiCache]]
+* [[Amazon Dynamo DB Accelerator]]</pre>
 </div>
 <div created="20201213230714516" modified="20201214224948560" title="Backoff Smoothing (N-grams)">
 <pre>If a certain N-gram model has a probability of zero then a lower N-gram model is used. In order to keep the probability at 1 the current N-gram probabilities need to be decreased or discounted and the backoff N-gram models need to be limited respectively.
@@ -13224,7 +13248,7 @@ Configurable persistent disk storage
 * Linked to single EC2 instance
 * Only available within an availability zone</pre>
 </div>
-<div created="20220403173549257" modified="20220403180248782" title="EC2">
+<div created="20220403173549257" modified="20220616212039414" title="EC2">
 <pre>! ''Elastic Cloud Compute''
 
 Compute as a Service (~CaaS)
@@ -13239,6 +13263,10 @@ Highly configurable
 * Software
 * Resources
 * Network
+
+!! ''Security''
+
+* [[Security Groups]]
 
 !! ''Instance Types''
 
@@ -17642,7 +17670,7 @@ The principles of [[beam search|Beam Search]] can be applied the Viterbi algorit
 
 [img[images/Viterbi Beam Search.jpg]]</pre>
 </div>
-<div created="20220404233851919" modified="20220404234238536" title="VPC">
+<div created="20220404233851919" modified="20220616211922246" title="VPC">
 <pre>!! ''Virtual Private Cloud''
 
 Provision a custom network for your resources.
@@ -17653,9 +17681,15 @@ Allow internal communications while limiting external communications.
 
 Assign specific network rules to a section of the VPC addresses.
 
-Public subnets can access the internet through [[internet gateways|Internet Gateway]]
+Public subnets can access the internet through gateways
 
 Private subnets can only be accessed from within the same VPC
+
+!!! ''Gateways''
+
+* [[Internet Gateway]]
+* [[Virtual Private Gateway]]
+* [[AWS Direct Connect]]
 
 !! ''Network ACLs''
 
