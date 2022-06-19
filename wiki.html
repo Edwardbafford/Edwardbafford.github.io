@@ -273,19 +273,35 @@ Error message and password prompt
 
 <li>Authorization</li>
 
-<li>Availability Zone</li>
-
 <li>AWS</li>
 
+<li>AWS Access Advisor</li>
+
+<li>AWS Access Keys</li>
+
+<li>AWS Account</li>
+
 <li>AWS Artifact</li>
+
+<li>AWS Availability Zone</li>
+
+<li>AWS CLI</li>
+
+<li>AWS CloudShell</li>
 
 <li>AWS Compute</li>
 
 <li>AWS Cost Explorer</li>
 
+<li>AWS Credentials Report</li>
+
 <li>AWS Direct Connect</li>
 
+<li>AWS Edge Location</li>
+
 <li>AWS Fargate</li>
+
+<li>AWS Group</li>
 
 <li>AWS Guard Duty</li>
 
@@ -295,19 +311,37 @@ Error message and password prompt
 
 <li>AWS Lambda</li>
 
+<li>AWS Management Console</li>
+
 <li>AWS Marketplace</li>
+
+<li>AWS MFA</li>
 
 <li>AWS Migration</li>
 
 <li>AWS Monitoring</li>
 
+<li>AWS Organization</li>
+
+<li>AWS Password Policy</li>
+
+<li>AWS Policy</li>
+
 <li>AWS Pricing</li>
+
+<li>AWS Region</li>
+
+<li>AWS Role</li>
+
+<li>AWS SDK</li>
 
 <li>AWS Security</li>
 
 <li>AWS Shield</li>
 
 <li>AWS Storage</li>
+
+<li>AWS User</li>
 
 <li>Backoff Smoothing (N-grams)</li>
 
@@ -804,8 +838,6 @@ Error message and password prompt
 <li>Recurrent Neural Network</li>
 
 <li>Regex</li>
-
-<li>Region</li>
 
 <li>Regularization</li>
 
@@ -10644,7 +10676,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20220616211217637" list="AWS" modified="20220616212324614" title="$:/StoryList">
+<div created="20220618171053836" list="Topics [[Technology Catalog]] AWS [[AWS Account]] [[Identity Access Management]] [[To Do]]" modified="20220619233448016" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20201012173622690" modified="20210901193831232" title="$:/temp/advancedsearch">
@@ -10663,19 +10695,19 @@ Error message and password prompt
         },
         &quot;$:/info/url/full&quot;: {
             &quot;title&quot;: &quot;$:/info/url/full&quot;,
-            &quot;text&quot;: &quot;https://edwardbafford.github.io/wiki.html&quot;
+            &quot;text&quot;: &quot;file:///home/louie/Repos/Edwardbafford.github.io/wiki.html&quot;
         },
         &quot;$:/info/url/host&quot;: {
             &quot;title&quot;: &quot;$:/info/url/host&quot;,
-            &quot;text&quot;: &quot;edwardbafford.github.io&quot;
+            &quot;text&quot;: &quot;&quot;
         },
         &quot;$:/info/url/hostname&quot;: {
             &quot;title&quot;: &quot;$:/info/url/hostname&quot;,
-            &quot;text&quot;: &quot;edwardbafford.github.io&quot;
+            &quot;text&quot;: &quot;&quot;
         },
         &quot;$:/info/url/protocol&quot;: {
             &quot;title&quot;: &quot;$:/info/url/protocol&quot;,
-            &quot;text&quot;: &quot;https:&quot;
+            &quot;text&quot;: &quot;file:&quot;
         },
         &quot;$:/info/url/port&quot;: {
             &quot;title&quot;: &quot;$:/info/url/port&quot;,
@@ -10683,7 +10715,7 @@ Error message and password prompt
         },
         &quot;$:/info/url/pathname&quot;: {
             &quot;title&quot;: &quot;$:/info/url/pathname&quot;,
-            &quot;text&quot;: &quot;/wiki.html&quot;
+            &quot;text&quot;: &quot;/home/louie/Repos/Edwardbafford.github.io/wiki.html&quot;
         },
         &quot;$:/info/url/search&quot;: {
             &quot;title&quot;: &quot;$:/info/url/search&quot;,
@@ -10691,7 +10723,7 @@ Error message and password prompt
         },
         &quot;$:/info/url/origin&quot;: {
             &quot;title&quot;: &quot;$:/info/url/origin&quot;,
-            &quot;text&quot;: &quot;https://edwardbafford.github.io&quot;
+            &quot;text&quot;: &quot;file://&quot;
         },
         &quot;$:/info/browser/screen/width&quot;: {
             &quot;title&quot;: &quot;$:/info/browser/screen/width&quot;,
@@ -11103,34 +11135,43 @@ Access rights are defined at different levels per resource. Users are linked wit
 
 More complex but flexible.</pre>
 </div>
-<div created="20220404004846129" modified="20220404005046999" title="Availability Zone">
-<pre>Independent collection of data centers within a region.
+<div created="20220403001044378" modified="20220618183821739" title="AWS">
+<pre>!! ''Account''
 
-Multiple availability zones within each region.
+To begin leveraging AWS services an [[account|AWS Account]] must first be created.
 
-Applications should be redundantly deployed into multiple availability zones.
+!! ''Infrastructure''
 
-Regionally scoped services automatically run across multiple availability zones.</pre>
-</div>
-<div created="20220403001044378" modified="20220616212517829" title="AWS">
-<pre>AWS system can be interacted with using the following methods:
+The AWS infrastructure is essentially a collection of connected, organized, and managed data centers.
 
+The data centers are organized into the following scopes.
 
-* Console
-* Command line tool
-* SDK's for programming languages
+* [[Region|AWS Region]]
+* [[Availability Zone|AWS Availability Zone]]
+* [[Edge Location|AWS Edge Location]]
 
-!! Best Practice Principles
+!! ''Security''
 
-* Operations
-* Security
-* Reliability
-* Performance
-* Cost
+AWS employs a shared responsibility model where AWS and the user have the responsibility of securing different aspect of your systems.
 
-! ''Topics''
+!! ''Interaction''
 
-!! ''Basic''
+There are three ways to interact with the AWS services within an account.
+
+* [[Management Console|AWS Management Console]]
+** [[CloudShell|AWS CloudShell]]
+* [[Command Line Interface|AWS CLI]]
+* [[Software Development Kits|AWS SDK]]
+
+! ''Services''
+
+Services can be categorized by their scope. The scope of a service can either be global or regional. 
+
+A global service persists through all AWS [[regions|AWS Region]] while regionally scoped services are configured independently for each region and can be setup differently per region.
+
+Out of the regionally scoped services, a service can run across all [[availability zones|AWS Availability Zone]] or be limited to a single [[AZ|AWS Availability Zone]] which needs to be chosen.
+
+!! ''Software Developer''
 
 * [[Compute|AWS Compute]]
 * [[Storage|AWS Storage]]
@@ -11146,6 +11187,33 @@ Regionally scoped services automatically run across multiple availability zones.
 * [[Pricing|AWS Pricing]]
 * [[Migration|AWS Migration]]</pre>
 </div>
+<div created="20220619223012340" modified="20220619223242565" title="AWS Access Advisor">
+<pre>User level.
+
+Show service permissions granted to a user and when they were last user,
+
+Use to streamline policies.</pre>
+</div>
+<div created="20220618183639401" modified="20220618183738643" title="AWS Access Keys">
+<pre>Generated through the [[console|AWS Management Console]].
+
+Independent for each user.
+
+Access Key ID - like a username
+Secret Access Key - like a password</pre>
+</div>
+<div created="20220618171938382" modified="20220618172950693" title="AWS Account">
+<pre>An AWS account lets you configure and deploy AWS services.
+
+A root user is created for each account which can access all resources.
+
+Two types of accounts can be created:
+
+* Standard
+* [[Oranizations|AWS Organization]]
+
+Use the [[IAM|Identity Access Management]] service to manage access within the account.</pre>
+</div>
 <div created="20220508235245053" modified="20220508235444868" title="AWS Artifact">
 <pre>Service for on-demand access to security and compliance documents.
 
@@ -11156,6 +11224,25 @@ Manage compliance agreements between AWS and an account
 !! Artifact Reports
 
 Compliance reports completed by auditors. Used to validate that certain standards are met by the AWS system.</pre>
+</div>
+<div created="20220404004846129" modified="20220618181524510" title="AWS Availability Zone">
+<pre>A collection of data centers making up a component of a [[region|AWS Region]]. 
+
+Spaced out to protect against disasters.
+
+Connected by powerful networks to form a cohesive [[region|AWS Region]].</pre>
+</div>
+<div created="20220618183412668" modified="20220618183538347" title="AWS CLI">
+<pre>Execute commands on OS command line to interact with AWS services.
+
+Use [[access keys|AWS Access Keys]] for authentication.</pre>
+</div>
+<div created="20220618183828501" modified="20220618183945392" title="AWS CloudShell">
+<pre>AWS CLI that can be used through the [[console|AWS Management Console]].
+
+Already authenticated by using the session of the currently logged in user.
+
+Able to upload and download files within the console.</pre>
 </div>
 <div created="20220616212151525" modified="20220616212413082" title="AWS Compute">
 <pre>* [[EC2]]
@@ -11184,26 +11271,34 @@ Compliance reports completed by auditors. Used to validate that certain standard
 * custom filters
 * group data</pre>
 </div>
+<div created="20220619222809334" modified="20220619223004713" title="AWS Credentials Report">
+<pre>List users and statuses of their credentials.
+
+Account level.</pre>
+</div>
 <div created="20220404233609330" modified="20220404233642224" title="AWS Direct Connect">
 <pre>Create a dedicated networked connection between clients and [[VPC]].
 
 Secure with no other traffic.</pre>
+</div>
+<div created="20220618174845181" modified="20220618174857630" title="AWS Edge Location">
+<pre>Also known as a point of presence.</pre>
 </div>
 <div created="20220403001957984" modified="20220403002055458" title="AWS Fargate">
 <pre>Use [[ECS]] or [[EKS]] services without explicitly provisioning [[EC2]] instances.
 
 AWS dynamically provides compute resources and charges the client based on usage.</pre>
 </div>
+<div created="20220619222610916" modified="20220619222612584" title="AWS Group">
+<pre>Collection of users.
+
+Policies applied to groups will be applied to all users.</pre>
+</div>
 <div created="20220508233408289" modified="20220508233417740" title="AWS Guard Duty">
 <pre>Intelligent, automated threat detection service</pre>
 </div>
-<div created="20220616211641998" modified="20220616212014063" tags="" title="AWS Infrastructure">
-<pre>!! ''Hardware''
-
-* [[Region]]
-* [[Availability Zone]]
-
-!! ''Networking''
+<div created="20220616211641998" modified="20220618174622551" tags="" title="AWS Infrastructure">
+<pre>!! ''Networking''
 
 * [[VPC]]
 
@@ -11226,6 +11321,11 @@ AWS dynamically provides compute resources and charges the client based on usage
 
 Deploy code and set triggers to run the code. Pay only for the compute that you need to use.</pre>
 </div>
+<div created="20220618183245885" modified="20220618183333085" title="AWS Management Console">
+<pre>Interact with AWS through a browser.
+
+Use credentials (and MFA if setup) to access.</pre>
+</div>
 <div created="20220518223059454" modified="20220518223157199" title="AWS Marketplace">
 <pre>Catalog for testing, purchasing, and deploying third party software that runs in AWS.
 
@@ -11236,6 +11336,22 @@ Options for
 * pricing
 * support
 * reviews</pre>
+</div>
+<div created="20220619222709734" modified="20220619222731514" title="AWS MFA">
+<pre>Extra security device needed to authenticate users.
+
+Can be applied to root users and non-root users.
+
+Provides extra security because both credentials and the MFA are needed to login.
+
+!!! ''Options''
+
+All are implemented by 3rd parties.
+
+* Virtual MFA- one per user
+* Universal 2nd Factor Security Key - one per person
+* Hardware Key Fob MFA Device - one per person
+* Hardware Key Fob MFA Device for AWS ~GovCloud - one per person</pre>
 </div>
 <div created="20220523224537093" modified="20220523230036100" title="AWS Migration">
 <pre>!! Cloud Adoption Framework
@@ -11280,6 +11396,48 @@ Physical devices to help transport large amounts of data
 * [[Cloud Watch]]
 * [[Cloud Trail]]
 * [[Trusted Advisor]]</pre>
+</div>
+<div created="20220618172859015" modified="20220618172901294" title="AWS Organization">
+<pre>!! Organizations
+
+A special account for managing multiple accounts.
+
+''Service Control Policies'' (SCPs) set restrictions on entire accounts.
+
+''Organizational Units'' (OUs) are used to group together accounts for applying SCPs.</pre>
+</div>
+<div created="20220619222746897" modified="20220619222748394" title="AWS Password Policy">
+<pre>Enfore password requirements and behavior.
+
+!!! ''Options''
+
+* Minimum length
+* Character types
+* Password expiration
+* Password re-use</pre>
+</div>
+<div created="20220619222628395" modified="20220619222654623" title="AWS Policy">
+<pre>A list of permissions that allow or deny entities to interact with AWS services.
+
+Assign to users, groups, or roles.
+
+An inline policy is a list of permissions that has not been named and is setup for just one user or group.
+
+!!! ''Structure''
+
+Permissions are defined as a JSON object.
+
+Schema:
+
+* version - schema version
+* id - description, optional
+* statement - list of statements
+** sid - description, optional
+** effect - allow or deny
+** principle - account/user/role to apply to
+** action - list of actions
+** resource - list of resources
+** conditions - when the policy applies, optional</pre>
 </div>
 <div created="20220518220908270" modified="20220518223644790" title="AWS Pricing">
 <pre>The main principle for AWS costs is &quot;pay for what you use&quot;
@@ -11344,31 +11502,36 @@ Includes access to
 * [[AWS Cost Explorer]]
 * [[AWS Marketplace]]</pre>
 </div>
-<div created="20220508232033520" modified="20220510222802291" title="AWS Security">
-<pre>AWS employs a shared responsibility model where AWS is responsible for the infrastructure security while the client is responsible for the security of the software and data management.
+<div created="20220404003942543" modified="20220618181114596" title="AWS Region">
+<pre>A group of data centers with self-contained AWS services.
 
-!! Account
+Each region is named and contains between two and six [[availability zones|AWS Availability Zone]].
 
-A root user is created for each account which can access all resources.
+Data does not leave a region without explicit permission of the owner.
 
-!!! Security Services
+Reasons to choose a region
 
-* [[IAM|Identity Access Management]]
-* [[AWS Artifact]]
+* Regulation/compliance
+* Customer proximity
+* Available services
+* Price</pre>
+</div>
+<div created="20220619222556576" modified="20220619222556979" title="AWS Role">
+<pre>Entity that is designed to be assigned to services.</pre>
+</div>
+<div created="20220618183456567" modified="20220618183550382" title="AWS SDK">
+<pre>Programming language libraries that can be easily used within programs to work with AWS services.
+
+Use [[access keys|AWS Access Keys]] for authentication.</pre>
+</div>
+<div created="20220508232033520" modified="20220618172759382" title="AWS Security">
+<pre>* [[AWS Artifact]]
 * [[Customer Compliance Center]]
 * [[AWS Shield]]
 * [[KMS|Key Management Service]]
 * [[WAF|Web Application Firewall]]
 * [[AWS Inspector]]
-* [[AWS Guard Duty]]
-
-!! Organizations
-
-A special account for managing multiple accounts.
-
-''Service Control Policies'' (SCPs) set restrictions on entire accounts.
-
-''Organizational Units'' (OUs) are used to group together accounts for applying SCPs.</pre>
+* [[AWS Guard Duty]]</pre>
 </div>
 <div created="20220508234941283" modified="20220508235140891" title="AWS Shield">
 <pre>Service to protect against [[DoS]] attacks.
@@ -11410,6 +11573,11 @@ Implemented at the network level.
 
 * [[Amazon ElastiCache]]
 * [[Amazon Dynamo DB Accelerator]]</pre>
+</div>
+<div created="20220619222535528" modified="20220619222539315" title="AWS User">
+<pre>Entity that represents users of the account.
+
+Credentials (username and password) are used to login.</pre>
 </div>
 <div created="20201213230714516" modified="20201214224948560" title="Backoff Smoothing (N-grams)">
 <pre>If a certain N-gram model has a probability of zero then a lower N-gram model is used. In order to keep the probability at 1 the current N-gram probabilities need to be decreased or discounted and the backoff N-gram models need to be limited respectively.
@@ -14116,38 +14284,49 @@ $$ \displaystyle \min_{\theta_h}(L(X)) $$
 
 This method is a good middle ground between scalability and performance optimization.</pre>
 </div>
-<div created="20220508235514846" modified="20220508235934136" title="Identity Access Management">
-<pre>Service for managing access within an AWS account.
+<div created="20220508235514846" modified="20220619234130221" title="Identity Access Management">
+<pre>A global service for managing account access.
 
-!! User
+!! ''Best Practices''
 
-Entity that interacts with AWS resources/services
+* Root user should not be shared
+* Users should belong to at least one group
+* Only give necessary permissions to each user
+* Take advantage of [[password policy|AWS Password Policy]] and [[MFA|AWS MFA]]
 
-Credentials consist of a name and password
+!! ''Shared Responsibility''
 
-Has no access by default
+!!! ''AWS''
 
-!! Group
+* Infrastructure
+* Reporting
+* Compliance validation
 
-Collection of users
+!!! ''Client''
 
-Policies linked to a group are applied to all users in the group
+* Users, groups, roles, and policies management
+* MFA
+* Rotating keys
+* Reviewing permissions
 
-!! Policy
+!! ''Access Management''
 
-Collection of permissions
+* [[User|AWS User]]
+* [[Role|AWS Role]]
+* [[Group|AWS Group]]
+* [[Policy|AWS Policy]]
 
-Least privileges possible should be granted
+!! ''Credentials''
 
-* Effect - allow or deny
-* Action
-* Resource
+* [[Multi-factor authentication|AWS MFA]]
+* [[Password policy|AWS Password Policy]]
 
-Can be linked to a group or user
+!! ''Reports''
 
-!! Role
+* [[Credentials Report|AWS Credentials Report]]
+* [[Access Advisor|AWS Access Advisor]]
 
-Set of permissions designed to be temporarily assigned to users.</pre>
+</pre>
 </div>
 <div created="20211230033722082" modified="20211230040226075" title="Information Extraction">
 <pre>Extracting structured data from unstructured text.
@@ -16335,18 +16514,6 @@ A low level tool for many NLP tasks
 ** Removing
 ** Substituting
 * Scraping data</pre>
-</div>
-<div created="20220404003942543" modified="20220404004809731" title="Region">
-<pre>A group of data centers with self-contained AWS services.
-
-Data does not leave a region without explicit permission of the owner.
-
-Reasons to choose a region
-
-* Regulation - choose location to comply with regulations
-* Customer proximity - mitigate customer latency
-* Available services - varies between regions
-* Price - varies between regions</pre>
 </div>
 <div created="20201220191433751" modified="20210126162105999" title="Regularization">
 <pre>Methods for preventing a model from [[overfitting|Overfitting vs Underfitting]] the data
