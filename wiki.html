@@ -541,6 +541,22 @@ Error message and password prompt
 
 <li>EC2 Autoscaling</li>
 
+<li>EC2 Capacity Reservations</li>
+
+<li>EC2 Dedicated Hosts</li>
+
+<li>EC2 Dedicated Instances</li>
+
+<li>EC2 On Demand</li>
+
+<li>EC2 Reserved Instances</li>
+
+<li>EC2 Savings Plans</li>
+
+<li>EC2 Spot Instances</li>
+
+<li>EC2 User Data Script</li>
+
 <li>ECR</li>
 
 <li>ECS</li>
@@ -10676,7 +10692,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20220618171053836" list="Topics [[Technology Catalog]] AWS [[AWS Account]] [[Identity Access Management]] [[To Do]]" modified="20220619233448016" title="$:/StoryList">
+<div created="20220620235304871" list="Topics [[Technology Catalog]] AWS [[AWS Compute]] EC2 [[To Do]]" modified="20220621004002858" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20201012173622690" modified="20210901193831232" title="$:/temp/advancedsearch">
@@ -13416,41 +13432,72 @@ Configurable persistent disk storage
 * Linked to single EC2 instance
 * Only available within an availability zone</pre>
 </div>
-<div created="20220403173549257" modified="20220616212039414" title="EC2">
+<div created="20220403173549257" modified="20220621004316228" title="EC2">
 <pre>! ''Elastic Cloud Compute''
+
+!! ''Description''
 
 Compute as a Service (~CaaS)
 
-Virtual machines partitioned from host servers
+Virtual machines partitioned from host servers.
 
-Multiple users share same underlying resources independently
+Multiple users share same underlying resources independently.
 
-Highly configurable
+!! ''Configuration Options''
 
 * OS
-* Software
-* Resources
+** Linux
+** Windows
+** Mac
+* CPU
+* RAM
+* Storage
+** [[EBS|EBS]]
+** [[EFS|EFS]]
+** [[Instance Store|Instance Stores]]
 * Network
-
-!! ''Security''
-
-* [[Security Groups]]
+** Speed
+** IP Address
+* [[Firewall|Security Groups]]
+* [[Bootstrap Script|EC2 User Data Script]]
 
 !! ''Instance Types''
 
 * General purpose
-* Compute optimized - better/more CPUs
-* Memory optimized - lots of high performance RAM
-* Accelerated computing - specialized processing cores
+* Compute optimized
+* Memory optimized
+* Accelerated computing - specialized architectures for specific tasks
 * Storage optimized - fast input/output operations
 
-!! ''Pricing''
+!!! ''Naming Convention''
 
-* On-demand - pay for what you use
-* Savings plans - discounted price for a committed amount of time
-* Reserved instances - discounted price for full 1 or 3 year commitment
-* Spot instances - discounted on-demand pricing with possible interruptions based on AWS availability
-* Dedicated hosts - fully committed host with no virtualization for extra security</pre>
+[type][version].[size]
+
+example - m5.4xlarge
+
+!! ''Connecting''
+
+For Linux or Mac servers connect using SSH. Always setup an 
+
+* Putty from windows
+* SSH CLI from mac or linux
+* EC2 Instance Connect through browser
+
+For Windows connect using RDP.
+
+!! ''Pricing Options''
+
+* [[On Demand|EC2 On Demand]]
+* [[Savings Plans|EC2 Savings Plans]]
+* [[Reserved Instances|EC2 Reserved Instances]]
+* [[Spot Instances|EC2 Spot Instances]]
+* [[Capacity Reservations|EC2 Capacity Reservations]]
+
+!!! ''Tenancy''
+
+* Default
+* [[Dedicated Hosts|EC2 Dedicated Hosts]]
+* [[Dedicated Instances|EC2 Dedicated Instances]]</pre>
 </div>
 <div created="20220403002334354" modified="20220403002433739" title="EC2 Autoscaling">
 <pre>Enable scalability for [[EC2]] service.
@@ -13460,6 +13507,121 @@ Configure an autoscaling group
 * minimum no. of instances
 * desired no. of instances
 * maximum no. of instances</pre>
+</div>
+<div created="20220621002742947" modified="20220621003635331" title="EC2 Capacity Reservations">
+<pre>Reserve a certain amount of compute time in a specific [[AZ|AWS Availability Zone]].
+
+Rate is defined by payment option
+
+* [[On Demand|EC2 On Demand]]
+* [[Savings Plans|EC2 Savings Plans]]
+* [[Reserved Instances|EC2 Reserved Instances]]
+
+No additional discount is given and the client is charged for the reserved time at that rate whether or not they run the instance.
+
+!!! ''Usage''
+
+No usage flexibility but guarantees availability within the desired AZ.</pre>
+</div>
+<div created="20220621003746988" modified="20220621003945990" title="EC2 Dedicated Hosts">
+<pre>Entire server dedicated to a client.
+
+The most expensive tenancy option.
+
+!!! ''Rates''
+
+* [[On Demand|EC2 On Demand]]
+* [[Reserved Instances|EC2 Reserved Instances]]
+
+!!! ''Usage''
+
+* Meeting security compliance requirements
+* Needing low level access to the OS
+** Running software with complicated licensing</pre>
+</div>
+<div created="20220621004109471" modified="20220621004302676" title="EC2 Dedicated Instances">
+<pre>Client instances do not run on the same hardware as any other account's instances.
+
+The server may change and the client has no access to the main OS, only the EC2 VM.
+
+!!! ''Usage''
+
+Cheaper than [[dedicated hosts|EC2 Dedicated Hosts]] while still satisfying some compliance requirements.</pre>
+</div>
+<div created="20220621001432036" modified="20220621001600115" title="EC2 On Demand">
+<pre>Pay for what you use
+
+* billing/second - Windows and Linux
+* billing/hour - other OS
+
+!!! ''Use Case''
+
+Short term need with unpredictable amount of time required. </pre>
+</div>
+<div created="20220621001631937" modified="20220621002150040" title="EC2 Reserved Instances">
+<pre>Commit to instance attributes, period of time, and scope.
+
+Great a good discount because of the commitment. Similar to [[savings plans|EC2 Savings Plans]].
+
+!!! ''Usage''
+
+Long term reliable computation needed.
+
+!! ''Restrictions''
+
+* Attributes
+** Instance type
+** Tenancy
+** Region
+** OS
+* Period - 1 year or 3 years
+* Scope
+** Regional
+** Zonal
+
+!! ''Payment Options''
+
+From least to most discount.
+
+* No upfront
+* Partial upfront
+* Full upfront
+
+Instances can be sold at the instance marketplace.
+
+! ''Convertible Reserved Instance''
+
+Same as standard reserved instance except that the instance attributes and scope are flexible and the discount is less.</pre>
+</div>
+<div created="20220621002238466" modified="20220621002534332" title="EC2 Savings Plans">
+<pre>Commit to a certain amount of usage at a discounted rate similar to [[reserved instances|EC2 Reserved Instances]].
+
+Use the compute time whenever you want. Extra time flips back to [[on demand|EC2 On Demand]].
+
+!! ''Usage''
+
+When a reliable amount of computation is needed.
+
+Similar to [[reserved instances|EC2 Reserved Instances]] but more flexible and in general a better choice.
+
+!! ''Restrictions''
+
+* Instance family
+* Region</pre>
+</div>
+<div created="20220621002543099" modified="20220621002700979" title="EC2 Spot Instances">
+<pre>Instances can be lost if your max price goes below the current spot instance rate.
+
+Because of the unreliability they have the biggest discount.
+
+!!! ''Usage''
+
+Non-critical needs that are the resilient to failure.</pre>
+</div>
+<div created="20220620235656231" modified="20220620235733871" title="EC2 User Data Script">
+<pre>Script that is run at startup and can be programmed to do whatever is needed.
+
+Runs with root privileges. </pre>
 </div>
 <div created="20220403001804099" modified="20220403173202458" title="ECR">
 <pre>!! ''Elastic Container Registry''
@@ -16715,12 +16877,31 @@ Glacier Deep Archive
 * Cheapest
 * Up to 12 hours to retrieve data</pre>
 </div>
-<div created="20220404233707751" modified="20220404233755097" title="Security Groups">
-<pre>Firewall for each [[EC2]] instance
+<div created="20220404233707751" modified="20220621001113338" title="Security Groups">
+<pre>Acts as a reusable firewall ruleset that can be applied to [[EC2]] instances.
 
-Inbound and outbound rules by default allows none.
+Security groups are limited to the VPC they were created in.
 
-Stateful</pre>
+Applied before traffic is routed to the EC2 instances. Not Accessible errors are related to security groups, where as, connection refused errors are related to the EC2 instances.
+
+!! ''Rules''
+
+A set of rules defining what is allowed for inbound and outbound traffic.
+
+Inbound traffic allows nothing by default.
+
+Outbound traffic allows everything by default.
+
+A single rule consists of a port and either an IP range or a security group. If another security group is listed for the rule then EC2 instances with that security group are allowed for that port.
+
+!! ''Important Ports''
+
+* 21 - FTP
+* 22 - SSH
+* 22 - SFTP
+* 80 - HTTP
+* 443 - HTTPS
+* 3389 - RDP</pre>
 </div>
 <div created="20210529171151947" modified="20210604004936662" title="Self-Attention">
 <pre>A modification of the [[attention|Attention]] mechanism (see wiki page for basic framework) where instead of each output being compared to the inputs each input is compared to the other inputs.
