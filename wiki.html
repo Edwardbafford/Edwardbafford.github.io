@@ -249,6 +249,8 @@ Error message and password prompt
 
 <li>Amazon ElastiCache</li>
 
+<li>Amazon Machine Image</li>
+
 <li>Amazon Managed Blockchain</li>
 
 <li>Amazon Neptune</li>
@@ -536,6 +538,12 @@ Error message and password prompt
 <li>Dynamic Programming</li>
 
 <li>EBS</li>
+
+<li>EBS General Purpose SSD</li>
+
+<li>EBS Hard Disk Drives</li>
+
+<li>EBS Provisioned IOPS SSD</li>
 
 <li>EC2</li>
 
@@ -10692,7 +10700,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20220620235304871" list="Topics [[Technology Catalog]] AWS [[AWS Compute]] EC2 [[To Do]]" modified="20220621004002858" title="$:/StoryList">
+<div created="20220627231045414" list="Topics [[Technology Catalog]] AWS [[AWS Compute]] EC2 EBS [[EBS Hard Disk Drives]] EFS [[To Do]]" modified="20220627234348312" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20201012173622690" modified="20210901193831232" title="$:/temp/advancedsearch">
@@ -10931,6 +10939,25 @@ Fully managed service
 </div>
 <div created="20220503233801087" modified="20220503233805299" title="Amazon ElastiCache">
 <pre>Managed cache services</pre>
+</div>
+<div created="20220623001500943" modified="20220623002054722" title="Amazon Machine Image">
+<pre>An amazon machine image is a snapshot of a customized EC2 instance that can be easily launched and reproduced.
+
+Regionally scoped and must be copied over to other regions.
+
+!! ''Process''
+
+# Create EC2
+# Customize
+# Stop EC2
+# Create AMI
+# Launch new instances with the image
+
+!! ''Sources''
+
+* AWS standard images
+* 3rd party images
+* Personally created images</pre>
 </div>
 <div created="20220503233613865" modified="20220503233626872" title="Amazon Managed Blockchain">
 <pre>Managed decentralized ledger database</pre>
@@ -11260,10 +11287,11 @@ Already authenticated by using the session of the currently logged in user.
 
 Able to upload and download files within the console.</pre>
 </div>
-<div created="20220616212151525" modified="20220616212413082" title="AWS Compute">
+<div created="20220616212151525" modified="20220623002102090" title="AWS Compute">
 <pre>* [[EC2]]
-* [[EC2 Autoscaling]]
-* [[ELB]]
+** [[AMI|Amazon Machine Image]]
+** [[EC2 Autoscaling]]
+** [[ELB]]
 * [[AWS Lambda]]
 
 !! Events
@@ -11562,8 +11590,8 @@ Implemented at the network level.
 
 </pre>
 </div>
-<div created="20220616212224587" modified="20220616212257203" title="AWS Storage">
-<pre>!!! ''File System''
+<div created="20220616212224587" modified="20220623000824002" title="AWS Storage">
+<pre>!!! ''Block Storage''
 
 * [[Instance Stores]]
 * [[EBS]]
@@ -13421,18 +13449,82 @@ We can try filtering out illegitimate requests but this can block legitimate use
 <pre>A recursive solution to an optimization problem where re-usable data is stored and referenced by all recursive functions.
 </pre>
 </div>
-<div created="20220503230655514" modified="20220503231843741" title="EBS">
-<pre>!! ''Elastic Block Store''
+<div created="20220503230655514" modified="20220627231241689" title="EBS">
+<pre>! ''Elastic Block Store''
 
-Configurable persistent disk storage
+! ''Volumes''
 
-!!! ''Features''
+Network drive that can be attached to EC2 instances.
 
-* Backed up with snapshots
-* Linked to single EC2 instance
-* Only available within an availability zone</pre>
+Storage is independent of EC2 instance and can be moved between them. Although the root EBS that is created for an EC2 instance is deleted on termination by default.
+
+!! ''Features''
+
+* Network storage is slower than disk storage
+* Scoped to single AZ
+* Can only attached to up to one EC2 instance
+ 
+!! ''Pricing''
+
+Free Tier - 30 GB of SSD or Magnetic
+
+Based on size (GB), performance (IOPS), and type.
+
+!! ''Types''
+
+* [[General Purpose|EBS General Purpose SSD]]
+* [[Provisioned IOPS SSD|EBS Provisioned IOPS SSD]]
+* [[Hard Disk Drives|EBS Hard Disk Drives]]
+
+! ''Snapshots''
+
+Backup of an EBS volume.
+
+Allows for the transportation of volumes outside an AZ or Region.
+
+!! ''Snapshot Archive''
+
+Store snapshots for cheaper (~75%)
+
+Takes longer to recover snapshot (24-72 hours)
+
+!! ''Recycle Bin''
+
+Setup rules to temporarily retain deleted snapshots so that they can be recovered.</pre>
 </div>
-<div created="20220403173549257" modified="20220621004316228" title="EC2">
+<div created="20220627231228004" modified="20220627231506763" title="EBS General Purpose SSD">
+<pre>Fine as a default storage mount.
+
+''gp2'' - IOPS linked to storage size, bigger is faster
+
+''gp3'' - newer version, performance can be defined independent of storage
+</pre>
+</div>
+<div created="20220627231739035" modified="20220627234358098" title="EBS Hard Disk Drives">
+<pre>!! ''Features''
+
+* Cheap
+* Good throughput
+* Cannot be used as boot volumes
+
+!! ''Types''
+
+* ''st1'' - throughput optimized
+* ''sc1/Cold HDD'' - very cheap but slower</pre>
+</div>
+<div created="20220627231525645" modified="20220627231653164" title="EBS Provisioned IOPS SSD">
+<pre>!! ''Features''
+
+* Highest performance
+* Multi-attach option
+* High cost
+
+!! ''Types''
+
+* ''io1/io2'' - io2 is strictly better
+* ''io2 block express'' - even faster but more expensive</pre>
+</div>
+<div created="20220403173549257" modified="20220623000805883" title="EC2">
 <pre>! ''Elastic Cloud Compute''
 
 !! ''Description''
@@ -13452,9 +13544,9 @@ Multiple users share same underlying resources independently.
 * CPU
 * RAM
 * Storage
+** [[Instance Store|Instance Stores]]
 ** [[EBS|EBS]]
 ** [[EFS|EFS]]
-** [[Instance Store|Instance Stores]]
 * Network
 ** Speed
 ** IP Address
@@ -13635,16 +13727,50 @@ High performance, scalable, docker container management system for deploying doc
 
 Runs on top of [[EC2]] instances.</pre>
 </div>
-<div created="20220503230939510" modified="20220503231857425" title="EFS">
+<div created="20220503230939510" modified="20220627232927226" title="EFS">
 <pre>!! ''Elastic File System''
 
-Block storage (similar to hard drive) setup as a linux file system.
+Managed network file system
 
-!!! ''Features''
+!! ''Features''
 
-* Accessible by multiple clients
-* Scales indefinitely
-* Regionally available</pre>
+* Regionally available, all [[AZs|AWS Availability Zone]] in a [[Region|AWS Region]]
+* Can be mounted to any number of EC2 instances
+* [[Security groups|Security Groups]] used to control access
+* Only compatible with Linux [[EC2|EC2]] instances
+* Data is encrypted at rest
+* Expensive
+* Highly scaleable
+* Highly available
+* Pay for how much you use
+
+Protocol - NFS v4.1
+
+File System - POSIX
+
+!! ''Configurations''
+
+!!! ''Performance Mode''
+
+* General purpose
+* Max I/O - better throughput with worse latency
+
+!!! ''Throughput Mode''
+
+* Bursting - throughput based on size
+* Provisioned - throughput independent of size
+
+!!! ''Storage Tiers''
+
+* Standard
+* Infrequent Access (EFS-IA) - cheaper to store and more expensive to retrieve
+
+Enable automatic switch based on usage through a ''Lifecycle Policy''
+
+!!! ''Availability''
+
+* Regional
+* One AZ - cheaper but less available</pre>
 </div>
 <div created="20220403001911772" modified="20220403173247922" title="EKS">
 <pre>!! ''Elastic Kubernetes Service''
@@ -14604,10 +14730,17 @@ Each host on the internal network should have the following
 
 Apply checks in before [[filters|Filter]]</pre>
 </div>
-<div created="20220503230416928" modified="20220503230606353" title="Instance Stores">
-<pre>Disk storage attached to the host of an EC2 instance.
+<div created="20220503230416928" modified="20220623001302363" title="Instance Stores">
+<pre>Disk storage from server disk into EC2 VM.
 
-Data is lost if EC2 instance is restarted because the storage is local to the host machine and not tied to the EC2 instance which can be moved to any host.</pre>
+!! ''Attributes''
+
+* Very fast IO speeds because no network access is used
+* Data is lost on restart because EC2 will appear on a different server
+
+!! ''Usage''
+
+Simple, temporary data store is needed such as a buffer or cache.</pre>
 </div>
 <div created="20220404233415403" modified="20220404233427018" title="Internet Gateway">
 <pre>Allow internet access to a [[VPC]]</pre>
