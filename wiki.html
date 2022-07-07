@@ -261,6 +261,8 @@ Error message and password prompt
 
 <li>Application Development</li>
 
+<li>Application Load Balancer</li>
+
 <li>Application Security</li>
 
 <li>Application Testing</li>
@@ -274,6 +276,8 @@ Error message and password prompt
 <li>Authentication</li>
 
 <li>Authorization</li>
+
+<li>Auto Scaling Groups</li>
 
 <li>AWS</li>
 
@@ -406,6 +410,8 @@ Error message and password prompt
 <li>Chomsky Normal Form</li>
 
 <li>CKY Algorithm</li>
+
+<li>Classic Load Balancer</li>
 
 <li>Classification</li>
 
@@ -547,8 +553,6 @@ Error message and password prompt
 
 <li>EC2</li>
 
-<li>EC2 Autoscaling</li>
-
 <li>EC2 Capacity Reservations</li>
 
 <li>EC2 Dedicated Hosts</li>
@@ -618,6 +622,8 @@ Error message and password prompt
 <li>Gamma Distribution</li>
 
 <li>Gateway</li>
+
+<li>Gateway Load Balancer</li>
 
 <li>Generalized Linear Models</li>
 
@@ -788,6 +794,8 @@ Error message and password prompt
 <li>Negative Binomial Distribution</li>
 
 <li>Negative Sampling</li>
+
+<li>Network Load Balancer</li>
 
 <li>Neural Network Language Models</li>
 
@@ -10700,7 +10708,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20220627231045414" list="Topics [[Technology Catalog]] AWS [[AWS Compute]] EC2 EBS [[EBS Hard Disk Drives]] EFS [[To Do]]" modified="20220627234348312" title="$:/StoryList">
+<div created="20220706225245022" list="Topics [[Technology Catalog]] AWS [[AWS Compute]] [[Auto Scaling Groups]] ELB [[Classic Load Balancer]] [[Network Load Balancer]] [[Application Load Balancer]] [[To Do]]" modified="20220706235719081" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20201012173622690" modified="20210901193831232" title="$:/temp/advancedsearch">
@@ -10767,7 +10775,7 @@ Error message and password prompt
 <div created="20200828140319089" modified="20210901191713767" title="$:/temp/NewTagName">
 <pre></pre>
 </div>
-<div created="20200827210236856" modified="20220401001545458" title="$:/temp/search">
+<div created="20200827210236856" modified="20220706230417658" title="$:/temp/search">
 <pre></pre>
 </div>
 <div created="20200827210410769" modified="20200827210412400" title="$:/theme">
@@ -11006,6 +11014,37 @@ Column-oriented design where columns are stored together and normalized.
 * [[Gateway]]
 * [[Filter]]</pre>
 </div>
+<div created="20220706230959410" modified="20220706234915159" title="Application Load Balancer">
+<pre>Good default [[ELB]] for standard applications.
+
+Supports HTTP/S and Websockets, both layer 7
+
+Distribution is handled via new requests. Client port and IP can be found in headers.
+
+Fixed hostname
+
+!! Target Groups
+
+* [[EC2|EC2]]
+* [[ASG|Auto Scaling Groups]]
+* [[Lambda Functions|AWS Lambda]]
+* IP Addresses
+* Other ALB
+
+ALB can route to different target groups based on 
+
+* URL Path
+* Hostname
+* Query String
+* Headers
+
+!! ''Features''
+
+* Sticky sessions - Yes
+* Cross zone load balancing - always on with no charge
+* Certs - one domain allowed per listener
+* Connection draining - Yes</pre>
+</div>
 <div created="20211111005851482" modified="20220317003051142" title="Application Security">
 <pre>!! ''Design''
 
@@ -11178,6 +11217,44 @@ Access rights are defined at different levels per resource. Users are linked wit
 
 More complex but flexible.</pre>
 </div>
+<div created="20220706225739087" modified="20220707000849492" title="Auto Scaling Groups">
+<pre>Automatically manage a collection of [[EC2]] instances.
+
+* scale the number of images
+* re-start unhealthy images
+
+Can easily integrate with [[ELB]].
+
+Free! Only pay for EC2 instances being managed.
+
+!! ''Attributes''
+
+* Launch configurations
+* Min, Max, and preferred number of instances
+* Scaling Policies
+* Cool down period
+
+!! ''Launch Configuration''
+
+Defines the specifications of each [[EC2]] instance to be deployed by the ASG.
+
+!! ''Scaling Policies''
+
+When to scale up or down. Can be integrated with resources metrics or [[Cloud Watch]] alarms.
+
+''Target Scaling'' - Keep metrics constant by scaling
+
+''Step Scaling'' - Scale up or down based on metric events
+
+''Scheduled Actions'' - Scale at certain times
+
+''Predictive Scaling'' - proactively scale based on historical data
+
+
+!! ''Cool down Period''
+
+A configurable amount of time where scaling actions are ignored to allow the system to stabilize.</pre>
+</div>
 <div created="20220403001044378" modified="20220618183821739" title="AWS">
 <pre>!! ''Account''
 
@@ -11287,11 +11364,11 @@ Already authenticated by using the session of the currently logged in user.
 
 Able to upload and download files within the console.</pre>
 </div>
-<div created="20220616212151525" modified="20220623002102090" title="AWS Compute">
+<div created="20220616212151525" modified="20220706225826943" title="AWS Compute">
 <pre>* [[EC2]]
 ** [[AMI|Amazon Machine Image]]
-** [[EC2 Autoscaling]]
 ** [[ELB]]
+** [[ASG|Auto Scaling Groups]]
 * [[AWS Lambda]]
 
 !! Events
@@ -12157,6 +12234,22 @@ As the max increases all possible structures with signatures between 0 and max-1
 Within a certain max, small spans are tested before large spans (min starts as close to max as possible). This is because larger spans will need to reference smaller spans. See in the diagram that step 3 would in need to use a structure from step 2.
 
 Within each range {min, max} check all mid way points to split as well all possible rules for each midway point.</pre>
+</div>
+<div created="20220706230508622" modified="20220706234911408" title="Classic Load Balancer">
+<pre>Depreciated [[ELB|ELB]] that should only be used for legacy purposes.
+
+Supports TCP (layer 4) and HTTP/S (layer 7)
+
+Fixed hostname
+
+No target groups - only distributes to a set of [[EC2|EC2]] instances.
+
+!! ''Features''
+
+* Sticky sessions - yes
+* Cross zone load balancing - disabled by default with no charge if enabled
+* Cert management - only one cert
+* Connection draining - Yes</pre>
 </div>
 <div created="20201220194652999" modified="20210824183940716" title="Classification">
 <pre>Output is one of a set
@@ -13591,15 +13684,6 @@ For Windows connect using RDP.
 * [[Dedicated Hosts|EC2 Dedicated Hosts]]
 * [[Dedicated Instances|EC2 Dedicated Instances]]</pre>
 </div>
-<div created="20220403002334354" modified="20220403002433739" title="EC2 Autoscaling">
-<pre>Enable scalability for [[EC2]] service.
-
-Configure an autoscaling group
-
-* minimum no. of instances
-* desired no. of instances
-* maximum no. of instances</pre>
-</div>
 <div created="20220621002742947" modified="20220621003635331" title="EC2 Capacity Reservations">
 <pre>Reserve a certain amount of compute time in a specific [[AZ|AWS Availability Zone]].
 
@@ -13788,19 +13872,56 @@ Needs to be provisioned [[EC2|EC2]] instances.</pre>
 
 Abstracts infrastructure code.</pre>
 </div>
-<div created="20220403002448979" modified="20220403002646912" title="ELB">
-<pre>!! ''Elastic Load Balancing''
+<div created="20220403002448979" modified="20220706234533762" title="ELB">
+<pre>! ''Elastic Load Balancer''
 
-Regional construct AWS service.
+Managed load balancer, meaning that only configuration is needed and underlying infrastructure is automatically created.
 
-Distributes network traffic across compute resources.
+All ELBs are regional.
 
-Automatically scales out of the box
+Create highly scale-able and available applications by distributing network traffic across resources.
 
-* automatically distributes to newly added compute resources
-* Handles increased traffic automatically
+Integrates with many AWS services - [[EC2|EC2]], [[ASG|Auto Scaling Groups]], [[ECS|ECS]], ACM, [[Route 53|Route 53]], and [[WAF|Web Application Firewall]]
 
-Pairs well with [[EC2 Autoscaling]] service</pre>
+!! ''Types''
+
+* [[Classic Load Balancer]]
+* [[Application Load Balancer]]
+* [[Network Load Balancer]]
+* [[Gateway Load Balancer]]
+
+!! ''Features''
+
+''Security Groups'' - can be defined for a load balancer as well
+
+''Target Groups'' - a group of entities to distribute traffic to.
+
+''Health Checks'' - checks if linked instances are available. Health check endpoints are configurable for each target group
+
+''Listeners'' - map requests to target groups.
+
+''Sticky Sessions'' 
+
+Client sessions link to the same application behind the load balancer. 
+
+Uses a cookie to direct to applciation which can be managed by applications or load balancers.
+
+''Cross Zone Load Balancing'' 
+
+Traffic is evenly distributed across [[AZs|AWS Availability Zone]].
+
+May sometimes cost money.
+
+''SSL/TLS Certificates'' 
+
+Use ACM service to manage and integrate certificates with ELBs.  
+
+Some ELBs can support multiple hostnames by using server name indication protocol (SNI) where client must specify the hostname it is looking for.
+
+''Connection Draining/Deregistration Delay''
+
+Does not close the connection for a configurable amount of time while the client is dergistered.
+</pre>
 </div>
 <div created="20210805004037287" modified="20211112012804782" title="Embedding">
 <pre>Convert a large [[one-hot encoded|One Hot Encoding]] categorical input into a shorter dense vector.
@@ -14245,6 +14366,19 @@ Easily implement the following features before requests are forwarded to your AP
 * [[Rate limiting|Rate Limiting]]
 * [[TLS Protocol|HTTPS]]
 * API Routing</pre>
+</div>
+<div created="20220706233037394" modified="20220706233857032" title="Gateway Load Balancer">
+<pre>Intended to redirect network traffic to 3rd party network applications before forwarding to main target.
+
+Operates on IP packets (layer 3)
+
+Uses GENEVE protocol on port 6081
+
+!!! ''Target Groups''
+
+* [[EC2|EC2]]
+* IP Addresses
+</pre>
 </div>
 <div created="20210103213018320" modified="20210118002159299" title="Generalized Linear Models">
 <pre>A probabilistic [[supervised learning|Supervised Learning]] framework that's varies based on an assumed distribution of the output variable $$Y$$
@@ -16176,6 +16310,35 @@ This results in the following bounds
 $$\displaystyle \frac{1}{2} \cdot \frac{dL_S}{d\theta} \le \frac{dL_{NS}}{d\theta} \le \frac{dL_S}{d\theta}$$
 
 Hopefully it is self evident from this that the signs are equal :)</pre>
+</div>
+<div created="20220706231820035" modified="20220706234913276" title="Network Load Balancer">
+<pre>Use for highest performance.
+
+Supports TCP and UDP, both layer 4. 
+
+Distribution is handled via direct forwarding of packets. Nothing is masked by NLB.
+
+Static IPs for each [[AZ|AWS Availability Zone]] and can be integrated with Elastic IP addresses.
+
+!! ''Target Groups''
+
+* [[EC2|EC2]]
+* [[ASG|Auto Scaling Groups]]
+* [[Lambda Functions|AWS Lambda]]
+* IP Addresses
+* [[ALB|Application Load Balancer]]
+
+ALB can route to different target groups based on
+
+* Protocol
+* Port
+
+!! ''Features''
+
+* Sticky sessions - No
+* Cross zone load balancing - disabled by default with charges for data transfer
+* Certs - one domain allowed per listener
+* Connection draining - Yes</pre>
 </div>
 <div created="20210312021314702" modified="20210702002523780" title="Neural Network Language Models">
 <pre>Sequence neural networks are very powerful but tough to train. With less data simpler language models are usually better.
