@@ -10708,7 +10708,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20220706225245022" list="Topics [[Technology Catalog]] AWS [[AWS Compute]] [[Auto Scaling Groups]] ELB [[Classic Load Balancer]] [[Network Load Balancer]] [[Application Load Balancer]] [[To Do]]" modified="20220706235719081" title="$:/StoryList">
+<div created="20220719215704165" list="Topics [[Technology Catalog]] AWS [[Route 53]] [[To Do]]" modified="20220719221100465" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20201012173622690" modified="20210901193831232" title="$:/temp/advancedsearch">
@@ -10775,7 +10775,7 @@ Error message and password prompt
 <div created="20200828140319089" modified="20210901191713767" title="$:/temp/NewTagName">
 <pre></pre>
 </div>
-<div created="20200827210236856" modified="20220706230417658" title="$:/temp/search">
+<div created="20200827210236856" modified="20220719221311215" title="$:/temp/search">
 <pre></pre>
 </div>
 <div created="20200827210410769" modified="20200827210412400" title="$:/theme">
@@ -10920,12 +10920,33 @@ Schedulers send tasks to works and can be manipulated from a web server UI. Ther
 
 [[https://github.com/Edwardbafford/General/tree/master/airflow]]</pre>
 </div>
-<div created="20220503232254667" modified="20220503232419000" title="Amazon Aurora">
+<div created="20220503232254667" modified="20220712223942022" title="Amazon Aurora">
 <pre>Proprietary DBMS
 
-Compatible with ~MySQL and Postgres SQL but faster.
+Compatible with ~MySQL and Postgres SQL.
 
-Managed instance comes with extra features.</pre>
+Significantly higher performance than either DBMS.
+
+More expensive.
+
+!! ''Features''
+
+Storage automatically grows in increments of 10GB, up to 128 TB
+
+
+
+Automated failover for master in less than
+30 seconds.
+
+!!! ''Read Replication''
+
+* Up to 15 replicas with faster replication
+* 6 copies of your data across 3 AZ
+* 4 copies out of 6 needed for writes
+* 3 copies out of 6 need for reads
+
+[img[images/Aurora DB.png]]
+</pre>
 </div>
 <div created="20220503233359585" modified="20220503233406057" title="Amazon DocumentDB">
 <pre>Managed document database</pre>
@@ -10945,8 +10966,104 @@ Fully managed service
 <div created="20220503233812539" modified="20220503233829073" title="Amazon Dynamo DB Accelerator">
 <pre>[[Amazon Dynamo DB]] cache service</pre>
 </div>
-<div created="20220503233801087" modified="20220503233805299" title="Amazon ElastiCache">
-<pre>Managed cache services</pre>
+<div created="20220503233801087" modified="20220712234046876" title="Amazon ElastiCache">
+<pre>Managed cache services
+
+Caches are in-memory databases with really high performance, low
+latency.
+
+AWS takes care of OS maintenance, optimizations, setup,
+configuration, monitoring, failure recovery and backups.
+
+No direct access to the underlying servers.
+
+!! ''Types''
+
+* Memcached
+* Redis
+
+!! ''Session Management''
+
+Session data can be stored in cache and allow clients to hit any application while maintaining state.
+
+!! ''Security''
+
+No IAM Authentication.
+
+Security groups control access.
+
+SSL can be enabled.
+
+!! ''Memcached''
+
+* Shard data across nodes
+* No replication
+* Non-persistent
+* No backup or restore features
+
+!! ''Redis''
+
+* Multi AZ
+* Read replicas
+* Backup and restore features
+
+!!! ''Multi AZ''
+
+Automatic failover.
+
+Enabled by default.
+
+Works with all read replica types.
+
+!!! ''Read Replicas''
+
+Up to 5 replicas with asynchronous replication.
+
+The primary node is used for read/write
+
+The other nodes are read-only.
+
+Each node has all the data.
+
+!!! ''Sharding''
+
+Known as cluster mode.
+
+Data is partitioned across shards to scale write throughput.
+
+Works with replication as well.
+
+! ''Implementations''
+
+Can combine lazy loading and write throughs
+
+!! ''Lazy Loading''
+
+Also known as Cache-Aside and Lazy Population
+
+After a cache miss, read from DB and write to DB.
+
+Fast writes, potentially slow reads.
+
+Possibly stale data.
+
+!! ''Write Through''
+
+Every write writes to both the cache and DB.
+
+Reads are fast, writes are slow, 
+
+Cache data is never out dated.
+
+Can cache unpopular data.
+
+!! ''Cache Evictions''
+
+Options:
+
+* Explicitly remove data
+* Memory is full and is least recently used
+* Set a time to live value (TTL)</pre>
 </div>
 <div created="20220623001500943" modified="20220623002054722" title="Amazon Machine Image">
 <pre>An amazon machine image is a snapshot of a customized EC2 instance that can be easily launched and reproduced.
@@ -11014,12 +11131,16 @@ Column-oriented design where columns are stored together and normalized.
 * [[Gateway]]
 * [[Filter]]</pre>
 </div>
-<div created="20220706230959410" modified="20220706234915159" title="Application Load Balancer">
+<div created="20220706230959410" modified="20220707003059920" title="Application Load Balancer">
 <pre>Good default [[ELB]] for standard applications.
 
 Supports HTTP/S and Websockets, both layer 7
 
-Distribution is handled via new requests. Client port and IP can be found in headers.
+Distribution is handled via new requests. Client information can be found in headers.
+
+* X-Forward-for - host
+* X-Forward-port - port
+* X-Forward-proto - protocol
 
 Fixed hostname
 
@@ -11040,7 +11161,10 @@ ALB can route to different target groups based on
 
 !! ''Features''
 
-* Sticky sessions - Yes
+* Sticky sessions - Yes, don't use cookie names
+** AWSALB
+** AWSALBAPP
+** AWSALBTG
 * Cross zone load balancing - always on with no charge
 * Certs - one domain allowed per listener
 * Connection draining - Yes</pre>
@@ -11217,11 +11341,11 @@ Access rights are defined at different levels per resource. Users are linked wit
 
 More complex but flexible.</pre>
 </div>
-<div created="20220706225739087" modified="20220707000849492" title="Auto Scaling Groups">
+<div created="20220706225739087" modified="20220707002411217" title="Auto Scaling Groups">
 <pre>Automatically manage a collection of [[EC2]] instances.
 
-* scale the number of images
-* re-start unhealthy images
+* scale the number of instances
+* remove unhealthy instances and start new ones
 
 Can easily integrate with [[ELB]].
 
@@ -11255,7 +11379,7 @@ When to scale up or down. Can be integrated with resources metrics or [[Cloud Wa
 
 A configurable amount of time where scaling actions are ignored to allow the system to stabilize.</pre>
 </div>
-<div created="20220403001044378" modified="20220618183821739" title="AWS">
+<div created="20220403001044378" modified="20220719220944081" title="AWS">
 <pre>!! ''Account''
 
 To begin leveraging AWS services an [[account|AWS Account]] must first be created.
@@ -11290,6 +11414,34 @@ Services can be categorized by their scope. The scope of a service can either be
 A global service persists through all AWS [[regions|AWS Region]] while regionally scoped services are configured independently for each region and can be setup differently per region.
 
 Out of the regionally scoped services, a service can run across all [[availability zones|AWS Availability Zone]] or be limited to a single [[AZ|AWS Availability Zone]] which needs to be chosen.
+
+!! ''Networking''
+
+* [[Route 53]]
+
+!! ''Compute''
+
+* [[EC2]]
+** [[AMI|Amazon Machine Image]]
+** [[ELB]]
+** [[ASG|Auto Scaling Groups]]
+
+!! ''Storage''
+
+!!! ''Block Storage''
+
+* [[Instance Stores]]
+* [[EBS]]
+* [[EFS]]
+
+!!! ''Databases''
+
+* [[RDS]]
+* [[Amazon Aurora]]
+
+!!! ''Caches''
+
+* [[Amazon ElastiCache]]
 
 !! ''Software Developer''
 
@@ -11364,11 +11516,8 @@ Already authenticated by using the session of the currently logged in user.
 
 Able to upload and download files within the console.</pre>
 </div>
-<div created="20220616212151525" modified="20220706225826943" title="AWS Compute">
-<pre>* [[EC2]]
-** [[AMI|Amazon Machine Image]]
-** [[ELB]]
-** [[ASG|Auto Scaling Groups]]
+<div created="20220616212151525" modified="20220719220626280" title="AWS Compute">
+<pre>
 * [[AWS Lambda]]
 
 !! Events
@@ -11418,7 +11567,7 @@ Policies applied to groups will be applied to all users.</pre>
 <div created="20220508233408289" modified="20220508233417740" title="AWS Guard Duty">
 <pre>Intelligent, automated threat detection service</pre>
 </div>
-<div created="20220616211641998" modified="20220618174622551" tags="" title="AWS Infrastructure">
+<div created="20220616211641998" modified="20220719220923839" tags="" title="AWS Infrastructure">
 <pre>!! ''Networking''
 
 * [[VPC]]
@@ -11427,7 +11576,6 @@ Policies applied to groups will be applied to all users.</pre>
 
 * [[Outposts]]
 * [[Cloudfront]]
-* [[Route 53]]
 
 !! ''Automation''
 
@@ -11667,21 +11815,13 @@ Implemented at the network level.
 
 </pre>
 </div>
-<div created="20220616212224587" modified="20220623000824002" title="AWS Storage">
-<pre>!!! ''Block Storage''
-
-* [[Instance Stores]]
-* [[EBS]]
-* [[EFS]]
-
-!!! ''Object''
+<div created="20220616212224587" modified="20220719220849687" title="AWS Storage">
+<pre>!!! ''Object''
 
 * [[S3]]
 
 !!! ''Databases''
 
-* [[RDS]]
-* [[Amazon Aurora]]
 * [[Amazon Dynamo DB]]
 * [[Amazon Redshift]]
 * [[Amazon DocumentDB]]
@@ -11692,7 +11832,6 @@ Implemented at the network level.
 
 !!! ''Caches''
 
-* [[Amazon ElastiCache]]
 * [[Amazon Dynamo DB Accelerator]]</pre>
 </div>
 <div created="20220619222535528" modified="20220619222539315" title="AWS User">
@@ -12235,7 +12374,7 @@ Within a certain max, small spans are tested before large spans (min starts as c
 
 Within each range {min, max} check all mid way points to split as well all possible rules for each midway point.</pre>
 </div>
-<div created="20220706230508622" modified="20220706234911408" title="Classic Load Balancer">
+<div created="20220706230508622" modified="20220707002708968" title="Classic Load Balancer">
 <pre>Depreciated [[ELB|ELB]] that should only be used for legacy purposes.
 
 Supports TCP (layer 4) and HTTP/S (layer 7)
@@ -12246,7 +12385,8 @@ No target groups - only distributes to a set of [[EC2|EC2]] instances.
 
 !! ''Features''
 
-* Sticky sessions - yes
+* Sticky sessions - Yes, don't use cookie names
+** AWSELB
 * Cross zone load balancing - disabled by default with no charge if enabled
 * Cert management - only one cert
 * Connection draining - Yes</pre>
@@ -16862,18 +17002,146 @@ Useful for preventing [[DoS]] attacks.
 
 Limiting is usually based off of IP and Users.</pre>
 </div>
-<div created="20220503232001804" modified="20220503232229842" title="RDS">
-<pre>!! ''Relational Database Service''
+<div created="20220503232001804" modified="20220712223652396" title="RDS">
+<pre>Stands for &quot;Relational Database Service&quot;. 
 
-Managed database service
+The service provides managed database instances
 
-Provides built in services
+! ''Benefits''
 
-!!! Database engines
+* Provisioning
+* OS patching
+* Backup and restore features
+* Monitoring features
+* Read replicas
+* Multi AZ setup
+* Maintenance windows
+* Auto Scaling
+* Storage backed by [[EBS|EBS]] (gp2 or io1)
 
+! ''Drawbacks''
+
+* No SSH access to the server
+
+! ''Database Types''
+
+* Postgres
 * ~MySQL
+* ~MariaDB
 * Oracle
-* Microsoft</pre>
+* Microsoft SQL Server
+* [[Aurora|Amazon Aurora]] (AWS Proprietary database)
+
+
+! ''Features''
+
+RDS instances use [[Security Groups]] to enforce access.
+
+[[IAM|Identity Access Management]] is used to control RDS configuration access.
+
+!! ''Authentication''
+
+Username and password sent in during connection.
+
+IAM-based authentication can be used to login into ~MySQL, ~PostgreSQL, [[Aurora|Amazon Aurora]]
+
+# Assign a role with RDS access to entity
+# Make call to RDS API to get authentication token
+# Token will allow SSL access to RDS instance for 15 minutes
+
+!! ''Backups''
+
+Automatically enabled in RDS
+
+Daily full backup of the database during the maintenance window
+
+Restore database from backup at any point in time
+
+Transaction logs are backed-up by RDS every 5 minutes
+
+7 - 35 days of retention for the backups
+
+!!! ''Snapshots''
+
+Manually triggered by the user
+
+Retain indefinitely
+
+!! ''Storage Auto Scaling''
+
+Automatically increase DB storage space if the following conditions are detected.
+
+* &lt; 10% of storage is available for &gt; 5 minutes
+* &gt; 6 hours have passed since last storage update
+
+Set ''Maximum Storage Threshold'' to determine the maximum amount of space to scale to if necessary.
+
+Supported by all DB engines.
+
+!! ''Read Replicas''
+
+AWS will maintain read only replica databases that are in sync with the master database.
+
+
+[img[images/RDS Read Replicas.png]]
+
+Replication is asynchronous meaning read replicas will have [[eventual consistency|Consistency]].
+
+Up to 5 replicas.
+
+Replicas can be deployed in same [[AZ|AWS Availability Zone]], different [[AZ|AWS Availability Zone]], or in different [[Region|AWS Region]].
+
+Only Cross [[Region|AWS Region]] read replication will cost money.
+
+Replicas can be promoted to their own DB.
+
+DB connection string must be updated to work with read replicas.
+
+!! ''Multi AZ''
+
+AWS will maintain a backup database in another [[AZ|AWS Availability Zone]] which can be failed over in case of an issue with the master DB.
+
+[img[images/RDS Multi AZ.png]]
+
+Replication is done synchronously.
+
+Connection string does not change after failover.
+
+Free
+
+Can work with read replicas.
+
+Can be converted from Single AZ to Multi AZ without any downtime.
+
+!! ''Encryption''
+
+!!! ''At Rest''
+
+Encrypt data on the server.
+
+Must be enabled at launch time.
+
+Uses KMS to encrypt with AES-256 algorithm.
+
+Master and read replicas must either all be encrypted or all not encypted.
+
+Transparent Data Encryption (TDE) available for Oracle and SQL Server.
+
+Snapshots only encrypted if the DB is encrypted but they can be encrypted after being taken.
+
+To encrypt a DB after launch
+
+# take a snapshot
+# encrypt the snapshot
+# replace the DB with the encrypted snapshot
+
+!!! ''In Flight''
+
+SSL certificates to encrypt data sent between RDS and its clients.
+
+Configure DB to enforce SSL connections.
+
+</pre>
 </div>
 <div created="20200829153538543" modified="20200829160727793" tags="data theory" title="Read your Writes">
 <pre>A database consistency issue that occurs on [[replicated data|DB Replication]] where a user makes an update (a write) then view the data they just updated (a read). In replicated data systems they not see data that doesn't reflect their write until the followers nodes have been synchronized.
@@ -17123,12 +17391,204 @@ $$\displaystyle \textrm{score}(y) = -\log P(y|x) = \frac{1}{T} \sum^t_{i=1} -\lo
 
 [img[images\RNN Seq to Seq Beam Search.jpg]]</pre>
 </div>
-<div created="20220404233304373" modified="20220404233325388" title="Route 53">
-<pre>AWS DNS
+<div created="20220404233304373" modified="20220719233210130" title="Route 53">
+<pre>''Domain Registrar'' - Service for buying hostnames.
 
-Map domain names to AWS IPs
+''Domain Name Service''
 
-Buy domain names to!</pre>
+Translates the hostnames into the machine IP addresses.
+
+Domain is sectioned by periods.
+
+Local DNS servers provided by ISPs query from less specific to most specific domain level.
+
+[img[images/DNS.png]]
+
+
+''DNS Record'' - defines a domain name mapping.
+
+! ''Route 53''
+
+* DNS
+* Domain Registrar
+
+!! ''DNS''
+
+Highly available, scalable, fully
+managed and Authoritative.
+
+Authoritative means that customer can control DNS records.
+
+100% availability SLA.
+
+!! ''Records''
+
+How to route traffic for a domain.
+
+Components
+
+* Domain/subdomain
+* Record Type
+* Mapping Value
+* Routing Policy
+* TTL (Time to live)
+
+!!! ''Record Types''
+
+''A'' - to IPv4
+
+''AAAA'' - to IPv6
+
+''CNAME'' - to another hostname. Can't be a root domain.
+
+''Alias'' - to AWS hostname. AWS DNS specific functionality. Works as an A or AAAA record through AWS.
+
+''NS'' - to name server servicing a particular domain
+
+!! ''Hosted Zones''
+
+A container for records that define how to route traffic to a domain and
+its subdomains
+
+$ 0.50 per month per hosted zone
+
+Hosted zones can be public and private
+
+!! ''TTL''
+
+Time to live
+
+How long the domain name mapping is cached before needing to check a DNS again.
+
+''High TTL'' - less traffic but more outdated records
+
+''Low TTL'' - more traffic but less outdated records
+
+TTL is mandatory for all records except alias.
+
+!! ''Routing Policy''
+
+Define how Route 53 responds to DNS queries
+
+* Simple
+* Weighted
+* Failover
+* Latency based
+* Geolocation
+* Multi-Value Answer
+* Geoproximity
+
+''Traffic Flow'' is a visual editor to manage complex routing decision trees.
+
+Saved as a ''Traffic Flow Policy'' which can be applied to any number of domain names.
+
+!!! ''Simple''
+
+Route traffic to a single
+resource or set of resources
+
+If multiple values are set all are returned and the client decides
+
+Can't be associated with Health Checks
+
+!!! ''Weighted''
+
+A weight is set to each resource for the domain name. 
+
+DNS returns record based on percentage of total weight.
+
+Weight of 0 sends no traffic.
+
+If all records have weight of 0, then all records will be returned equally.
+
+Record name and type must match.
+
+Works with health checks
+
+Use - testing application versions
+
+!!! ''Latency''
+
+Redirect to the resource that
+has the least latency based on traffic
+between users and AWS
+Regions
+
+Works with health checks
+
+Use - when latency is most important
+
+!!! ''Failover''
+
+Define a primary resource with health check and secondary resource.
+
+Primary resource will be used unless the health check fails.
+
+!!! ''Geolocation''
+
+Mappings are defined for different user locations.
+
+Default should be defined for all other regions.
+
+Works with health checks.
+
+Use - application localization
+
+!!! ''Geoproximity''
+
+Route traffic to your resources based on the geographic distance of users and
+resources
+
+Fine tune ranges with bias values between -99 - -1 and 1 - 99.
+
+Uses ''Traffic Flow'' feature
+
+!!! ''Multi-Value''
+
+Like simple but works with health checks and only returns health instances.
+
+!! ''Health Checks''
+
+Only work for public resources
+
+* public endpoints
+* calculated health check
+* based on [[CloudWatch|Cloud Watch]] alarms
+
+!!! ''Endpoint''
+
+15 global health checkers will check the
+endpoint health
+
+Health checkers need access, meaning it's publicly accessible
+
+2xx or 3xx response neededed
+
+Can search for text in the first 5120 bytes of the response
+
+* Healthy/Unhealthy Threshold - 3 default
+* Interval - 30 second default, effects cost
+* Protocol - HTTP, HTTPS, TCP
+* &gt;18% of health checkers to be considered healthy
+
+!!! ''Calculated Health Checks''
+
+Combine the results of multiple Health
+Checks into a single Health Check
+
+Can use OR, AND, or NOT
+
+Up to 256 Child Health Checks
+
+Use - when partial failures to be acceptable for an application
+
+!!! ''~CloudWatch Alarm''
+
+Health check looks to CloudWatch alarm.
+
+Use - for monitoring private hosted zones
+
+</pre>
 </div>
 <div created="20220503234847949" modified="20220503235431201" title="S3">
 <pre>!! ''Simple Storage Service''
