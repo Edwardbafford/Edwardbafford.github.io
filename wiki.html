@@ -301,8 +301,6 @@ Error message and password prompt
 
 <li>AWS Credentials Report</li>
 
-<li>AWS Direct Connect</li>
-
 <li>AWS Edge Location</li>
 
 <li>AWS Fargate</li>
@@ -667,8 +665,6 @@ Error message and password prompt
 
 <li>Instance Stores</li>
 
-<li>Internet Gateway</li>
-
 <li>Interpolation Smoothing (N-grams)</li>
 
 <li>Interpreter</li>
@@ -1008,8 +1004,6 @@ Error message and password prompt
 <li>Unsupervised Learning</li>
 
 <li>Version Vectors</li>
-
-<li>Virtual Private Gateway</li>
 
 <li>Visitor</li>
 
@@ -10708,7 +10702,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20220719215704165" list="Topics [[Technology Catalog]] AWS [[Route 53]] [[To Do]]" modified="20220719221100465" title="$:/StoryList">
+<div created="20220719215704165" list="Topics [[Technology Catalog]] AWS VPC [[AWS Infrastructure]] [[To Do]]" modified="20220720232905733" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20201012173622690" modified="20210901193831232" title="$:/temp/advancedsearch">
@@ -10775,7 +10769,7 @@ Error message and password prompt
 <div created="20200828140319089" modified="20210901191713767" title="$:/temp/NewTagName">
 <pre></pre>
 </div>
-<div created="20200827210236856" modified="20220719221311215" title="$:/temp/search">
+<div created="20200827210236856" modified="20220720232958656" title="$:/temp/search">
 <pre></pre>
 </div>
 <div created="20200827210410769" modified="20200827210412400" title="$:/theme">
@@ -11379,7 +11373,7 @@ When to scale up or down. Can be integrated with resources metrics or [[Cloud Wa
 
 A configurable amount of time where scaling actions are ignored to allow the system to stabilize.</pre>
 </div>
-<div created="20220403001044378" modified="20220719220944081" title="AWS">
+<div created="20220403001044378" modified="20220720233004948" title="AWS">
 <pre>!! ''Account''
 
 To begin leveraging AWS services an [[account|AWS Account]] must first be created.
@@ -11417,6 +11411,7 @@ Out of the regionally scoped services, a service can run across all [[availabili
 
 !! ''Networking''
 
+* [[VPC]]
 * [[Route 53]]
 
 !! ''Compute''
@@ -11546,11 +11541,6 @@ Able to upload and download files within the console.</pre>
 
 Account level.</pre>
 </div>
-<div created="20220404233609330" modified="20220404233642224" title="AWS Direct Connect">
-<pre>Create a dedicated networked connection between clients and [[VPC]].
-
-Secure with no other traffic.</pre>
-</div>
 <div created="20220618174845181" modified="20220618174857630" title="AWS Edge Location">
 <pre>Also known as a point of presence.</pre>
 </div>
@@ -11567,12 +11557,8 @@ Policies applied to groups will be applied to all users.</pre>
 <div created="20220508233408289" modified="20220508233417740" title="AWS Guard Duty">
 <pre>Intelligent, automated threat detection service</pre>
 </div>
-<div created="20220616211641998" modified="20220719220923839" tags="" title="AWS Infrastructure">
-<pre>!! ''Networking''
-
-* [[VPC]]
-
-!! ''Services''
+<div created="20220616211641998" modified="20220720230338353" tags="" title="AWS Infrastructure">
+<pre>!! ''Services''
 
 * [[Outposts]]
 * [[Cloudfront]]
@@ -15015,9 +15001,6 @@ Apply checks in before [[filters|Filter]]</pre>
 !! ''Usage''
 
 Simple, temporary data store is needed such as a buffer or cache.</pre>
-</div>
-<div created="20220404233415403" modified="20220404233427018" title="Internet Gateway">
-<pre>Allow internet access to a [[VPC]]</pre>
 </div>
 <div created="20201213222405824" modified="20201214205315935" title="Interpolation Smoothing (N-grams)">
 <pre>Combine the probabilities of all N-grams smaller than N. 
@@ -18721,11 +18704,6 @@ A wide variety of types and methods exist
 
 [[Example|https://drive.google.com/file/d/1_04Vsvc_drpOSDuuUZXdjFLW0y-99Ge5/view?usp=sharing]]</pre>
 </div>
-<div created="20220404233451360" modified="20220404233536336" title="Virtual Private Gateway">
-<pre>Allow VPN connections between specific networks and a [[VPC]]
-
-Connections are secure and restricted but still travel across the internet.</pre>
-</div>
 <div created="20210621131005771" modified="20210621131633858" title="Visitor">
 <pre>Dynamically add auxiliary functionalities to a set of objects without having to bloat the classes with too many functions.
 
@@ -18774,36 +18752,73 @@ The principles of [[beam search|Beam Search]] can be applied the Viterbi algorit
 
 [img[images/Viterbi Beam Search.jpg]]</pre>
 </div>
-<div created="20220404233851919" modified="20220616211922246" title="VPC">
-<pre>!! ''Virtual Private Cloud''
+<div created="20220404233851919" modified="20220720232946620" title="VPC">
+<pre>! ''Virtual Private Cloud''
 
-Provision a custom network for your resources.
+Private network in AWS cloud to deploy resources.
 
-Allow internal communications while limiting external communications.
+Regionally defined resource.
 
 !! ''Subnets''
 
-Assign specific network rules to a section of the VPC addresses.
+Subnets partition a VPC network.
 
-Public subnets can access the internet through gateways
+AZ scoped resource.
 
-Private subnets can only be accessed from within the same VPC
+''Public subnet'' is a subnet that is
+accessible from the internet.
 
-!!! ''Gateways''
+''Private subnet'' is a subnet that is not
+accessible from the internet.
 
-* [[Internet Gateway]]
-* [[Virtual Private Gateway]]
-* [[AWS Direct Connect]]
+''Route Tables'' define access to the internet and between subnets.
 
-!! ''Network ACLs''
+!! ''VPC Peering''
 
-Network access control lists
+Allow two VPCs to privately connect through AWS network.
 
-firewall for subnets
+VPC IP address ranges must not overlap.
 
-inbound and outbound, default allows all
+Peering connection is not transitive and must be established from VPC to each other VPC.
 
-Stateless</pre>
+!! ''Gateways''
+
+''Internet Gateways'' allow public subnets connect to the internet.
+
+''NAT Gateways'' allow Private Subnets to connect to the internet by forwarding private subnet connections to an internet gateway.
+
+''NAT Instances'' are a self-managed version of NAT Gateways.
+
+''VPC Endpoint Interface'' allows private subnets to connect to AWS Services through a private network.
+
+''VPC Endpoint Gateway'' is an endpoint interface for [[S3]] and [[DynamoDB|Amazon Dynamo DB]].
+
+''Site to Site VPN'' connects an on-premises VPN to AWS which allows for a secure connection over the internet.
+
+''Direct Connect (DX)'' is a private physical network between on-premise network and AWS network. Takes much longer to create but if secure and faster than using the internet.
+
+!! ''Network ACL''
+
+A firewall which controls traffic from and to
+subnet.
+
+Can have ALLOW and DENY rules.
+
+Are attached at the Subnet level.
+
+Rules only include IP addresses.
+
+!! ''VPC Flow Logs''
+
+Capture information about IP traffic traveling through the AWS network.
+
+* VPC
+* Subnet
+* Elastic Network Interface
+
+Helps with monitoring and troubleshooting connectivity issues.
+
+Data can go to [[S3]] / [[CloudWatch|Cloud Watch]] Logs.</pre>
 </div>
 <div created="20220508233712347" modified="20220508233817770" title="Web Application Firewall">
 <pre>Service for creating and applying access control lists (ACLs) to whitelist/blacklist IP addresses for various resources.</pre>
