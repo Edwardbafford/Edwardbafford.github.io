@@ -539,6 +539,8 @@ Error message and password prompt
 
 <li>Dot Product</li>
 
+<li>Draft of 'AWS'</li>
+
 <li>Dynamic Programming</li>
 
 <li>EBS</li>
@@ -10702,7 +10704,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20220719215704165" list="Topics [[Technology Catalog]] AWS VPC [[AWS Infrastructure]] [[To Do]]" modified="20220720232905733" title="$:/StoryList">
+<div created="20220719215704165" list="Topics [[Technology Catalog]] [[Draft of 'AWS']] S3 VPC [[AWS Infrastructure]] [[To Do]]" modified="20220726225734454" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20201012173622690" modified="20210901193831232" title="$:/temp/advancedsearch">
@@ -10769,7 +10771,7 @@ Error message and password prompt
 <div created="20200828140319089" modified="20210901191713767" title="$:/temp/NewTagName">
 <pre></pre>
 </div>
-<div created="20200827210236856" modified="20220720232958656" title="$:/temp/search">
+<div created="20200827210236856" modified="20220726235616183" title="$:/temp/search">
 <pre></pre>
 </div>
 <div created="20200827210410769" modified="20200827210412400" title="$:/theme">
@@ -11801,12 +11803,8 @@ Implemented at the network level.
 
 </pre>
 </div>
-<div created="20220616212224587" modified="20220719220849687" title="AWS Storage">
-<pre>!!! ''Object''
-
-* [[S3]]
-
-!!! ''Databases''
+<div created="20220616212224587" modified="20220726225236419" title="AWS Storage">
+<pre>!!! ''Databases''
 
 * [[Amazon Dynamo DB]]
 * [[Amazon Redshift]]
@@ -13663,6 +13661,89 @@ We can try filtering out illegitimate requests but this can block legitimate use
 </div>
 <div created="20210123033817798" modified="20210123033818304" title="Dot Product">
 <pre>https://en.wikipedia.org/wiki/Dot_product</pre>
+</div>
+<div created="20220403001044378" draft.of="AWS" draft.title="AWS" modified="20220726225250025" title="Draft of 'AWS'">
+<pre>!! ''Account''
+
+To begin leveraging AWS services an [[account|AWS Account]] must first be created.
+
+!! ''Infrastructure''
+
+The AWS infrastructure is essentially a collection of connected, organized, and managed data centers.
+
+The data centers are organized into the following scopes.
+
+* [[Region|AWS Region]]
+* [[Availability Zone|AWS Availability Zone]]
+* [[Edge Location|AWS Edge Location]]
+
+!! ''Security''
+
+AWS employs a shared responsibility model where AWS and the user have the responsibility of securing different aspect of your systems.
+
+!! ''Interaction''
+
+There are three ways to interact with the AWS services within an account.
+
+* [[Management Console|AWS Management Console]]
+** [[CloudShell|AWS CloudShell]]
+* [[Command Line Interface|AWS CLI]]
+* [[Software Development Kits|AWS SDK]]
+
+! ''Services''
+
+Services can be categorized by their scope. The scope of a service can either be global or regional. 
+
+A global service persists through all AWS [[regions|AWS Region]] while regionally scoped services are configured independently for each region and can be setup differently per region.
+
+Out of the regionally scoped services, a service can run across all [[availability zones|AWS Availability Zone]] or be limited to a single [[AZ|AWS Availability Zone]] which needs to be chosen.
+
+!! ''Networking''
+
+* [[VPC]]
+* [[Route 53]]
+
+!! ''Compute''
+
+* [[EC2]]
+** [[AMI|Amazon Machine Image]]
+** [[ELB]]
+** [[ASG|Auto Scaling Groups]]
+
+!! ''Storage''
+
+* [[S3]]
+
+!!! ''Block Storage''
+
+* [[Instance Stores]]
+* [[EBS]]
+* [[EFS]]
+
+!!! ''Databases''
+
+* [[RDS]]
+* [[Amazon Aurora]]
+
+!!! ''Caches''
+
+* [[Amazon ElastiCache]]
+
+!! ''Software Developer''
+
+* [[Compute|AWS Compute]]
+* [[Storage|AWS Storage]]
+
+!! ''Devops''
+
+* [[Secuirty|AWS Security]]
+* [[Monitoring|AWS Monitoring]]
+* [[Infrastructure|AWS Infrastructure]]
+
+!! ''Business''
+
+* [[Pricing|AWS Pricing]]
+* [[Migration|AWS Migration]]</pre>
 </div>
 <div created="20210423182736849" modified="20211120152601332" title="Dynamic Programming">
 <pre>A recursive solution to an optimization problem where re-usable data is stored and referenced by all recursive functions.
@@ -17573,45 +17654,189 @@ Use - for monitoring private hosted zones
 
 </pre>
 </div>
-<div created="20220503234847949" modified="20220503235431201" title="S3">
-<pre>!! ''Simple Storage Service''
+<div created="20220503234847949" modified="20220727000652650" title="S3">
+<pre>! ''Simple Storage Service''
 
-Object storage service - file, key, and metadata
+Infinitely scaling object storage service.
 
-Only entire objects can be uploaded, no deltas
+Can be used to expose front end website.
 
-!!! ''Permissions''
+''Strong consistency'' - reads after a write or delete always receives the latest version.
 
-* Visibility
-* Access
+!! ''Bucket''
 
-!!! ''Storage Classes''
+Regionally scoped
 
-Standard
+Store a collection of objects.
+
+!!! ''Naming''
+
+* Globally unique
+* No uppercase
+* No underscore
+* 3-63 characters
+* Not an IP
+* Must start with lowercase letter or number
+
+!! ''Objects''
+
+Entities stored in a bucket
+
+''key'' is the full path and composed of a &quot;prefix&quot; and ''object name''
+
+Directories don't actually exist
+
+!!! ''Components''
+
+* Value - file content
+** Max size of 5 TB
+** If uploading more than 5GB, must use multi-part upload
+* Metadata - list of text key / value pairs
+* Tags - key/value pair
+* Version ID (if enabled)
+
+!! ''Versioning''
+
+Same key overwrite will increment the version while keeping track of old versions.
+
+Enabled at the bucket level.
+
+Unversioned files have a version of null if enabled.
+
+Suspending versioning does not delete the previous versions.
+
+!! ''Encryption''
+
+!!! ''SSE-S3''
+
+Encrypts S3 objects using keys handled &amp; managed by AWS
+
+Object is encrypted server side.
+
+Must set header: “x-amz-server-side-encryption&quot;: &quot;AES256&quot;
+
+!!! ''SSE-KMS''
+
+Encryption using keys handled &amp; managed by [[KMS|Key Management Service]].
+
+Allows for user control and audit trail.
+
+Object is encrypted server side.
+
+Must set header: “x-amz-server-side-encryption&quot;: ”aws:kms&quot;
+
+!!! ''SSE-C''
+
+Server-side encryption using data keys fully managed by the customer outside of AWS.
+
+Amazon S3 does not store the encryption key you provide.
+
+HTTPS must be used.
+
+Encryption key must provided in HTTP headers, for every HTTP request made.
+
+!!! ''Client Side Encryption''
+
+Send encrypted key to bucket.
+
+!!! ''Encryption in transit''
+
+HTTP and HTTPS allowed.
+
+!! ''Security''
+
+!!! ''IAM policies''
+
+Which API calls should be allowed for a specific user from IAM console
+
+!!! ''Bucket Policies''
+
+JSON definitions
+
+* Resources - buckets and objects
+* Actions - set of API
+* Effect - allow or deny
+* Principle - account to apply to
+
+Uses
+
+* grant public access
+* force objects to be encrypted
+* grant access to another account
+
+!!! ''Block Public Access''
+
+Block access to buckets and objects from any public point.
+
+Can be enforced at account level.
+
+Settings were created to prevent company data leaks.
+
+!!! ''Bucket Access Control List''
+
+ACL at bucket level
+
+!!! ''Object Access Control List''
+
+ACL at object level
+
+!!! ''Networking''
+
+Support access via non-public [[VPC|VPC]] endpoints.
+
+!!! ''Logging''
+
+* S3 Access Logs can be stored in other S3 bucket
+* API calls can be logged in AWS ~CloudTrail
+
+!!! ''User Security''
+
+''MFA Delete'' - MFA can be required in versioned buckets to delete objects.
+
+''Pre-Signed URLs'' - URLs that are valid only for a limited time.
+
+!!! ''CORS''
+
+Cross-Origin Resource Sharing
+
+''origin'' - protocol, domain, and port combination
+
+Web Browsers will block requests to other origins while executing code from a main origin unless special CORS headers are returned from the other origin.
+
+''Headers''
+
+* Access-Control-Allow-Origin
+* Access-Control-Allow-Methods
+
+Can enable cross origin access from main origins within S3 buckets.
+
+!! ''Storage Classes''
+
+!!! Standard
 
 * stored across 3 availability zones
 * high availability
 
-Infrequent Access
+!!! Infrequent Access
 
 * lower storage cost
 * higher retrieval cost
 
-One-zone Infrequent Access
+!!! One-zone Infrequent Access
 
 * infrequent access features
 * only one availability zone
 
-Intelligent Tiering
+!!! Intelligent Tiering
 
 * Adjusts S3 storage class based on usage patterns
 
-Glacier
+!!! Glacier
 
 * Cheap
 * Takes minutes to hours to retrieve data
 
-Glacier Deep Archive
+!!! Glacier Deep Archive
 
 * Cheapest
 * Up to 12 hours to retrieve data</pre>
