@@ -239,6 +239,8 @@ Error message and password prompt
 
 <li>Airflow</li>
 
+<li>Amazon Athena</li>
+
 <li>Amazon Aurora</li>
 
 <li>Amazon DocumentDB</li>
@@ -10704,7 +10706,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20220728222659252" list="Topics [[Technology Catalog]] AWS [[To Do]]" modified="20220728225434344" title="$:/StoryList">
+<div created="20220728222659252" list="Topics [[Technology Catalog]] AWS [[To Do]]" modified="20220801233346165" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20201012173622690" modified="20210901193831232" title="$:/temp/advancedsearch">
@@ -10771,7 +10773,7 @@ Error message and password prompt
 <div created="20200828140319089" modified="20210901191713767" title="$:/temp/NewTagName">
 <pre></pre>
 </div>
-<div created="20200827210236856" modified="20220728222845117" title="$:/temp/search">
+<div created="20200827210236856" modified="20220801233224015" title="$:/temp/search">
 <pre></pre>
 </div>
 <div created="20200827210410769" modified="20200827210412400" title="$:/theme">
@@ -10915,6 +10917,9 @@ Use as necessary as opposed to trying to update interfaces
 Schedulers send tasks to works and can be manipulated from a web server UI. There exists a number of backend implementations.
 
 [[https://github.com/Edwardbafford/General/tree/master/airflow]]</pre>
+</div>
+<div created="20220801233537513" modified="20220801233650344" title="Amazon Athena">
+<pre>Serverless query service to perform analytics against S3 objects.</pre>
 </div>
 <div created="20220503232254667" modified="20220712223942022" title="Amazon Aurora">
 <pre>Proprietary DBMS
@@ -11375,7 +11380,7 @@ When to scale up or down. Can be integrated with resources metrics or [[Cloud Wa
 
 A configurable amount of time where scaling actions are ignored to allow the system to stabilize.</pre>
 </div>
-<div created="20220403001044378" modified="20220728225635177" title="AWS">
+<div created="20220403001044378" modified="20220801233708922" title="AWS">
 <pre>!! ''Account''
 
 To begin leveraging AWS services an [[account|AWS Account]] must first be created.
@@ -11433,6 +11438,7 @@ Out of the regionally scoped services, a service can run across all [[availabili
 !! ''Storage''
 
 * [[S3]]
+** [[Athena|Amazon Athena]]
 
 !!! ''Block Storage''
 
@@ -17618,7 +17624,7 @@ Use - for monitoring private hosted zones
 
 </pre>
 </div>
-<div created="20220503234847949" modified="20220727000652650" title="S3">
+<div created="20220503234847949" modified="20220801233209060" title="S3">
 <pre>! ''Simple Storage Service''
 
 Infinitely scaling object storage service.
@@ -17626,6 +17632,8 @@ Infinitely scaling object storage service.
 Can be used to expose front end website.
 
 ''Strong consistency'' - reads after a write or delete always receives the latest version.
+
+All of them have ''high durability'' and ''high availability''.
 
 !! ''Bucket''
 
@@ -17659,6 +17667,23 @@ Directories don't actually exist
 * Tags - key/value pair
 * Version ID (if enabled)
 
+!! ''Performance''
+
+No limits to the number of prefixes in a bucket
+
+* 3,500 PUT/COPY/POST/DELETE requests per second per prefix
+* 5,500 GET/HEAD requests per second per prefix
+
+''Multi-Part upload'' upload file in parallel.
+
+''Transfer Acceleration'' upload to edge locations to minimize distance traveled across public networks.
+
+Create GET requests in parallel by selecting byte ranges of the file.
+
+''Byte-Range Fetches'' can be used to retrieve only part of the object.
+
+''S3 Select'' filters data on the server side. 
+
 !! ''Versioning''
 
 Same key overwrite will increment the version while keeping track of old versions.
@@ -17668,6 +17693,64 @@ Enabled at the bucket level.
 Unversioned files have a version of null if enabled.
 
 Suspending versioning does not delete the previous versions.
+
+!! ''Storage Classes''
+
+Storage classes are chosen for each object. 
+
+Objects can be moved between storage classes manually or automatically.
+
+!!! Standard
+
+* stored across 3 availability zones
+* low latency and high throughput
+
+!!! Infrequent Access
+
+* lower storage cost
+* higher retrieval cost
+
+!!! One-zone Infrequent Access
+
+* infrequent access features
+* only one availability zone
+
+!!! Glacier Instant Retrieval
+
+* Cheap
+* Minimum storage duration of 90 days
+
+!!! Glacier Flexible Retrieval
+
+* Cheaper
+* Retrieval
+** Expedited (1 to 5 minutes)
+** Standard (3 to 5 hours)
+** Bulk (5 to 12 hours)
+* Minimum storage duration of 90 days
+
+!!! Glacier Deep Archive
+
+* Cheapest
+* Retrieval
+** Standard (12 hours)
+** Bulk (48 hours)
+* Minimum storage duration of 180 days
+
+!!! Intelligent Tiering
+
+* Adjusts object storage class based on usage patterns
+* Small monthly fee
+* No retrieval charges
+
+!!! ''Lifecycle Rules''
+
+Applied to tags or bucket prefixes.
+
+''Transition actions'' defines when objects are transitioned to another storage
+class.
+
+''Expiration actions'' configure objects to expire (delete) after some time
 
 !! ''Encryption''
 
@@ -17689,6 +17772,8 @@ Object is encrypted server side.
 
 Must set header: “x-amz-server-side-encryption&quot;: ”aws:kms&quot;
 
+Can run unto KMS limit issues.
+
 !!! ''SSE-C''
 
 Server-side encryption using data keys fully managed by the customer outside of AWS.
@@ -17707,11 +17792,31 @@ Send encrypted key to bucket.
 
 HTTP and HTTPS allowed.
 
+!!! ''Default Encryption''
+
+S3 automatically encrypts uploaded objects.
+
+!! ''Replication''
+
+Asynchronously replicate objects on another bucket.
+
+Must enable versioning in source and destination buckets.
+
+Must give proper IAM permissions to S3.
+
+Only new objects are replicated. ''Batch replication'' replicates existing objects and objects that failed replication.
+
+Replication is not chained.
+
+Cross Region Replication (CRR)
+
+Same Region Replication (SRR)
+
+!! ''Event Notifications''
+
+S3 activities can create events which are sent to ~EventBridge, [[SQS|SQS]], [[SNS|SNS]], and [[Lambda Function|AWS Lambda]].
+
 !! ''Security''
-
-!!! ''IAM policies''
-
-Which API calls should be allowed for a specific user from IAM console
 
 !!! ''Bucket Policies''
 
@@ -17753,11 +17858,24 @@ Support access via non-public [[VPC|VPC]] endpoints.
 * S3 Access Logs can be stored in other S3 bucket
 * API calls can be logged in AWS ~CloudTrail
 
-!!! ''User Security''
+!!! ''MFA Delete''
 
-''MFA Delete'' - MFA can be required in versioned buckets to delete objects.
+Forces a user to generate a code on a device before doing important operations.
 
-''Pre-Signed URLs'' - URLs that are valid only for a limited time.
+Versioning must be enabled.
+
+Needed for
+
+* permanently delete an object version
+* suspend versioning on the bucket
+
+MFA-Delete currently can only be enabled using the CLI.
+
+Only the root account of the bucket owner can enable/disable MFA-Delete.
+
+!!! ''Pre-Signed URLs''
+
+URLs that are valid only for a limited time.
 
 !!! ''CORS''
 
@@ -17772,38 +17890,7 @@ Web Browsers will block requests to other origins while executing code from a ma
 * Access-Control-Allow-Origin
 * Access-Control-Allow-Methods
 
-Can enable cross origin access from main origins within S3 buckets.
-
-!! ''Storage Classes''
-
-!!! Standard
-
-* stored across 3 availability zones
-* high availability
-
-!!! Infrequent Access
-
-* lower storage cost
-* higher retrieval cost
-
-!!! One-zone Infrequent Access
-
-* infrequent access features
-* only one availability zone
-
-!!! Intelligent Tiering
-
-* Adjusts S3 storage class based on usage patterns
-
-!!! Glacier
-
-* Cheap
-* Takes minutes to hours to retrieve data
-
-!!! Glacier Deep Archive
-
-* Cheapest
-* Up to 12 hours to retrieve data</pre>
+Can enable cross origin access from main origins within S3 buckets.</pre>
 </div>
 <div created="20220404233707751" modified="20220621001113338" title="Security Groups">
 <pre>Acts as a reusable firewall ruleset that can be applied to [[EC2]] instances.
