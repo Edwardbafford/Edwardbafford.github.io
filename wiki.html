@@ -10706,7 +10706,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20220728222659252" list="Topics [[Technology Catalog]] AWS [[To Do]]" modified="20220801233346165" title="$:/StoryList">
+<div created="20220803230847107" list="Topics [[Technology Catalog]] AWS Cloudfront [[To Do]]" modified="20220803231017911" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20201012173622690" modified="20210901193831232" title="$:/temp/advancedsearch">
@@ -11380,7 +11380,7 @@ When to scale up or down. Can be integrated with resources metrics or [[Cloud Wa
 
 A configurable amount of time where scaling actions are ignored to allow the system to stabilize.</pre>
 </div>
-<div created="20220403001044378" modified="20220801233708922" title="AWS">
+<div created="20220403001044378" modified="20220803231014371" title="AWS">
 <pre>!! ''Account''
 
 To begin leveraging AWS services an [[account|AWS Account]] must first be created.
@@ -11423,10 +11423,11 @@ Out of the regionally scoped services, a service can run across all [[availabili
 
 * [[IAM|Identity Access Management]]
 
-!! ''Networking''
+!! ''Network''
 
 * [[VPC]]
 * [[Route 53]]
+* [[Cloudfront]]
 
 !! ''Compute''
 
@@ -11594,11 +11595,10 @@ Policies applied to groups will be applied to all users.</pre>
 <div created="20220508233408289" modified="20220508233417740" title="AWS Guard Duty">
 <pre>Intelligent, automated threat detection service</pre>
 </div>
-<div created="20220616211641998" modified="20220720230338353" tags="" title="AWS Infrastructure">
+<div created="20220616211641998" modified="20220803230923831" tags="" title="AWS Infrastructure">
 <pre>!! ''Services''
 
 * [[Outposts]]
-* [[Cloudfront]]
 
 !! ''Automation''
 
@@ -12533,10 +12533,60 @@ Define infrastructure specification as a template which is processed and created
 
 ''Dashboard'' - view resource metrics</pre>
 </div>
-<div created="20220404005327220" modified="20220404005628984" title="Cloudfront">
-<pre>CDN Service
+<div created="20220404005327220" modified="20220803232747838" title="Cloudfront">
+<pre>Content Delivery Network (CDN)
 
-Cache web files closer to some customers in &quot;edge locations&quot;.
+Caches files in edge locations for improved performance.
+
+~CloudFront is a global service.
+
+''Distribution'' is essentially an instance of ~CloudFront with its own configuration.
+
+''Origin'' a backend for the ~CloudFront distribution to link with.
+
+* S3 Bucket
+** Uses ''Origin Access Identity''
+* Custom HTTP backend
+
+''Origin Groups'' can be used to assign a backup origin in case of a failure.
+
+''Geo Restriction'' can be used to whitelist or blacklist countries from a ~CloundFront distribution. The “country” is determined using a 3rd party Geo-IP database.
+
+''Field Level Encryption'' allows you to encrypt HTTP fields when communicating with an HTTP origin.
+
+!! ''Caching''
+
+Control long an edge location caches the files with a ''TTL'' setting.
+
+Caches can be invalidated with API calls or through the UI, forcing a refresh.
+
+!! ''Signing''
+
+~CloudFront requests can be signed in order to restrict user access.
+
+Can set a time limit for the access.
+
+''Signed URL'' is for a single file.
+
+''Signed Cookie'' is for multiple files. 
+
+~CloudFront is given a public key. Client applications then use the private to create signatures and pass them out to users which are verified by ~CloudFront.
+
+Link a public key to ~CloudFront via
+
+* ''Trusted key group''
+* AWS Root Account
+
+!! ''Pricing''
+
+Pricing varies for each edge location.
+
+Price classes will distribute files to different amount of edge locations
+
+* All regions
+* 200 least expensive
+* 100 least expensive
+
 
 </pre>
 </div>
