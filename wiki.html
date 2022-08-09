@@ -307,8 +307,6 @@ Error message and password prompt
 
 <li>AWS Edge Location</li>
 
-<li>AWS Fargate</li>
-
 <li>AWS Group</li>
 
 <li>AWS Guard Duty</li>
@@ -10706,7 +10704,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20220803230847107" list="Topics [[Technology Catalog]] AWS Cloudfront [[To Do]]" modified="20220803231017911" title="$:/StoryList">
+<div created="20220803230847107" list="Topics [[Technology Catalog]] AWS EKS [[To Do]]" modified="20220808235735321" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20201012173622690" modified="20210901193831232" title="$:/temp/advancedsearch">
@@ -11380,7 +11378,7 @@ When to scale up or down. Can be integrated with resources metrics or [[Cloud Wa
 
 A configurable amount of time where scaling actions are ignored to allow the system to stabilize.</pre>
 </div>
-<div created="20220403001044378" modified="20220803231014371" title="AWS">
+<div created="20220403001044378" modified="20220808230408517" title="AWS">
 <pre>!! ''Account''
 
 To begin leveraging AWS services an [[account|AWS Account]] must first be created.
@@ -11435,6 +11433,12 @@ Out of the regionally scoped services, a service can run across all [[availabili
 ** [[AMI|Amazon Machine Image]]
 ** [[ELB]]
 ** [[ASG|Auto Scaling Groups]]
+
+!!! Containers
+
+* [[ECR]]
+* [[ECS]]
+* [[EKS]]
 
 !! ''Storage''
 
@@ -11550,20 +11554,13 @@ Already authenticated by using the session of the currently logged in user.
 
 Able to upload and download files within the console.</pre>
 </div>
-<div created="20220616212151525" modified="20220719220626280" title="AWS Compute">
+<div created="20220616212151525" modified="20220808230322540" title="AWS Compute">
 <pre>* [[AWS Lambda]]
 
 !! Events
 
 * [[SQS]]
-* [[SNS]]
-
-!! Containers
-
-* [[ECR]]
-* [[ECS]]
-* [[EKS]]
-* [[AWS Fargate]]</pre>
+* [[SNS]]</pre>
 </div>
 <div created="20220518223609786" modified="20220518223639606" title="AWS Cost Explorer">
 <pre>Service for visualizing, understanding, and managing costs
@@ -11581,11 +11578,6 @@ Account level.</pre>
 </div>
 <div created="20220618174845181" modified="20220618174857630" title="AWS Edge Location">
 <pre>Also known as a point of presence.</pre>
-</div>
-<div created="20220403001957984" modified="20220403002055458" title="AWS Fargate">
-<pre>Use [[ECS]] or [[EKS]] services without explicitly provisioning [[EC2]] instances.
-
-AWS dynamically provides compute resources and charges the client based on usage.</pre>
 </div>
 <div created="20220619222610916" modified="20220619222612584" title="AWS Group">
 <pre>Collection of users.
@@ -14026,17 +14018,110 @@ Non-critical needs that are the resilient to failure.</pre>
 
 Runs with root privileges. </pre>
 </div>
-<div created="20220403001804099" modified="20220403173202458" title="ECR">
+<div created="20220403001804099" modified="20220808235725045" title="ECR">
 <pre>!! ''Elastic Container Registry''
 
-Cloud based docker registry</pre>
+Cloud based docker registry. Store and manage Docker images on AWS.
+
+Private or Public repository.
+
+Integrates with Docker CLI.</pre>
 </div>
-<div created="20220403001825151" modified="20220403173227025" title="ECS">
+<div created="20220403001825151" modified="20220808235610869" title="ECS">
 <pre>!! ''Elastic Container Service''
 
-High performance, scalable, docker container management system for deploying docker based applications.
+Container management service.
 
-Runs on top of [[EC2]] instances.</pre>
+''Tasks'' can be created and launched on ''clusters'' where they are managed by AWS.
+
+!! ''Launch Types''
+
+An ''EC2 launch type'' forces the user to provision and maintain the infrastructure via [[EC2]] instances.
+
+The ''Fargate launch type'' allows AWS to automatically provision infrastructure based on the number of ECS tasks needed.
+
+!! ''Permissions''
+
+The ''EC2 Instance Profile'' is used in the EC2 launch type to define the permissions of the EC2 instances.
+
+''ECS Task Role'' defines permissions for each ECS task.
+
+!! ''Load Balancing''
+
+ECS service allows tasks to integrate with [[ALB|Application Load Balancer]] and [[NLB|Network Load Balancer]].
+
+For EC2 launch types the ports are dynamically created for each task and linked with load balancer. EC2 security groups must allow load balancer to connect on any port.
+
+For Fargate each task as a unique IP with a defined set of ports. Set up security groups accordingly and assign to task and load balancer.
+
+!! ''Data Volumes''
+
+[[EFS]] data volumes can be linked to ECS tasks and shared between them. Works for EC2 and Fargate.
+
+S3 cannot be mounted to ECS tasks.
+
+Use ephemeral bind mounts to share between containers in the same task. Deleted when task stops.
+
+!! ''Auto Scaling''
+
+Automatically scale the number of ECS tasks.
+
+Scale based on CPU, Memory, or ALB Requests per Target.
+
+''Scaling types''
+
+* Target - maintain metric value
+* Step - react in certain ways when certain metrics are hit
+* Scheduled - scale at a date/time
+
+''Automatically Scale EC2 Instances''
+
+Only relevant for EC2 launch type.
+
+* [[Auto Scaling Groups]]
+* ECS Cluster Capacity Provider
+
+!! ''Deployments''
+
+''Rolling Update'' set a min and max % of tasks to keep during the deployment.
+
+ECS tasks that complete a task and stop can be invoked by Event Bridge.
+
+!! ''Task Definitions''
+
+Task definitions are metadata in JSON form to tell ECS how to run a Docker container.
+
+* Image
+* Port
+* Memory and CPU
+* Environment variables
+* IAM Role
+
+Can define up to 10 containers in one task.
+
+!! ''Environment Variables''
+
+* Hardcoded in ECS task definition
+* SSM Parameter Store/Secrets Manager for secure passwords
+
+!! ''Task Placement''
+
+Only relevant for EC2 launch type.
+
+Placement process - find instances that satisfy cpu, memory, and port requirements. filter out instances that don't satisfy ''placement constraints''. Prioritize based on ''placement strategies''.
+
+''Placement Constraints''
+
+* distinctInstance - Tasks are placed on a different EC2 instance
+* memberOf - Tasks are placed on EC2 instances that satisfy a specified expression
+
+''Placement Strategies''
+
+* Binpack - place on instances with least amount of CPU and RAM.
+* Random
+* Spread - spread out based on value
+
+Strategies can be combined.</pre>
 </div>
 <div created="20220503230939510" modified="20220627232927226" title="EFS">
 <pre>!! ''Elastic File System''
@@ -14083,12 +14168,12 @@ Enable automatic switch based on usage through a ''Lifecycle Policy''
 * Regional
 * One AZ - cheaper but less available</pre>
 </div>
-<div created="20220403001911772" modified="20220403173247922" title="EKS">
+<div created="20220403001911772" modified="20220808235852577" title="EKS">
 <pre>!! ''Elastic Kubernetes Service''
 
 Service for easily deploying [[K8s|Kubernetes]] clusters in the cloud. 
 
-Needs to be provisioned [[EC2|EC2]] instances.</pre>
+Users can manually provision [[EC2]] instances or deploy as serverless with Fargate.</pre>
 </div>
 <div created="20220404005904050" modified="20220404010037022" title="Elastic Beanstalk">
 <pre>Configuration which enables easy deployment of production ready applications.
