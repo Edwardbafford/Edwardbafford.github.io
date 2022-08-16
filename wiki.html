@@ -427,6 +427,20 @@ Error message and password prompt
 
 <li>Code Review</li>
 
+<li>CodeArtifact</li>
+
+<li>CodeBuild</li>
+
+<li>CodeCommit</li>
+
+<li>CodeDeploy</li>
+
+<li>CodeGuru</li>
+
+<li>CodePipeline</li>
+
+<li>CodeStar</li>
+
 <li>Command</li>
 
 <li>Composite</li>
@@ -10704,7 +10718,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20220803230847107" list="Topics [[Technology Catalog]] AWS [[Elastic Beanstalk]] [[AWS Infrastructure]] [[To Do]]" modified="20220812213117624" title="$:/StoryList">
+<div created="20220803230847107" list="Topics [[Technology Catalog]] AWS [[To Do]]" modified="20220816221758458" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20201012173622690" modified="20210901193831232" title="$:/temp/advancedsearch">
@@ -11378,7 +11392,7 @@ When to scale up or down. Can be integrated with resources metrics or [[Cloud Wa
 
 A configurable amount of time where scaling actions are ignored to allow the system to stabilize.</pre>
 </div>
-<div created="20220403001044378" modified="20220812221959895" title="AWS">
+<div created="20220403001044378" modified="20220816221907598" title="AWS">
 <pre>!! ''Account''
 
 To begin leveraging AWS services an [[account|AWS Account]] must first be created.
@@ -11463,6 +11477,13 @@ Out of the regionally scoped services, a service can run across all [[availabili
 !! ''Devops''
 
 * [[Elastic Beanstalk]]
+* [[CodeCommit]]
+* [[CodeBuild]]
+* [[CodePipeline]]
+* [[CodeDeploy]]
+* [[CodeStar]]
+* [[CodeArtifact]]
+* [[CodeGuru]]
 
 !! ''Software Developer''
 
@@ -12600,6 +12621,130 @@ Aspects of the review:
 
 * [[Security|Application Security]]
 * Application design
+
+</pre>
+</div>
+<div created="20220816221641952" modified="20220816221742173" title="CodeArtifact">
+<pre>Serverless managed Artifact management service.
+
+Publish artifacts to internally and proxy public artifact repositories and permanently store there.</pre>
+</div>
+<div created="20220816215037547" modified="20220816215801095" title="CodeBuild">
+<pre>Serverless and managed CI service.
+
+Charged per minute of build/test time.
+
+Uses docker under the hood to create environments which support multiple languages or custom docker.
+
+Imports source code from repository.
+
+Build instructions defined by ''buildspec.yml''
+
+* environment
+** variables
+** secrets
+* phases
+** install
+** pre_build
+** Build
+** post_build
+* artifacts
+* cache
+
+Output logs can be stored in Amazon S3 &amp; ~CloudWatch Logs.
+
+Use CloudWatch Metrics to monitor build statistics.
+
+Can build CodeBuild docker images locally using docker images for deep troubleshooting.
+
+Can build inside VPC with Security Group configuration for integration with other services.</pre>
+</div>
+<div created="20220816213846247" modified="20220816214234035" title="CodeCommit">
+<pre>AWS hosted Git repository.
+
+Scale-able and fully managed.
+
+Interact via SSH or HTTPS protocols.
+
+Authorization via [[IAM|Identity Access Management]].
+
+Repository is automatically encrypted at rest.</pre>
+</div>
+<div created="20220816215849439" modified="20220816221247539" title="CodeDeploy">
+<pre>Tool for automating deployments.
+
+~CodeDeploy agent must be deployed to all servers where deployment is supposed to occur. Agent polls ~CodeDeploy service for any source updates.Agents run appspec.yml and reports back to ~CodeDeploy.
+
+! ''Components''
+
+* Application - unique name
+* Compute Platform
+* Deployment configuration
+* Deployment group - group of EC2 instances
+* Deployment type
+* IAM Instance profile - EC2 instance permissions
+* Application revision - application code + appspec.yml file
+* Service role - IAM Role for ~CodeDeploy
+* Target Revision – the most recent revision that you want to deploy
+
+''appspec.yml''
+
+* files - source and destination
+* hooks - instructions for different steps
+
+! ''Deployment Configuration''
+
+In-place or blue-green deployment.
+
+!! ''In Place''
+
+The amount of instances to deploy to at once.
+
+* one at a time
+* half at a time
+* all at once
+* custom percent
+
+Failures automatically stop the deployment.
+
+!! ''Blue-Green''
+
+Create new instances then switch over to them.
+
+Does not work with on-premise servers.
+
+!! ''Rollbacks''
+
+Automatically, manually, or disabled.</pre>
+</div>
+<div created="20220816221815071" modified="20220816221901597" title="CodeGuru">
+<pre>An ML-powered service for automated code reviews and application performance recommendations.
+
+* ~CodeGuru Reviewer: automated code reviews for static code analysis
+* ~CodeGuru Profiler: visibility/recommendations about application performance during runtime</pre>
+</div>
+<div created="20220816214401093" modified="20220816214946147" title="CodePipeline">
+<pre>Workflow management tool for coordinating CICD pipelines.
+
+''Stages'' can be defined and linked sequentially or in parallel.
+
+''Artifacts'' can be created or referenced by stages from [[S3]].
+
+Needs proper IAM permissions.
+
+Can link events to ~CloudWatch or view in the UI for troubleshooting.</pre>
+</div>
+<div created="20220816221329346" modified="20220816221602774" title="CodeStar">
+<pre>Pre-designed CICD packages that combine AWS ~DevOps tools and work well OOTB.
+
+Other features
+
+* Issue Tracking
+* IDE
+
+Free service, pay only for underlying services.
+
+Limited flexibility.
 
 </pre>
 </div>
@@ -14178,7 +14323,7 @@ Service for easily deploying [[K8s|Kubernetes]] clusters in the cloud.
 
 Users can manually provision [[EC2]] instances or deploy as serverless with Fargate.</pre>
 </div>
-<div created="20220404005904050" modified="20220812221956056" title="Elastic Beanstalk">
+<div created="20220404005904050" modified="20220812223830386" title="Elastic Beanstalk">
 <pre>A managed service for helping automate application deployments.
 
 Defined through a configuration.
@@ -14203,7 +14348,7 @@ Configuration available for incorporating AWS components such as [[Auto Scaling 
 
 Versions can be stored in [[S3]].
 
-''Extensions'' can be used to further configure a deployment without using the UI, .ebextensions and .config which use YAML or JSON formatting. Extensions are automatically deleted if the environment is destroyed.
+''Extensions'' can be used to further configure a deployment without using the UI, .ebextensions directory and *.config which use YAML or JSON formatting. Extensions are automatically deleted if the environment is destroyed.
 
 Under the hood EB uses [[Cloud Formation]].
 
