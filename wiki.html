@@ -697,6 +697,12 @@ Error message and password prompt
 
 <li>Key Range Partitioning</li>
 
+<li>Kinesis Analytics</li>
+
+<li>Kinesis Data Streams</li>
+
+<li>Kinesis Firehose</li>
+
 <li>Kneser-Ney Smoothing (N-grams)</li>
 
 <li>Knowledge Base</li>
@@ -10722,7 +10728,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20220820182456823" list="Topics [[Technology Catalog]] AWS [[Cloud Trail]] [[To Do]]" modified="20220823141000946" title="$:/StoryList">
+<div created="20220820182456823" list="Topics [[Technology Catalog]] AWS SNS [[To Do]]" modified="20220831223711803" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20201012173622690" modified="20210901193831232" title="$:/temp/advancedsearch">
@@ -11396,7 +11402,7 @@ When to scale up or down. Can be integrated with resources metrics or [[Cloud Wa
 
 A configurable amount of time where scaling actions are ignored to allow the system to stabilize.</pre>
 </div>
-<div created="20220403001044378" modified="20220823134242035" title="AWS">
+<div created="20220403001044378" modified="20220831223705585" title="AWS">
 <pre>!! ''Account''
 
 To begin leveraging AWS services an [[account|AWS Account]] must first be created.
@@ -11457,6 +11463,14 @@ Out of the regionally scoped services, a service can run across all [[availabili
 * [[ECR]]
 * [[ECS]]
 * [[EKS]]
+
+!! ''Integration''
+
+* [[SQS]]
+* [[SNS]]
+* [[Kinesis Data Streams]]
+* [[Kinesis Firehose]]
+* [[Kinesis Analytics]]
 
 !! ''Storage''
 
@@ -11591,13 +11605,8 @@ Already authenticated by using the session of the currently logged in user.
 
 Able to upload and download files within the console.</pre>
 </div>
-<div created="20220616212151525" modified="20220808230322540" title="AWS Compute">
-<pre>* [[AWS Lambda]]
-
-!! Events
-
-* [[SQS]]
-* [[SNS]]</pre>
+<div created="20220616212151525" modified="20220831212147885" title="AWS Compute">
+<pre>* [[AWS Lambda]]</pre>
 </div>
 <div created="20220518223609786" modified="20220518223639606" title="AWS Cost Explorer">
 <pre>Service for visualizing, understanding, and managing costs
@@ -15731,6 +15740,119 @@ This implementation is prone to &quot;hot spots&quot; where some partitions rece
 
 [[Diagram|https://drive.google.com/file/d/1nLf6h7XzPEkmJICMnfUtP5IfmB40HlZU/view?usp=sharing]]</pre>
 </div>
+<div created="20220831223544561" modified="20220831223701530" title="Kinesis Analytics">
+<pre>Managed service for performing real time analysis to streaming data.
+
+Leverages SQL.</pre>
+</div>
+<div created="20220831220557196" modified="20220831223249186" title="Kinesis Data Streams">
+<pre>Managed service for streaming data.
+
+Data retention between 1 day to 365 days
+
+Ability to reprocess (replay) data
+
+Once data is inserted in Kinesis, it can’t be deleted (immutability)
+
+Data is partitioned into shards are order is retained per shard.
+
+Shards can be split or merged.
+
+! ''Producers''
+
+* AWS SDK
+* Kinesis Producer Library (KPL)
+* Kinesis Agent
+
+Use ~PutRecord API to send messages, can be batched.
+
+Message consists of sequence number, partition key, data blob up to 1 MB
+
+Partition key is hashed to determine which partition. If partition keys are the same they can create a bloated or hot partition.
+
+~ProvisionedThroughputExceeded if too much data is being sent.
+
+! ''Consumers''
+
+* Kinesis Client Library (KCL)
+* AWS SDK
+* AWS Lambda
+* Kinesis Data Firehose
+* Kinesis Data Analytics
+
+!! ''Shared fan out consumer'' 
+
+Classic implementation
+
+Shares output throughput across all consumers for each shard
+
+Consumers poll the shard using ~GetRecords API
+
+Max. 5 ~GetRecords API calls/sec
+
+Cheaper
+
+!! ''Enhanced fan out consumer'' 
+
+Each get a constant output rate even when sharing a shard
+
+Shard pushes data to consumers
+
+More expensive
+
+! ''Modes''
+
+!! ''Provisioned''
+
+Choose the number of shards.
+
+1 MB/s/shard or 1000 messages/s/shard input
+
+2 MB/s/shard output
+
+Pay per shard per hour
+
+!! ''On-demand''
+
+Capacity is managed by AWS
+
+Default input 4 MB/s or 4000 records per second
+
+Pay flat rate per stream plus data in and out
+
+! ''Security''
+
+HTTPS in flight
+
+KMS encryption at rest
+
+Connect through VPC
+
+! ''Kinesis Client Library''
+
+Java library that helps read from a Kinesis Data Stream with distributed applications
+
+Shards can only be read by one KCL instance
+
+Progress is checkpointed using ~DynamoDB
+
+</pre>
+</div>
+<div created="20220831223315368" modified="20220831223507164" title="Kinesis Firehose">
+<pre>Fully managed service for executing efficient batch writes into:
+
+* AWS services
+* 3rd party tools
+* Custom endpoints
+
+Pay for data
+
+Near real time
+
+Supports lots of formats
+
+Supports custom data transformations</pre>
+</div>
 <div created="20201214221148548" modified="20201214224354156" title="Kneser-Ney Smoothing (N-grams)">
 <pre>* A recursive form of interpolation
 * High order N-gram probabilities are discounted in a way that minimize the disruption to high count N-grams
@@ -18888,16 +19010,30 @@ Initialize word vectors for each word in the vocabulary, $$V$$.
 
 For each word token in a sentence, map it to its embedding, $$w$$, then create a set of matching context vectors, where each context vector is just a word vector of other words in the context window.</pre>
 </div>
-<div created="20220403002216557" modified="20220403173131690" title="SNS">
-<pre>!! ''Simple Notification Service''
+<div created="20220403002216557" modified="20220831224347758" title="SNS">
+<pre>Notification service that sends events to subscribers.
 
-Fan out style notification system
+Subscribers subscribe to a topic.
 
-* Events are processed by all consumers
-* Consumers are notified of events
-* Different topics consumers can subscribe to
+JSON filter policy can be used to filter messages to subscribers.
 
-Useful for notifying downstream systems or clients</pre>
+! ''Security''
+
+HTTPS in flight
+
+KMS at rest
+
+Client side encryption is possible
+
+Access policies can be used for cross account or across service access
+
+! ''FIFO''
+
+Allow integration with SQS FIFO, that's the only subscriber type though.
+
+Has message groups and deduplication.
+
+Limited throughput, same as SQS FIFO.</pre>
 </div>
 <div created="20201105170343744" modified="20201105171609504" tags="" title="SOAP">
 <pre>HTTP, XML service specification
@@ -19000,15 +19136,90 @@ Figure out how your application will enforce security then implement it using Sp
 
 Enforce authentication at the method level for more granular security</pre>
 </div>
-<div created="20220403002115596" modified="20220403173117141" title="SQS">
-<pre>!! ''Simple Queue Service''
+<div created="20220403002115596" modified="20220831220431214" title="SQS">
+<pre>Fully managed message queue service.
 
-Load balance style queue
+Unlimited throughput and number of messages.
 
-* Events are processed by one consumer
-* Consumers pull from the queue as they are ready
+Message retention - default 4 days, maximum 14 days
 
-Used to create a buffer between application components. </pre>
+Max 256 KB per message
+
+Messages can be processed more than once and ordering is not guaranteed by default.
+
+Send messages using ~SendMessage API
+
+Consume messages by polling SQS. Maximum 10 messages returned in one request. Consumer must delete message from SQS by using ~DeleteMessage API.
+
+~CloudWatch can monitor the number of messages in a SQS queue.
+
+HTTPS while using API.
+
+Can encrypt messages with KMS while being stored in the queue.
+
+Access Policies can be used to allow cross account access or access from other services.
+
+~DelaySeconds parameter determines how long until a message can be viewed by a consumer. Default is 0.
+
+~WaitTimeSeconds controls how long the consumer poll should connect to the queue to wait for messages. Between 1 and 20 seconds.
+
+SQS Extended Client allows user to send large messages by linking the queue message with an S3 object.
+
+! ''API''
+
+* ~CreateQueue (~MessageRetentionPeriod), ~DeleteQueue
+* ~PurgeQueue: delete all the messages in queue
+* ~SendMessage (~DelaySeconds), ~ReceiveMessage, ~DeleteMessage
+* ~MaxNumberOfMessages: default 1, max 10 (for ~ReceiveMessage API)
+* ~ReceiveMessageWaitTimeSeconds: Long Polling
+* ~ChangeMessageVisibility: change the message timeout
+* Batch APIs for ~SendMessage, ~DeleteMessage, ~ChangeMessageVisibility helps decrease your costs
+
+
+! ''Message visibility timeout''
+
+How long after a message is polled will it be unavailable to other consumers. 
+
+Default is 30 seconds. 
+
+After it can be reprocessed. 
+
+Use ~ChangeMessageVisibility API to get more time to process and delete message before becoming visible to other consumers. 
+
+! ''Dead Letter Queue''
+
+Messages can be sent to a dead letter queue after it has been processed a certain number of times without being deleted.
+
+~MaximumReceives threshold defines this
+
+Useful for debugging. 
+
+Messages automatically deleted from queue.
+
+Redrive to Source feature allows dead letter queue messages to be pushed back into the main queue for reprocessing.
+
+! ''FIFO Queue''
+
+Limited throughput: 300 msg/s without batching, 3000 msg/s with
+
+Messages can be processed only one time
+
+Ordering is maintained
+
+Deduplication feature prevents same message from being sent twice within a certain amount of time. Default is 5 minutes.
+
+* hash
+* provide deduplication id
+
+!! ''Message Grouping''
+
+Messages can be organized into topics. 
+
+Topic defined by ~MessageGroupID.
+
+Only one consumer per topic.
+
+</pre>
 </div>
 <div created="20210902141343975" modified="20210902141344843" title="Stacking">
 <pre>Model outputs are fed into other models as input features.</pre>
