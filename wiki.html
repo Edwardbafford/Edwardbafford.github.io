@@ -299,8 +299,6 @@ Error message and password prompt
 
 <li>AWS CloudShell</li>
 
-<li>AWS Compute</li>
-
 <li>AWS Cost Explorer</li>
 
 <li>AWS Credentials Report</li>
@@ -10728,7 +10726,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20220820182456823" list="Topics [[Technology Catalog]] AWS SNS [[To Do]]" modified="20220831223711803" title="$:/StoryList">
+<div created="20220820182456823" list="Topics [[Technology Catalog]] AWS [[AWS Lambda]] [[To Do]]" modified="20220906212437503" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20201012173622690" modified="20210901193831232" title="$:/temp/advancedsearch">
@@ -11402,7 +11400,7 @@ When to scale up or down. Can be integrated with resources metrics or [[Cloud Wa
 
 A configurable amount of time where scaling actions are ignored to allow the system to stabilize.</pre>
 </div>
-<div created="20220403001044378" modified="20220831223705585" title="AWS">
+<div created="20220403001044378" modified="20220906230321622" title="AWS">
 <pre>!! ''Account''
 
 To begin leveraging AWS services an [[account|AWS Account]] must first be created.
@@ -11457,6 +11455,7 @@ Out of the regionally scoped services, a service can run across all [[availabili
 ** [[AMI|Amazon Machine Image]]
 ** [[ELB]]
 ** [[ASG|Auto Scaling Groups]]
+* [[AWS Lambda]]
 
 !!! Containers
 
@@ -11513,7 +11512,6 @@ Out of the regionally scoped services, a service can run across all [[availabili
 
 !! ''Software Developer''
 
-* [[Compute|AWS Compute]]
 * [[Storage|AWS Storage]]
 
 !! ''Devops''
@@ -11605,9 +11603,6 @@ Already authenticated by using the session of the currently logged in user.
 
 Able to upload and download files within the console.</pre>
 </div>
-<div created="20220616212151525" modified="20220831212147885" title="AWS Compute">
-<pre>* [[AWS Lambda]]</pre>
-</div>
 <div created="20220518223609786" modified="20220518223639606" title="AWS Cost Explorer">
 <pre>Service for visualizing, understanding, and managing costs
 
@@ -11662,10 +11657,139 @@ Policies applied to groups will be applied to all users.</pre>
 <div created="20220508233433535" modified="20220508233519838" title="AWS Inspector">
 <pre>Automated security inspection which generates a report which recommends security updates.</pre>
 </div>
-<div created="20220403001717983" modified="20220403001753426" title="AWS Lambda">
-<pre>Run code without provisioning [[EC2|EC2]] instances.
+<div created="20220403001717983" modified="20220906230313500" title="AWS Lambda">
+<pre>Functions deployed to the AWS Cloud.
 
-Deploy code and set triggers to run the code. Pay only for the compute that you need to use.</pre>
+Executed on-demand
+
+Time limited
+
+Scaled automatically
+
+Implementations: supported for many languages, custom runtime API, lambda container images
+
+Integrates with other services
+
+Billing: Pay per call, pay per GB-seconds (combination of memory usage and time)
+
+Lambda roles allows functions to interact with services.
+
+Resource based policies allow other services to interact with lambda.
+
+Pass in environment variables into the functions.
+
+You need to install the packages alongside your code and zip it together.
+
+Externalize dependencies into lambda layers
+
+Deploy lambda functions as containers
+
+! ''Synchronous Invocations''
+
+CLI, SDK, API Gateway, Application Load Balancer
+
+
+!! ''ALB Integration''
+
+Target group registers with Lambda function
+
+Allows lambda function to be invoked via HTTP
+
+HTTP converted to and from JSON
+
+Multiple headers or query parameters can be handled.
+
+!! ''~CloudFront Integration''
+
+Deploy lambda functions alongside CDN.
+
+Lambda function can operate on requests before or after ~CloudFront receives or responds to a request.
+
+! ''Asynchronous Invocations''
+
+Events are sent to internal queue then are handled by lambda functions.
+
+Functions can retry events.
+
+SQS or SNS dead letter queue can be created.
+
+!! ''S3 Events''
+
+Events created for different API calls - replication, removed, created, ...
+
+!! ''Event Source Mapping''
+
+Lamdba functions continuously read from queue or streams.
+
+Can be read in batches.
+
+!!! ''Errors''
+
+Errors by default cause the entire batch to be reprocessed. 
+
+Can be configured to discard old events, restrict number of retries, split the batch on error. 
+
+Discarded events can go to a destination. 
+
+Destination is recommended over a dead letter queue.
+
+! ''Logging &amp; Monitoring''
+
+Logs and metrics are stored in ~CloudWatch
+
+!! ''X-Ray''
+
+Enable daemon via config.
+
+Use X-Ray SDK within function.
+
+Important environment variables
+
+* _X_AMZN_TRACE_ID: contains the tracing header
+* AWS_XRAY_CONTEXT_MISSING: by default, LOG_ERROR
+* AWS_XRAY_DAEMON_ADDRESS: the X-Ray Daemon IP_ADDRESS:PORT
+
+! ''Networking''
+
+By default lambda functions are launched outside of your VPC
+
+Define VPC ID, subnets, security groups, and allow vpc access in role.
+
+Elastic network interface will be created within your VPC.
+
+Use NAT Gateway to link with the internet.
+
+VPC endpoints to link services privately.
+
+! ''Config''
+
+128 MB to 10 GB in 1 MB increments
+
+As more RAM is added more CPU is added
+
+Default timeout is 3 seconds, maximum is 15 minutes
+
+Execution context is a temporary runtime environment that initializes any external dependencies which are re-used for new invocations. Includes a tmp directory. 
+
+tmp directory has a max of 512 MB
+
+! ''Concurrency''
+
+Up to 1000 concurrent executions
+
+Can set a “reserved concurrency” at the function level to limit concurrency
+
+Throttle behavior - synchronous returns throttle error, asynchronous will cause batch failure
+
+Provisioned concurrency allocates instances before the function is invoked. 
+
+Otherwise everything has to get loaded when starting up (cold start)
+
+! ''Deployments''
+
+Versions are created for each publish and are immutable.
+
+Aliases point to version and can be referenced for a deployment</pre>
 </div>
 <div created="20220618183245885" modified="20220618183333085" title="AWS Management Console">
 <pre>Interact with AWS through a browser.
