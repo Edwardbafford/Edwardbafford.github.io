@@ -345,8 +345,6 @@ Error message and password prompt
 
 <li>AWS Shield</li>
 
-<li>AWS Storage</li>
-
 <li>AWS User</li>
 
 <li>Backoff Smoothing (N-grams)</li>
@@ -10726,7 +10724,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20220820182456823" list="Topics [[Technology Catalog]] AWS [[AWS Lambda]] [[To Do]]" modified="20220906212437503" title="$:/StoryList">
+<div created="20220820182456823" list="Topics [[Technology Catalog]] AWS [[To Do]]" modified="20220909223023265" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20201012173622690" modified="20210901193831232" title="$:/temp/advancedsearch">
@@ -10972,20 +10970,165 @@ Automated failover for master in less than
 <div created="20220503233359585" modified="20220503233406057" title="Amazon DocumentDB">
 <pre>Managed document database</pre>
 </div>
-<div created="20220503232601335" modified="20220503233151258" title="Amazon Dynamo DB">
-<pre>Key-value DBMS
+<div created="20220503232601335" modified="20220909224826934" title="Amazon Dynamo DB">
+<pre>Fully managed, highly available, automatically scale-able, no SQL database
 
-Fully managed service
+Consists of tables
 
-!!! ''Features''
+Each table has a primary key which must be decided at table creation
 
-* Automatically scaled
-* Fast response times
-* No sophisticated queries
-* No schema</pre>
+Each row has attibrutes
+
+Datatypes - scalar, document, set
+
+Primary keys types - partition or partition and sort
+
+Partition keys should be unique and diverse. They are hashed then based on the hash distributed to a partition. Same key goes to the same partition.
+
+Sort keys can be used for sorting or range queries
+
+! ''Modes''
+
+!! ''Provisioned''
+
+Provisioned mode users pay for provisioned read and write capacity units
+
+Read Capacity Units (RCU) – throughput for reads
+
+One Read Capacity Unit (RCU) represents one Strongly Consistent Read per second, or two Eventually Consistent Reads per second for an item up to 4 KB in size (round up)
+
+Write Capacity Units (WCU) – throughput for writes
+
+Calculate by one write per second for an
+item up to 1 KB in size (round up)
+
+Option to setup auto-scaling of throughput to meet demand 
+
+Throughput can be exceeded temporarily using “Burst Capacity”
+
+If Burst Capacity has been consumed, you’ll get a “~ProvisionedThroughputExceededException”
+
+!! ''On-demand''
+
+On-demand mode users pay for what you use but it's more expensive
+
+Charged for Read Request Units (RRU) and Write Request Units (WRU) used
+
+! ''Reads''
+
+Eventually Consistent Read is default and ensures eventual consistency
+
+Strongly Consistent Read, immediately consistent
+
+Set “~ConsistentRead” parameter to True in API calls
+
+! ''API''
+
+!! ''Write''
+
+* ~PutItem -Creates a new item or fully replace an old item
+* ~UpdateItem - Edits an existing item’s attributes or adds a new item if it doesn’t exist
+
+!! ''Read''
+
+* ~GetItem - Read based on Primary key
+** ~ProjectionExpression
+* Query
+** ~KeyConditionExpression for primary value
+** ~FilterExpression filter on attributes
+** limit result number
+** max of 1 MB
+** works with pagination
+* Scan - return entire table
+** limit, pagination, and 1 MB max
+** Parallel Scan to increase throughput and RCU used
+** Can use ~ProjectionExpression and ~FilterExpression
+
+~ProjectionExpression is used to retrieve only certain attributes
+
+!! ''Delete''
+
+* ~DeleteItem
+* ~DeleteTable
+
+!! ''Batch''
+
+* ~BatchItemWrite
+* ~BatchItemGet
+
+! ''Indexes''
+
+!! ''Local Secondary Index''
+
+Alternative Sort Key for your table
+
+Shares same partition key
+
+Up to 5 Local Secondary Indexes per table
+
+Must be defined at table creation time
+
+Uses the WCUs and RCUs of the main table
+
+!! ''Global Secondary Index''
+
+Alternative Primary Key
+
+Can be added/modified after table creation
+
+If the writes are throttled on the GSI, then the main table will be throttled!
+
+! ''Streams''
+
+Get an ordered stream of item-level modifications  in a table
+
+Interact with Lambda and Kinesis
+
+Data Retention for up to 24 hours
+
+Records are not retroactively populated
+
+Ability to choose the information that will be written to the stream - keys only, new image, old image, new and old image
+
+! ''CLI''
+
+!! ''Query''
+
+* --projection-expression
+* --filter-expression
+
+!! ''Pagination''
+
+* --page-size
+* --max-items
+* --starting-token
+
+! ''Transactions''
+
+Execute multiple operations as a transaction.
+
+Consumes 2x WCUs &amp; RCUs
+
+* ~TransactGetItems – one or more ~GetItem operations
+* ~TransactWriteItems – one or more ~PutItem, ~UpdateItem, and ~DeleteItem operations
+
+! ''Other''
+
+~PartiQL is SQL like language for querying tables
+
+“Conditional Writes” enforce optimistic locking using attribute versions
+
+Use Time To Live to automatically delete items after an expiry timestamp
+
+Expire timestamp is a number representing a Unix Epoch timestamp
+
+Backup and Restore feature available
+</pre>
 </div>
-<div created="20220503233812539" modified="20220503233829073" title="Amazon Dynamo DB Accelerator">
-<pre>[[Amazon Dynamo DB]] cache service</pre>
+<div created="20220503233812539" modified="20220909223234513" title="Amazon Dynamo DB Accelerator">
+<pre>Fully-managed, highly available, in-memory cache for ~DynamoDB
+
+Less ~DynamoDB reads</pre>
 </div>
 <div created="20220503233801087" modified="20220712234046876" title="Amazon ElastiCache">
 <pre>Managed cache services
@@ -11400,7 +11543,7 @@ When to scale up or down. Can be integrated with resources metrics or [[Cloud Wa
 
 A configurable amount of time where scaling actions are ignored to allow the system to stabilize.</pre>
 </div>
-<div created="20220403001044378" modified="20220906230321622" title="AWS">
+<div created="20220403001044378" modified="20220909224841067" title="AWS">
 <pre>!! ''Account''
 
 To begin leveraging AWS services an [[account|AWS Account]] must first be created.
@@ -11486,10 +11629,18 @@ Out of the regionally scoped services, a service can run across all [[availabili
 
 * [[RDS]]
 * [[Amazon Aurora]]
+* [[Amazon Dynamo DB]]
+* [[Amazon Redshift]]
+* [[Amazon DocumentDB]]
+* [[Amazon Neptune]]
+* [[QLDB]]
+* [[Amazon Managed Blockchain]]
+* [[DMS]]
 
 !!! ''Caches''
 
 * [[Amazon ElastiCache]]
+* [[Amazon Dynamo DB Accelerator]]
 
 !! ''Devops''
 
@@ -11509,10 +11660,6 @@ Out of the regionally scoped services, a service can run across all [[availabili
 * [[EventBridge|AWS EventBridge]]
 * [[Cloud Trail]]
 * [[X-Ray]]
-
-!! ''Software Developer''
-
-* [[Storage|AWS Storage]]
 
 !! ''Devops''
 
@@ -12027,21 +12174,6 @@ Implemented at the network level.
 ''Advanced'' - a paid for more sophisticated protection which integrates with many AWS services
 
 </pre>
-</div>
-<div created="20220616212224587" modified="20220726225236419" title="AWS Storage">
-<pre>!!! ''Databases''
-
-* [[Amazon Dynamo DB]]
-* [[Amazon Redshift]]
-* [[Amazon DocumentDB]]
-* [[Amazon Neptune]]
-* [[QLDB]]
-* [[Amazon Managed Blockchain]]
-* [[DMS]]
-
-!!! ''Caches''
-
-* [[Amazon Dynamo DB Accelerator]]</pre>
 </div>
 <div created="20220619222535528" modified="20220619222539315" title="AWS User">
 <pre>Entity that represents users of the account.
