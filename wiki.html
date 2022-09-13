@@ -261,6 +261,8 @@ Error message and password prompt
 
 <li>Analytical DB</li>
 
+<li>API Gateway</li>
+
 <li>Application Development</li>
 
 <li>Application Load Balancer</li>
@@ -10724,7 +10726,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20220820182456823" list="Topics [[Technology Catalog]] AWS [[To Do]]" modified="20220909223023265" title="$:/StoryList">
+<div created="20220820182456823" list="Topics [[Technology Catalog]] AWS [[API Gateway]] [[To Do]]" modified="20220913231235334" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20201012173622690" modified="20210901193831232" title="$:/temp/advancedsearch">
@@ -11273,6 +11275,170 @@ Column-oriented design where columns are stored together and normalized.
 * Makes filtering by column data quick
 * Updating specific entities becomes slower</pre>
 </div>
+<div created="20220913231257998" modified="20220913234547898" title="API Gateway">
+<pre>Serverless proxy for managing REST APIs
+
+Integrations - AWS Lambda, HTTP, AWS Endpoints
+
+! ''Stages''
+
+API configuration must be deployed to a stage be available
+
+Stages keep a history of deployments and can be rolled back
+
+Stage variables are like environment variables for API Gateway. Variable is independent of API config and changes based on which stage it is deployed to.
+
+! ''Endpoint Types''
+
+Edge-optimized - Requests are routed through the ~CloudFront Edge locations to improve latency
+
+Regional - For clients within the same region
+
+Private - Can only be accessed from your VPC
+
+! ''Integration Types''
+
+!! ''Mock'' 
+
+Returns a response without sending the request to the backend
+
+!! ''HTTP / AWS'' 
+
+Integrate with HTTP or AWS services
+
+!!! ''Mapping Templates''
+
+Mapping templates can be used to modify request / responses
+
+* Modify query string parameters
+* Modify body content
+* Add headers
+
+Uses Velocity Template Language
+
+!! ''AWS_PROXY''
+
+Integrates with AWS Lambda
+
+No mapping template
+
+headers, query string parameters are passed as arguments
+
+!! ''HTTP_PROXY''
+
+Integrate with HTTP endpoint
+
+No mapping template
+
+!! ''~WebSocket''
+
+Incoming JSON messages are routed to different backend
+
+If no routes =&gt; sent to $default
+
+
+
+! ''Authentication and Authorization''
+
+!! ''IAM Permissions''
+
+Authentication = IAM
+
+Authorization = IAM Policy
+
+Leverages “Sig v4” capability where IAM credential are in headers
+
+!! ''Cognito User Pools''
+
+Authentication = Cognito User Pools
+
+Authorization = API Gateway Methods
+
+User submits token managed by Cognito User Pools then validates the token with Cognito behind the scenes
+
+!! ''Lambda Authorizer''
+
+Authentication and Authorization is handled by custom lambda function code
+
+Lambda must return an IAM policy for the user, result policy is cached
+
+! ''Other''
+
+Enable canary deployments for any stage
+
+Import or export Swagger or ~OpenAPI 3.0 spec to or from API Gateway
+
+Resource policies to control what can/cannot access API Gateway
+
+!! ''Caching''
+
+API Gateway requests time out after 29 second maximum
+
+Caches are defined per stage
+
+Default TTL (time to live) is 300 seconds
+
+Possible to override cache settings per method
+
+Cache capacity between 0.5GB to 237GB
+
+Encryption option
+
+Can flush the entire cache from the management console
+
+Clients can invalidate the cache with header: Cache-Control: max-age=0
+
+impose an ~InvalidateCache policy to restrict who can do this
+
+!! ''Usage Plans''
+
+Control who can access API
+
+Control how much and how fast they can access them
+
+Uses API keys to identify clients
+
+Callers of the API must supply an assigned API key in the x-api-key header
+
+!! ''Monitoring''
+
+Enable ~CloudWatch logging at the Stage level
+
+Enable x-ray tracing to get extra information about requests in API Gateway
+
+!!! ''Metrics''
+
+Metrics are by stage
+
+* ~CacheHitCount
+* ~CacheMissCount
+* Count - API requests
+* ~IntegrationLatency - between API Gateway and integration
+* Latency - between request and response from API Gateway's perspective
+* 4XXError (client-side) &amp; 5XXError (server-side)
+
+!! ''Throttling''
+
+API Gateway throttles requests at10000 rps across all API
+
+Can be increased upon request
+
+429 Too Many Requests HTTP code
+
+one API that is overloaded can cause the other APIs to be throttled
+
+!! ''CORS''
+
+CORS can be enabled through the console for API Gateway or enabled via the integration
+
+Pre-flight headers
+
+* Access-Control-Allow-Methods
+* Access-Control-Allow-Headers
+* Access-Control-Allow-Origin
+
+</pre>
+</div>
 <div created="20210625000957774" modified="20220317005440206" title="Application Development">
 <pre>! ''Dev Ops''
 
@@ -11543,7 +11709,7 @@ When to scale up or down. Can be integrated with resources metrics or [[Cloud Wa
 
 A configurable amount of time where scaling actions are ignored to allow the system to stabilize.</pre>
 </div>
-<div created="20220403001044378" modified="20220909224841067" title="AWS">
+<div created="20220403001044378" modified="20220913234552416" title="AWS">
 <pre>!! ''Account''
 
 To begin leveraging AWS services an [[account|AWS Account]] must first be created.
@@ -11591,6 +11757,7 @@ Out of the regionally scoped services, a service can run across all [[availabili
 * [[VPC]]
 * [[Route 53]]
 * [[Cloudfront]]
+* [[API Gateway]]
 
 !! ''Compute''
 
