@@ -943,6 +943,8 @@ Error message and password prompt
 
 <li>Serializable Snapshot Isolation</li>
 
+<li>Serverless Application Model</li>
+
 <li>Sets</li>
 
 <li>Shannon Information</li>
@@ -10726,7 +10728,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20220820182456823" list="Topics [[Technology Catalog]] AWS [[API Gateway]] [[To Do]]" modified="20220913231235334" title="$:/StoryList">
+<div created="20220820182456823" list="Topics [[Technology Catalog]] AWS [[Serverless Application Model]] [[To Do]]" modified="20221017223803668" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20201012173622690" modified="20210901193831232" title="$:/temp/advancedsearch">
@@ -11709,7 +11711,7 @@ When to scale up or down. Can be integrated with resources metrics or [[Cloud Wa
 
 A configurable amount of time where scaling actions are ignored to allow the system to stabilize.</pre>
 </div>
-<div created="20220403001044378" modified="20220913234552416" title="AWS">
+<div created="20220403001044378" modified="20221017224858970" title="AWS">
 <pre>!! ''Account''
 
 To begin leveraging AWS services an [[account|AWS Account]] must first be created.
@@ -11820,6 +11822,7 @@ Out of the regionally scoped services, a service can run across all [[availabili
 * [[CodeStar]]
 * [[CodeArtifact]]
 * [[CodeGuru]]
+* [[Serverless Application Model]]
 
 !!! ''Monitoring''
 
@@ -19334,6 +19337,57 @@ The limitations to this are as follows:
 <pre>Serializable Snapshot Isolation, or SSI, is a new algorithm which uses an optimistic approach to enforce serialization. Using a transaction versioning system similar to [[snapshot isolation|Transaction Isolation]] implementations the database will detect is serialization has been broken and abort the transaction. 
 
 The details of the implementation are unnecessary, in general it detects if reads have been effected by other writes, such as in [[this|https://drive.google.com/file/d/1e1sd9QF8aI1h9i-6izBsV8dP7XHSwEij/view?usp=sharing]] example</pre>
+</div>
+<div created="20221017223814922" modified="20221017225216467" title="Serverless Application Model">
+<pre>Framework for developing and deploying serverless applications
+
+Runs on top of ~CloudFormation
+
+Configuration is YAML code
+
+Transform Header indicates it’s SAM template
+
+Define serverless infrastructure similar to how it is done in ~CloudFormation
+
+* AWS::Serverless::Function
+* AWS::Serverless::Api
+* AWS::Serverless::~SimpleTable
+
+Define policies for infrastructure
+
+Uses CLI to execute
+
+Use SAM CLI and AWS Toolkits to debug locally
+
+!! ''Process''
+
+# Start with YAML config and code
+# Build the application transforming the SAM template into a ~CloudFormation template
+# Package and upload the application to S3
+# Deploy the application using ~CloudFormation
+
+!! ''Commands''
+
+* Build: `sam build`
+* Package: `sam package` or `aws cloudformation package`
+* Deploy: `sam deploy` or `aws cloudformation deploy`
+
+!! ''Deployments''
+
+Deployments use ~CodeDeploy
+
+Traffic Shifting feature with alias
+
+Pre and post traffic hooks for validating deployment
+
+Automated rollbacks with ~CloudWatch alarms
+
+!! ''Serverless Application Repository''
+
+Managed repository for serverless
+applications
+
+Store SAM applications</pre>
 </div>
 <div created="20210902194751648" modified="20210902194842012" title="Sets">
 <pre>Set - a collection of elements
