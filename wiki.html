@@ -443,6 +443,14 @@ Error message and password prompt
 
 <li>CodeStar</li>
 
+<li>Cognito</li>
+
+<li>Cognito Identity Pools</li>
+
+<li>Cognito Sync</li>
+
+<li>Cognito User Pools</li>
+
 <li>Command</li>
 
 <li>Composite</li>
@@ -556,6 +564,8 @@ Error message and password prompt
 <li>DoS</li>
 
 <li>Dot Product</li>
+
+<li>Draft of 'AWS'</li>
 
 <li>Dynamic Programming</li>
 
@@ -10730,7 +10740,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20220820182456823" list="Topics [[Technology Catalog]] AWS [[To Do]]" modified="20221018222112684" title="$:/StoryList">
+<div created="20221024220822100" list="Topics [[Technology Catalog]] [[Draft of 'AWS']] Cognito [[To Do]]" modified="20221024223015641" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20201012173622690" modified="20210901193831232" title="$:/temp/advancedsearch">
@@ -13428,6 +13438,64 @@ Limited flexibility.
 
 </pre>
 </div>
+<div created="20221024221048740" modified="20221024223141509" title="Cognito">
+<pre>Service for provisioning external users.
+
+* [[Cognito User Pools]]
+* [[Cognito Identity Pools]]
+* [[Cognito Sync]]</pre>
+</div>
+<div created="20221024221832372" modified="20221024223011627" title="Cognito Identity Pools">
+<pre>Also known as Federated Identities
+
+Service for creating temporary AWS credentials.
+
+!! ''Process''
+
+# Get token from authentication provider
+# Submit token to Cognito Identity Pools service
+# Cognito Identity Pools service validates the token and returns temporary AWS credentials
+
+!! ''Permissions''
+
+Define IAM permissions - ''default'', by ''user id'', ''policy variables''
+
+IAM credentials are obtained by Cognito Identity Pools through STS
+
+The roles must have a “trust” policy of Cognito Identity Pools</pre>
+</div>
+<div created="20221024223031173" modified="20221024223138393" title="Cognito Sync">
+<pre>Service for store preferences, configuration, state of app and synchronizing this across devices.
+
+Deprecated – use AWS ~AppSync now</pre>
+</div>
+<div created="20221024221214783" modified="20221024221819950" title="Cognito User Pools">
+<pre>Provide login functionality for users.
+
+Integrates with ''API Gateway'' or ''Application Load Balancer''.
+
+Hosted and customizable authentication UI provided.
+
+Login sends back a JSON Web Token (JWT)
+
+Invoke a Lambda function synchronously on event triggers.
+
+!! ''Implementations''
+
+!!! ''Simple Login''
+
+Username (or email) / password combination stored in serverless database.
+
+Password reset
+
+Email &amp; Phone Number Verification
+
+Multi-factor authentication (MFA)
+
+!!! ''Federated Identities''
+
+Login as users from Facebook, Google, SAML</pre>
+</div>
 <div created="20210620213914463" modified="20210620214336729" title="Command">
 <pre>Represent a set of similar actions to be executed with an interface
 
@@ -14580,6 +14648,141 @@ We can try filtering out illegitimate requests but this can block legitimate use
 </div>
 <div created="20210123033817798" modified="20210123033818304" title="Dot Product">
 <pre>https://en.wikipedia.org/wiki/Dot_product</pre>
+</div>
+<div created="20220403001044378" draft.of="AWS" draft.title="AWS" modified="20221024221026224" title="Draft of 'AWS'">
+<pre>!! ''Account''
+
+To begin leveraging AWS services an [[account|AWS Account]] must first be created.
+
+!! ''Infrastructure''
+
+The AWS infrastructure is essentially a collection of connected, organized, and managed data centers.
+
+The data centers are organized into the following scopes.
+
+* [[Region|AWS Region]]
+* [[Availability Zone|AWS Availability Zone]]
+* [[Edge Location|AWS Edge Location]]
+
+!! ''Security''
+
+AWS employs a shared responsibility model where AWS and the user have the responsibility of securing different aspect of your systems.
+
+!! ''Interaction''
+
+There are three ways to interact with the AWS services within an account.
+
+* [[Management Console|AWS Management Console]]
+** [[CloudShell|AWS CloudShell]]
+* [[Command Line Interface|AWS CLI]]
+* [[Software Development Kits|AWS SDK]]
+* [[API Requests|AWS API]]
+
+! ''Services''
+
+Services can be categorized by their scope. The scope of a service can either be global or regional. 
+
+A global service persists through all AWS [[regions|AWS Region]] while regionally scoped services are configured independently for each region and can be setup differently per region.
+
+Out of the regionally scoped services, a service can run across all [[availability zones|AWS Availability Zone]] or be limited to a single [[AZ|AWS Availability Zone]] which needs to be chosen.
+
+''API Rate Limits'' are enforced on some API calls which is expressed through a ''~ThrottlingException''. Users can request an API throttling limit increase. 
+
+''Service Quotas (Service Limits)'' are enforced on some services. These limits can be increase by ''opening a ticket'' through the console or using the ''Service Quotas API''. 
+
+!! ''Access''
+
+* [[IAM|Identity Access Management]]
+* [[Cognito]]
+
+!! ''Network''
+
+* [[VPC]]
+* [[Route 53]]
+* [[Cloudfront]]
+* [[API Gateway]]
+
+!! ''Compute''
+
+* [[EC2]]
+** [[AMI|Amazon Machine Image]]
+** [[ELB]]
+** [[ASG|Auto Scaling Groups]]
+* [[AWS Lambda]]
+
+!!! Containers
+
+* [[ECR]]
+* [[ECS]]
+* [[EKS]]
+
+!! ''Integration''
+
+* [[SQS]]
+* [[SNS]]
+* [[Kinesis Data Streams]]
+* [[Kinesis Firehose]]
+* [[Kinesis Analytics]]
+
+!! ''Storage''
+
+* [[S3]]
+** [[Athena|Amazon Athena]]
+
+!!! ''Block Storage''
+
+* [[Instance Stores]]
+* [[EBS]]
+* [[EFS]]
+
+!!! ''Databases''
+
+* [[RDS]]
+* [[Amazon Aurora]]
+* [[Amazon Dynamo DB]]
+* [[Amazon Redshift]]
+* [[Amazon DocumentDB]]
+* [[Amazon Neptune]]
+* [[QLDB]]
+* [[Amazon Managed Blockchain]]
+* [[DMS]]
+
+!!! ''Caches''
+
+* [[Amazon ElastiCache]]
+* [[Amazon Dynamo DB Accelerator]]
+
+!! ''Devops''
+
+* [[Elastic Beanstalk]]
+* [[Cloud Formation]]
+* [[CodeCommit]]
+* [[CodeBuild]]
+* [[CodePipeline]]
+* [[CodeDeploy]]
+* [[CodeStar]]
+* [[CodeArtifact]]
+* [[CodeGuru]]
+* [[Serverless Application Model]]
+* [[Cloud Development Kit]]
+
+!!! ''Monitoring''
+
+* [[Cloud Watch]]
+* [[EventBridge|AWS EventBridge]]
+* [[Cloud Trail]]
+* [[X-Ray]]
+
+!! ''Devops''
+
+* [[Secuirty|AWS Security]]
+* [[Monitoring|AWS Monitoring]]
+* [[Infrastructure|AWS Infrastructure]]
+
+!! ''Business''
+
+* [[Pricing|AWS Pricing]]
+* [[Migration|AWS Migration]]</pre>
 </div>
 <div created="20210423182736849" modified="20211120152601332" title="Dynamic Programming">
 <pre>A recursive solution to an optimization problem where re-usable data is stored and referenced by all recursive functions.
