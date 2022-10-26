@@ -263,6 +263,8 @@ Error message and password prompt
 
 <li>API Gateway</li>
 
+<li>App Sync</li>
+
 <li>Application Development</li>
 
 <li>Application Load Balancer</li>
@@ -291,6 +293,8 @@ Error message and password prompt
 
 <li>AWS Account</li>
 
+<li>AWS Amplify</li>
+
 <li>AWS API</li>
 
 <li>AWS Artifact</li>
@@ -313,8 +317,6 @@ Error message and password prompt
 
 <li>AWS Guard Duty</li>
 
-<li>AWS Infrastructure</li>
-
 <li>AWS Inspector</li>
 
 <li>AWS Lambda</li>
@@ -326,8 +328,6 @@ Error message and password prompt
 <li>AWS MFA</li>
 
 <li>AWS Migration</li>
-
-<li>AWS Monitoring</li>
 
 <li>AWS Organization</li>
 
@@ -343,9 +343,9 @@ Error message and password prompt
 
 <li>AWS SDK</li>
 
-<li>AWS Security</li>
-
 <li>AWS Shield</li>
+
+<li>AWS Step Functions</li>
 
 <li>AWS User</li>
 
@@ -564,8 +564,6 @@ Error message and password prompt
 <li>DoS</li>
 
 <li>Dot Product</li>
-
-<li>Draft of 'AWS'</li>
 
 <li>Dynamic Programming</li>
 
@@ -10740,7 +10738,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20221024220822100" list="Topics [[Technology Catalog]] [[Draft of 'AWS']] Cognito [[To Do]]" modified="20221024223015641" title="$:/StoryList">
+<div created="20221024220822100" list="Topics [[Technology Catalog]] AWS [[To Do]]" modified="20221026231434229" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20201012173622690" modified="20210901193831232" title="$:/temp/advancedsearch">
@@ -11453,6 +11451,23 @@ Pre-flight headers
 
 </pre>
 </div>
+<div created="20221026231105944" modified="20221026231429402" title="App Sync">
+<pre>A managed service wrapper for creating ~GraphQL APIs
+
+Useful for mobile app synchronization
+
+Define and upload a ~GraphQL schema
+
+~AppSync will integrate the schema with a backend such as ~DynamoDB, Aurora, ~ElasticSearch, etc.
+
+!!! ''Security''
+
+* API_KEY
+* AWS_IAM
+* OPENID_CONNECT
+* AMAZON_COGNITO_USER_POOLS
+</pre>
+</div>
 <div created="20210625000957774" modified="20220317005440206" title="Application Development">
 <pre>! ''Dev Ops''
 
@@ -11723,7 +11738,7 @@ When to scale up or down. Can be integrated with resources metrics or [[Cloud Wa
 
 A configurable amount of time where scaling actions are ignored to allow the system to stabilize.</pre>
 </div>
-<div created="20220403001044378" modified="20221018222317904" title="AWS">
+<div created="20220403001044378" modified="20221026231739467" title="AWS">
 <pre>!! ''Account''
 
 To begin leveraging AWS services an [[account|AWS Account]] must first be created.
@@ -11764,7 +11779,10 @@ Out of the regionally scoped services, a service can run across all [[availabili
 
 ''Service Quotas (Service Limits)'' are enforced on some services. These limits can be increase by ''opening a ticket'' through the console or using the ''Service Quotas API''. 
 
+!! ''Access''
+
 * [[IAM|Identity Access Management]]
+* [[Cognito]]
 
 !! ''Network''
 
@@ -11772,6 +11790,7 @@ Out of the regionally scoped services, a service can run across all [[availabili
 * [[Route 53]]
 * [[Cloudfront]]
 * [[API Gateway]]
+* [[Outposts]]
 
 !! ''Compute''
 
@@ -11780,6 +11799,7 @@ Out of the regionally scoped services, a service can run across all [[availabili
 ** [[ELB]]
 ** [[ASG|Auto Scaling Groups]]
 * [[AWS Lambda]]
+* [[AWS Step Functions]]
 
 !!! Containers
 
@@ -11844,14 +11864,24 @@ Out of the regionally scoped services, a service can run across all [[availabili
 * [[Cloud Trail]]
 * [[X-Ray]]
 
-!! ''Devops''
+!! ''Other''
 
-* [[Secuirty|AWS Security]]
-* [[Monitoring|AWS Monitoring]]
-* [[Infrastructure|AWS Infrastructure]]
+* [[App Sync]]
+* [[AWS Amplify]]
 
-!! ''Business''
+!! ''Security''
 
+* [[AWS Artifact]]
+* [[Customer Compliance Center]]
+* [[AWS Shield]]
+* [[KMS|Key Management Service]]
+* [[WAF|Web Application Firewall]]
+* [[AWS Inspector]]
+* [[AWS Guard Duty]]
+
+!! ''Operations''
+
+* [[Trusted Advisor]]
 * [[Pricing|AWS Pricing]]
 * [[Migration|AWS Migration]]</pre>
 </div>
@@ -11882,6 +11912,13 @@ Two types of accounts can be created:
 * [[Oranizations|AWS Organization]]
 
 Use the [[IAM|Identity Access Management]] service to manage access within the account.</pre>
+</div>
+<div created="20221026231447872" modified="20221026231733939" title="AWS Amplify">
+<pre>Set of tools to get started with creating mobile
+and web applications
+
+Build and deploy with the Amplify CLI or Amplify Studio
+</pre>
 </div>
 <div created="20220728225456003" modified="20220728225614755" title="AWS API">
 <pre>When making API requests to AWS they need to be signed with your access key and secret access key using ''Signature v4''.
@@ -11978,11 +12015,6 @@ Policies applied to groups will be applied to all users.</pre>
 </div>
 <div created="20220508233408289" modified="20220508233417740" title="AWS Guard Duty">
 <pre>Intelligent, automated threat detection service</pre>
-</div>
-<div created="20220616211641998" modified="20220820182700396" tags="" title="AWS Infrastructure">
-<pre>!! ''Services''
-
-* [[Outposts]]</pre>
 </div>
 <div created="20220508233433535" modified="20220508233519838" title="AWS Inspector">
 <pre>Automated security inspection which generates a report which recommends security updates.</pre>
@@ -12190,11 +12222,6 @@ Physical devices to help transport large amounts of data
 * Snowmobile
 ** 100 PB</pre>
 </div>
-<div created="20220510235544390" modified="20220823125518051" title="AWS Monitoring">
-<pre>!! Services
-
-* [[Trusted Advisor]]</pre>
-</div>
 <div created="20220618172859015" modified="20220618172901294" title="AWS Organization">
 <pre>!! Organizations
 
@@ -12336,15 +12363,6 @@ Retry mechanism already included in AWS SDK API calls for throttling exceptions.
 # Container credentials (for [[ECS]] tasks)
 # Instance profile credentials (for [[EC2|EC2]] Instance Profiles)</pre>
 </div>
-<div created="20220508232033520" modified="20220618172759382" title="AWS Security">
-<pre>* [[AWS Artifact]]
-* [[Customer Compliance Center]]
-* [[AWS Shield]]
-* [[KMS|Key Management Service]]
-* [[WAF|Web Application Firewall]]
-* [[AWS Inspector]]
-* [[AWS Guard Duty]]</pre>
-</div>
 <div created="20220508234941283" modified="20220508235140891" title="AWS Shield">
 <pre>Service to protect against [[DoS]] attacks.
 
@@ -12357,6 +12375,23 @@ Implemented at the network level.
 ''Advanced'' - a paid for more sophisticated protection which integrates with many AWS services
 
 </pre>
+</div>
+<div created="20221026225618776" modified="20221026231015003" title="AWS Step Functions">
+<pre>Framework for designing model workflows.
+
+Workflows defined in JSON.
+
+Visualization and logging features.
+
+Trigger with SDK, API Gateway, or Event Bridge.
+
+Task States are JSON definitions that allow you to define a module of work and integrate with many services.
+
+State type defines the type of flow.
+
+Handle errors with retry and catch settings.
+
+Express workflows allow for shorter but more frequent running workflows for cheaper.</pre>
 </div>
 <div created="20220619222535528" modified="20220619222539315" title="AWS User">
 <pre>Entity that represents users of the account.
@@ -14648,141 +14683,6 @@ We can try filtering out illegitimate requests but this can block legitimate use
 </div>
 <div created="20210123033817798" modified="20210123033818304" title="Dot Product">
 <pre>https://en.wikipedia.org/wiki/Dot_product</pre>
-</div>
-<div created="20220403001044378" draft.of="AWS" draft.title="AWS" modified="20221024221026224" title="Draft of 'AWS'">
-<pre>!! ''Account''
-
-To begin leveraging AWS services an [[account|AWS Account]] must first be created.
-
-!! ''Infrastructure''
-
-The AWS infrastructure is essentially a collection of connected, organized, and managed data centers.
-
-The data centers are organized into the following scopes.
-
-* [[Region|AWS Region]]
-* [[Availability Zone|AWS Availability Zone]]
-* [[Edge Location|AWS Edge Location]]
-
-!! ''Security''
-
-AWS employs a shared responsibility model where AWS and the user have the responsibility of securing different aspect of your systems.
-
-!! ''Interaction''
-
-There are three ways to interact with the AWS services within an account.
-
-* [[Management Console|AWS Management Console]]
-** [[CloudShell|AWS CloudShell]]
-* [[Command Line Interface|AWS CLI]]
-* [[Software Development Kits|AWS SDK]]
-* [[API Requests|AWS API]]
-
-! ''Services''
-
-Services can be categorized by their scope. The scope of a service can either be global or regional. 
-
-A global service persists through all AWS [[regions|AWS Region]] while regionally scoped services are configured independently for each region and can be setup differently per region.
-
-Out of the regionally scoped services, a service can run across all [[availability zones|AWS Availability Zone]] or be limited to a single [[AZ|AWS Availability Zone]] which needs to be chosen.
-
-''API Rate Limits'' are enforced on some API calls which is expressed through a ''~ThrottlingException''. Users can request an API throttling limit increase. 
-
-''Service Quotas (Service Limits)'' are enforced on some services. These limits can be increase by ''opening a ticket'' through the console or using the ''Service Quotas API''. 
-
-!! ''Access''
-
-* [[IAM|Identity Access Management]]
-* [[Cognito]]
-
-!! ''Network''
-
-* [[VPC]]
-* [[Route 53]]
-* [[Cloudfront]]
-* [[API Gateway]]
-
-!! ''Compute''
-
-* [[EC2]]
-** [[AMI|Amazon Machine Image]]
-** [[ELB]]
-** [[ASG|Auto Scaling Groups]]
-* [[AWS Lambda]]
-
-!!! Containers
-
-* [[ECR]]
-* [[ECS]]
-* [[EKS]]
-
-!! ''Integration''
-
-* [[SQS]]
-* [[SNS]]
-* [[Kinesis Data Streams]]
-* [[Kinesis Firehose]]
-* [[Kinesis Analytics]]
-
-!! ''Storage''
-
-* [[S3]]
-** [[Athena|Amazon Athena]]
-
-!!! ''Block Storage''
-
-* [[Instance Stores]]
-* [[EBS]]
-* [[EFS]]
-
-!!! ''Databases''
-
-* [[RDS]]
-* [[Amazon Aurora]]
-* [[Amazon Dynamo DB]]
-* [[Amazon Redshift]]
-* [[Amazon DocumentDB]]
-* [[Amazon Neptune]]
-* [[QLDB]]
-* [[Amazon Managed Blockchain]]
-* [[DMS]]
-
-!!! ''Caches''
-
-* [[Amazon ElastiCache]]
-* [[Amazon Dynamo DB Accelerator]]
-
-!! ''Devops''
-
-* [[Elastic Beanstalk]]
-* [[Cloud Formation]]
-* [[CodeCommit]]
-* [[CodeBuild]]
-* [[CodePipeline]]
-* [[CodeDeploy]]
-* [[CodeStar]]
-* [[CodeArtifact]]
-* [[CodeGuru]]
-* [[Serverless Application Model]]
-* [[Cloud Development Kit]]
-
-!!! ''Monitoring''
-
-* [[Cloud Watch]]
-* [[EventBridge|AWS EventBridge]]
-* [[Cloud Trail]]
-* [[X-Ray]]
-
-!! ''Devops''
-
-* [[Secuirty|AWS Security]]
-* [[Monitoring|AWS Monitoring]]
-* [[Infrastructure|AWS Infrastructure]]
-
-!! ''Business''
-
-* [[Pricing|AWS Pricing]]
-* [[Migration|AWS Migration]]</pre>
 </div>
 <div created="20210423182736849" modified="20211120152601332" title="Dynamic Programming">
 <pre>A recursive solution to an optimization problem where re-usable data is stored and referenced by all recursive functions.
