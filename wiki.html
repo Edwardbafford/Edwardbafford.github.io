@@ -671,6 +671,8 @@ Error message and password prompt
 
 <li>Graph DB</li>
 
+<li>Growth Function</li>
+
 <li>Hadoop</li>
 
 <li>Hash Partitioning</li>
@@ -1050,6 +1052,8 @@ Error message and password prompt
 <li>Two Phase Locking</li>
 
 <li>Unsupervised Learning</li>
+
+<li>VC Dimension</li>
 
 <li>Version Vectors</li>
 
@@ -10752,7 +10756,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20221027002445685" list="Topics [[Technology Catalog]] AWS CodeBuild [[To Do]]" modified="20221102232147226" title="$:/StoryList">
+<div created="20221103000026754" list="Topics [[Computational Learning Theory]] [[PAC Learning Framework]] [[To Do]]" modified="20221103215603753" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20201012173622690" modified="20210901193831232" title="$:/temp/advancedsearch">
@@ -13632,8 +13636,7 @@ All must be bound to the same interface.
 [img[images/Composite.png]]</pre>
 </div>
 <div created="20221027002722709" modified="20221027011515401" title="Computational Learning Theory">
-<pre>
-* [[PAC Learning Framework]]</pre>
+<pre>* [[PAC Learning Framework]]</pre>
 </div>
 <div created="20200828173348895" modified="20220403000856395" title="Computer Science">
 <pre>!! ''Algorithms''
@@ -15935,6 +15938,13 @@ Flexible: Create new data types/properties/relationships as needed
 
 Powerful Querying: DB structure allows for declarative querying where the system manages the work.</pre>
 </div>
+<div created="20221103002727308" modified="20221103003730794" title="Growth Function">
+<pre>A function intended to measure the richness of a hypothesis class with respect to a sample size.
+
+Growth function represents the maximum number of ways a sample of size $$m$$ can be classified by the hypothesis set $$H$$.
+
+$$\displaystyle \Pi_H(m) = \max_{\{x_1,...,x_m\} \subseteq X} \left| \{(h(x_1),...,h(x_m)): h \in H\} \right|$$</pre>
+</div>
 <div created="20200827235748152" modified="20200828000140096" tags="software data" title="Hadoop">
 <pre>A cluster management tool to create a &quot;distributed file system&quot;. Hadoop management software can load and read files to/from a cluster.
 
@@ -18103,7 +18113,7 @@ When a model generalizes to new data well but is just in general not performing 
 
 [img[images/Overfitting vs Underfitting.jpg]]</pre>
 </div>
-<div created="20221027003400255" modified="20221031231147649" title="PAC Learning Framework">
+<div created="20221027003400255" modified="20221103222803257" title="PAC Learning Framework">
 <pre>A learning framework which can be used to develop and evaluate machine learning models
 
 ! ''Definitions''
@@ -18151,9 +18161,17 @@ The idea is that the algorithm produces a most likely produces a concept with hi
 
 This learning framework does not care about $$D$$!
 
+!! ''Bayesian PAC''
+
+We can also account for the case where no $$h \in H$$ has the property $$R(h) = 0$$.
+
+In this case we can compare against the $$h$$ which has the optimal generalization error.
+
+$$\displaystyle P_{S\sim D^m}[R(h_s) - \min_{h \in H}R(h) \le \epsilon] \ge 1 - \delta$$
+
 ! ''Learning Bounds''
 
-The idea is to define a relationships between empirical and generalization error.
+The idea is to define a relationships between empirical and generalization error with respect to hypothesis sets $$H$$
 
 Understanding this relationship will help us develop more reliable machine learning algorithms.
 
@@ -18186,11 +18204,41 @@ Only for classification though.
 
 !!! ''Derivation''
 
-''~McDiarmid's Inequality'' is serves a foundation.
+''~McDiarmid's Inequality'' serves as the foundation of the bound.
 
-Then we can transform $$E[R - \hat{R_s}]$$ to include the Rademacher functions.
+From there we can use mathematical manipulation create a section of the bound equivalent to the Rademacher functions.
 
-! ''Bayesian PAC''</pre>
+The fact that $$h(z) \in \{-1,1\}$$ is important for generating the Rademacher functions.
+
+!! ''Growth Function''
+
+The bound is defined with respect to the [[Growth Function]] of the hypothesis set and given sample size.
+
+$$\displaystyle P\left[R(h) \le \hat{R_s}(h) + \sqrt{\frac{2\log{\Pi_H(m)}}{m}}
++ \sqrt{\frac{\log{1/\delta}}{2m}}\right] \ge 1 - \delta$$
+
+Only for classification, $$h(x) \in \{ -1,1\}$$
+
+!!! ''Derivation''
+
+Growth function can be linked to Rademacher complexity using ''Massart's Lemma''
+
+Then substitute this relationship into the Rademacher bound.
+
+!! ''VC-Dimension''
+
+The bound is defined with respect to the [[VC Dimension]] of the hypothesis set.
+
+$$\displaystyle P\left[R(h) \le \hat{R_s}(h) + \sqrt{\frac{2\log{(m/d)}}{m/d}}
++ \sqrt{\frac{\log{1/\delta}}{2m}}\right] \ge 1 - \delta$$
+
+$$d$$ is the VC-dimension of $$H$$
+
+From this we can see that higher VC-dim weakens the generalization bound.
+
+!!! ''Derivation''
+
+Link growth function to VC-dim using ''Sauer's Lemma'' then substitute this relationship into the growth function bound.</pre>
 </div>
 <div created="20210713003836639" modified="20210713005052774" title="Parallel Corpus">
 <pre>Method for creating a training set for [[machine translation|Sequence to Sequence]] problems.
@@ -18462,7 +18510,7 @@ Components:
 * Trigger Builder - create trigger based off of a config
 * Scheduler - schedules and executes a job based on a given trigger and job</pre>
 </div>
-<div created="20221029014421662" modified="20221029015647066" title="Rademacher Complexity">
+<div created="20221029014421662" modified="20221103001756665" title="Rademacher Complexity">
 <pre>A function intended to measure the richness of a hypothesis class.
 
 The idea is that richer hypothesis classes will perform better by fitting on noise.
@@ -18479,7 +18527,13 @@ $$\displaystyle \hat{Rad_S}(G) = E_{\sigma}\left[sup_{g \in G}\left(\frac{1}{m}\
 
 $$z_i$$ is a sample $$(x_i, y_i)$$
 
-</pre>
+$$\sigma$$ is $$m$$ random samples from $$\{-1, 1\}$$
+
+!! ''Rademacher Complexity''
+
+$$\displaystyle Rad_m(G) = E_{S \sim D^m}\left[\hat{Rad_S}(G) \right]$$
+
+The expected empirical Rademacher Complexity with respect to the samples.</pre>
 </div>
 <div created="20201222013329707" modified="20201229235420177" title="Random Variable">
 <pre>A variable whose value depends on a random process.</pre>
@@ -20595,6 +20649,17 @@ A wide variety of types and methods exist
 
 * [[Dimensionality Reduction]]
 * [[Clustering]]</pre>
+</div>
+<div created="20221103215728577" modified="20221103220628658" title="VC Dimension">
+<pre>The VC Dimension of a hypothesis set $$H$$ is the size of the largest set that can be shattered by $$H$$.
+
+Shattering a set of samples with a hypothesis class means that the sample can be classified in every possible way depending on the hypothesis $$h$$ returned from $$H$$.
+
+$$\displaystyle VCdim(H) = \max\{m: \Pi_H(m) = 2^m\}$$
+
+$$\Pi_H(m) = 2^m$$ means $$H$$ shatters a set of size $$m$$.
+
+In order to prove a VC Dimension of $$d$$ for $$H$$ you must show an example of a set of size $$d$$ that can be shattered by $$H$$ then show a proof that shows that no  sample of size $$d+1$$ can be shattered by $$H$$</pre>
 </div>
 <div created="20200829163733529" modified="20200829164607754" tags="data theory" title="Version Vectors">
 <pre>Some advanced database algorithms can keep track of data versions between replicas. The list of versions from all replicas is called the &quot;Version Vector&quot;. By knowing the version each write was aware of when making an update the algorithms can determine if a write happened before, after, or concurrently with respect to another write. By knowing this relationship the system can handle the situation properly without having to worry about race conditions.
