@@ -187,6 +187,8 @@ Error message and password prompt
 
 <li>$:/state/Link/--1480314271/search</li>
 
+<li>$:/state/Link/--2098254213/search</li>
+
 <li>$:/state/Link/-1255823669/search</li>
 
 <li>$:/state/Link/-1278782345/search</li>
@@ -10678,6 +10680,9 @@ Error message and password prompt
 <div created="20210117002818773" modified="20210117002821201" title="$:/state/Link/--1480314271/search">
 <pre></pre>
 </div>
+<div created="20221115002336999" modified="20221115002355076" title="$:/state/Link/--2098254213/search">
+<pre></pre>
+</div>
 <div created="20220508233721323" modified="20220508233726260" title="$:/state/Link/-1255823669/search">
 <pre></pre>
 </div>
@@ -10693,8 +10698,8 @@ Error message and password prompt
 <div created="20201220171625704" modified="20221027004112824" title="$:/state/showeditpreview">
 <pre>yes</pre>
 </div>
-<div created="20200827210330797" modified="20221113231955799" title="$:/state/sidebar">
-<pre>yes</pre>
+<div created="20200827210330797" modified="20221115005840926" title="$:/state/sidebar">
+<pre>no</pre>
 </div>
 <div created="20200828170844096" modified="20210901193829689" title="$:/state/tab--1498284803">
 <pre>$:/core/ui/AdvancedSearch/Filter</pre>
@@ -10723,7 +10728,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20221107230728398" list="Topics [[Supervised Learning]] [[Structural Risk Minimization]] [[To Do]]" modified="20221113235442671" title="$:/StoryList">
+<div created="20221114002840938" list="Topics [[Supervised Learning]] [[Structural Risk Minimization]] [[Cross Validation]] [[To Do]]" modified="20221115002428607" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20201012173622690" modified="20210901193831232" title="$:/temp/advancedsearch">
@@ -13825,21 +13830,29 @@ The first part of this amazing [[blog post|https://leimao.github.io/article/Nois
 
 $$ \displaystyle \frac{\partial L(x)}{\partial \theta_k} = \sum_y(P_d(y|x) - P_\theta(y|x))\frac{\partial z_{\theta_k,x}}{\partial \theta_k}$$</pre>
 </div>
-<div created="20210116023847550" modified="20210902153522391" title="Cross Validation">
-<pre>A special training method to evaluating different models
+<div created="20210116023847550" modified="20221115005836699" title="Cross Validation">
+<pre>A model selection algorithm which can be used to choose hypothesis between a set of hypothesis classes. 
 
-# When training a model split the data into k sections
-# train the model on $$k-1$$ sections and test it on the final remaining section
-# repeat step 2 $$k$$ times so that each section is a test set once
-# average the testing results over all $$k$$ trials
+This same approach can also be used for [[hyper-parameter tuning|Hyperparamter]] where the different hyper-parameters create the different hypothesis sets.
 
-!! ''Benefits''
+Given a set of hypothesis classes $$\displaystyle H = \bigcup_k H_k$$ and a sample $$S$$, divide $$S$$ into a training set, $$S_1 =(1-\alpha)m$$, and a validation set, $$S_2 = \alpha m$$.
 
-This gives a more reliable metric than testing with a single validation set
+For each $$k$$ choose the hypothesis that performs best on the training set $$h^{ERM}_{S_1, k}$$. Then out of these $$k$$ hypothesis choose the one that performs best on the validation set.
 
-!! ''Drawbacks''
+$$\displaystyle h^{CV}_S = \argmin_{h \in h^{ERM}_{S_1,k}} \hat R_{S_2}(h)$$
 
-Increases the time need to train and validate models</pre>
+''ERM doesn't need to be used for the hypothesis selection process of the training set but it may effect the theoretical learning bounds''
+
+!! ''Takeaways''
+
+CV is very easy to implement and works with any hypothesis sets.
+
+The learning bound of CV is weaker than [[SRM|Structural Risk Minimization]].
+
+Larger $$\alpha$$ creates a tighter learning bound but a smaller $$\alpha$$ will often improve the values returned from $$S_1$$.
+
+! ''N-Fold Cross Validation''
+</pre>
 </div>
 <div created="20210813005705779" modified="20210813010445200" title="Crossed Feature">
 <pre>For all input combine two categories into a new category.
@@ -18553,8 +18566,7 @@ A low level tool for many NLP tasks
 * Scraping data</pre>
 </div>
 <div created="20221109001904854" modified="20221109001906677" title="Regression">
-<pre>
-The output is a continuous numeric value.
+<pre>The output is a continuous numeric value.
 
 A [[sigmoid function|Sigmoid Function]] can be used to restrict regression output within a range.</pre>
 </div>
@@ -19997,7 +20009,7 @@ $$p(\sigma,x)$$ is the probability of each standard deviation based on the sampl
 
 </pre>
 </div>
-<div created="20201220185637027" modified="20221114001512745" title="Supervised Learning">
+<div created="20201220185637027" modified="20221115005849909" title="Supervised Learning">
 <pre>Supervised learning is all about prediction. 
 
 Given an input we want to predict the correct output.
@@ -20022,10 +20034,10 @@ Given an input we want to predict the correct output.
 
 * [[Empirical Risk Minimization]]
 * [[Structural Risk Minimization]]
-
+* [[Cross Validation]]
 </pre>
 </div>
-<div created="20220403000939783" modified="20221109002249856" title="Technology Catalog">
+<div created="20220403000939783" modified="20221115002043529" title="Technology Catalog">
 <pre>!! ''Cloud Computing''
 
 Cloud computing is the on demand delivery of IT resources over the internet with pay as you go pricing
@@ -20061,7 +20073,7 @@ Cloud computing is the on demand delivery of IT resources over the internet with
 !! ''Other''
 
 * [[Windows Domain|Windows Domain]]
-* * [[Encoding/Decoding]]</pre>
+* [[Encoding/Decoding]]</pre>
 </div>
 <div created="20210125011416990" modified="20210125011836092" title="Term Context Matrix">
 <pre>Given a corpus and vocabulary create a word by word matrix
