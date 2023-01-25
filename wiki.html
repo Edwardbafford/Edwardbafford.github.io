@@ -357,6 +357,8 @@ Error message and password prompt
 
 <li>Beam Search</li>
 
+<li>Bearer Authentication</li>
+
 <li>Bernoulli Distribution</li>
 
 <li>Bernoulli Naive Bayes</li>
@@ -626,6 +628,8 @@ Error message and password prompt
 <li>Hashed Feature</li>
 
 <li>Hidden Markov Model</li>
+
+<li>HMAC</li>
 
 <li>HTTP</li>
 
@@ -10667,7 +10671,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20230106012620704" list="Topics [[Cyber Security]] [[Application Security]] Authentication" modified="20230110010726603" title="$:/StoryList">
+<div created="20230125005813669" list="Topics [[Cyber Security]] [[Application Security]] Authentication HMAC" modified="20230125013142334" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20201012173622690" modified="20210901193831232" title="$:/temp/advancedsearch">
@@ -10734,7 +10738,7 @@ Error message and password prompt
 <div created="20200828140319089" modified="20210901191713767" title="$:/temp/NewTagName">
 <pre></pre>
 </div>
-<div created="20200827210236856" modified="20221224195140970" title="$:/temp/search">
+<div created="20200827210236856" modified="20230125010404172" title="$:/temp/search">
 <pre></pre>
 </div>
 <div created="20200827210410769" modified="20200827210412400" title="$:/theme">
@@ -11523,7 +11527,7 @@ Format:
 * Success status
 * ID for tracking request</pre>
 </div>
-<div created="20201122172628749" modified="20230110005008791" tags="" title="Authentication">
+<div created="20201122172628749" modified="20230125013237342" tags="" title="Authentication">
 <pre>! ''Mutual TLS''
 
 Runs on top of standard [[HTTPS|HTTPS]] protocol where after the client verifies the servers identity, the server verifies the clients identity using a signed public certificate. 
@@ -11557,14 +11561,40 @@ Basic Flow:
 # Validate this token as authentication on each request
 # Invalidate tokens on logout
 
-!! ''Vulnerabilities'':
+!! ''Vulnerabilities''
 
 * [[Timing Attack]]
 * [[Session Fixation Attack]]
 
-!! ''Implementations''
+!! ''Standards''
 
 * [[Cookies|HTTP Cookie]]
+* [[Bearer Authentication]]
+
+!! ''Server Side Implementation''
+
+Storage should be simple and fast such as a cache or ~NoSQL database.
+
+Tokens should be generated in a way that is cryptographically secure.
+
+Delete consistency is important for invalidating tokens.
+
+Expired or invalidated tokens need to be removed from the database.
+
+Split delete operation into separate database account from the main application so that the main application doesn't need delete access.
+
+Using [[HMAC]] encryption to ensure the following properties
+
+* tokens cannot be changed
+* tokens stolen from DB cannot be used
+* tokens added to the DB won't work
+* rejects tokens in constant time
+
+!! ''Front End Implementation''
+
+Store tokens in browser localStorage.
+
+Set document.domain to domain where the token is stored if necessary.
 
 !! ''Federated Single Sign On''
 
@@ -12473,6 +12503,11 @@ General Stack
 Using beam search is a good compromise between a greedy and exhaustive approaches.
 
 It increases your chances of getting an optimal solution without increasing time complexity exponentially.</pre>
+</div>
+<div created="20230125010741270" modified="20230125010859137" title="Bearer Authentication">
+<pre>Authentication standard where authentication token is passed in as a HTTP header.
+
+`Authentication: Bearer {token}`</pre>
 </div>
 <div created="20201222013435570" modified="20201222013728252" title="Bernoulli Distribution">
 <pre>A discrete probability distribution where there are two events, each with a distinct probability
@@ -15737,13 +15772,31 @@ $$t_1^n = \argmax_{t_1^n}[\prod_i^np(w_i|t_i)p(t_i|t_{i-1})]$$
 
 * [[Viterbi Algorithm]]</pre>
 </div>
+<div created="20230125013147239" modified="20230125013836977" title="HMAC">
+<pre>The HMAC process uses a key that is shared by all servers and the users token to produce a tag.
+
+This tag is appended to the token and returned to the user.
+
+When the user returns the token and tag the the token must be validated with the key to match the tag.This prevents the token from being changed.
+
+The token tags are also not stored in the database so stolen token won't work when submitted because the tag is needed.
+
+In the same way tokens added to the database won't work because the hackers won't know the tag.
+
+[img[images/HMAC.jpg]]
+
+
+
+
+</pre>
+</div>
 <div created="20210721003116170" modified="20210721003117063" title="HTTP">
 <pre>https://en.wikipedia.org/wiki/Hypertext_Transfer_Protocol</pre>
 </div>
-<div created="20230110005134969" modified="20230110010223810" title="HTTP Cookie">
+<div created="20230110005134969" modified="20230125011133445" title="HTTP Cookie">
 <pre>A token implementation used for authentication.
 
-A standard which is highly integrated with Browsers but not great for mobile applications. 
+A standard which is highly integrated with Browsers which makes it easy to use but limited in flexibility.
 
 This is referred to as creating a ''session''.
 
