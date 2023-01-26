@@ -10671,7 +10671,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20230125005813669" list="Topics [[Cyber Security]] [[Application Security]] Authentication HMAC" modified="20230125013142334" title="$:/StoryList">
+<div created="20230125005813669" list="Topics [[Cyber Security]] [[Application Security]] Authentication JWT" modified="20230126010736990" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20201012173622690" modified="20210901193831232" title="$:/temp/advancedsearch">
@@ -10738,7 +10738,7 @@ Error message and password prompt
 <div created="20200828140319089" modified="20210901191713767" title="$:/temp/NewTagName">
 <pre></pre>
 </div>
-<div created="20200827210236856" modified="20230125010404172" title="$:/temp/search">
+<div created="20200827210236856" modified="20230126010939081" title="$:/temp/search">
 <pre></pre>
 </div>
 <div created="20200827210410769" modified="20200827210412400" title="$:/theme">
@@ -11527,7 +11527,7 @@ Format:
 * Success status
 * ID for tracking request</pre>
 </div>
-<div created="20201122172628749" modified="20230125013237342" tags="" title="Authentication">
+<div created="20201122172628749" modified="20230126010727052" tags="" title="Authentication">
 <pre>! ''Mutual TLS''
 
 Runs on top of standard [[HTTPS|HTTPS]] protocol where after the client verifies the servers identity, the server verifies the clients identity using a signed public certificate. 
@@ -11561,16 +11561,6 @@ Basic Flow:
 # Validate this token as authentication on each request
 # Invalidate tokens on logout
 
-!! ''Vulnerabilities''
-
-* [[Timing Attack]]
-* [[Session Fixation Attack]]
-
-!! ''Standards''
-
-* [[Cookies|HTTP Cookie]]
-* [[Bearer Authentication]]
-
 !! ''Server Side Implementation''
 
 Storage should be simple and fast such as a cache or ~NoSQL database.
@@ -11596,6 +11586,30 @@ Store tokens in browser localStorage.
 
 Set document.domain to domain where the token is stored if necessary.
 
+!! ''Self Contained Tokens''
+
+Token itself contains a set of claims (or information) about the user.
+
+Servers can get data from the token instead of the database.
+
+This helps with scaling and distributed applications.
+
+[[HMAC]] prevents claims from being altered within the token.
+
+The claims within the tokens should usually be encrypted so only the servers can understand them.
+
+To implement token invalidation at least one token claim needs to exist within a database where it can be verified and deleted.
+
+!! ''Vulnerabilities''
+
+* [[Timing Attack]]
+* [[Session Fixation Attack]]
+
+!! ''Standards''
+
+* [[Cookies|HTTP Cookie]]
+* [[Bearer Authentication]]
+* [[JWT]]
 !! ''Federated Single Sign On''
 
 SSO is a paradigm where authentication responsibilities are consolidated into a third party ''identity provider'' (IDP).
@@ -15793,7 +15807,7 @@ In the same way tokens added to the database won't work because the hackers won'
 <div created="20210721003116170" modified="20210721003117063" title="HTTP">
 <pre>https://en.wikipedia.org/wiki/Hypertext_Transfer_Protocol</pre>
 </div>
-<div created="20230110005134969" modified="20230125011133445" title="HTTP Cookie">
+<div created="20230110005134969" modified="20230126010101718" title="HTTP Cookie">
 <pre>A token implementation used for authentication.
 
 A standard which is highly integrated with Browsers which makes it easy to use but limited in flexibility.
@@ -16107,22 +16121,22 @@ As with most interfaces it creates loosely coupled code, if you want to change J
 
 Better security - application asks for a resource which is given to it by a resource provider within the environment, as opposed to having those resources embedded in the application. </pre>
 </div>
-<div created="20221214003242195" modified="20221214003449461" title="JWT">
-<pre>Token format used for SSO implementations.
+<div created="20221214003242195" modified="20230126011314280" title="JWT">
+<pre>Standard self-contained token format.
 
-A component of the JOSE standard.
+Contains three parts separated by a period
 
-!! ''Format Definition''
+* Header - contains algorithm details and should always be verified by services processing the token
+* Claims
+* HMAC tag
 
-JSON object base64 encoded.
+Has standard claims
 
-Split into three parts:
+* subject - the user
+* expire - when the token expires
+* audience - who the token is for (which API/s)
 
-* header - algorithm, type
-* body - user claims
-* signature
-
-</pre>
+''JWE'' provides an encryption standard method for JWT tokens. </pre>
 </div>
 <div created="20220508234844666" modified="20221102230703688" title="Key Management Service">
 <pre>Service for managing encryption keys and their access.
