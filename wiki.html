@@ -787,6 +787,8 @@ Error message and password prompt
 
 <li>One Hot Encoding</li>
 
+<li>OpenID Connect</li>
+
 <li>Outposts</li>
 
 <li>Output Security</li>
@@ -10641,8 +10643,8 @@ Error message and password prompt
 <div created="20201220171625704" modified="20221027004112824" title="$:/state/showeditpreview">
 <pre>yes</pre>
 </div>
-<div created="20200827210330797" modified="20221116004009452" title="$:/state/sidebar">
-<pre>yes</pre>
+<div created="20200827210330797" modified="20230126011322438" title="$:/state/sidebar">
+<pre>no</pre>
 </div>
 <div created="20200828170844096" modified="20210901193829689" title="$:/state/tab--1498284803">
 <pre>$:/core/ui/AdvancedSearch/Filter</pre>
@@ -10671,7 +10673,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20230125005813669" list="Topics [[Cyber Security]] [[Application Security]] Authentication JWT" modified="20230126010736990" title="$:/StoryList">
+<div created="20230222010840491" list="Topics [[Cyber Security]] [[Application Security]] Authentication HTTPS" modified="20230222010854405" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20201012173622690" modified="20210901193831232" title="$:/temp/advancedsearch">
@@ -11527,7 +11529,7 @@ Format:
 * Success status
 * ID for tracking request</pre>
 </div>
-<div created="20201122172628749" modified="20230126010727052" tags="" title="Authentication">
+<div created="20201122172628749" modified="20230222004742577" tags="" title="Authentication">
 <pre>! ''Mutual TLS''
 
 Runs on top of standard [[HTTPS|HTTPS]] protocol where after the client verifies the servers identity, the server verifies the clients identity using a signed public certificate. 
@@ -11610,55 +11612,27 @@ To implement token invalidation at least one token claim needs to exist within a
 * [[Cookies|HTTP Cookie]]
 * [[Bearer Authentication]]
 * [[JWT]]
-!! ''Federated Single Sign On''
 
-SSO is a paradigm where authentication responsibilities are consolidated into a third party ''identity provider'' (IDP).
+! ''Authorization Servers''
 
-The IDP implements an authentication system for a client and returns a token which can be used by the client as proof of authentication.
+Dedicated servers used for authenticating and authorizing users on behalf of other APIs.
 
-Token validation can be done by either
+Outsources most of the work.
 
-* directly validating with IDP
-* Decrypting token using the IDP public key
+!! ''Standards''
 
+* [[OAuth]]
+* [[OpenID Connect]]
 
-!!! ''Definitions''
+!! ''SSO''
 
-''Subject'' requests access
+Use AS to centralize authentication across multiple applications
 
-''Principal'' is an account to be authenticated against
+Clients authenticate with Authorization Server and get returned a cookie.
 
-An ''Identity Provider'' manages principals
+Browser uses cookie automatically get authenticated to the Authorization Server when accessing any APIs linked with the AS.
 
-''Claims'' are information about a principal
-
-A ''Scope'' is a group claim types
-
-!!! ''Token Formats''
-
-* Kerberos
-* SAML
-* [[JWT]]
-
-SAML and Kerberos are tightly coupled to protocols whereas JWT's are independent of any one protocol.
-
-!!! ''Protocols''
-
-* Kerberos
-* SAML
-*[[OAuth]]
-
-!! ''Token Passing''
-
-Passing tokens between services is important for distributed systems.
-
-!!! ''Token Exchange''
-
-Each service exchanges simple tokens with IDP for specific information needed.
-
-!!! ''Self-Signed Tokens''
-
-Service signs the token and defines the audience. This way other services will know if an internal system made the request.</pre>
+In this way, signing into the AS for one API will allow you to automatically access all API linked with the AS. You only needed a single sign on!</pre>
 </div>
 <div created="20211119004409492" modified="20221214011158827" title="Authorization">
 <pre>Only expose data relevant to the authenticated user
@@ -15830,10 +15804,14 @@ This second cookie must be scraped using Javascript and sent with every request.
 
 Browsers will not automatically send this header like they do with the Cookie. </pre>
 </div>
-<div created="20210721001415624" modified="20220107012632266" title="HTTPS">
-<pre>!! ''Description''
+<div created="20210721001415624" modified="20230222011454566" title="HTTPS">
+<pre>HTTPS is a secure version of the [[HTTP|HTTP]] protocol. The protocol is reliant on [[public-private key encryption|Public Private Key Encryption]].
 
-HTTPS is a secure version of the [[HTTP|HTTP]] protocol. The protocol is reliant on [[public-private key encryption|Public Private Key Encryption]].
+''TLS CIpher Suite'' is a set of algorithms used during the HTTPS connection.
+
+''Certificate Authority'' is in entity that signs a certificate stating that the domain linked with a public key is valid.
+
+Make sure to enforce certain secure protocols, cipher suites, and CAs to trust.
 
 !! ''Protocol''
 
@@ -15843,11 +15821,15 @@ Server then sends it's Public Key and Certificate.
 
 The Certificate states that the public key belongs to a domain for a certain date range.
 
-It is assumed that the Certificate message has been encrypted by a CA's private key.
+It is assumed that the Certificate message has been signed by a CA's private key.
 
-The Client then tests a set of Public Keys from trusted CAs to decrypt the certificate.
+The Client then tests a set of Public Keys from trusted CAs to sign the certificate.
 
-If the certificate can be decrypted and states that the Public Key given by the server does below to the domain name the Server claims to be then the Client can trust that this has been verified by a CA the Client trusts.
+If the certificate has been signed by a trusted CA and states that the Public Key given by the server does below to the domain name the Server claims to be then the Client can trust that this has been verified by a CA the Client trusts. Therefore proving to the client that the server is who it claims to be.
+
+Otherwise the client can go to the CA's domain and check their certificate. If their certificate has be signed by a trust CA then the client can trust the original server. This is called going up the certificate chain.
+
+[img[images/cert-chain.png]]
 
 The Client then creates a new symmetric key and sends it to the Server, encrypting it with the public key that only the Server's private key can decrypt.
 
@@ -17692,22 +17674,98 @@ This is know as the ''Central Limit Theorem''
 
 Because of this we can take a sample from a distribution and do all kinds of tests on it knowing the distribution of the sample is a normal distribution.</pre>
 </div>
-<div created="20211118015251958" modified="20221214005900290" title="OAuth">
-<pre>SSO authentication standard.
+<div created="20211118015251958" modified="20230222001849456" title="OAuth">
+<pre>OAuth is a protocol used by Authorization Servers to give a client limited API access on behalf of a user.
 
-Uses [[JWTs|JWT]] for its token format.
+# Client requests API access on behalf of a client
+# Resource owner grants access for the client to access the API
+# AS returns an access token
+# Access token is used by client when interacting with API
+# API validates token with AS and provides limited access to the client based on the token's scopes
 
-OAuth has the benefit of being able to provide [[authorization|Authorization]] as well as [[authentication|Authentication]] using principal claims and scopes.
+[img[images/OAuth.jpg]]
 
-!! ''Open ID Connect''
+! ''Scopes''
 
-An extension of OAuth that is more secure when it comes to authentication.
+Scopes are defined within the AS and given in the access token. 
 
-!! ''PKCE''
+Each scope is supposed to represent certain permissions which should be enforced on the API side.
 
-An extension of OAuth that is more secure for front end clients to use.
+! ''Clients''
 
-The standard forces the front end client to coordinate with the authentication server in a way that makes it impossible to re-use the authentication token.</pre>
+Client must be registered with the AS and gets a unique client ID.
+
+Scopes are defined per client.
+
+''Public Client'' are browsers or mobile apps.
+
+''Confidential Clients'' are other server which can use their own credentials to identify themselves.
+
+! ''Grants''
+
+Grants are how the user identifies themselves to the AS therefore allowing the client access to the API.
+
+''ROPC Grant'' is just the users credentials! This is obviously a bad approach.
+
+''Client Credential Grant'' is where the client uses its own credentials. Only possible for confidential clients.
+
+Clients will authenticate and get access token from one call to the token endpoint. 
+
+''Authorization Code Grant'' is a common and secure method where the user logs in through the AS to grant access.
+
+# Client redirects to AS with client id, scope, registered redirect uri, and state token
+# User logs in on AS
+# AS uses redirect uri to redirects back to client with authorization code and state token
+# Client checks that the state token matches the one sent in to verify the AS is responding to their request
+# Client uses AS token endpoint to exchange authorization code for access token
+# Client trades the authorization code for the access token while providing client id, grant type, authorization code, and redirect uri called
+
+Redirect uri's are registered before hand to prevent hacker from redirecting to their endpoint.
+
+''Implicit Grant'' is an older version of the authorization code grant where after login the AS redirects to the client with the access token. This can be insecure, since it can be stolen from the browser during the redirect.
+
+''PKCE'' is a method of securing public clients that make requests to the AS token endpoint.
+
+# Client generates a PKCE value, hashes it, and submits it to the AS authorization endpoint
+# When exchanging the auth token for the access token it must also submit the unhashed PKCE value
+# AS will validate the PKCE value by hashing it and confirming the values match
+
+This helps secure the hand-off because an attacker would need to know both the auth token received from the AS and PKCE value generated by the client.
+
+! ''Refresh Token''
+
+Refresh token can be returned with access token and can be used to get new access tokens.
+
+Refresh token is short lived and only seen by the client so it is more secure than an access token.
+
+The refresh token can change on each exchange.
+
+The refresh token allows for the client to managed access how they see fit.
+
+! ''Validate Token''
+
+The API needs to validate the token passed in from the client.
+
+!! ''Introspection''
+
+# Register client with AS and get credentials in return
+# Submit token to AS introspection endpoint along with credentials
+# Result can be cached so that validation requests aren't needed for every request but you could accept an invalidated token
+
+!! ''JWT Access Tokens''
+
+# AS signs JWT with private key
+# JWT can be validated with AS public key held by API
+
+No need for validation calls.
+
+How do you revoke?
+
+! ''Token Revocation''
+
+Submit access token and credentials to the revoke endpoint.
+
+Only the client can use the revoke endpoint.</pre>
 </div>
 <div created="20210609001652591" modified="20221113235246392" title="Object Oriented Programming">
 <pre>!! ''Abstraction''
@@ -17752,6 +17810,19 @@ A common implementation is the [[B-tree|https://drive.google.com/file/d/1YGxub6a
 We must know the all categories then map each category to one feature - a 1 when it is that category a 0 when it is not.
 
 [img[images/one-hot-encoding.png]]</pre>
+</div>
+<div created="20230222004810155" modified="20230222005723567" title="OpenID Connect">
+<pre>OAuth is designed mainly for allowing 3rd parties to access information on behalf of a user.
+
+On the other hand, ~OpenID Connect extends OAuth with the intention of authentication and SSO functionality.
+
+# Client calls an authorization endpoint to get an authorization code
+# Then the client exchanges the code for an access token
+# Client can then use the access token to call the ~UserInfo endpoint to retrieve the identity claims for the user
+
+With ~OpenID Connect the AS acts like the API with its UserInfo endpoint
+
+An ID Token can be returned with the auth code or the access token depending on the AS. An ID token is used for authentication not authorization.</pre>
 </div>
 <div created="20220404005200256" modified="20220404005301550" title="Outposts">
 <pre>AWS managed data centers installed into a custom location.</pre>
@@ -19958,7 +20029,7 @@ $$\displaystyle P \left[ R(h) \le \hat R_{S,p}(h) + 2 \sqrt{\frac{r^2 \Lambda^2}
 
 Learning bound $$r$$ and $$\Lambda$$ decrease and as $$p$$ increases. These are at odds with each other since as $$x$$ and $$w$$ decrease it becomes harder to meet the margin requirements of $$p$$.</pre>
 </div>
-<div created="20220403000939783" modified="20221214003042852" title="Technology Catalog">
+<div created="20220403000939783" modified="20230217005926226" title="Technology Catalog">
 <pre>! ''Cloud Computing''
 
 Cloud computing is the on demand delivery of IT resources over the internet with pay as you go pricing
@@ -20013,11 +20084,8 @@ Cloud computing is the on demand delivery of IT resources over the internet with
 * Red Hat SSO
 * ~CloudFoundry UAA
 * Gluu
-
-!!! ''As a service''
-
 * Okta
-* Auth0
+* Forged Rock
 
 !! ''Service Mesh''
 
