@@ -231,6 +231,8 @@ Error message and password prompt
 
 <li>$:/themes/tiddlywiki/vanilla</li>
 
+<li>Access Control List</li>
+
 <li>Airflow</li>
 
 <li>Amazon Athena</li>
@@ -264,6 +266,8 @@ Error message and password prompt
 <li>Application Security</li>
 
 <li>Attention</li>
+
+<li>Attribute Based Access Control</li>
 
 <li>Audit Logging</li>
 
@@ -723,6 +727,8 @@ Error message and password prompt
 
 <li>LSA</li>
 
+<li>Macaroon</li>
+
 <li>Machine Learning Engineering</li>
 
 <li>MapReduce</li>
@@ -856,6 +862,8 @@ Error message and password prompt
 <li>RNN Sequence Labeling</li>
 
 <li>RNN Sequence to Sequence</li>
+
+<li>Role Based Access Control</li>
 
 <li>Route 53</li>
 
@@ -10404,7 +10412,7 @@ Error message and password prompt
     &quot;tiddlers&quot;: {
         &quot;Untitled&quot;: {
             &quot;title&quot;: &quot;Untitled&quot;,
-            &quot;text&quot;: &quot;&lt;p style=\&quot;box-sizing: border-box; color: rgb(51, 51, 51); font-family: -apple-system, BlinkMacSystemFont, &amp;quot;Segoe UI&amp;quot;, Helvetica, Arial, sans-serif, &amp;quot;Apple Color Emoji&amp;quot;, &amp;quot;Segoe UI Emoji&amp;quot;, &amp;quot;Segoe UI Symbol&amp;quot;; font-size: 15px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;\&quot;&gt;Enforce&lt;span&gt; &lt;/span&gt;&lt;a class=\&quot;tc-tiddlylink tc-tiddlylink-resolves\&quot; href=\&quot;#Authentication\&quot; style=\&quot;box-sizing: border-box; background-color: transparent; text-decoration: none; font-weight: 500; color: rgb(87, 120, 216); user-select: inherit;\&quot;&gt;authentication&lt;/a&gt;&lt;span&gt; &lt;/span&gt;and&lt;span&gt; &lt;/span&gt;&lt;a class=\&quot;tc-tiddlylink tc-tiddlylink-resolves\&quot; href=\&quot;#Authorization\&quot; style=\&quot;box-sizing: border-box; background-color: transparent; text-decoration: none; font-weight: 500; color: rgb(87, 120, 216); user-select: inherit;\&quot;&gt;authorization&lt;/a&gt;.&lt;/p&gt;&lt;p style=\&quot;box-sizing: border-box; color: rgb(51, 51, 51); font-family: -apple-system, BlinkMacSystemFont, &amp;quot;Segoe UI&amp;quot;, Helvetica, Arial, sans-serif, &amp;quot;Apple Color Emoji&amp;quot;, &amp;quot;Segoe UI Emoji&amp;quot;, &amp;quot;Segoe UI Symbol&amp;quot;; font-size: 15px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;\&quot;&gt;Create&lt;span&gt; &lt;/span&gt;&lt;a class=\&quot;tc-tiddlylink tc-tiddlylink-resolves\&quot; href=\&quot;#Audit%20Logging\&quot; style=\&quot;box-sizing: border-box; background-color: transparent; text-decoration: none; font-weight: 500; color: rgb(87, 120, 216); user-select: inherit;\&quot;&gt;audit logs&lt;/a&gt;&lt;span&gt; &lt;/span&gt;and aggregate and monitor for early detectio&lt;/p&gt;&quot;
+            &quot;text&quot;: &quot;&lt;span style=\&quot;color: rgb(51, 51, 51); font-family: -apple-system, BlinkMacSystemFont, &amp;quot;Segoe UI&amp;quot;, Helvetica, Arial, sans-serif, &amp;quot;Apple Color Emoji&amp;quot;, &amp;quot;Segoe UI Emoji&amp;quot;, &amp;quot;Segoe UI Symbol&amp;quot;; font-size: 15px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; display: inline !important; float: none;\&quot;&gt;application asks for a resource which is given to it by a resource provider within the environment, as opposed to having those resources embedded in the application.&lt;/span&gt;&quot;
         }
     }
 }</pre>
@@ -10673,7 +10681,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20230222010840491" list="Topics [[Cyber Security]] [[Application Security]] Authentication HTTPS" modified="20230222010854405" title="$:/StoryList">
+<div created="20230313192147774" list="Topics [[Cyber Security]] [[Application Security]] Authentication HMAC Authorization Macaroon" modified="20230313194524393" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20201012173622690" modified="20210901193831232" title="$:/temp/advancedsearch">
@@ -10854,6 +10862,19 @@ Error message and password prompt
         }
     }
 }</pre>
+</div>
+<div created="20230302235640471" modified="20230303000029762" title="Access Control List">
+<pre>List of user with permissions given to an object - user, object, permission
+
+Has issues scaling as the number of users and objects grow.
+
+Groups can help scaling issues - user/group, object, permission
+
+!!! ''Implementation''
+
+* Store ACL in a database
+* Update ACLs as necessary
+* Enforce ACLs using request filters</pre>
 </div>
 <div created="20200827233048452" modified="20200827233733218" tags="software data" title="Airflow">
 <pre>Scheduling tool for executing workflows. Airflow is centered mostly around manipulating data pipelines but can be used for basically any scheduling task.
@@ -11418,10 +11439,12 @@ ALB can route to different target groups based on
 * Certs - one domain allowed per listener
 * Connection draining - Yes</pre>
 </div>
-<div created="20211111005851482" modified="20230110011134743" title="Application Security">
+<div created="20211111005851482" modified="20230302234555548" title="Application Security">
 <pre>! ''Design''
 
 Use an [[API Gateway|Gateway]] as the entry point of your systems. This will minimize the attack surface and allow you to implement high performance security features. 
+
+[img[images/API Security.jpg]]
 
 [[Rate limiting|Rate Limiting]] should be enforced by the API Gateway.
 
@@ -11504,6 +11527,31 @@ Finally each output node is a weighted combination of the input nodes.
 $$\displaystyle O_{t'} = \sum^I_t\alpha(t,t')I_t$$
 
 This output can be further processed and is often viewed as a function for collecting an aspect of the input. Different output nodes look for different things.</pre>
+</div>
+<div created="20230303000658130" modified="20230303001330979" title="Attribute Based Access Control">
+<pre>Authorization decisions are made dynamically based on attributes of the request.
+
+Often useful to layer on top of a [[RBAC|Role Based Access Control]] system.
+
+!! ''Attributes''
+
+* user
+* resource
+* action
+* environment
+
+!! ''Outcome''
+
+* Allow
+* Deny
+
+! ''Implementations''
+
+Policy as code using a ABAC framework.
+
+''Policy Agents'' can plug into your systems.
+
+''Distributed Policy Enforcement'': Use external server with API which is used by other services to enforce policy.</pre>
 </div>
 <div created="20220317002543053" modified="20221208010945141" title="Audit Logging">
 <pre>Record API request information. 
@@ -11634,28 +11682,37 @@ Browser uses cookie automatically get authenticated to the Authorization Server 
 
 In this way, signing into the AS for one API will allow you to automatically access all API linked with the AS. You only needed a single sign on!</pre>
 </div>
-<div created="20211119004409492" modified="20221214011158827" title="Authorization">
-<pre>Only expose data relevant to the authenticated user
+<div created="20211119004409492" modified="20230313193949340" title="Authorization">
+<pre>! ''Identity Based Access Control''
 
-!! ''Implementations''
+What can you do based on who you are
 
-Centralize authorization logic within integrated systems
+''Users'' are authenticated
 
-[[OAuth]] uses claims and scopes to define authorization
+''Groups'' are a collection of users
 
-! ''Approaches''
+''Roles'' are a collection of permissions
 
-!! ''Role Based Access Control''
+!! ''Approaches''
 
-Access is granted based on pre-defined roles. Users fit into one or more roles.
+* [[ACL|Access Control List]]
+* [[RBAC|Role Based Access Control]]
+* [[ABAC|Attribute Based Access Control]]
 
-Simple but less flexible.
+! ''Capability Based Access Control''
 
-!! ''Attribute Based Access Control''
+A ''capability'' is a reference which identifies a resource and a set of permissions.
 
-Access rights are defined at different levels per resource. Users are linked with different levels of access for different resources.
+An example is a password reset link.
 
-More complex but flexible.</pre>
+The reference is usually represented as a token embedded in a URI. The same token security applied to [[authentication tokens|Authentication]] should be applied here.
+
+Capabilities allow for very specific scopes to be defined for least privilege to be enforced.
+
+Often a good idea to link a capability with a user or set of users to limit damage if the capability is leaked.
+
+[[Macaroons|Macaroon]] are an extension of capabilities.
+</pre>
 </div>
 <div created="20220706225739087" modified="20220707002411217" title="Auto Scaling Groups">
 <pre>Automatically manage a collection of [[EC2]] instances.
@@ -16874,6 +16931,21 @@ Word vectors can be represented by either $$U_k\Sigma_k$$ or $$U_k$$
 
 Document vectors can be represented by either  $$V_k$$ or $$(\Sigma_kV_k^T)^T$$</pre>
 </div>
+<div created="20230313194441070" modified="20230313195416761" title="Macaroon">
+<pre>Macaroons are a type of token that used to represent a security [[capability|Authorization]] while having the ability for anyone to append caveats to the capability.
+
+Macaroons take advantage of the [[HMAC]] authentication technique to append new caveats.
+
+To add a new caveat feed the old tag and the new caveat into the macaroon to create a new tag which will be used, as shown below.
+
+[img[images/Macaroon.jpg]]
+
+Servers can validate the macaroon by starting with the original key and original macaroon then iterating through each caveat creating new tags until the final tag can be validated.
+
+Users have no way to get older tags and therefore no way to remove caveats.
+
+Users can add caveats to their own macaroon then send the more restricted one to the other users.</pre>
+</div>
 <div created="20211227232701434" modified="20221109001740911" title="Machine Learning Engineering">
 <pre>The process of developing machine learning systems.
 
@@ -18625,6 +18697,22 @@ $$\displaystyle \textrm{score}(y) = -\log P(y|x) = \frac{1}{T} \sum^t_{i=1} -\lo
 
 [img[images\RNN Seq to Seq Beam Search.jpg]]</pre>
 </div>
+<div created="20230303000201917" modified="20230303000539572" title="Role Based Access Control">
+<pre>''Roles'' define a collection of permissions that can be given to users or groups.
+
+Helps to simplify complex permissions assignments.
+
+An extension of [[ACLs|Access Control List]]
+
+''Static Roles'' are roles where the permissions cannot change
+
+''Dynamic Roles'' are roles where the permissions can change
+
+!! ''Approaches''
+
+# Map roles to permissions, check for permissions at API
+# Only have roles and check for roles at API</pre>
+</div>
 <div created="20220404233304373" modified="20220719233210130" title="Route 53">
 <pre>''Domain Registrar'' - Service for buying hostnames.
 
@@ -20029,7 +20117,7 @@ $$\displaystyle P \left[ R(h) \le \hat R_{S,p}(h) + 2 \sqrt{\frac{r^2 \Lambda^2}
 
 Learning bound $$r$$ and $$\Lambda$$ decrease and as $$p$$ increases. These are at odds with each other since as $$x$$ and $$w$$ decrease it becomes harder to meet the margin requirements of $$p$$.</pre>
 </div>
-<div created="20220403000939783" modified="20230217005926226" title="Technology Catalog">
+<div created="20220403000939783" modified="20230313192600819" title="Technology Catalog">
 <pre>! ''Cloud Computing''
 
 Cloud computing is the on demand delivery of IT resources over the internet with pay as you go pricing
@@ -20047,6 +20135,8 @@ Cloud computing is the on demand delivery of IT resources over the internet with
 !! ''Platforms''
 
 * [[AWS]]
+* GCP
+* Azure
 
 ! ''Programming Languages''
 
