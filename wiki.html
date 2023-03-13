@@ -447,6 +447,8 @@ Error message and password prompt
 
 <li>Consistent Read Order</li>
 
+<li>Container Security</li>
+
 <li>Context Distributed Smoothing</li>
 
 <li>Context Free Grammars</li>
@@ -526,6 +528,8 @@ Error message and password prompt
 <li>Distributional Hypothesis</li>
 
 <li>DMS</li>
+
+<li>Docker</li>
 
 <li>Document DB</li>
 
@@ -679,6 +683,8 @@ Error message and password prompt
 
 <li>Knowledge Base</li>
 
+<li>Kubernetes</li>
+
 <li>L1 Regularization</li>
 
 <li>L2 Regularization</li>
@@ -712,6 +718,8 @@ Error message and password prompt
 <li>Linearizability</li>
 
 <li>Linguistics</li>
+
+<li>Linkerd</li>
 
 <li>Log Loss</li>
 
@@ -10651,7 +10659,7 @@ Error message and password prompt
 <div created="20201220171625704" modified="20221027004112824" title="$:/state/showeditpreview">
 <pre>yes</pre>
 </div>
-<div created="20200827210330797" modified="20230126011322438" title="$:/state/sidebar">
+<div created="20200827210330797" modified="20230313204531407" title="$:/state/sidebar">
 <pre>no</pre>
 </div>
 <div created="20200828170844096" modified="20210901193829689" title="$:/state/tab--1498284803">
@@ -10681,7 +10689,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20230313192147774" list="Topics [[Cyber Security]] [[Application Security]] Authentication HMAC Authorization Macaroon" modified="20230313194524393" title="$:/StoryList">
+<div created="20230313192147774" list="Topics [[Cyber Security]] [[Application Security]] [[Container Security]] Kubernetes" modified="20230313203533556" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20201012173622690" modified="20210901193831232" title="$:/temp/advancedsearch">
@@ -10748,7 +10756,7 @@ Error message and password prompt
 <div created="20200828140319089" modified="20210901191713767" title="$:/temp/NewTagName">
 <pre></pre>
 </div>
-<div created="20200827210236856" modified="20230126010939081" title="$:/temp/search">
+<div created="20200827210236856" modified="20230313204530297" title="$:/temp/search">
 <pre></pre>
 </div>
 <div created="20200827210410769" modified="20200827210412400" title="$:/theme">
@@ -11439,7 +11447,7 @@ ALB can route to different target groups based on
 * Certs - one domain allowed per listener
 * Connection draining - Yes</pre>
 </div>
-<div created="20211111005851482" modified="20230302234555548" title="Application Security">
+<div created="20211111005851482" modified="20230313203542878" title="Application Security">
 <pre>! ''Design''
 
 Use an [[API Gateway|Gateway]] as the entry point of your systems. This will minimize the attack surface and allow you to implement high performance security features. 
@@ -11458,6 +11466,10 @@ Enforce [[authentication|Authentication]] and [[authorization|Authorization]].
 
 Create [[audit logs|Audit Logging]] and aggregate and monitor for early detection and post-mortem.
 
+Create a ''zero trust network'' where even internally service requests must be authenticated and authorized.
+
+Implement [[container security|Container Security]] if Docker or K8s.
+
 Use secret management tools.
 
 ''Keep things as simple as needed!''
@@ -11468,20 +11480,6 @@ Incorporate security into the ~DevOps process
 * Code Reviews
 * Static code analyzers
 * Scan for vulnerabilities
-
-!! ''Containers''
-
-Use a service mesh to abstract security responsibilities from containers.
-
-Start containers as non-root user
-
-Set container file systems to read only
-
-Use minimal images
-
-Set Memory and CPU limits
-
-Sign and validate containers during deployment
 
 ! ''Vulnerabilities''
 
@@ -13616,6 +13614,25 @@ A data consistency issue that occurs in databases that are [[replicated|DB Repli
 * Keep writes where the order matters on the same partition
 * Embed special [[algorithms|Version Vectors]] within the database to track relationships between updates</pre>
 </div>
+<div created="20230313203545879" modified="20230313204602649" title="Container Security">
+<pre>!! ''Images''
+
+Start containers as non-root user
+
+Set container file systems to read only
+
+Use minimal images
+
+Set Memory and CPU limits
+
+Sign and validate containers during deployment
+
+!! ''Kubernetes''
+
+Internal K8s communication should use TLS. This can be implemented using a service mesh which will create certificate authorities and cert rotations.
+
+Create a network policy to limit service interactions to only necessary ones.</pre>
+</div>
 <div created="20210126014948448" modified="20210126162003740" title="Context Distributed Smoothing">
 <pre>A [[regularization|Regularization]] technique for &quot;count based&quot; parameters
 
@@ -14532,6 +14549,21 @@ Database remains available while be migrated
 * DB backups
 * Copy production data to test environment
 * Consolidate data into one database</pre>
+</div>
+<div created="20230313201723762" modified="20230313202352461" title="Docker">
+<pre>Software for building Linux containers.
+
+''Dockerfile'' scripts the docker daemon to build an ''image''
+
+''Image'' is stored in a ''repository''
+
+Images are built in ''layers'' which can be re-used. Start with a base image, add on to the base with dependencies, OS changes, etc. and create an entrypoint which runs on container creation.
+
+Executing an image on the docker daemon creates a ''container'' which is an instance of the image.
+
+Containers should only ever run one process.
+
+A ''multi-stage'' build allows you to build an image with one base then switch it to a simpler base for security reasons.</pre>
 </div>
 <div created="20200828145252314" modified="20211229221130190" tags="data theory" title="Document DB">
 <pre>Great for handling bulky and/or messy data.
@@ -16373,6 +16405,68 @@ Often built through [[information extraction|Information Extraction]] techniques
 * ~WordNet - knowledge base of [[word senses|Word Sense]], lemmas, and relationships
 * [[Lexicons|Lexicon]] are a simplified version of a knowledge base</pre>
 </div>
+<div created="20230313200109885" modified="20230313205130555" title="Kubernetes">
+<pre>Management software designed for Linux container based applications.
+
+Designed to allow for high availability and scalability.
+
+!! ''Configuration''
+
+K8s cluster is run on a set of nodes, where each node is a machine or VM.
+
+Updates are pushed to K8s cluster via YAML files, usually through a command line tool.
+
+K8s must have access to a Linux container service in order to create the containers needed.
+
+K8s must also have access to all container image repositories in order to download container images needed by the system.
+
+!! ''Pod''
+
+Pods are deployed within the cluster and managed by K8s.
+
+Pods consist of one or more Linux containers.
+
+Depending on the configuration K8s will monitor pods and scale/restart them as needed.
+
+!! ''Deployment''
+
+Configuration for deploying pods.
+
+* Containers to use
+* # of replicas
+* Security config
+
+!! ''Service''
+
+Service objects can be as an abstraction of a collection of pods to represent a stable API.
+
+* Maps to a deployment
+* Creates a consistent DNS based on service name
+* Define port
+
+''~ClusterIP'' type creates service internally
+
+''~NodePort'' exposes service externally on the given port for each node
+
+!! ''Ingress Controller''
+
+External endpoint, acting as an [[API gateway|API Gateway]].
+
+Needs cert for external facing TLS. Can use Cert-Manager tool for this.
+
+!! ''Network Policy''
+
+Configuration that restricts communication between pods.
+
+Define incoming traffic, ''ingress'' and outgoing traffic, ''egress''.
+
+Map policy to pods.
+
+!! ''Other''
+
+Creating a ''namespace'' creates isolation between components of a cluster
+</pre>
+</div>
 <div created="20210118000020916" modified="20210118002557422" title="L1 Regularization">
 <pre>Also known as Lasso regularization, L1 regularization is a [[regularization function|Regularization]] which updates a loss function to account for the size, and therefore influence, of the model parameters
 
@@ -16763,6 +16857,16 @@ Linguistic abstractions which have logical relationships with each other.
 A collection of constituents and their relationships defining a language.
 
 The grammar of a language defines what is allowed to be said as a sentence but does not enforce that the logic of the sentence makes sense.</pre>
+</div>
+<div created="20230313202916639" modified="20230313203038680" title="Linkerd">
+<pre>Simple service mesh for Kubernetes
+
+!! ''Setup''
+
+# Install locally
+# Create service plane within K8s cluster
+# Add linkerd annotations to pods
+# Tap command to monitor </pre>
 </div>
 <div created="20210103211446860" modified="20210103212025270" title="Log Loss">
 <pre>A special form of the [[cross entropy loss function|Cross Entropy (Loss Function)]] which is restricted to a [[Bernoulli Distribution]] as opposed to a [[Categorical Distribution]]
@@ -20117,7 +20221,7 @@ $$\displaystyle P \left[ R(h) \le \hat R_{S,p}(h) + 2 \sqrt{\frac{r^2 \Lambda^2}
 
 Learning bound $$r$$ and $$\Lambda$$ decrease and as $$p$$ increases. These are at odds with each other since as $$x$$ and $$w$$ decrease it becomes harder to meet the margin requirements of $$p$$.</pre>
 </div>
-<div created="20220403000939783" modified="20230313192600819" title="Technology Catalog">
+<div created="20220403000939783" modified="20230313202904294" title="Technology Catalog">
 <pre>! ''Cloud Computing''
 
 Cloud computing is the on demand delivery of IT resources over the internet with pay as you go pricing
@@ -20177,9 +20281,17 @@ Cloud computing is the on demand delivery of IT resources over the internet with
 * Okta
 * Forged Rock
 
+!! ''Containers''
+
+* [[Docker]]
+* [[Kubernetes]]
+
 !! ''Service Mesh''
 
+Creates containers with pods to add extra security and monitoring functionality.
+
 * Istio
+* [[Linkerd]]
 
 !! ''Logging''
 
